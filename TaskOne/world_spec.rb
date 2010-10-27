@@ -8,15 +8,14 @@ describe World do
   @interface
   before(:all) do 
     @world = World.new
-    @interface = @world.get_interface
+    @interface = @world.interface
   end
   before(:each) do
     @char = @world.logs("test")
   end
   describe "Registration" do
     it "should create account 'test' with password 'test'" do
-      
-      @world.stub!(:main_menu)#.and_return(true)
+      @world.stub!(:main_menu)
       YamlManage.stub!(:create_char).and_return(true)
       @world.reg("test2", "test").should == true
     end
@@ -134,10 +133,22 @@ describe World do
         @world.go_to_world(char, 4).should == true
       end
       
-      it "should go to exit when 5" do
+      it "should go to stats when 5" do
+        char = {:current_city => 0}
+        @interface.stub!(:show_stats).and_return(true)
+        @world.go_to_world(char, 5).should == true
+      end
+      
+      it "should go to inventory when 6" do
+        char = {:current_city => 0}
+        @interface.stub!(:show_inventory).and_return(true)
+        @world.go_to_world(char, 6).should == true
+      end
+      
+      it "should go to exit when 7" do
         char = nil
         @world.stub!(:exit).and_return(true)
-        @world.go_to_world(char, 5).should == true
+        @world.go_to_world(char, 7).should == true
       end
     end
     
@@ -193,13 +204,25 @@ describe World do
     end
     
     describe "buy item" do
-      it "should add item to characters backpack and decrease gold amount by items price and save" do
-        char = {:gold => 100, :backpack => ['Knife', 'Plate']}
-        item = {:name => 'Fork', :price => 50}
+      it "should add item to characters backpack and decrease gold amount by items price and save when item class hash is Array" do
+        char = {:gold => 100, :backpack => {:supply => ['Knife', 'Plate']}}
+        item = {:name => 'Fork', :class => 'supply', :price => 50}
         YamlManage.stub!(:save_char).and_return(true)
         @world.buy_item(char, item).should == true
         char[:gold].should == 50
-        char[:backpack].include?("Fork").should == true
+        char[:backpack][:supply].include?("Fork").should == true
+        
+      end
+    end
+    
+    describe "buy item" do
+      it "should add item to characters backpack and decrease gold amount by items price and save when item class hash is not Array" do
+        char = {:gold => 100, :backpack => {:supply => 'Knife'}}
+        item = {:name => 'Fork', :class => 'supply', :price => 50}
+        YamlManage.stub!(:save_char).and_return(true)
+        @world.buy_item(char, item).should == true
+        char[:gold].should == 50
+        char[:backpack][:supply].include?("Fork").should == true
         
       end
     end
@@ -247,7 +270,8 @@ describe World do
     describe "arenas" do
       it "should go to fight with arg 1" do
         char = {:current_city => 0}
-        @world.stub!(:fight).and_return(true)
+        fight = @world.fight
+        fight.stub!(:fight).and_return(true)
         @world.arena(char, 1).should == true
       end
     end
@@ -256,108 +280,29 @@ describe World do
       it "should attack" do
         char = nil
         enemy = nil
-        @world.stub!(:attack).and_return(true)
+        fight = @world.fight
+        fight.stub!(:attack).and_return(true)
         @world.fight_menu(char, enemy, 1).should == true
       end
       
       it "should use skill" do
         char = nil
         enemy = nil
-        @world.stub!(:skill).and_return(true)
+        fight = @world.fight
+        fight.stub!(:skill).and_return(true)
         @world.fight_menu(char, enemy, 2).should == true
       end  
       
       it "should use item" do
         char = nil
         enemy = nil
-        @world.stub!(:use_item).and_return(true)
+        fight = @world.fight
+        fight.stub!(:use_item).and_return(true)
         @world.fight_menu(char, enemy, 3).should == true
       end 
 
     end
     
-  end
-  
-  
-  describe "Fight system" do
-    describe "fight" do
-      it "should start a fight with a monster and after each round save" do
-        YamlManage.stub!(:load_file)
-        @interface.stub!(:battle_info)
-        @interface.stub!(:fight_menu)
-        @world.stub!(:attack)
-        @world.stub!(:check_fight_end).and_return(true)
-        YamlManage.stub!(:save_char)
-        @world.fight(@char, "Sin").should == nil
-      end
-    end
-    
-    describe "check if someone was defeated and give bonus or penalty to player" do
-      it "should return defeated? true because one entity has 0 hp" do
-        #check_fight_end(player, enemy)
-        @world.stub!(:player_penalty)
-        @world.check_fight_end({:hp => 0}, {:hp => 20}).should == true
-      end
-      
-      it "should return defeated? true because another entity has 0 hp" do
-        @world.stub!(:player_prize)
-        @world.check_fight_end({:hp => 10}, {:hp => 0}).should == true
-      end
-      
-      it "should return defeated? false because both entitys has more hp than 0" do
-        @world.check_fight_end({:hp => 10}, {:hp => 20}).should == false
-      end
-    end
-    
-    describe "bonus" do
-      it "should give character a bonus of 30 exp points and 1 gold" do
-        a = mock("Random", {:rand => 3})
-        Random.stub!(:new).and_return(a)
-        char = {:exp => 10, :gold => 20}
-        @world.player_prize( char, {:exp_bonus => 30, :gold_max => 100})
-        char[:exp].should == 40
-        char[:gold].should == 23
-      end
-    end
-    
-    describe "penalty" do
-      it "should decrease characters exp by " do
-        a = mock("Random", {:rand => 3})
-        char = {:exp => 10, :gold => 20}
-        Random.stub!(:new).and_return(a)
-        @world.player_penalty(char, {:exp_bonus => 9, :gold_max => 100})
-        char[:exp].should == 7
-        char[:gold].should == 19
-      end
-    end
-    
-    describe "attack" do
-      it "should decrease defenders healt points by attackers dealt damage" do
-        #damage is calculated by taking random number in range of characters min damage and max damage
-        #therefor mock object a returning value 1 instead of random
-        a = mock("Random", {:rand => 1})
-        Random.stub!(:new).and_return(a)
-        hp_before = @char[:hp]
-        @world.attack(@char, @char)
-        @char[:hp].should == hp_before - 1
-      end
-    end
-    
-    describe "skill attack" do
-      it "should decrease defenders health points by attackers doubled maximum damage" do
-        hp_before = @char[:hp]
-        @world.skill(@char, @char)
-        @char[:hp].should == hp_before - @char[:base_dmg_max] * 2
-      end
-    end
-    
-    describe "use item" do
-      it "should increase attackers health points by 10" do
-        hp_before = @char[:hp]
-        @world.use_item(@char)
-        @char[:hp].should == hp_before + 10
-      end
-    end
   end
   
   describe "rest" do
