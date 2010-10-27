@@ -1,0 +1,7 @@
+---
+:name: Practice bow
+:class: bow
+:level: 1
+:damage_min: 10
+:damage_max: 50
+:price: 10

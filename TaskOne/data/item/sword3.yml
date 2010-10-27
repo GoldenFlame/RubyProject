@@ -1,0 +1,7 @@
+---
+:name: Broad sword
+:class: sword
+:level: 10
+:damage_min: 70
+:damage_max: 100
+:price: 500

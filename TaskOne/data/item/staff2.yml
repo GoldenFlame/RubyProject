@@ -1,0 +1,7 @@
+---
+:name: Simple staff
+:class: staff
+:level: 5
+:damage_min: 40
+:damage_max: 70
+:price: 100

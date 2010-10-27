@@ -1,0 +1,7 @@
+---
+:name: Wooden staff
+:class: staff
+:level: 1
+:damage_min: 10
+:damage_max: 30
+:price: 10

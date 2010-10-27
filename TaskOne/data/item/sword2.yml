@@ -1,0 +1,7 @@
+---
+:name: Simple sword
+:class: sword
+:level: 5
+:damage_min: 45
+:damage_max: 60
+:price: 100
