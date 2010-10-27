@@ -1,0 +1,7 @@
+---
+:name: Simple bow
+:class: bow
+:level: 5
+:damage_min: 20
+:damage_max: 60
+:price: 100

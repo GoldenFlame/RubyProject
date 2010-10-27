@@ -1,0 +1,7 @@
+---
+:name: Hunter bow
+:class: bow
+:level: 10
+:damage_min: 40
+:damage_max: 100
+:price: 500
