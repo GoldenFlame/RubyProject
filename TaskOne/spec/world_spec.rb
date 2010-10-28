@@ -108,6 +108,48 @@ describe World do
       end
     end
     
+    describe "inventory menu" do
+      it "should go to item menu inventory when arg is 1 and there is sword in backpack" do
+        char = {:backpack => {:sword => 'Broken blade'}}
+        @interface.stub!(:item_menu_inventory).and_return(true)
+        @world.show_inventory(char, 1).should == true
+      end
+      
+      it "should go to item menu inventory when arg is 2 and there is bow in backpack" do
+        char = {:backpack => {:bow => 'Elemental bow'}}
+        @interface.stub!(:item_menu_inventory).and_return(true)
+        @world.show_inventory(char, 2).should == true
+      end
+      
+      it "should go to item menu inventory when arg is 3 and there is staff in backpack" do
+        char = {:backpack => {:staff => 'Ancient staff'}}
+        @interface.stub!(:item_menu_inventory).and_return(true)
+        @world.show_inventory(char, 3).should == true
+      end
+      
+      it "should go to world menu when arg is 4" do
+        @interface.stub!(:go_to_world).and_return(true)
+        @world.show_inventory(nil, 4).should == true
+      end
+    end
+    
+    describe "find item" do
+      it "should find item by given name and return its data" do
+        
+      end
+    end
+    
+    describe "welcome menu" do
+      it "should go to registration when 1" do
+        @interface.stub!(:reg).and_return(true)
+        @world.login(1)
+      end
+      
+      it "should go to login when 2" do
+        @interface.stub!(:logs).and_return(true)
+        @world.login(2)
+      end
+    end
     
     describe "exit" do
       it "should return true" do
@@ -167,25 +209,6 @@ describe World do
       end
     end
     
-    describe "shop" do
-      it "should go to item with arg 'sword'" do
-        char = nil
-        @shop.should_receive(:item).with(char,"sword").and_return(true)
-        @world.shop(char, 1).should == true
-      end
-      
-      it "should go to item with arg 'bow'" do
-        char = nil
-        @shop.should_receive(:item).with(char,"bow").and_return(true)
-        @world.shop(char, 2).should == true
-      end
-      
-      it "should go to item with arg 'staff'" do
-        char = nil
-        @shop.should_receive(:item).with(char,"staff").and_return(true)
-        @world.shop(char, 3).should == true
-      end
-    end
     
     describe "wilds" do
       it "should go to area: Toxic Lake" do
@@ -233,6 +256,7 @@ describe World do
     end
     
   end
+  
   
   describe "rest" do
     it "should restore characters hp and mana" do
