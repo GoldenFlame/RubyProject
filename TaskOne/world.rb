@@ -148,13 +148,13 @@ class World
     return item_return
   end
   
-  def show_inventory(char, c)
+  def show_inventory(char, c, sw, bw, st)
     case c
-    when 1 then @interface.item_menu_inventory(char, :sword) if(char[:backpack][:sword] != 0)
-    when 2 then @interface.item_menu_inventory(char, :bow) if(char[:backpack][:bow] != 0)
-    when 3 then @interface.item_menu_inventory(char, :staff) if(char[:backpack][:staff] != 0)
+    when 1 then @interface.item_menu_inventory(char, :sword) if(sw != 0)
+    when 2 then @interface.item_menu_inventory(char, :bow) if(bw != 0)
+    when 3 then @interface.item_menu_inventory(char, :staff) if(st != 0)
     when 4 then @interface.go_to_world(char)
-    else show_inventory(char, @interface.read_ch-48)
+    else show_inventory(char, @interface.read_ch-48, sw, bw, st)
     end
   end
     
