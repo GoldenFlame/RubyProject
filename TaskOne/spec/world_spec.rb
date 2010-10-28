@@ -135,7 +135,9 @@ describe World do
     
     describe "find item" do
       it "should find item by given name and return its data" do
-        
+        example={:name => 'Wooden sword', :class => 'sword', :level => 1, 
+          :damage_min => 10, :damage_max => 20, :price => 10}
+        @world.find_item('Wooden sword').should be_eql(example)
       end
     end
     
@@ -200,6 +202,7 @@ describe World do
         @world.go_to_world(char, 7).should == true
       end
     end
+    
     
     describe "inn" do
       it "should go to rest when 1" do

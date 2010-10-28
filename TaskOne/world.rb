@@ -137,7 +137,7 @@ class World
   end
     
   
-  def find_item(arg, item_name)
+  def find_item(item_name)
     item_return = nil
     items = Dir.glob("data/item/*").collect{|x| YamlManage.load_file(x)}
     items.each do |x|
