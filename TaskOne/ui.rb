@@ -84,13 +84,20 @@ class Ui
     st = 0
     if(char[:backpack][:sword].class == Array.class)
       sw = char[:backpack][:sword].length 
+    elsif(char[:backpack][:sword].class == String.class)
+      sw = 1
     end
     if(char[:backpack][:bow].class == Array.class)
       bw = char[:backpack][:bow].length 
+    elsif(char[:backpack][:bow].class == String.class)
+      bw = 1
     end
     if(char[:backpack][:staff].class == Array.class)
       st = char[:backpack][:staff].length
+    elsif(char[:backpack][:staff].class == String.class)
+      st = 1
     end
+    
     puts "Your inventory:"
     if(sw != 0 || bw != 0 || st != 0)
       puts "1. Swords(#{sw})" if(sw != 0)
