@@ -38,6 +38,7 @@ SimpleCov.start
       it "should give character a bonus of 30 exp points and 3 gold" do
         a = mock("Random", {:rand => 3})
         Random.stub!(:new).and_return(a)
+        @interface.stub(:winner_msg)
         @fight.player_prize( @char, {:exp_bonus => 30, :gold_max => 100})
         @char[:exp].should == 40
         @char[:gold].should == 303
@@ -48,6 +49,7 @@ SimpleCov.start
       it "should decrease characters exp by " do
         a = mock("Random", {:rand => 30})
         Random.stub!(:new).and_return(a)
+        @interface.stub(:looser_msg)
         @fight.player_penalty(@char, {:exp_bonus => 30, :gold_max => 100})
         @char[:exp].should == 7
         @char[:gold].should == 297
