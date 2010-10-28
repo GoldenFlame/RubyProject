@@ -1,11 +1,13 @@
 require File.join(File.dirname(__FILE__), 'yaml_manage.rb')
 require File.join(File.dirname(__FILE__), 'ui.rb')
 require File.join(File.dirname(__FILE__), 'fight.rb')
+require File.join(File.dirname(__FILE__), 'shop.rb')
 
 class World
-  attr_accessor :fight, :interface 
+  attr_accessor :fight, :interface, :shop_inst
   @city
   @exitcmd
+  @fight
   def initialize 
     @exitcmd = false
     world = YamlManage.load_file("data/world.yml")
@@ -13,6 +15,7 @@ class World
     @city = (1..cities_number.to_i).collect{|x| YamlManage.load_file("data/city/#{world[x.to_s.to_sym]}.yml")}
     @interface = Ui.new(self)
     @fight = Fight.new(@interface)
+    @shop_inst = Shop.new(@interface)
   end
   
   def exit
@@ -174,57 +177,12 @@ class World
   
   def shop(char,c)
     case c
-    when 1 then item(char, "sword")
-    when 2 then item(char, "bow")
-    when 3 then item(char, "staff")
+    when 1 then @shop_inst.item(char, "sword")
+    when 2 then @shop_inst.item(char, "bow")
+    when 3 then @shop_inst.item(char, "staff")
     when 4 then @interface.go_to_world(char)
     else shop(char, @interface.read_ch-48)
     end
-  end
-  
-  def inspect(char,item,c)
-    if(char[:gold]>=item[:price])
-      case c
-      when 1 then buy_item(char,item)
-      when 2 then go_back(char,item[:class])
-      else inspect(char, item, @interface.read_ch-48)
-      end
-    else
-      case c
-      when 2 then go_back(char,item[:class])
-      else inspect(char, item, @interface.read_ch-48)
-      end
-    end
-  end
-  
-  def buy_item(char, item)
-    char[:gold] -= item[:price]
-    if(char[:backpack][item[:class].to_sym].class != Array.new.class)
-      tmp = char[:backpack][item[:class].to_sym][0]
-      char[:backpack][item[:class].to_sym] = Array.new
-      char[:backpack][item[:class].to_sym][0] = tmp
-    end
-    char[:backpack][item[:class].to_sym].push(item[:name])
-    YamlManage.save_char(char)
-  end
-  
-  def go_back(char,menu)
-    if(menu == :sword)
-      @interface.swords(char)
-    elsif(menu == :bow)
-      @interface.bows(char)
-    elsif(menu == :staff)
-      @interface.staffs(char)
-    end
-  end
-  
-  def item(char,item)
-    item_list = Dir.glob("data/item/#{item}*").collect{|x| YamlManage.load_file(x)}
-    c = @interface.item(item_list)
-    until (item_list.length>= c && c >= 0)
-      c = @interface.read_ch-48
-    end
-    @interface.inspect(char, item_list[c-1])
   end
   
   def wilds(char,c,city)
@@ -234,7 +192,7 @@ class World
   
   def arena(char,c)
     case c
-    when 1 then fight.fight(char, find_arena_monster(@city[char[:current_city]]))
+    when 1 then @fight.fight(char, find_arena_monster(@city[char[:current_city]]))
     when 2 then @interface.go_to_world(char)
     else arena(char,@interface.read_ch-48)
     end
@@ -242,10 +200,9 @@ class World
   
   def fight_menu(char, enemy, c)
     case c
-    when 1 then fight.attack(char, enemy)
-    when 2 then fight.skill(char, enemy)
-    when 3 then fight.use_item(char)
-    #when 52 then defeat = true
+    when 1 then @fight.attack(char, enemy)
+    when 2 then @fight.skill(char, enemy)
+    when 3 then @fight.use_item(char)
     else fight_menu(char, enemy, @interface.read_ch-48)
     end
   end
