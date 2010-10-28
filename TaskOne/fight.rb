@@ -33,11 +33,13 @@ class Fight
   end
   
   def player_prize(char, enemy)
+    @interface.winner_msg(char)
     char[:exp] += enemy[:exp_bonus]
     char[:gold] += Random.new.rand(0..enemy[:gold_max])
   end
   
   def player_penalty(char,enemy)
+    @interface.looser_msg(char)
     char[:exp] -= enemy[:exp_bonus] / 10
     char[:gold] -= Random.new.rand(0..enemy[:gold_max]) / 10
   end

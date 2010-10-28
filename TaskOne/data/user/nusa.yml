@@ -3,13 +3,13 @@
 :password: nusa
 :class: 2
 :level: 1
-:exp: 0
+:exp: 37
 :current_city: 0
-:gold: 60
+:gold: 152
 :base_dmg_min: 10
 :base_dmg_max: 50
 :max_hp: 75
-:hp: 75
+:hp: 18
 :max_mana: 30
 :mana: 30
 :backpack: 
