@@ -1,12 +1,14 @@
 require 'rbconfig'
-
+require File.join(File.dirname(__FILE__), 'shop.rb')
 class Ui
+  @shop
   def initialize(world)
     @world = world
     puts "Welcome"
   end
   
   def login
+    @shop = @world.shop_inst
     clear_console
     puts "1.Register"
     puts "2.Login"
@@ -155,7 +157,7 @@ class Ui
       puts "You do not have enough money."
     end
     puts "2. Go back."
-    @world.inspect(char,item,read_ch-48)
+    @shop.inspect(char,item,read_ch-48)
   end
   
   def item(item_list)

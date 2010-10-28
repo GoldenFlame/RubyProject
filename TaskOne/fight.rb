@@ -1,12 +1,13 @@
 require File.join(File.dirname(__FILE__), 'yaml_manage.rb')
 require File.join(File.dirname(__FILE__), 'ui.rb')
 
+
 class Fight
-  @interface
+  attr_accessor :interface
   def initialize(interface)
     @interface = interface
   end
-  def self.fight(char, enemy)
+  def fight(char, enemy)
     monster = YamlManage.load_file("data/entity/#{enemy}.yml")
     defeat = false
     while(!defeat)
@@ -19,7 +20,7 @@ class Fight
     end
   end
   
-  def self.check_fight_end(char, monster)
+  def check_fight_end(char, monster)
     defeat = false
     if(monster[:hp] <= 0)
       defeat = true
@@ -31,26 +32,26 @@ class Fight
     return defeat
   end
   
-  def self.player_prize(char, enemy)
+  def player_prize(char, enemy)
     char[:exp] += enemy[:exp_bonus]
     char[:gold] += Random.new.rand(0..enemy[:gold_max])
   end
   
-  def self.player_penalty(char,enemy)
+  def player_penalty(char,enemy)
     char[:exp] -= enemy[:exp_bonus] / 10
     char[:gold] -= Random.new.rand(0..enemy[:gold_max]) / 10
   end
   
-  def self.attack(attacker, defender)
+  def attack(attacker, defender)
     dmg = Random.new.rand(attacker[:base_dmg_min]..attacker[:base_dmg_max])
     defender[:hp] -= dmg
   end
   
-  def self.skill(attacker, defender)
+  def skill(attacker, defender)
     defender[:hp] -= attacker[:base_dmg_max] * 2
   end
   
-  def self.use_item(attacker)
+  def use_item(attacker)
     attacker[:hp] += 10
   end
   
