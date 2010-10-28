@@ -12,21 +12,21 @@ describe "shop" do
       char = {:gold => 100}
       item = {:class => 'sword', :price => 50}
       @shop.stub!(:buy_item).and_return(true)
-      @shop.inspect(char, item, 1).should == true
+      @shop.inspect(char, item, 1).should be_true
     end
 
     it "should go to go back when char gold > item price with arg 2" do
       char = {:gold => 100}
       item = {:class => 'sword', :price => 50}
       @shop.stub!(:go_back).and_return(true)
-      @shop.inspect(char, item, 2).should == true
+      @shop.inspect(char, item, 2).should be_true
     end
       
     it "should go to go back when char gold < item price with arg 2" do
       char = {:gold => 100}
       item = {:class => 'sword', :price => 150}
       @shop.stub!(:go_back).and_return(true)
-      @shop.inspect(char, item, 2).should == true
+      @shop.inspect(char, item, 2).should be_true
     end
   end
     
@@ -102,6 +102,7 @@ describe "shop" do
       @interface.stub!(:staffs).and_return(true)
       @shop.go_back(char, :staff).should == true
     end
+    
   end
     
   describe "item selection" do

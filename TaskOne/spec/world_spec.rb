@@ -268,6 +268,8 @@ describe World do
       test_char[:hp].should == test_char[:max_hp]
       test_char[:mana].should == test_char[:max_mana]
     end
+    
+    
   end
   
   describe "arena monster seach" do

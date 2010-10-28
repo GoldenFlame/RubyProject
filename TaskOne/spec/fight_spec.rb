@@ -76,9 +76,8 @@ SimpleCov.start
     
     describe "use item" do
       it "should increase attackers health points by 10" do
-        hp_before = @char[:hp]
         @fight.use_item(@char)
-        @char[:hp].should == hp_before + 10
+        @char[:hp].should be_equal(110)
       end
     end
   end
