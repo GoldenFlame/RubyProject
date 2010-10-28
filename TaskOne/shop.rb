@@ -49,7 +49,6 @@ class Shop
       char[:backpack][item[:class].to_sym][0] = tmp
     elsif(char[:backpack][item[:class].to_sym].class != Array)
       char[:backpack][item[:class].to_sym] = Array.new
-      char[:backpack][item[:class].to_sym][0] = tmp
     end
     char[:backpack][item[:class].to_sym].push(item[:name])
     YamlManage.save_char(char)

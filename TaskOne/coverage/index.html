@@ -21,21 +21,21 @@
       <img src="./assets/0.3.8/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2010-10-28T17:41:26+03:00">2010-10-28T17:41:26+03:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2010-10-28T17:46:24+03:00">2010-10-28T17:46:24+03:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
         <div class="file_list_container" id="AllFiles">
   <h2>
     All Files
-    (<span class="red">75.61%</span>)
+    (<span class="red">76.08%</span>)
   </h2>
   <a name="AllFiles"></a>
   <div>
     <b>11</b> files in total.
-    <b>779</b> relevant lines. 
-    <span class="green"><b>589</b> lines covered</span> and
-    <span class="red"><b>190</b> lines missed </span>
+    <b>786</b> relevant lines. 
+    <span class="green"><b>598</b> lines covered</span> and
+    <span class="red"><b>188</b> lines missed </span>
   </div>
   <table class="file_list">
     <thead>
@@ -79,11 +79,11 @@
       
       <tr>
         <td><a href="#5bef6d1e9b184142c4974d778a0be65060583a43" class="src_link" title="./shop.rb">./shop.rb</a></td>
-        <td class="yellow">87.18 %</td>
-        <td>60</td>
-        <td>39</td>
-        <td>34</td>
-        <td>5</td>
+        <td class="green">92.11 %</td>
+        <td>59</td>
+        <td>38</td>
+        <td>35</td>
+        <td>3</td>
       </tr>
       
       <tr>
@@ -98,9 +98,9 @@
       <tr>
         <td><a href="#e568e4ab759d260924361070b48d1608db667447" class="src_link" title="./spec/shop_spec.rb">./spec/shop_spec.rb</a></td>
         <td class="green">100.0 %</td>
-        <td>108</td>
-        <td>75</td>
-        <td>75</td>
+        <td>119</td>
+        <td>83</td>
+        <td>83</td>
         <td>0</td>
       </tr>
       
@@ -273,7 +273,7 @@
     </tr>
   
     
-    <tr class="hit" data-hits="23">
+    <tr class="hit" data-hits="24">
       <td class="line_number">
         <pre>8</pre>
       </td>
@@ -281,7 +281,7 @@
         <pre>    @interface = interface</pre>
       </td>
       <td class="hits">
-        23
+        24
       </td>
     </tr>
   
@@ -1702,7 +1702,7 @@
     <tr>
       <td colspan="3">
         <h3>./shop.rb</h3>
-        <h4><span class="yellow">87.18 %</span> covered</h4>
+        <h4><span class="green">92.11 %</span> covered</h4>
       </td>
     </tr>
     <tr>
@@ -1792,7 +1792,7 @@
     </tr>
   
     
-    <tr class="hit" data-hits="14">
+    <tr class="hit" data-hits="15">
       <td class="line_number">
         <pre>7</pre>
       </td>
@@ -1800,7 +1800,7 @@
         <pre>    @interface = interface</pre>
       </td>
       <td class="hits">
-        14
+        15
       </td>
     </tr>
   
@@ -2286,7 +2286,7 @@
     </tr>
   
     
-    <tr class="hit" data-hits="2">
+    <tr class="hit" data-hits="3">
       <td class="line_number">
         <pre>45</pre>
       </td>
@@ -2294,12 +2294,12 @@
         <pre>    char[:gold] -= item[:price]</pre>
       </td>
       <td class="hits">
-        2
+        3
       </td>
     </tr>
   
     
-    <tr class="hit" data-hits="2">
+    <tr class="hit" data-hits="3">
       <td class="line_number">
         <pre>46</pre>
       </td>
@@ -2307,7 +2307,7 @@
         <pre>    if(char[:backpack][item[:class].to_sym].class == String)</pre>
       </td>
       <td class="hits">
-        2
+        3
       </td>
     </tr>
   
@@ -2351,7 +2351,7 @@
     </tr>
   
     
-    <tr class="hit" data-hits="1">
+    <tr class="hit" data-hits="2">
       <td class="line_number">
         <pre>50</pre>
       </td>
@@ -2359,12 +2359,12 @@
         <pre>    elsif(char[:backpack][item[:class].to_sym].class != Array)</pre>
       </td>
       <td class="hits">
-        1
+        2
       </td>
     </tr>
   
     
-    <tr class="miss" data-hits="0">
+    <tr class="hit" data-hits="1">
       <td class="line_number">
         <pre>51</pre>
       </td>
@@ -2372,27 +2372,14 @@
         <pre>      char[:backpack][item[:class].to_sym] = Array.new</pre>
       </td>
       <td class="hits">
-        0
-      </td>
-    </tr>
-  
-    
-    <tr class="miss" data-hits="0">
-      <td class="line_number">
-        <pre>52</pre>
-      </td>
-      <td>
-        <pre>      char[:backpack][item[:class].to_sym][0] = tmp</pre>
-      </td>
-      <td class="hits">
-        0
+        1
       </td>
     </tr>
   
     
     <tr class="never" >
       <td class="line_number">
-        <pre>53</pre>
+        <pre>52</pre>
       </td>
       <td>
         <pre>    end</pre>
@@ -2403,28 +2390,41 @@
     </tr>
   
     
-    <tr class="hit" data-hits="2">
+    <tr class="hit" data-hits="3">
       <td class="line_number">
-        <pre>54</pre>
+        <pre>53</pre>
       </td>
       <td>
         <pre>    char[:backpack][item[:class].to_sym].push(item[:name])</pre>
       </td>
       <td class="hits">
-        2
+        3
       </td>
     </tr>
   
     
-    <tr class="hit" data-hits="2">
+    <tr class="hit" data-hits="3">
       <td class="line_number">
-        <pre>55</pre>
+        <pre>54</pre>
       </td>
       <td>
         <pre>    YamlManage.save_char(char)</pre>
       </td>
       <td class="hits">
-        2
+        3
+      </td>
+    </tr>
+  
+    
+    <tr class="never" >
+      <td class="line_number">
+        <pre>55</pre>
+      </td>
+      <td>
+        <pre>  end</pre>
+      </td>
+      <td class="hits">
+        
       </td>
     </tr>
   
@@ -2434,7 +2434,7 @@
         <pre>56</pre>
       </td>
       <td>
-        <pre>  end</pre>
+        <pre>  </pre>
       </td>
       <td class="hits">
         
@@ -2471,19 +2471,6 @@
     <tr class="never" >
       <td class="line_number">
         <pre>59</pre>
-      </td>
-      <td>
-        <pre>  </pre>
-      </td>
-      <td class="hits">
-        
-      </td>
-    </tr>
-  
-    
-    <tr class="never" >
-      <td class="line_number">
-        <pre>60</pre>
       </td>
       <td>
         <pre>end</pre>
@@ -3654,7 +3641,7 @@
     </tr>
   
     
-    <tr class="hit" data-hits="12">
+    <tr class="hit" data-hits="13">
       <td class="line_number">
         <pre>5</pre>
       </td>
@@ -3662,12 +3649,12 @@
         <pre>    @world = World.new</pre>
       </td>
       <td class="hits">
-        12
+        13
       </td>
     </tr>
   
     
-    <tr class="hit" data-hits="12">
+    <tr class="hit" data-hits="13">
       <td class="line_number">
         <pre>6</pre>
       </td>
@@ -3675,12 +3662,12 @@
         <pre>    @shop = @world.shop_inst</pre>
       </td>
       <td class="hits">
-        12
+        13
       </td>
     </tr>
   
     
-    <tr class="hit" data-hits="12">
+    <tr class="hit" data-hits="13">
       <td class="line_number">
         <pre>7</pre>
       </td>
@@ -3688,7 +3675,7 @@
         <pre>    @interface =@world.interface</pre>
       </td>
       <td class="hits">
-        12
+        13
       </td>
     </tr>
   
@@ -4426,7 +4413,7 @@
         <pre>64</pre>
       </td>
       <td>
-        <pre>      </pre>
+        <pre>    </pre>
       </td>
       <td class="hits">
         
@@ -4439,7 +4426,7 @@
         <pre>65</pre>
       </td>
       <td>
-        <pre>    it &quot;should add item to characters backpack and decrease gold amount by items price and save when item class hash is not Array&quot; do</pre>
+        <pre>    it &quot;should add item to characters backpack and decrease gold amount by items price and save when backpack empty&quot; do</pre>
       </td>
       <td class="hits">
         1
@@ -4452,7 +4439,7 @@
         <pre>66</pre>
       </td>
       <td>
-        <pre>      char = {:gold =&gt; 100, :backpack =&gt; {:supply =&gt; 'Knife'}}</pre>
+        <pre>      char = {:gold =&gt; 100, :backpack =&gt; {:supply =&gt; 0}}</pre>
       </td>
       <td class="hits">
         1
@@ -4517,7 +4504,7 @@
         <pre>71</pre>
       </td>
       <td>
-        <pre>      char[:backpack][:supply].should have(2).items</pre>
+        <pre>      char[:backpack][:supply].should have(1).items</pre>
       </td>
       <td class="hits">
         1
@@ -4577,28 +4564,28 @@
     </tr>
   
     
-    <tr class="never" >
+    <tr class="hit" data-hits="1">
       <td class="line_number">
         <pre>76</pre>
       </td>
       <td>
-        <pre>  end</pre>
+        <pre>    it &quot;should add item to characters backpack and decrease gold amount by items price and save when item class hash is not Array&quot; do</pre>
       </td>
       <td class="hits">
-        
+        1
       </td>
     </tr>
   
     
-    <tr class="never" >
+    <tr class="hit" data-hits="1">
       <td class="line_number">
         <pre>77</pre>
       </td>
       <td>
-        <pre>    </pre>
+        <pre>      char = {:gold =&gt; 100, :backpack =&gt; {:supply =&gt; 'Knife'}}</pre>
       </td>
       <td class="hits">
-        
+        1
       </td>
     </tr>
   
@@ -4608,7 +4595,7 @@
         <pre>78</pre>
       </td>
       <td>
-        <pre>  describe &quot;go back&quot; do</pre>
+        <pre>      item = {:name =&gt; 'Fork', :class =&gt; 'supply', :price =&gt; 50}</pre>
       </td>
       <td class="hits">
         1
@@ -4621,7 +4608,7 @@
         <pre>79</pre>
       </td>
       <td>
-        <pre>    it &quot;should go to interface swords when menu is sword&quot; do</pre>
+        <pre>      YamlManage.stub!(:save_char).and_return(true)</pre>
       </td>
       <td class="hits">
         1
@@ -4634,7 +4621,7 @@
         <pre>80</pre>
       </td>
       <td>
-        <pre>      char = nil</pre>
+        <pre>      @shop.buy_item(char, item).should == true</pre>
       </td>
       <td class="hits">
         1
@@ -4647,7 +4634,7 @@
         <pre>81</pre>
       </td>
       <td>
-        <pre>      @interface.stub!(:swords).and_return(true)</pre>
+        <pre>      char[:gold].should == 50</pre>
       </td>
       <td class="hits">
         1
@@ -4660,7 +4647,7 @@
         <pre>82</pre>
       </td>
       <td>
-        <pre>      @shop.go_back(char, :sword).should == true</pre>
+        <pre>      char[:backpack][:supply].should have(2).items</pre>
       </td>
       <td class="hits">
         1
@@ -4668,152 +4655,61 @@
     </tr>
   
     
-    <tr class="never" >
+    <tr class="hit" data-hits="1">
       <td class="line_number">
         <pre>83</pre>
       </td>
       <td>
-        <pre>    end</pre>
+        <pre>      char[:backpack][:supply].should include('Fork')</pre>
       </td>
       <td class="hits">
-        
+        1
       </td>
     </tr>
   
     
-    <tr class="hit" data-hits="1">
+    <tr class="never" >
       <td class="line_number">
         <pre>84</pre>
       </td>
       <td>
-        <pre>    it &quot;should go to interface bows when menu is bow&quot; do</pre>
+        <pre>        </pre>
       </td>
       <td class="hits">
-        1
+        
       </td>
     </tr>
   
     
-    <tr class="hit" data-hits="1">
+    <tr class="never" >
       <td class="line_number">
         <pre>85</pre>
       </td>
       <td>
-        <pre>      char = nil</pre>
+        <pre>    end</pre>
       </td>
       <td class="hits">
-        1
+        
       </td>
     </tr>
   
     
-    <tr class="hit" data-hits="1">
+    <tr class="never" >
       <td class="line_number">
         <pre>86</pre>
       </td>
       <td>
-        <pre>      @interface.stub!(:bows).and_return(true)</pre>
+        <pre>      </pre>
       </td>
       <td class="hits">
-        1
+        
       </td>
     </tr>
   
     
-    <tr class="hit" data-hits="1">
+    <tr class="never" >
       <td class="line_number">
         <pre>87</pre>
-      </td>
-      <td>
-        <pre>      @shop.go_back(char, :bow).should == true</pre>
-      </td>
-      <td class="hits">
-        1
-      </td>
-    </tr>
-  
-    
-    <tr class="never" >
-      <td class="line_number">
-        <pre>88</pre>
-      </td>
-      <td>
-        <pre>    end</pre>
-      </td>
-      <td class="hits">
-        
-      </td>
-    </tr>
-  
-    
-    <tr class="hit" data-hits="1">
-      <td class="line_number">
-        <pre>89</pre>
-      </td>
-      <td>
-        <pre>    it &quot;should go to interface staffs when menu is staff&quot; do</pre>
-      </td>
-      <td class="hits">
-        1
-      </td>
-    </tr>
-  
-    
-    <tr class="hit" data-hits="1">
-      <td class="line_number">
-        <pre>90</pre>
-      </td>
-      <td>
-        <pre>      char = nil</pre>
-      </td>
-      <td class="hits">
-        1
-      </td>
-    </tr>
-  
-    
-    <tr class="hit" data-hits="1">
-      <td class="line_number">
-        <pre>91</pre>
-      </td>
-      <td>
-        <pre>      @interface.stub!(:staffs).and_return(true)</pre>
-      </td>
-      <td class="hits">
-        1
-      </td>
-    </tr>
-  
-    
-    <tr class="hit" data-hits="1">
-      <td class="line_number">
-        <pre>92</pre>
-      </td>
-      <td>
-        <pre>      @shop.go_back(char, :staff).should == true</pre>
-      </td>
-      <td class="hits">
-        1
-      </td>
-    </tr>
-  
-    
-    <tr class="never" >
-      <td class="line_number">
-        <pre>93</pre>
-      </td>
-      <td>
-        <pre>    end</pre>
-      </td>
-      <td class="hits">
-        
-      </td>
-    </tr>
-  
-    
-    <tr class="never" >
-      <td class="line_number">
-        <pre>94</pre>
       </td>
       <td>
         <pre>  end</pre>
@@ -4826,7 +4722,7 @@
     
     <tr class="never" >
       <td class="line_number">
-        <pre>95</pre>
+        <pre>88</pre>
       </td>
       <td>
         <pre>    </pre>
@@ -4839,10 +4735,10 @@
     
     <tr class="hit" data-hits="1">
       <td class="line_number">
-        <pre>96</pre>
+        <pre>89</pre>
       </td>
       <td>
-        <pre>  describe &quot;item selection&quot; do</pre>
+        <pre>  describe &quot;go back&quot; do</pre>
       </td>
       <td class="hits">
         1
@@ -4852,10 +4748,10 @@
     
     <tr class="hit" data-hits="1">
       <td class="line_number">
-        <pre>97</pre>
+        <pre>90</pre>
       </td>
       <td>
-        <pre>    it &quot;should find all existing items by criteria and go to inspect with first item: Fork&quot; do</pre>
+        <pre>    it &quot;should go to interface swords when menu is sword&quot; do</pre>
       </td>
       <td class="hits">
         1
@@ -4865,20 +4761,7 @@
     
     <tr class="hit" data-hits="1">
       <td class="line_number">
-        <pre>98</pre>
-      </td>
-      <td>
-        <pre>      items = [{:name =&gt; 'Fork'}, {:name =&gt; 'Silver Fork'}]</pre>
-      </td>
-      <td class="hits">
-        1
-      </td>
-    </tr>
-  
-    
-    <tr class="hit" data-hits="1">
-      <td class="line_number">
-        <pre>99</pre>
+        <pre>91</pre>
       </td>
       <td>
         <pre>      char = nil</pre>
@@ -4891,10 +4774,114 @@
     
     <tr class="hit" data-hits="1">
       <td class="line_number">
+        <pre>92</pre>
+      </td>
+      <td>
+        <pre>      @interface.stub!(:swords).and_return(true)</pre>
+      </td>
+      <td class="hits">
+        1
+      </td>
+    </tr>
+  
+    
+    <tr class="hit" data-hits="1">
+      <td class="line_number">
+        <pre>93</pre>
+      </td>
+      <td>
+        <pre>      @shop.go_back(char, :sword).should == true</pre>
+      </td>
+      <td class="hits">
+        1
+      </td>
+    </tr>
+  
+    
+    <tr class="never" >
+      <td class="line_number">
+        <pre>94</pre>
+      </td>
+      <td>
+        <pre>    end</pre>
+      </td>
+      <td class="hits">
+        
+      </td>
+    </tr>
+  
+    
+    <tr class="hit" data-hits="1">
+      <td class="line_number">
+        <pre>95</pre>
+      </td>
+      <td>
+        <pre>    it &quot;should go to interface bows when menu is bow&quot; do</pre>
+      </td>
+      <td class="hits">
+        1
+      </td>
+    </tr>
+  
+    
+    <tr class="hit" data-hits="1">
+      <td class="line_number">
+        <pre>96</pre>
+      </td>
+      <td>
+        <pre>      char = nil</pre>
+      </td>
+      <td class="hits">
+        1
+      </td>
+    </tr>
+  
+    
+    <tr class="hit" data-hits="1">
+      <td class="line_number">
+        <pre>97</pre>
+      </td>
+      <td>
+        <pre>      @interface.stub!(:bows).and_return(true)</pre>
+      </td>
+      <td class="hits">
+        1
+      </td>
+    </tr>
+  
+    
+    <tr class="hit" data-hits="1">
+      <td class="line_number">
+        <pre>98</pre>
+      </td>
+      <td>
+        <pre>      @shop.go_back(char, :bow).should == true</pre>
+      </td>
+      <td class="hits">
+        1
+      </td>
+    </tr>
+  
+    
+    <tr class="never" >
+      <td class="line_number">
+        <pre>99</pre>
+      </td>
+      <td>
+        <pre>    end</pre>
+      </td>
+      <td class="hits">
+        
+      </td>
+    </tr>
+  
+    
+    <tr class="hit" data-hits="1">
+      <td class="line_number">
         <pre>100</pre>
       </td>
       <td>
-        <pre>      a = mock(&quot;Dir&quot;, {:collect =&gt; items})</pre>
+        <pre>    it &quot;should go to interface staffs when menu is staff&quot; do</pre>
       </td>
       <td class="hits">
         1
@@ -4907,7 +4894,7 @@
         <pre>101</pre>
       </td>
       <td>
-        <pre>      Dir.stub!(:glob).and_return(a)</pre>
+        <pre>      char = nil</pre>
       </td>
       <td class="hits">
         1
@@ -4920,7 +4907,7 @@
         <pre>102</pre>
       </td>
       <td>
-        <pre>      YamlManage.stub!(:load_file)</pre>
+        <pre>      @interface.stub!(:staffs).and_return(true)</pre>
       </td>
       <td class="hits">
         1
@@ -4933,33 +4920,7 @@
         <pre>103</pre>
       </td>
       <td>
-        <pre>      @interface.should_receive(:item).with(items).and_return(1)</pre>
-      </td>
-      <td class="hits">
-        1
-      </td>
-    </tr>
-  
-    
-    <tr class="hit" data-hits="1">
-      <td class="line_number">
-        <pre>104</pre>
-      </td>
-      <td>
-        <pre>      @interface.should_receive(:inspect).with(char, items[0]).and_return(true)</pre>
-      </td>
-      <td class="hits">
-        1
-      </td>
-    </tr>
-  
-    
-    <tr class="hit" data-hits="1">
-      <td class="line_number">
-        <pre>105</pre>
-      </td>
-      <td>
-        <pre>      @shop.item(char, 'Fork').should == true</pre>
+        <pre>      @shop.go_back(char, :staff).should == true</pre>
       </td>
       <td class="hits">
         1
@@ -4969,7 +4930,7 @@
     
     <tr class="never" >
       <td class="line_number">
-        <pre>106</pre>
+        <pre>104</pre>
       </td>
       <td>
         <pre>    end</pre>
@@ -4982,7 +4943,7 @@
     
     <tr class="never" >
       <td class="line_number">
-        <pre>107</pre>
+        <pre>105</pre>
       </td>
       <td>
         <pre>  end</pre>
@@ -4995,7 +4956,176 @@
     
     <tr class="never" >
       <td class="line_number">
+        <pre>106</pre>
+      </td>
+      <td>
+        <pre>    </pre>
+      </td>
+      <td class="hits">
+        
+      </td>
+    </tr>
+  
+    
+    <tr class="hit" data-hits="1">
+      <td class="line_number">
+        <pre>107</pre>
+      </td>
+      <td>
+        <pre>  describe &quot;item selection&quot; do</pre>
+      </td>
+      <td class="hits">
+        1
+      </td>
+    </tr>
+  
+    
+    <tr class="hit" data-hits="1">
+      <td class="line_number">
         <pre>108</pre>
+      </td>
+      <td>
+        <pre>    it &quot;should find all existing items by criteria and go to inspect with first item: Fork&quot; do</pre>
+      </td>
+      <td class="hits">
+        1
+      </td>
+    </tr>
+  
+    
+    <tr class="hit" data-hits="1">
+      <td class="line_number">
+        <pre>109</pre>
+      </td>
+      <td>
+        <pre>      items = [{:name =&gt; 'Fork'}, {:name =&gt; 'Silver Fork'}]</pre>
+      </td>
+      <td class="hits">
+        1
+      </td>
+    </tr>
+  
+    
+    <tr class="hit" data-hits="1">
+      <td class="line_number">
+        <pre>110</pre>
+      </td>
+      <td>
+        <pre>      char = nil</pre>
+      </td>
+      <td class="hits">
+        1
+      </td>
+    </tr>
+  
+    
+    <tr class="hit" data-hits="1">
+      <td class="line_number">
+        <pre>111</pre>
+      </td>
+      <td>
+        <pre>      a = mock(&quot;Dir&quot;, {:collect =&gt; items})</pre>
+      </td>
+      <td class="hits">
+        1
+      </td>
+    </tr>
+  
+    
+    <tr class="hit" data-hits="1">
+      <td class="line_number">
+        <pre>112</pre>
+      </td>
+      <td>
+        <pre>      Dir.stub!(:glob).and_return(a)</pre>
+      </td>
+      <td class="hits">
+        1
+      </td>
+    </tr>
+  
+    
+    <tr class="hit" data-hits="1">
+      <td class="line_number">
+        <pre>113</pre>
+      </td>
+      <td>
+        <pre>      YamlManage.stub!(:load_file)</pre>
+      </td>
+      <td class="hits">
+        1
+      </td>
+    </tr>
+  
+    
+    <tr class="hit" data-hits="1">
+      <td class="line_number">
+        <pre>114</pre>
+      </td>
+      <td>
+        <pre>      @interface.should_receive(:item).with(items).and_return(1)</pre>
+      </td>
+      <td class="hits">
+        1
+      </td>
+    </tr>
+  
+    
+    <tr class="hit" data-hits="1">
+      <td class="line_number">
+        <pre>115</pre>
+      </td>
+      <td>
+        <pre>      @interface.should_receive(:inspect).with(char, items[0]).and_return(true)</pre>
+      </td>
+      <td class="hits">
+        1
+      </td>
+    </tr>
+  
+    
+    <tr class="hit" data-hits="1">
+      <td class="line_number">
+        <pre>116</pre>
+      </td>
+      <td>
+        <pre>      @shop.item(char, 'Fork').should == true</pre>
+      </td>
+      <td class="hits">
+        1
+      </td>
+    </tr>
+  
+    
+    <tr class="never" >
+      <td class="line_number">
+        <pre>117</pre>
+      </td>
+      <td>
+        <pre>    end</pre>
+      </td>
+      <td class="hits">
+        
+      </td>
+    </tr>
+  
+    
+    <tr class="never" >
+      <td class="line_number">
+        <pre>118</pre>
+      </td>
+      <td>
+        <pre>  end</pre>
+      </td>
+      <td class="hits">
+        
+      </td>
+    </tr>
+  
+    
+    <tr class="never" >
+      <td class="line_number">
+        <pre>119</pre>
       </td>
       <td>
         <pre>end</pre>
@@ -9424,7 +9554,7 @@
     </tr>
   
     
-    <tr class="hit" data-hits="14">
+    <tr class="hit" data-hits="15">
       <td class="line_number">
         <pre>6</pre>
       </td>
@@ -9432,12 +9562,12 @@
         <pre>    @world = world</pre>
       </td>
       <td class="hits">
-        14
+        15
       </td>
     </tr>
   
     
-    <tr class="hit" data-hits="14">
+    <tr class="hit" data-hits="15">
       <td class="line_number">
         <pre>7</pre>
       </td>
@@ -9445,7 +9575,7 @@
         <pre>    puts &quot;Welcome&quot;</pre>
       </td>
       <td class="hits">
-        14
+        15
       </td>
     </tr>
   
@@ -12617,7 +12747,7 @@
     </tr>
   
     
-    <tr class="hit" data-hits="14">
+    <tr class="hit" data-hits="15">
       <td class="line_number">
         <pre>12</pre>
       </td>
@@ -12625,12 +12755,12 @@
         <pre>    @exitcmd = false</pre>
       </td>
       <td class="hits">
-        14
+        15
       </td>
     </tr>
   
     
-    <tr class="hit" data-hits="14">
+    <tr class="hit" data-hits="15">
       <td class="line_number">
         <pre>13</pre>
       </td>
@@ -12638,12 +12768,12 @@
         <pre>    world = YamlManage.load_file(&quot;data/world.yml&quot;)</pre>
       </td>
       <td class="hits">
-        14
+        15
       </td>
     </tr>
   
     
-    <tr class="hit" data-hits="14">
+    <tr class="hit" data-hits="15">
       <td class="line_number">
         <pre>14</pre>
       </td>
@@ -12651,12 +12781,12 @@
         <pre>    cities_number = world[:cities]</pre>
       </td>
       <td class="hits">
-        14
+        15
       </td>
     </tr>
   
     
-    <tr class="hit" data-hits="28">
+    <tr class="hit" data-hits="30">
       <td class="line_number">
         <pre>15</pre>
       </td>
@@ -12664,12 +12794,12 @@
         <pre>    @city = (1..cities_number.to_i).collect{|x| YamlManage.load_file(&quot;data/city/#{world[x.to_s.to_sym]}.yml&quot;)}</pre>
       </td>
       <td class="hits">
-        28
+        30
       </td>
     </tr>
   
     
-    <tr class="hit" data-hits="14">
+    <tr class="hit" data-hits="15">
       <td class="line_number">
         <pre>16</pre>
       </td>
@@ -12677,12 +12807,12 @@
         <pre>    @interface = Ui.new(self)</pre>
       </td>
       <td class="hits">
-        14
+        15
       </td>
     </tr>
   
     
-    <tr class="hit" data-hits="14">
+    <tr class="hit" data-hits="15">
       <td class="line_number">
         <pre>17</pre>
       </td>
@@ -12690,12 +12820,12 @@
         <pre>    @fight = Fight.new(@interface)</pre>
       </td>
       <td class="hits">
-        14
+        15
       </td>
     </tr>
   
     
-    <tr class="hit" data-hits="14">
+    <tr class="hit" data-hits="15">
       <td class="line_number">
         <pre>18</pre>
       </td>
@@ -12703,7 +12833,7 @@
         <pre>    @shop_inst = Shop.new(@interface)</pre>
       </td>
       <td class="hits">
-        14
+        15
       </td>
     </tr>
   
@@ -15706,7 +15836,7 @@
     </tr>
   
     
-    <tr class="hit" data-hits="31">
+    <tr class="hit" data-hits="33">
       <td class="line_number">
         <pre>26</pre>
       </td>
@@ -15714,12 +15844,12 @@
         <pre>    output = File.new(path.chomp, 'r')</pre>
       </td>
       <td class="hits">
-        31
+        33
       </td>
     </tr>
   
     
-    <tr class="hit" data-hits="31">
+    <tr class="hit" data-hits="33">
       <td class="line_number">
         <pre>27</pre>
       </td>
@@ -15727,12 +15857,12 @@
         <pre>    @preferences = YAML.load(output.read)</pre>
       </td>
       <td class="hits">
-        31
+        33
       </td>
     </tr>
   
     
-    <tr class="hit" data-hits="31">
+    <tr class="hit" data-hits="33">
       <td class="line_number">
         <pre>28</pre>
       </td>
@@ -15740,12 +15870,12 @@
         <pre>    output.close</pre>
       </td>
       <td class="hits">
-        31
+        33
       </td>
     </tr>
   
     
-    <tr class="hit" data-hits="31">
+    <tr class="hit" data-hits="33">
       <td class="line_number">
         <pre>29</pre>
       </td>
@@ -15753,7 +15883,7 @@
         <pre>    return @preferences</pre>
       </td>
       <td class="hits">
-        31
+        33
       </td>
     </tr>
   
