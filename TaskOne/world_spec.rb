@@ -3,18 +3,25 @@ SimpleCov.start
 
 require File.dirname(__FILE__) + '/world.rb'
 describe World do
-  @world
-  @char
-  @interface
   before(:all) do 
     @world = World.new
     @interface = @world.interface
   end
   before(:each) do
-    @char = @world.logs("test")
+    @char = {:name => 'SpecTest',
+        :password => 'test',
+        :class => 2,
+        :level => 10,
+        :exp => 1000,
+        :current_city => 1,
+        :gold => 13200,
+        :base_dmg_min => 10,
+        :base_dmg_max => 50,
+        :max_hp => 50,
+        :hp => 35};
   end
   describe "Registration" do
-    it "should create account 'test' with password 'test'" do
+    it "should call yaml char file create" do
       @world.stub!(:main_menu)
       YamlManage.stub!(:create_char).and_return(true)
       @world.reg("test2", "test").should == true
@@ -22,8 +29,9 @@ describe World do
   end
   
   describe "Login" do
-    it "should load user account 'test' if it exists" do
+    it "should call yaml file load if file exists" do
       YamlManage.stub!(:load_file).and_return(true)
+      File.stub!(:exist?).and_return(true)
       @world.logs("test").should == true
     end
   end
@@ -210,21 +218,22 @@ describe World do
         YamlManage.stub!(:save_char).and_return(true)
         @world.buy_item(char, item).should == true
         char[:gold].should == 50
-        char[:backpack][:supply].include?("Fork").should == true
+        char[:backpack][:supply].should have(3).items
+        char[:backpack][:supply].should include('Fork')
         
       end
-    end
-    
-    describe "buy item" do
+      
       it "should add item to characters backpack and decrease gold amount by items price and save when item class hash is not Array" do
         char = {:gold => 100, :backpack => {:supply => 'Knife'}}
         item = {:name => 'Fork', :class => 'supply', :price => 50}
         YamlManage.stub!(:save_char).and_return(true)
         @world.buy_item(char, item).should == true
         char[:gold].should == 50
-        char[:backpack][:supply].include?("Fork").should == true
+        char[:backpack][:supply].should have(2).items
+        char[:backpack][:supply].should include('Fork')
         
       end
+      
     end
     
     describe "go back" do
