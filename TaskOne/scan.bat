@@ -1,0 +1,1 @@
+rspec spec\world_spec.rb spec\fight_spec.rb spec\shop_spec.rb spec\yaml_manage_spec.rb
