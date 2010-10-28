@@ -43,8 +43,11 @@ class Shop
   
   def buy_item(char, item)
     char[:gold] -= item[:price]
-    if(char[:backpack][item[:class].to_sym].class != Array.new.class)
+    if(char[:backpack][item[:class].to_sym].class == String)
       tmp = char[:backpack][item[:class].to_sym][0]
+      char[:backpack][item[:class].to_sym] = Array.new
+      char[:backpack][item[:class].to_sym][0] = tmp
+    elsif(char[:backpack][item[:class].to_sym].class != Array)
       char[:backpack][item[:class].to_sym] = Array.new
       char[:backpack][item[:class].to_sym][0] = tmp
     end

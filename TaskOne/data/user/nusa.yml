@@ -5,7 +5,7 @@
 :level: 1
 :exp: 0
 :current_city: 0
-:gold: 100
+:gold: 60
 :base_dmg_min: 10
 :base_dmg_max: 50
 :max_hp: 75
@@ -13,4 +13,10 @@
 :max_mana: 30
 :mana: 30
 :backpack: 
-  :bow: Practice bow
+  :bow: 
+  - Practice bow
+  :sword: 
+  - Wooden sword
+  - Wooden sword
+  :staff: 
+  - Wooden staff

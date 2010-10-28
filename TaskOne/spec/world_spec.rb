@@ -112,24 +112,24 @@ describe World do
       it "should go to item menu inventory when arg is 1 and there is sword in backpack" do
         char = {:backpack => {:sword => 'Broken blade'}}
         @interface.stub!(:item_menu_inventory).and_return(true)
-        @world.show_inventory(char, 1).should == true
+        @world.show_inventory(char, 1, 1, 1, 1).should == true
       end
       
       it "should go to item menu inventory when arg is 2 and there is bow in backpack" do
         char = {:backpack => {:bow => 'Elemental bow'}}
         @interface.stub!(:item_menu_inventory).and_return(true)
-        @world.show_inventory(char, 2).should == true
+        @world.show_inventory(char, 2, 1, 1, 1).should == true
       end
       
       it "should go to item menu inventory when arg is 3 and there is staff in backpack" do
         char = {:backpack => {:staff => 'Ancient staff'}}
         @interface.stub!(:item_menu_inventory).and_return(true)
-        @world.show_inventory(char, 3).should == true
+        @world.show_inventory(char, 3, 1, 1, 1).should == true
       end
       
       it "should go to world menu when arg is 4" do
         @interface.stub!(:go_to_world).and_return(true)
-        @world.show_inventory(nil, 4).should == true
+        @world.show_inventory(nil, 4, 1, 1, 1).should == true
       end
     end
     

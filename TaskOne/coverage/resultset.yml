@@ -81,20 +81,23 @@ C:/Ruby192/bin/rspec spec\world_spec.rb:
     - 2
     - 2
     - 2
-    - 
-    - 
-    - 1
-    - 2
-    - 2
-    - 2
-    - 2
-    - 2
-    - 2
-    - 2
     - 2
     - 
     - 
     - 1
+    - 2
+    - 2
+    - 2
+    - 2
+    - 2
+    - 2
+    - 2
+    - 2
+    - 2
+    - 
+    - 
+    - 1
+    - 2
     - 2
     - 2
     - 2
@@ -295,7 +298,6 @@ C:/Ruby192/bin/rspec spec\world_spec.rb:
     - 0
     - 0
     - 0
-    - 0
     - 
     - 0
     - 
@@ -343,6 +345,21 @@ C:/Ruby192/bin/rspec spec\world_spec.rb:
     - 0
     - 0
     - 0
+    - 
+    - 0
+    - 0
+    - 0
+    - 0
+    - 
+    - 0
+    - 0
+    - 0
+    - 0
+    - 
+    - 0
+    - 0
+    - 0
+    - 0
     - 0
     - 0
     - 
@@ -354,12 +371,15 @@ C:/Ruby192/bin/rspec spec\world_spec.rb:
     - 1
     - 0
     - 0
+    - 
+    - 0
     - 0
     - 0
     - 0
     - 
     - 
     - 0
+    - 
     - 
     - 
     - 1
@@ -525,6 +545,9 @@ C:/Ruby192/bin/rspec spec\world_spec.rb:
     - 1
     - 1
     - 1
+    - 1
+    - 0
+    - 0
     - 
     - 2
     - 2
@@ -659,7 +682,7 @@ C:/Ruby192/bin/rspec spec\world_spec.rb:
     - 1
     - 
     - 1
-    - 33
+    - 34
     - 
     - 
     - 
@@ -787,8 +810,14 @@ C:/Ruby192/bin/rspec spec\world_spec.rb:
     - 
     - 1
     - 1
+    - 
+    - 
+    - 
+    - 
+    - 1
     - 1
     - 1
+    - 1
     - 
     - 
     - 1
@@ -897,6 +926,7 @@ C:/Ruby192/bin/rspec spec\world_spec.rb:
     - 1
     - 1
     - 1
+    - 
     - 
     - 
     - 
@@ -1166,7 +1196,7 @@ C:/Ruby192/bin/rspec spec\world_spec.rb:
     - 1
     - 
     - 
-  :created_at: 2010-10-28 15:37:22.523807 +03:00
+  :created_at: 2010-10-28 17:41:25.966879 +03:00
 "C:/Ruby192/bin/rspec ": 
   :original_result: 
     D:/RubyProject/TaskOne/world.rb: 

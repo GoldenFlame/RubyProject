@@ -82,37 +82,36 @@ class Ui
     sw = 0
     bw = 0
     st = 0
-    if(char[:backpack][:sword].class == Array.class)
+    if(char[:backpack][:sword].class == Array)
       sw = char[:backpack][:sword].length 
-    elsif(char[:backpack][:sword].class == String.class)
+    elsif(char[:backpack][:sword].class == String)
       sw = 1
     end
-    if(char[:backpack][:bow].class == Array.class)
+    if(char[:backpack][:bow].class == Array)
       bw = char[:backpack][:bow].length 
-    elsif(char[:backpack][:bow].class == String.class)
+    elsif(char[:backpack][:bow].class == String)
       bw = 1
     end
-    if(char[:backpack][:staff].class == Array.class)
+    if(char[:backpack][:staff].class == Array)
       st = char[:backpack][:staff].length
-    elsif(char[:backpack][:staff].class == String.class)
+    elsif(char[:backpack][:staff].class == String)
       st = 1
     end
-    
     puts "Your inventory:"
     if(sw != 0 || bw != 0 || st != 0)
       puts "1. Swords(#{sw})" if(sw != 0)
       puts "2. Bows(#{bw})" if(bw != 0)
       puts "3. Staffs(#{st})" if(st != 0)
       puts "4. Go back"
-    else 
+    elsif(sw != 0 && bw != 0 && st != 0)
       puts "Your inventory is empty."
     end
-    @world.show_inventory(char,read_ch-48)
+    @world.show_inventory(char,read_ch-48, sw, bw, st)
   end
   
   def item_menu_inventory(char, arg)
     clear_console
-    if(char[:backpack][arg].class == Array.class)
+    if(char[:backpack][arg].class == Array)
       
       char[:backpack][arg].each_with_index{|x,y| puts "#{y+1}. #{x}"}
       c = -1
