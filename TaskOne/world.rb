@@ -76,6 +76,7 @@ class World
     char[:hp] = 100
     char[:max_mana] = 10
     char[:mana] = 10
+    char[:backpack] = {:sword => 'Wooden sword'}
     YamlManage.save_char(char)
   end
 
@@ -87,6 +88,7 @@ class World
     char[:hp] = 75
     char[:max_mana] = 30
     char[:mana] = 30
+    char[:backpack] = {:bow => 'Practice bow'}
     YamlManage.save_char(char)
   end
   
@@ -98,6 +100,7 @@ class World
     char[:hp] = 50
     char[:max_mana] = 100
     char[:mana] = 100
+    char[:backpack] = {:staff => 'Wooden staff'}
     YamlManage.save_char(char)
   end
 #---------    
@@ -136,7 +139,7 @@ class World
   
   def find_item(arg, item_name)
     item_return = nil
-    items = Dir.glob("data/item/sword*").collect{|x| YamlManage.load_file(x)}
+    items = Dir.glob("data/item/*").collect{|x| YamlManage.load_file(x)}
     items.each do |x|
       if(x[:name] == item_name)
         item_return = x

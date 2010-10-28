@@ -22,9 +22,9 @@ class Ui
 
   def clear_console
     if(Config::CONFIG['host_os'] =~ /mswin|mingw/)
-      #system('cls')
+      system('cls')
     else
-      #system('clear')
+      system('clear')
     end
   end
   
@@ -39,7 +39,6 @@ class Ui
       @world.reg(name,pass)
       if registered
         puts 'You successfully created you account. You can log in now.'
-        login()
       else
         puts "This name is already taken."
       end
@@ -80,9 +79,18 @@ class Ui
   
   def show_inventory(char)
     clear_console
-    sw = char[:backpack][:sword].length
-    bw = char[:backpack][:bow].length
-    st = char[:backpack][:staff].length
+    sw = 0
+    bw = 0
+    st = 0
+    if(char[:backpack][:sword].class == Array.class)
+      sw = char[:backpack][:sword].length 
+    end
+    if(char[:backpack][:bow].class == Array.class)
+      bw = char[:backpack][:bow].length 
+    end
+    if(char[:backpack][:staff].class == Array.class)
+      st = char[:backpack][:staff].length
+    end
     puts "Your inventory:"
     if(sw != 0 || bw != 0 || st != 0)
       puts "1. Swords(#{sw})" if(sw != 0)
@@ -97,13 +105,16 @@ class Ui
   
   def item_menu_inventory(char, arg)
     clear_console
-    char[:backpack][arg].each_with_index{|x,y| puts "#{y+1}. #{x}"}
-    c = -1
-    until (char[:backpack][arg].length-1>= c && c >= 0)
-      c = read_ch - 49
+    if(char[:backpack][arg].class == Array.class)
+      
+      char[:backpack][arg].each_with_index{|x,y| puts "#{y+1}. #{x}"}
+      c = -1
+      until (char[:backpack][arg].length-1>= c && c >= 0)
+        c = read_ch - 49
+      end
+      
+      item_view(char,arg, char[:backpack][arg][c])
     end
-    
-    item_view(char,arg, char[:backpack][arg][c])
   end
   
   def item_view(char,arg, item_name)
