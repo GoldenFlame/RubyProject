@@ -61,6 +61,17 @@ describe "shop" do
       char[:backpack][:supply].should include('Fork')
         
     end
+    
+    it "should add item to characters backpack and decrease gold amount by items price and save when backpack empty" do
+      char = {:gold => 100, :backpack => {:supply => 0}}
+      item = {:name => 'Fork', :class => 'supply', :price => 50}
+      YamlManage.stub!(:save_char).and_return(true)
+      @shop.buy_item(char, item).should == true
+      char[:gold].should == 50
+      char[:backpack][:supply].should have(1).items
+      char[:backpack][:supply].should include('Fork')
+        
+    end
       
     it "should add item to characters backpack and decrease gold amount by items price and save when item class hash is not Array" do
       char = {:gold => 100, :backpack => {:supply => 'Knife'}}
