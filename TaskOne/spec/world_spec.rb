@@ -35,6 +35,13 @@ describe World do
     end
   end
   
+  describe "Autosave" do
+    it "should save char" do
+      YamlManage.stub!(:save_char).and_return(true)
+      @world.autosave(@char).should be_true
+    end
+  end
+  
   describe "Class selection" do
     it "should detect users choice as class warrior and call function" do
       @world.stub!(:class_warrior).and_return(true)

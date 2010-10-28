@@ -4,12 +4,12 @@ class Ui
   @shop
   def initialize(world)
     @world = world
-    puts "Welcome"
   end
   
   def login
     @shop = @world.shop_inst
     clear_console
+    puts "Welcome"
     puts "1.Register"
     puts "2.Login"
     @world.login(read_ch-48)

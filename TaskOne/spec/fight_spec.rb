@@ -3,7 +3,8 @@ SimpleCov.start
   describe "@fight system" do
     before(:each) do
       @char = {:hp => 100, :exp => 10, :gold => 300,:base_dmg_min => 2, :base_dmg_max => 10}
-      @fight = Fight.new(nil)
+      @interface = Ui.new(nil)
+      @fight = Fight.new(@interface)
     end
     describe "fight" do
       it "should start a fight with a monster and after each round save" do
