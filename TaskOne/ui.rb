@@ -116,16 +116,16 @@ class Ui
       char[:backpack][arg].each_with_index{|x,y| puts "#{y+1}. #{x}"}
       c = -1
       until (char[:backpack][arg].length-1>= c && c >= 0)
-        c = read_ch - 49
+        c = gets
+        c = c.chomp.to_i
       end
-      
       item_view(char,arg, char[:backpack][arg][c])
     end
   end
   
   def item_view(char,arg, item_name)
     clear_console
-    item = @world.find_item(arg, item_name)
+    item = @world.find_item(item_name)
     puts "Name: #{item[:name]}"
     puts "Class: #{item[:class]}"
     puts "Level requirement: #{item[:level]}"
@@ -185,25 +185,51 @@ class Ui
 
   def wilds(char,city)
     clear_console
-    if(city[:fight_area].to_i !=0)
-      puts "Go to:"
-      (1..city[:fight_area].to_i).collect{|x| area = "fight_#{x.to_s}"; puts x.to_s+". "+city[area.to_sym]}
-      @world.wilds(char,read_ch,city)      
+    if(char[:hp]>0)
+      if(city[:fight_area].to_i !=0)
+        puts "Go to:"
+        (1..city[:fight_area].to_i).collect{|x| area = "fight_#{x.to_s}"; puts x.to_s+". "+city[area.to_sym]}
+        @world.wilds(char,read_ch,city)      
+      else
+        puts "There are no wild areas which you can visit now."
+      end
     else
-      puts "There are no wild areas which you can visit now."
+      puts "You need to go to inn to rest."
+       puts "Press any key to continue."
+       read_ch
     end
+    
   end
   
   def arena(char)
     clear_console
-    puts "Welcome to the arena."
-    puts "1.Fight random monster."
-    puts "2.Go back."
-    @world.arena(char,read_ch-48)
+    if(char[:hp]>0)
+      puts "Welcome to the arena."
+      puts "1.Fight random monster."
+      puts "2.Go back."
+      @world.arena(char,read_ch-48)
+    else
+      puts "You need to go to inn to rest."
+      puts "Press any key to continue."
+      read_ch
+    end
   end
   
   def go_to_area(char,area)
    
+  end
+  
+  def winner_msg(char)
+    puts "You have WON the battle!"
+    puts "Press any key to return to town."
+    read_ch
+  end
+  
+  def looser_msg(char)
+    puts "You have LOST the battle."
+    puts "Press any key to return to town."
+    puts "Don`t forget to visit inn to heal your wounds."
+    read_ch
   end
   
   def battle_info(char, enemy)
