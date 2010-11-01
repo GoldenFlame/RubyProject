@@ -1,9 +1,0 @@
---- 
-:name: Blob
-:level: 1
-:base_dmg_min: 5
-:base_dmg_max: 8
-:max_hp: 300
-:hp: 300
-:exp_bonus: 20
-:gold_max: 120
