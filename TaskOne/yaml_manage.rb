@@ -12,7 +12,7 @@ class YamlManage
       :gold => 100
       };
     output.puts YAML.dump(@preferences)
-    output.close  
+    output.close
   end
   
   def self.save_char(char)
