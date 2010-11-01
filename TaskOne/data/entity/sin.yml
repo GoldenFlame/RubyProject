@@ -1,9 +1,0 @@
---- 
-:name: Sin
-:level: 1
-:base_dmg_min: 10
-:base_dmg_max: 30
-:max_hp: 75
-:hp: 75
-:exp_bonus: 30
-:gold_max: 100
