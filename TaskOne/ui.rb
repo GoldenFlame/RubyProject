@@ -52,49 +52,49 @@ class Ui
       name = gets
       puts 'Enter your password'
       pass = gets
-      char = @world.logs(name)
-      if(char != nil)
-        if(char[:password].chomp == pass.chomp)
+      avatar = @world.logs(name)
+      if(avatar != nil)
+        if(avatar.password == pass.chomp)
           logged_in = true
           puts 'You successfully logged in.'
         end
       else
-        puts 'Characted does not exist or you entered incorrect password'
+        puts 'avataracted does not exist or you entered incorrect password'
         login
       end
     end
-    return char
+    return avatar
   end
   
-  def show_stats(char)
+  def show_stats(avatar)
     clear_console
-    puts "Name: #{char[:name]}"
-    puts "Class: #{char[:class]}"
-    puts "HP: #{char[:hp]}/#{char[:max_hp]}"
-    puts "Mana: #{char[:mana]}/#{char[:max_mana]}"
-    puts "Base damage: #{char[:base_dmg_min]}/#{char[:base_dmg_max]}"
+    puts "Name: #{avatar.name}"
+    puts "Class: #{avatar.avatar_class}"
+    puts "HP: #{avatar.hp}/#{avatar.max_hp}"
+    puts "Mana: #{avatar.mana}/#{avatar.max_mana}"
+    puts "Base damage: #{avatar.base_dmg_min}/#{avatar.base_dmg_max}"
     puts "Press any key to go back."
     read_ch
   end
   
-  def show_inventory(char)
+  def show_inventory(avatar)
     clear_console
     sw = 0
     bw = 0
     st = 0
-    if(char[:backpack][:sword].class == Array)
-      sw = char[:backpack][:sword].length 
-    elsif(char[:backpack][:sword].class == String)
+    if(avatar.backpack[:sword].class == Array)
+      sw = avatar.backpack[:sword].length 
+    elsif(avatar.backpack[:sword].class == String)
       sw = 1
     end
-    if(char[:backpack][:bow].class == Array)
-      bw = char[:backpack][:bow].length 
-    elsif(char[:backpack][:bow].class == String)
+    if(avatar.backpack[:bow].class == Array)
+      bw = avatar.backpack[:bow].length 
+    elsif(avatar.backpack[:bow].class == String)
       bw = 1
     end
-    if(char[:backpack][:staff].class == Array)
-      st = char[:backpack][:staff].length
-    elsif(char[:backpack][:staff].class == String)
+    if(avatar.backpack[:staff].class == Array)
+      st = avatar.backpack[:staff].length
+    elsif(avatar.backpack[:staff].class == String)
       st = 1
     end
     puts "Your inventory:"
@@ -106,35 +106,34 @@ class Ui
     elsif(sw != 0 && bw != 0 && st != 0)
       puts "Your inventory is empty."
     end
-    @world.show_inventory(char,read_ch-48, sw, bw, st)
+    @world.show_inventory(avatar,read_ch-48, sw, bw, st)
   end
   
-  def item_menu_inventory(char, arg)
+  def item_menu_inventory(avatar, arg)
     clear_console
-    if(char[:backpack][arg].class == Array)
-      
-      char[:backpack][arg].each_with_index{|x,y| puts "#{y+1}. #{x}"}
+    if(avatar.backpack[arg].class == Array)
+      avatar.backpack[arg].each_with_index{|x,y| puts "#{y+1}. #{x}"}
       c = -1
-      until (char[:backpack][arg].length-1>= c && c >= 0)
+      until (avatar.backpack[arg].length>= c && c >= 0)
         c = gets
         c = c.chomp.to_i
       end
-      item_view(char,arg, char[:backpack][arg][c])
+      item_view(avatar,arg, avatar.backpack[arg][c-1])
     end
   end
   
-  def item_view(char,arg, item_name)
+  def item_view(avatar,arg, item_name)
     clear_console
     item = @world.find_item(item_name)
-    puts "Name: #{item[:name]}"
-    puts "Class: #{item[:class]}"
-    puts "Level requirement: #{item[:level]}"
-    puts "Damage #{item[:damage_min]}/#{item[:damage_max]}"
+    puts "Name: #{item.name}"
+    puts "Class: #{item.item_class}"
+    puts "Level requirement: #{item.level}"
+    puts "Damage #{item.damage_min}/#{item.damage_max}"
     puts "Press any key to go back."
     read_ch
   end
   
-  def go_to_world(char)
+  def go_to_world(avatar)
     puts "1. Go to arena."
     puts "2. Go to the wilds."
     puts "3. Go to the shop."
@@ -142,54 +141,55 @@ class Ui
     puts "5. View your stats."
     puts "6. View your inventory."
     puts "7. Exit game"
-    @world.go_to_world(char,read_ch-48)
+    @world.go_to_world(avatar,read_ch-48)
   end
   
-  def inn(char,name)
+  def inn(avatar,name)
     clear_console
     puts "Welcome to #{name}"
     puts "1.Rest and regain your strength."
     puts "2.Leave."
-    @world.inn(char,read_ch-48)
+    @world.inn(avatar,read_ch-48)
   end
   
-  def shop(char,name)
+  def shop(avatar,name)
     clear_console
     puts "Welcome to #{name}"
     puts "1. Buy sword."
     puts "2. Buy bow."
     puts "3. Buy magic staff."
     puts "4. Leave."
-    @world.shop(char,read_ch-48)
+    @world.shop(avatar,read_ch-48)
   end
   
-  def inspect(char,item)
+  def inspect(avatar,item)
     clear_console
-    puts item[:name]
-    puts "Level requirement: #{item[:level]}"
-    puts "Damage #{item[:damage_min]}/#{item[:damage_max]}"
-    if(char[:gold] >= item[:price])
+    puts item.name
+    puts "Level requirement: #{item.level}"
+    puts "Damage #{item.damage_min}/#{item.damage_max}"
+    puts "Price: #{item.price}"
+    if(avatar.gold >= item.price)
       puts "1. Buy."
     else 
       puts "You do not have enough money."
     end
     puts "2. Go back."
-    @shop.inspect(char,item,read_ch-48)
+    @shop.inspect(avatar,item,read_ch-48)
   end
   
   def item(item_list)
     clear_console
-    item_list.each_with_index{|x,y| puts "#{y+1}. Inspect #{x[:name]}"}
+    item_list.each_with_index{|x,y| puts "#{y+1}. Inspect #{x.name}"}
     read_ch-48
   end
 
-  def wilds(char,city)
+  def wilds(avatar,city)
     clear_console
-    if(char[:hp]>0)
-      if(city[:fight_area].to_i !=0)
+    if(avatar.hp>0)
+      if(city.fight_area_nr !=0)
         puts "Go to:"
-        (1..city[:fight_area].to_i).collect{|x| area = "fight_#{x.to_s}"; puts x.to_s+". "+city[area.to_sym]}
-        @world.wilds(char,read_ch,city)      
+        (1..city.fight_area_nr).collect{|x| puts x.to_s+". "+city.fight_area[x.to_s.to_sym][:name]}
+        @world.wilds(avatar,read_ch,city)      
       else
         puts "There are no wild areas which you can visit now."
       end
@@ -201,13 +201,13 @@ class Ui
     
   end
   
-  def arena(char)
+  def arena(avatar)
     clear_console
-    if(char[:hp]>0)
+    if(avatar.hp>0)
       puts "Welcome to the arena."
       puts "1.Fight random monster."
       puts "2.Go back."
-      @world.arena(char,read_ch-48)
+      @world.arena(avatar,read_ch-48)
     else
       puts "You need to go to inn to rest."
       puts "Press any key to continue."
@@ -215,50 +215,50 @@ class Ui
     end
   end
   
-  def go_to_area(char,area)
+  def go_to_area(avatar,area)
    
   end
   
-  def winner_msg(char)
+  def winner_msg(avatar)
     puts "You have WON the battle!"
     puts "Press any key to return to town."
     read_ch
   end
   
-  def looser_msg(char)
+  def looser_msg(avatar)
     puts "You have LOST the battle."
     puts "Press any key to return to town."
     puts "Don`t forget to visit inn to heal your wounds."
     read_ch
   end
   
-  def battle_info(char, enemy)
-    puts "You are finghting #{enemy[:name]}"
+  def battle_info(avatar, enemy)
+    puts "You are finghting #{enemy.name}"
     puts "Your stats:"
-    puts "HP: #{char[:hp]}/#{char[:max_hp]}"
-    puts "Mana: #{char[:mana]}/#{char[:max_mana]}"
-    puts "Base damage: #{char[:base_dmg_min]}/#{char[:base_dmg_max]}"
+    puts "HP: #{avatar.hp}/#{avatar.max_hp}"
+    puts "Mana: #{avatar.mana}/#{avatar.max_mana}"
+    puts "Base damage: #{avatar.base_dmg_min}/#{avatar.base_dmg_max}"
     puts "----"
-    puts "#{enemy[:name]} stats:"
-    puts "HP: #{enemy[:hp]}/#{enemy[:max_hp]}"
-    puts "Base damage: #{enemy[:base_dmg_min]}/#{enemy[:base_dmg_max]}"
+    puts "#{enemy.name} stats:"
+    puts "HP: #{enemy.hp}/#{enemy.max_hp}"
+    puts "Base damage: #{enemy.base_dmg_min}/#{enemy.base_dmg_max}"
   end
   
-  def fight_menu(char,enemy)
+  def fight_menu(avatar,enemy)
     puts "1.Basic attack"
     puts "2.Skill attack"
     puts "3.Use item"
     puts "4.Run away"
-    @world.fight_menu(char, enemy,read_ch-48)
+    @world.fight_menu(avatar, enemy,read_ch-48)
   end
   
-  def choose_class(char)
+  def choose_class(avatar)
     clear_console
-    puts 'Choose your characters class'
+    puts 'Choose your avataracters class'
     puts '1. Warrior(Melee fighter)'
     puts '2. Archer(Ranged fighter)'
     puts '3. Mage(Magic fighter)'
-    @world.choose_class(char,read_ch-48)
+    @world.choose_class(avatar,read_ch-48)
   end
   
 end

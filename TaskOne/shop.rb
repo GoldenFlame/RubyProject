@@ -3,55 +3,56 @@ require File.join(File.dirname(__FILE__), 'ui.rb')
 
 class Shop
   @interface
-  def initialize(interface)
+  def initialize(interface, items)
     @interface = interface
+    @items = items
   end
   
-  def item(char,item)
-    item_list = Dir.glob("data/item/#{item}*").collect{|x| YamlManage.load_file(x)}
-    c = @interface.item(item_list)
-    until (item_list.length>= c && c >= 0)
+  def item(avatar,item_class)
+    items = @items.clone.delete_if{|x| x.item_class != item_class}
+    c = @interface.item(items)
+    until (items.size>= c && c >= 0)
       c = @interface.read_ch-48
     end
-    @interface.inspect(char, item_list[c-1])
+    @interface.inspect(avatar, items[c-1])
   end
   
-  def inspect(char,item,c)
-    if(char[:gold]>=item[:price])
+  def inspect(avatar,item,c)
+    if(avatar.gold>=item.price)
       case c
-      when 1 then buy_item(char,item)
-      when 2 then go_back(char,item[:class])
-      else inspect(char, item, @interface.read_ch-48)
+      when 1 then buy_item(avatar,item)
+      when 2 then go_back(avatar,item.item_class)
+      else inspect(avatar, item, @interface.read_ch-48)
       end
     else
       case c
-      when 2 then go_back(char,item[:class])
-      else inspect(char, item, @interface.read_ch-48)
+      when 2 then go_back(avatar,item.item_class)
+      else inspect(avatar, item, @interface.read_ch-48)
       end
     end
   end
   
-  def go_back(char,menu)
+  def go_back(avatar,menu)
     if(menu == :sword)
-      @interface.swords(char)
+      @interface.swords(avatar)
     elsif(menu == :bow)
-      @interface.bows(char)
+      @interface.bows(avatar)
     elsif(menu == :staff)
-      @interface.staffs(char)
+      @interface.staffs(avatar)
     end
   end
   
-  def buy_item(char, item)
-    char[:gold] -= item[:price]
-    if(char[:backpack][item[:class].to_sym].class == String)
-      tmp = char[:backpack][item[:class].to_sym][0]
-      char[:backpack][item[:class].to_sym] = Array.new
-      char[:backpack][item[:class].to_sym][0] = tmp
-    elsif(char[:backpack][item[:class].to_sym].class != Array)
-      char[:backpack][item[:class].to_sym] = Array.new
+  def buy_item(avatar, item)
+    avatar.gold -= item.price
+    if(avatar.backpack[item.item_class.to_sym].class == String)
+      tmp = avatar.backpack[item.item_class.to_sym][0]
+      avatar.backpack[item.item_class.to_sym] = Array.new
+      avatar.backpack[item.item_class.to_sym][0] = tmp
+    elsif(avatar.backpack[item.item_class.to_sym].class != Array)
+      avatar.backpack[item.item_class.to_sym] = Array.new
     end
-    char[:backpack][item[:class].to_sym].push(item[:name])
-    YamlManage.save_char(char)
+    avatar.backpack[item.item_class.to_sym].push(item.name)
+    avatar.save
   end
   
   
