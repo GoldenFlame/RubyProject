@@ -76,8 +76,33 @@ class Ui
     puts "HP: #{avatar.hp}/#{avatar.max_hp}"
     puts "Mana: #{avatar.mana}/#{avatar.max_mana}"
     puts "Base damage: #{avatar.base_dmg_min}/#{avatar.base_dmg_max}"
-    puts "Press any key to go back."
-    read_ch
+    puts "1. View equiped items."
+    puts "2. Go back"
+    case read_ch-48
+    when 1 then view_equipment(avatar)
+    when 2 then 
+    else show_stats(avatar)
+    end
+  end
+  
+  def view_equipment(avatar)
+    clear_console
+    if(avatar.eq_weapon != nil)
+      puts "Weapon:"
+      puts "Name: #{avatar.eq_weapon.name}"
+      puts "Class: #{avatar.eq_weapon.item_class}"
+      puts "Level requirement: #{avatar.eq_weapon.level}"
+      puts "Damage #{avatar.eq_weapon.damage_min}/#{avatar.eq_weapon.damage_max}"
+      puts "1.Disequip weapon"
+      puts "2.Leave"
+      case read_ch-48
+      when 1 then avatar.disequip(avatar.eq_weapon)
+      when 2 then 
+      else show_status(avatar)
+      end
+    else
+      puts "You have no weapon equiped."
+    end
   end
   
   def show_inventory(avatar)
@@ -103,8 +128,13 @@ class Ui
     puts "Class: #{item.item_class}"
     puts "Level requirement: #{item.level}"
     puts "Damage #{item.damage_min}/#{item.damage_max}"
-    puts "Press any key to go back."
-    read_ch
+    puts "1.Equip"
+    puts "2.Leave"
+    case read_ch-48
+    when 1 then avatar.equip(item)
+    when 2 then 
+    else show_status(avatar)
+    end
   end
   
   def go_to_world(avatar)

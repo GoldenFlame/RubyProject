@@ -3,14 +3,18 @@
 :password: nusa
 :class: 1
 :level: 1
-:exp: 20
+:exp: 70
 :current_city: 0
-:gold: 5793
+:gold: 4818
 :base_dmg_min: 20
 :base_dmg_max: 30
 :max_hp: 100
-:hp: -1
+:hp: 65
 :max_mana: 10
 :mana: 10
 :backpack: 
+- Broad sword
 - Practice bow
+:equiped: 
+  :weapon: 
+  :armor: 
