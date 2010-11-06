@@ -9,15 +9,14 @@ SimpleCov.start
       @fight = Fight.new(@interface)
     end
     describe "fight" do
-      it "should start a fight with a monster" do
-        YamlManage.stub!(:load_file)
+      it "should initiate a fight with a monster sin" do
         @avatar.stub!(:save).and_return == true
         @interface.stub!(:battle_info)
         @interface.stub!(:fight_menu)
         @interface.stub!(:clear_console)
         @fight.stub!(:attack).and_return(true)
         @fight.stub!(:check_fight_end).and_return(true)
-        @fight.fight(@avatar, 'Sin').should == true
+        @fight.fight(@avatar, 'sin').should == nil
       end
     end
     

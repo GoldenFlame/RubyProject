@@ -16,11 +16,23 @@ class Avatar < Entity
     @hp = data[:hp]
     @max_mana = data[:max_mana]
     @mana = data[:mana]
-    @backpack = data[:backpack]
+    @backpack = backpack_init(data[:backpack])
+  end
+  
+  def backpack_init(backpack)
+    if(backpack == nil)
+      backpack = []
+    end
+    backpack.collect!{|x| Item.new("data/item/#{Item.find_file_name(x)}.yml")} 
+    return backpack
   end
   
   def save
     YamlManage.save_char(to_hash)
+  end
+  
+  def equip(item, place)
+    
   end
   
   def to_hash
@@ -37,7 +49,7 @@ class Avatar < Entity
       :hp => @hp,
       :max_mana => @max_mana,
       :mana => @mana,
-      :backpack => @backpack
+      :backpack => @backpack.collect{|x| x.name}
       };
   end
 end

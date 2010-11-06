@@ -57,7 +57,10 @@ describe World do
     describe "find item" do
       it "should find item by given name and return its data" do
         item = Item.new("data/item/sword1.yml")
-        @world.find_item('Wooden sword').should be_eql(example)
+        result = @world.find_item('Wooden sword')
+        result.class.should == item.class
+        result.name.should == item.name
+        result.item_class.should == item.item_class
       end
     end
    
@@ -75,17 +78,10 @@ describe World do
   end
   
   describe "arena monster seach" do
-    it "should find monster from area 1 Blob" do
+    it "should find monster from area 1 Blob in city Ellion" do
       a = mock("Random", {:rand => 1})
         Random.stub!(:new).and_return(a)
-      @world.find_arena_monster(city).should == "Blob"
-    end
-    
-      
-    it "should find monster from area 2 Nami " do
-      a = mock("Random", {:rand => 2})
-        Random.stub!(:new).and_return(a)
-      @world.find_arena_monster(city).should == "Nami"
+      @world.find_arena_monster(@world.citys[0]).should == "Blob"
     end
   end
   

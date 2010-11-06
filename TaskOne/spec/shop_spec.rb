@@ -28,23 +28,6 @@ describe "shop" do
     end
   end
     
-  describe "shop" do
-    it "should only show swords in menu" do
-      @shop.should_receive(:item).with(@avatar,"sword").and_return(true)
-      @world.shop(@avatar, 1).should == true
-    end
-      
-    it "should only show bows in menu" do
-      @shop.should_receive(:item).with(@avatar,"bow").and_return(true)
-      @world.shop(@avatar, 2).should == true
-    end
-      
-    it "should only show staffs in menu" do
-      @shop.should_receive(:item).with(@avatar,"staff").and_return(true)
-      @world.shop(@avatar, 3).should == true
-    end
-  end
-    
   describe "buy item" do
     it "should add three items to avatars backpack and decrease gold amount by items price" do
       @avatar.stub!(:save).and_return(true)
@@ -52,25 +35,10 @@ describe "shop" do
       @shop.buy_item(@avatar, @item).should == true
       @shop.buy_item(@avatar, @item).should == true
       @avatar.gold.should == 70
-      @avatar.backpack[:sword].should have(3).items
-      @avatar.backpack[:sword].should include('Wooden sword')
+      @avatar.backpack.should have(3).items
+      #item = Item.new("data/item/sword1.yml")
+      #@avatar.backpack.should include(item)
     end      
-  end
-    
-  describe "go back" do
-    it "should show swords available for purchase" do
-      @interface.stub!(:swords).and_return(true)
-      @shop.go_back(@avatar, :sword).should == true
-    end
-    it "should show bows available for purchase" do
-      @interface.stub!(:bows).and_return(true)
-      @shop.go_back(@avatar, :bow).should == true
-    end
-    it "should show staffs available for purchase" do
-      @interface.stub!(:staffs).and_return(true)
-      @shop.go_back(@avatar, :staff).should == true
-    end
-    
   end
     
   describe "item selection" do

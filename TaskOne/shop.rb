@@ -44,14 +44,10 @@ class Shop
   
   def buy_item(avatar, item)
     avatar.gold -= item.price
-    if(avatar.backpack[item.item_class.to_sym].class == String)
-      tmp = avatar.backpack[item.item_class.to_sym][0]
-      avatar.backpack[item.item_class.to_sym] = Array.new
-      avatar.backpack[item.item_class.to_sym][0] = tmp
-    elsif(avatar.backpack[item.item_class.to_sym].class != Array)
-      avatar.backpack[item.item_class.to_sym] = Array.new
+    if(avatar.backpack == nil)
+      avatar.backpack = Array.new
     end
-    avatar.backpack[item.item_class.to_sym].push(item.name)
+    avatar.backpack.push(item)
     avatar.save
   end
   

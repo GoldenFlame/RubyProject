@@ -14,7 +14,7 @@ class YamlManage
       :hp => 10,
       :max_mana => 10,
       :mana => 10,
-      :backpack => {:sword => nil, :bow => nil, :staff => nil}
+      :backpack => []
       };
     output.puts YAML.dump(@preferences)
     output.close

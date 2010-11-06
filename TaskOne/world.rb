@@ -1,5 +1,5 @@
 class World
-  attr_accessor :fight, :interface, :shop_inst
+  attr_accessor :fight, :interface, :shop_inst, :citys
   def initialize 
     @exitcmd = false
     world = YamlManage.load_file("data/world.yml")
@@ -32,6 +32,7 @@ class World
       else 
         @interface.clear_console
         res = check_lvlup(avatar), @interface.go_to_world(avatar)
+        avatar.save
       end
       break if(@exitcmd) 
     end
@@ -118,12 +119,7 @@ class World
   end   
   
 #---------   
-  def login(c)
-    case c
-    when 1 then @interface.reg
-    when 2 then @interface.logs
-    end
-  end
+  
   
   def reg(name,pass)
     YamlManage.create_user(name,pass)
@@ -133,85 +129,18 @@ class World
     Avatar.new("data/user/#{name.chomp}.yml") if(File.exist? "data/user/#{name.chomp}.yml")
   end
     
-  
+#---------  
   def find_item(item_name)
     item_return = nil
     @items.each do |x|
       if(x.name == item_name)
         item_return = x
+        break
       end
     end
     return item_return
   end
   
-  def show_inventory(avatar, c, sw, bw, st)
-    case c
-    when 1 then @interface.item_menu_inventory(avatar, :sword) if(sw != 0)
-    when 2 then @interface.item_menu_inventory(avatar, :bow) if(bw != 0)
-    when 3 then @interface.item_menu_inventory(avatar, :staff) if(st != 0)
-    when 4 then @interface.go_to_world(avatar)
-    else show_inventory(avatar, @interface.read_ch-48, sw, bw, st)
-    end
-  end
-    
-  def go_to_world(avatar,c)
-    case c
-    when 1 then @interface.arena(avatar)
-    when 2 then @interface.wilds(avatar, @citys[avatar.current_city])
-    when 3 then @interface.shop(avatar, @citys[avatar.current_city].shop)
-    when 4 then @interface.inn(avatar, @citys[avatar.current_city].inn)
-    when 5 then @interface.show_stats(avatar)
-    when 6 then @interface.show_inventory(avatar)
-    when 7 then exit
-    end
-  end
   
-  def inn(avatar,c)
-    case c
-    when 1 then rest(avatar)
-    when 2 then @interface.go_to_world(avatar)
-    else inn(avatar, @interface.read_ch-48)
-    end
-  end
-  
-  def shop(avatar,c)
-    case c
-    when 1 then @shop_inst.item(avatar, "sword")
-    when 2 then @shop_inst.item(avatar, "bow")
-    when 3 then @shop_inst.item(avatar, "staff")
-    when 4 then @interface.go_to_world(avatar)
-    else shop(avatar, @interface.read_ch-48)
-    end
-  end
-  
-  def wilds(avatar,c,city)
-    @interface.go_to_area(avatar,city.fight_area[c.to_s.to_sym])
-  end
-  
-  def arena(avatar,c)
-    case c
-    when 1 then @fight.fight(avatar, find_arena_monster(@citys[avatar.current_city]))
-    when 2 then @interface.go_to_world(avatar)
-    else arena(avatar,@interface.read_ch-48)
-    end
-  end
-  
-  def fight_menu(avatar, enemy, c)
-    case c
-    when 1 then @fight.attack(avatar, enemy)
-    when 2 then @fight.skill(avatar, enemy)
-    when 3 then @fight.use_item(avatar)
-    else fight_menu(avatar, enemy, @interface.read_ch-48)
-    end
-  end
-  
-  def choose_class(avatar,c)
-    case c
-    when 1 then class_warrior(avatar)
-    when 2 then class_archer(avatar)
-    when 3 then class_mage(avatar)
-    else choose_class(avatar, @interface.read_ch-48)
-    end
-  end
  
 end

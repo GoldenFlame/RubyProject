@@ -12,7 +12,10 @@ class Ui
     puts "Welcome"
     puts "1.Register"
     puts "2.Login"
-    @world.login(read_ch-48)
+    case read_ch-48
+    when 1 then reg
+    when 2 then logs
+    end
   end
   
   def read_ch
@@ -22,7 +25,7 @@ class Ui
 
   def clear_console
     if(Config::CONFIG['host_os'] =~ /mswin|mingw/)
-      system('cls')
+      #system('cls')
     else
       system('clear')
     end
@@ -79,52 +82,23 @@ class Ui
   
   def show_inventory(avatar)
     clear_console
-    sw = 0
-    bw = 0
-    st = 0
-    if(avatar.backpack[:sword].class == Array)
-      sw = avatar.backpack[:sword].length 
-    elsif(avatar.backpack[:sword].class == String)
-      sw = 1
-    end
-    if(avatar.backpack[:bow].class == Array)
-      bw = avatar.backpack[:bow].length 
-    elsif(avatar.backpack[:bow].class == String)
-      bw = 1
-    end
-    if(avatar.backpack[:staff].class == Array)
-      st = avatar.backpack[:staff].length
-    elsif(avatar.backpack[:staff].class == String)
-      st = 1
-    end
-    puts "Your inventory:"
-    if(sw != 0 || bw != 0 || st != 0)
-      puts "1. Swords(#{sw})" if(sw != 0)
-      puts "2. Bows(#{bw})" if(bw != 0)
-      puts "3. Staffs(#{st})" if(st != 0)
-      puts "4. Go back"
-    elsif(sw != 0 && bw != 0 && st != 0)
-      puts "Your inventory is empty."
-    end
-    @world.show_inventory(avatar,read_ch-48, sw, bw, st)
-  end
-  
-  def item_menu_inventory(avatar, arg)
-    clear_console
-    if(avatar.backpack[arg].class == Array)
-      avatar.backpack[arg].each_with_index{|x,y| puts "#{y+1}. #{x}"}
-      c = -1
-      until (avatar.backpack[arg].length>= c && c >= 0)
-        c = gets
-        c = c.chomp.to_i
+    if(avatar.backpack.class == Array)
+      if(avatar.backpack.size != 0)
+        avatar.backpack.each_with_index{|x,y| puts "#{y+1}. #{x.name}"}
+        c = -1
+        until (avatar.backpack.length>= c && c >= 0)
+          c = gets
+          c = c.chomp.to_i
+        end
+        item_view(avatar, avatar.backpack[c-1])
+      else
+        puts "Your inventory is empty."
       end
-      item_view(avatar,arg, avatar.backpack[arg][c-1])
     end
   end
   
-  def item_view(avatar,arg, item_name)
+  def item_view(avatar, item)
     clear_console
-    item = @world.find_item(item_name)
     puts "Name: #{item.name}"
     puts "Class: #{item.item_class}"
     puts "Level requirement: #{item.level}"
@@ -141,7 +115,15 @@ class Ui
     puts "5. View your stats."
     puts "6. View your inventory."
     puts "7. Exit game"
-    @world.go_to_world(avatar,read_ch-48)
+    case read_ch-48
+    when 1 then arena(avatar)
+    when 2 then wilds(avatar, @world.citys[avatar.current_city])
+    when 3 then shop(avatar, @world.citys[avatar.current_city].shop)
+    when 4 then inn(avatar, @world.citys[avatar.current_city].inn)
+    when 5 then show_stats(avatar)
+    when 6 then show_inventory(avatar)
+    when 7 then @world.exit
+    end
   end
   
   def inn(avatar,name)
@@ -149,7 +131,11 @@ class Ui
     puts "Welcome to #{name}"
     puts "1.Rest and regain your strength."
     puts "2.Leave."
-    @world.inn(avatar,read_ch-48)
+    case read_ch-48
+    when 1 then @world.rest(avatar)
+    when 2 then go_to_world(avatar)
+    else inn(avatar, read_ch-48)
+    end
   end
   
   def shop(avatar,name)
@@ -159,7 +145,13 @@ class Ui
     puts "2. Buy bow."
     puts "3. Buy magic staff."
     puts "4. Leave."
-    @world.shop(avatar,read_ch-48)
+    case read_ch-48
+    when 1 then @shop.item(avatar, "sword")
+    when 2 then @shop.item(avatar, "bow")
+    when 3 then @shop.item(avatar, "staff")
+    when 4 then go_to_world(avatar)
+    else shop(avatar, read_ch-48)
+    end
   end
   
   def inspect(avatar,item)
@@ -189,7 +181,8 @@ class Ui
       if(city.fight_area_nr !=0)
         puts "Go to:"
         (1..city.fight_area_nr).collect{|x| puts x.to_s+". "+city.fight_area[x.to_s.to_sym][:name]}
-        @world.wilds(avatar,read_ch,city)      
+        c = read_ch-48
+        go_to_area(avatar,city.fight_area[c.to_s.to_sym])    
       else
         puts "There are no wild areas which you can visit now."
       end
@@ -207,7 +200,11 @@ class Ui
       puts "Welcome to the arena."
       puts "1.Fight random monster."
       puts "2.Go back."
-      @world.arena(avatar,read_ch-48)
+      case read_ch-48
+      when 1 then @world.fight.fight(avatar, @world.find_arena_monster(@world.citys[avatar.current_city]))
+      when 2 then go_to_world(avatar)
+      else arena(avatar,read_ch-48)
+      end
     else
       puts "You need to go to inn to rest."
       puts "Press any key to continue."
@@ -249,7 +246,12 @@ class Ui
     puts "2.Skill attack"
     puts "3.Use item"
     puts "4.Run away"
-    @world.fight_menu(avatar, enemy,read_ch-48)
+    case read_ch-48
+    when 1 then @world.fight.attack(avatar, enemy)
+    when 2 then @world.fight.skill(avatar, enemy)
+    when 3 then @world.fight.use_item(avatar)
+    else fight_menu(avatar, enemy, read_ch-48)
+    end
   end
   
   def choose_class(avatar)
@@ -258,7 +260,11 @@ class Ui
     puts '1. Warrior(Melee fighter)'
     puts '2. Archer(Ranged fighter)'
     puts '3. Mage(Magic fighter)'
-    @world.choose_class(avatar,read_ch-48)
+    case read_ch-48
+    when 1 then @world.class_warrior(avatar)
+    when 2 then @world.class_archer(avatar)
+    when 3 then @world.class_mage(avatar)
+    else choose_class(avatar, read_ch-48)
+    end
   end
-  
 end
