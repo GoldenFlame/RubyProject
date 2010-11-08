@@ -75,7 +75,7 @@ describe "avatar" do
       hash = @test.to_hash
       hash[:name].should == 'test'
       hash[:password].should == 'test'
-      hash[:class].should == 0
+      hash[:avatar_class].should == 0
       hash[:level].should == 1
       hash[:exp].should == 0
       hash[:current_city].should == 0

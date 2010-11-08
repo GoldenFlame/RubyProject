@@ -1,7 +1,7 @@
 ---
 :file: sword1
 :name: Wooden sword
-:class: sword
+:item_class: sword
 :level: 1
 :damage_min: 10
 :damage_max: 20

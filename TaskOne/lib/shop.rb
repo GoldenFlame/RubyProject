@@ -1,5 +1,3 @@
-require File.join(File.dirname(__FILE__), 'yaml_manage.rb')
-require File.join(File.dirname(__FILE__), 'ui.rb')
 
 class Shop
   @interface

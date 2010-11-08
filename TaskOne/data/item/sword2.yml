@@ -1,7 +1,7 @@
 ---
 :file: sword2
 :name: Simple sword
-:class: sword
+:item_class: sword
 :level: 5
 :damage_min: 45
 :damage_max: 60

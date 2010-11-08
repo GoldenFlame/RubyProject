@@ -3,19 +3,7 @@ class Avatar < Entity
   :current_city, :gold, :base_dmg_min, :base_dmg_max, :max_hp,
   :hp, :max_mana, :mana, :backpack, :eq_weapon, :eq_armor
   def parse(data)
-    @name = data[:name]
-    @password = data[:password]
-    @avatar_class = data[:class]
-    @level = data[:level]
-    @exp = data[:exp]
-    @current_city = data[:current_city]
-    @gold = data[:gold]
-    @base_dmg_min = data[:base_dmg_min]
-    @base_dmg_max = data[:base_dmg_max]
-    @max_hp = data[:max_hp]
-    @hp = data[:hp]
-    @max_mana = data[:max_mana]
-    @mana = data[:mana]
+    super
     @backpack = backpack_init(data[:backpack])
     @eq_weapon, @eq_armor = equipment_init(data[:equiped][:weapon], data[:equiped][:armor])
   end
@@ -40,7 +28,6 @@ class Avatar < Entity
       backpack = []
     end
     backpack.collect!{|x| Item.new("data/item/#{Item.find_file_name(x)}.yml")} 
-    return backpack
   end
   
   def save
@@ -63,6 +50,7 @@ class Avatar < Entity
       @backpack.delete(item)
       @eq_armor = item
     end
+    save
   end
   
   def disequip(item)
@@ -74,6 +62,7 @@ class Avatar < Entity
       @eq_armor = nil
       @backpack.push(item)
     end
+    save
   end
   
   def to_hash
@@ -89,7 +78,7 @@ class Avatar < Entity
       
     hash = {:name => @name,
       :password => @password,
-      :class => @avatar_class,
+      :avatar_class => @avatar_class,
       :level => @level,
       :exp => @exp,
       :current_city => @current_city,

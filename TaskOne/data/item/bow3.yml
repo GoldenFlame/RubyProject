@@ -1,7 +1,7 @@
 ---
 :file: bow3
 :name: Hunter bow
-:class: bow
+:item_class: bow
 :level: 10
 :damage_min: 40
 :damage_max: 100

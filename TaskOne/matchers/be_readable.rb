@@ -3,7 +3,7 @@ module Matchers
     def matches?(actual)
       if(actual[:name] != nil &&
         actual[:password] != nil &&
-        actual[:class] != nil &&
+        actual[:avatar_class] != nil &&
         actual[:level] != nil &&
         actual[:exp] != nil &&
         actual[:current_city] != nil &&

@@ -1,7 +1,7 @@
 ---
 :file: sword3
 :name: Broad sword
-:class: sword
+:item_class: sword
 :level: 10
 :damage_min: 70
 :damage_max: 100

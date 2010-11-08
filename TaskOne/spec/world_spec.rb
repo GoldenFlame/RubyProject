@@ -13,7 +13,7 @@ describe World do
     YamlManage.create_user("test","test")
     @avatar = Avatar.new("data/user/test.yml")
   end
-  
+
   describe "Class selection" do
     it "should specify characters class as warrior and save data" do
       @avatar.stub!(:save).and_return(true)

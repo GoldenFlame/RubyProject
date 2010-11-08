@@ -1,4 +1,3 @@
-
 class Entity
   attr_accessor :name
   def initialize(path)
@@ -7,6 +6,6 @@ class Entity
   end
   
   def parse(data)
-    @name = data[:name]
+    data.each{|k,v| instance_variable_set(:"@#{k}", v)}
   end
 end

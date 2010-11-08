@@ -3,7 +3,7 @@ class YamlManage
     output = File.new("data/user/#{name.chomp}.yml", 'w')
     @preferences = {:name => name.chomp,
       :password => pass.chomp, 
-      :class => 0,
+      :avatar_class => 0,
       :level => 1,
       :exp => 0,
       :current_city => 0,

@@ -1,5 +1,4 @@
 require 'rbconfig'
-require File.join(File.dirname(__FILE__), 'shop.rb')
 class Ui
   @shop
   def initialize(world)
@@ -164,7 +163,7 @@ class Ui
     case read_ch-48
     when 1 then @world.rest(avatar)
     when 2 then go_to_world(avatar)
-    else inn(avatar, read_ch-48)
+    else inn(avatar, name)
     end
   end
   
@@ -180,7 +179,7 @@ class Ui
     when 2 then @shop.item(avatar, "bow")
     when 3 then @shop.item(avatar, "staff")
     when 4 then go_to_world(avatar)
-    else shop(avatar, read_ch-48)
+    else shop(avatar, name)
     end
   end
   
@@ -234,7 +233,7 @@ class Ui
       case read_ch-48
       when 1 then @world.fight.fight(avatar, @world.find_arena_monster(@world.citys[avatar.current_city]))
       when 2 then go_to_world(avatar)
-      else arena(avatar,read_ch-48)
+      else arena(avatar)
       end
     else
       puts "You need to go to inn to rest."
@@ -281,7 +280,7 @@ class Ui
     when 1 then @world.fight.attack(avatar, enemy)
     when 2 then @world.fight.skill(avatar, enemy)
     when 3 then @world.fight.use_item(avatar)
-    else fight_menu(avatar, enemy, read_ch-48)
+    else fight_menu(avatar, enemy)
     end
   end
   
@@ -295,7 +294,7 @@ class Ui
     when 1 then @world.class_warrior(avatar)
     when 2 then @world.class_archer(avatar)
     when 3 then @world.class_mage(avatar)
-    else choose_class(avatar, read_ch-48)
+    else choose_class(avatar)
     end
   end
 end

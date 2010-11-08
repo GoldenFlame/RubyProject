@@ -1,5 +1,4 @@
 require 'yaml'
-
 files = %w{entity city item monster avatar yaml_manage ui fight shop world}
 files.each{|x| require File.join(File.dirname(__FILE__), "lib/#{x}")}
   
