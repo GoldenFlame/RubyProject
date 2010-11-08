@@ -224,6 +224,7 @@ class Ui
     
   end
   
+  
   def arena(avatar)
     clear_console
     if(avatar.hp>0)

@@ -17,6 +17,8 @@ class Shop
     @interface.inspect(avatar, items[c-1])
   end
   
+  
+  
   def inspect(avatar,item,c)
     if(avatar.gold>=item.price)
       case c

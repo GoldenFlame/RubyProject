@@ -60,7 +60,7 @@ SimpleCov.start
     end
     
     describe "attack" do
-      it "should decrease defenders healt points by 1" do
+      it "should decrease defenders health points by 1" do
         #damage is calculated by taking random number in range of avataracters min damage and max damage
         #therefor mock object a returning value 1 instead of random
         a = mock("Random", {:rand => 1})
@@ -68,6 +68,17 @@ SimpleCov.start
         @fight.attack(@avatar, @monster)
         @monster.hp.should == 74
       end
+      
+      it "should decrease defenders health points by 2 if attacker has a weapon" do
+        #damage is calculated by taking random number in range of avataracters min damage and max damage
+        #therefor mock object a returning value 1 instead of random
+        a = mock("Random", {:rand => 2})
+        Random.stub!(:new).and_return(a)
+        @avatar.eq_weapon = Item.new("data/item/sword1.yml")
+        @fight.attack(@avatar, @monster)
+        @monster.hp.should == 73
+      end
+      
     end
     
     describe "skill attack" do

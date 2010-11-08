@@ -41,7 +41,7 @@ class Fight
   end
   
   def attack(attacker, defender)
-    if(attacker.respond_to?('eq_weapon'))
+    if(attacker.eq_weapon != nil)
       dmg = Random.new.rand(attacker.base_dmg_min+attacker.eq_weapon.damage_min..attacker.base_dmg_max+attacker.eq_weapon.damage_max)
     else
       dmg = Random.new.rand(attacker.base_dmg_min..attacker.base_dmg_max)
