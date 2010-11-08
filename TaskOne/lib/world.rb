@@ -39,34 +39,28 @@ class World
     return res
   end
   
-  def autosave(avatar)
-    #YamlManage.save_avatar(avatar)
-  end
-  
   def check_lvlup(avatar)
-=begin
-    case avatar.exp]
-    when 50 then avatar.level] = 2
-    when 100 then avatar.level] = 3
-    when 200 then avatar.level] = 4
-    when 400 then avatar.level] = 5
-    when 800 then avatar.level] = 6
-    when 1600 then avatar.level] = 7
-    when 2400 then avatar.level] = 8
-    when 4000 then avatar.level] = 9
-    when 5800 then avatar.level] = 10
-    when 8000 then avatar.level] = 11
-    when 10500 then avatar.level] = 12
-    when 15000 then avatar.level] = 13
-    when 21000 then avatar.level] = 14
-    when 30000 then avatar.level] = 15
-    when 43000 then avatar.level] = 16
-    when 58000 then avatar.level] = 17
-    when 70000 then avatar.level] = 18
-    when 95000 then avatar.level] = 19
-    when 120000 then avatar.level] = 20
+    case avatar.exp
+    when 50..99 then avatar.level = 2
+    when 100..199 then avatar.level = 3
+    when 200..399 then avatar.level = 4
+    when 400..799 then avatar.level = 5
+    when 800..1599 then avatar.level = 6
+    when 1600..2399 then avatar.level = 7
+    when 2400..3999 then avatar.level = 8
+    when 4000..5799 then avatar.level = 9
+    when 5800..7999 then avatar.level = 10
+    when 8000..10499 then avatar.level = 11
+    when 10500..14999 then avatar.level = 12
+    when 15000..20999 then avatar.level = 13
+    when 21000..29999 then avatar.level = 14
+    when 30000..42999 then avatar.level = 15
+    when 43000..57999 then avatar.level = 16
+    when 58000..69999 then avatar.level = 17
+    when 70000..94999 then avatar.level = 18
+    when 95000..11999 then avatar.level = 19
+    when 120000..130000 then avatar.level = 20
     end
-=end
   end
 #---------  
   def class_warrior(avatar)
