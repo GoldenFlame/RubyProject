@@ -1,17 +1,7 @@
-require 'rubygems'
 require 'yaml'
 
-require File.join(File.dirname(__FILE__), 'entity.rb')
-require File.join(File.dirname(__FILE__), 'city.rb')
-require File.join(File.dirname(__FILE__), 'item.rb')
-require File.join(File.dirname(__FILE__), 'monster.rb')
-require File.join(File.dirname(__FILE__), 'avatar.rb')
-require File.join(File.dirname(__FILE__), 'yaml_manage.rb')
-require File.join(File.dirname(__FILE__), 'ui.rb')
-require File.join(File.dirname(__FILE__), 'fight.rb')
-require File.join(File.dirname(__FILE__), 'shop.rb')
-require File.join(File.dirname(__FILE__), 'city.rb')
-require File.join(File.dirname(__FILE__), 'world.rb')
-
+files = %w{entity city item monster avatar yaml_manage ui fight shop world}
+files.each{|x| require File.join(File.dirname(__FILE__), "lib/#{x}")}
+  
 game = World.new
 game.main_menu
