@@ -21,21 +21,21 @@
       <img src="./assets/0.3.8/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2010-11-15T01:13:36+02:00">2010-11-15T01:13:36+02:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2010-11-15T01:20:19+02:00">2010-11-15T01:20:19+02:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
         <div class="file_list_container" id="AllFiles">
   <h2>
     All Files
-    (<span class="red">70.19%</span>)
+    (<span class="red">70.91%</span>)
   </h2>
   <a name="AllFiles"></a>
   <div>
     <b>20</b> files in total.
-    <b>748</b> relevant lines. 
-    <span class="green"><b>525</b> lines covered</span> and
-    <span class="red"><b>223</b> lines missed </span>
+    <b>739</b> relevant lines. 
+    <span class="green"><b>524</b> lines covered</span> and
+    <span class="red"><b>215</b> lines missed </span>
   </div>
   <table class="file_list">
     <thead>
@@ -106,11 +106,11 @@
       
       <tr>
         <td><a href="#1fde1ccf7792910093653477b8a16891e27d1784" class="src_link" title="./lib/shop.rb">./lib/shop.rb</a></td>
-        <td class="red">64.0 %</td>
-        <td>43</td>
+        <td class="green">93.75 %</td>
         <td>25</td>
         <td>16</td>
-        <td>9</td>
+        <td>15</td>
+        <td>1</td>
       </tr>
       
       <tr>
@@ -1644,7 +1644,7 @@
     </tr>
   
     
-    <tr class="hit" data-hits="331">
+    <tr class="hit" data-hits="412">
       <td class="line_number">
         <pre>4</pre>
       </td>
@@ -1652,12 +1652,12 @@
         <pre>    data = YamlManage.load_file(path)</pre>
       </td>
       <td class="hits">
-        331
+        412
       </td>
     </tr>
   
     
-    <tr class="hit" data-hits="331">
+    <tr class="hit" data-hits="412">
       <td class="line_number">
         <pre>5</pre>
       </td>
@@ -1665,7 +1665,7 @@
         <pre>    parse(data)</pre>
       </td>
       <td class="hits">
-        331
+        412
       </td>
     </tr>
   
@@ -1709,7 +1709,7 @@
     </tr>
   
     
-    <tr class="hit" data-hits="2881">
+    <tr class="hit" data-hits="3448">
       <td class="line_number">
         <pre>9</pre>
       </td>
@@ -1717,7 +1717,7 @@
         <pre>    data.each{|k,v| instance_variable_set(:&quot;@#{k}&quot;, v)}</pre>
       </td>
       <td class="hits">
-        2881
+        3448
       </td>
     </tr>
   
@@ -2588,7 +2588,7 @@
         <pre>2</pre>
       </td>
       <td>
-        <pre>  attr_reader :file, :name, :item_class, :level, :damage_min, :damage_max, :price</pre>
+        <pre>  attr_reader :file, :name, :item_class, :level, :damage_min, :damage_max, :armor, :price</pre>
       </td>
       <td class="hits">
         1
@@ -2635,7 +2635,7 @@
     </tr>
   
     
-    <tr class="hit" data-hits="124">
+    <tr class="hit" data-hits="172">
       <td class="line_number">
         <pre>6</pre>
       </td>
@@ -2643,7 +2643,7 @@
         <pre>    item = Dir.glob(&quot;data/item/*&quot;).collect{|x| Item.new(x)}.detect{|i| i.name == item_name}</pre>
       </td>
       <td class="hits">
-        124
+        172
       </td>
     </tr>
   
@@ -2769,7 +2769,7 @@
     <tr>
       <td colspan="3">
         <h3>./lib/shop.rb</h3>
-        <h4><span class="red">64.0 %</span> covered</h4>
+        <h4><span class="green">93.75 %</span> covered</h4>
       </td>
     </tr>
     <tr>
@@ -2898,7 +2898,7 @@
     </tr>
   
     
-    <tr class="hit" data-hits="20">
+    <tr class="hit" data-hits="26">
       <td class="line_number">
         <pre>10</pre>
       </td>
@@ -2906,7 +2906,7 @@
         <pre>    items = @items.clone.delete_if{|x| x.item_class != item_class}</pre>
       </td>
       <td class="hits">
-        20
+        26
       </td>
     </tr>
   
@@ -3033,201 +3033,6 @@
         <pre>20</pre>
       </td>
       <td>
-        <pre>  def item_view(avatar,item,c)</pre>
-      </td>
-      <td class="hits">
-        1
-      </td>
-    </tr>
-  
-    
-    <tr class="miss" data-hits="0">
-      <td class="line_number">
-        <pre>21</pre>
-      </td>
-      <td>
-        <pre>    if(avatar.gold&gt;=item.price)</pre>
-      </td>
-      <td class="hits">
-        0
-      </td>
-    </tr>
-  
-    
-    <tr class="miss" data-hits="0">
-      <td class="line_number">
-        <pre>22</pre>
-      </td>
-      <td>
-        <pre>      case c</pre>
-      </td>
-      <td class="hits">
-        0
-      </td>
-    </tr>
-  
-    
-    <tr class="miss" data-hits="0">
-      <td class="line_number">
-        <pre>23</pre>
-      </td>
-      <td>
-        <pre>      when 1 then buy_item(avatar,item)</pre>
-      </td>
-      <td class="hits">
-        0
-      </td>
-    </tr>
-  
-    
-    <tr class="miss" data-hits="0">
-      <td class="line_number">
-        <pre>24</pre>
-      </td>
-      <td>
-        <pre>      when 2 then item(avatar, item.item_class)</pre>
-      </td>
-      <td class="hits">
-        0
-      </td>
-    </tr>
-  
-    
-    <tr class="miss" data-hits="0">
-      <td class="line_number">
-        <pre>25</pre>
-      </td>
-      <td>
-        <pre>      else item_view(avatar, item, @interface.read_ch-48)</pre>
-      </td>
-      <td class="hits">
-        0
-      </td>
-    </tr>
-  
-    
-    <tr class="never" >
-      <td class="line_number">
-        <pre>26</pre>
-      </td>
-      <td>
-        <pre>      end</pre>
-      </td>
-      <td class="hits">
-        
-      </td>
-    </tr>
-  
-    
-    <tr class="never" >
-      <td class="line_number">
-        <pre>27</pre>
-      </td>
-      <td>
-        <pre>    else</pre>
-      </td>
-      <td class="hits">
-        
-      </td>
-    </tr>
-  
-    
-    <tr class="miss" data-hits="0">
-      <td class="line_number">
-        <pre>28</pre>
-      </td>
-      <td>
-        <pre>      case c</pre>
-      </td>
-      <td class="hits">
-        0
-      </td>
-    </tr>
-  
-    
-    <tr class="miss" data-hits="0">
-      <td class="line_number">
-        <pre>29</pre>
-      </td>
-      <td>
-        <pre>      when 2 then item(avatar,item.item_class)</pre>
-      </td>
-      <td class="hits">
-        0
-      </td>
-    </tr>
-  
-    
-    <tr class="miss" data-hits="0">
-      <td class="line_number">
-        <pre>30</pre>
-      </td>
-      <td>
-        <pre>      else item_view(avatar, item, @interface.read_ch-48)</pre>
-      </td>
-      <td class="hits">
-        0
-      </td>
-    </tr>
-  
-    
-    <tr class="never" >
-      <td class="line_number">
-        <pre>31</pre>
-      </td>
-      <td>
-        <pre>      end</pre>
-      </td>
-      <td class="hits">
-        
-      </td>
-    </tr>
-  
-    
-    <tr class="never" >
-      <td class="line_number">
-        <pre>32</pre>
-      </td>
-      <td>
-        <pre>    end</pre>
-      </td>
-      <td class="hits">
-        
-      </td>
-    </tr>
-  
-    
-    <tr class="never" >
-      <td class="line_number">
-        <pre>33</pre>
-      </td>
-      <td>
-        <pre>  end</pre>
-      </td>
-      <td class="hits">
-        
-      </td>
-    </tr>
-  
-    
-    <tr class="never" >
-      <td class="line_number">
-        <pre>34</pre>
-      </td>
-      <td>
-        <pre>  </pre>
-      </td>
-      <td class="hits">
-        
-      </td>
-    </tr>
-  
-    
-    <tr class="hit" data-hits="1">
-      <td class="line_number">
-        <pre>35</pre>
-      </td>
-      <td>
         <pre>  def buy_item(avatar, item)</pre>
       </td>
       <td class="hits">
@@ -3238,7 +3043,7 @@
     
     <tr class="hit" data-hits="3">
       <td class="line_number">
-        <pre>36</pre>
+        <pre>21</pre>
       </td>
       <td>
         <pre>    avatar.gold -= item.price</pre>
@@ -3251,7 +3056,7 @@
     
     <tr class="hit" data-hits="3">
       <td class="line_number">
-        <pre>37</pre>
+        <pre>22</pre>
       </td>
       <td>
         <pre>    avatar.backpack.push(item)</pre>
@@ -3264,7 +3069,7 @@
     
     <tr class="hit" data-hits="3">
       <td class="line_number">
-        <pre>38</pre>
+        <pre>23</pre>
       </td>
       <td>
         <pre>    avatar.save</pre>
@@ -3277,7 +3082,7 @@
     
     <tr class="never" >
       <td class="line_number">
-        <pre>39</pre>
+        <pre>24</pre>
       </td>
       <td>
         <pre>  end</pre>
@@ -3290,46 +3095,7 @@
     
     <tr class="never" >
       <td class="line_number">
-        <pre>40</pre>
-      </td>
-      <td>
-        <pre>  </pre>
-      </td>
-      <td class="hits">
-        
-      </td>
-    </tr>
-  
-    
-    <tr class="never" >
-      <td class="line_number">
-        <pre>41</pre>
-      </td>
-      <td>
-        <pre>  </pre>
-      </td>
-      <td class="hits">
-        
-      </td>
-    </tr>
-  
-    
-    <tr class="never" >
-      <td class="line_number">
-        <pre>42</pre>
-      </td>
-      <td>
-        <pre>  </pre>
-      </td>
-      <td class="hits">
-        
-      </td>
-    </tr>
-  
-    
-    <tr class="never" >
-      <td class="line_number">
-        <pre>43</pre>
+        <pre>25</pre>
       </td>
       <td>
         <pre>end</pre>
@@ -7633,7 +7399,7 @@
     </tr>
   
     
-    <tr class="hit" data-hits="190">
+    <tr class="hit" data-hits="247">
       <td class="line_number">
         <pre>15</pre>
       </td>
@@ -7641,7 +7407,7 @@
         <pre>    Dir.glob(&quot;data/item/*&quot;).collect{|x| Item.new(x)}</pre>
       </td>
       <td class="hits">
-        190
+        247
       </td>
     </tr>
   
@@ -8959,7 +8725,7 @@
     </tr>
   
     
-    <tr class="hit" data-hits="7">
+    <tr class="hit" data-hits="10">
       <td class="line_number">
         <pre>117</pre>
       </td>
@@ -8967,7 +8733,7 @@
         <pre>      if(x.name == item_name)</pre>
       </td>
       <td class="hits">
-        7
+        10
       </td>
     </tr>
   
@@ -9526,7 +9292,7 @@
     </tr>
   
     
-    <tr class="hit" data-hits="353">
+    <tr class="hit" data-hits="434">
       <td class="line_number">
         <pre>32</pre>
       </td>
@@ -9534,12 +9300,12 @@
         <pre>    output = File.new(path.chomp, 'r')</pre>
       </td>
       <td class="hits">
-        353
+        434
       </td>
     </tr>
   
     
-    <tr class="hit" data-hits="353">
+    <tr class="hit" data-hits="434">
       <td class="line_number">
         <pre>33</pre>
       </td>
@@ -9547,12 +9313,12 @@
         <pre>    @preferences = YAML.load(output.read)</pre>
       </td>
       <td class="hits">
-        353
+        434
       </td>
     </tr>
   
     
-    <tr class="hit" data-hits="353">
+    <tr class="hit" data-hits="434">
       <td class="line_number">
         <pre>34</pre>
       </td>
@@ -9560,12 +9326,12 @@
         <pre>    output.close</pre>
       </td>
       <td class="hits">
-        353
+        434
       </td>
     </tr>
   
     
-    <tr class="hit" data-hits="353">
+    <tr class="hit" data-hits="434">
       <td class="line_number">
         <pre>35</pre>
       </td>
@@ -9573,7 +9339,7 @@
         <pre>    return @preferences</pre>
       </td>
       <td class="hits">
-        353
+        434
       </td>
     </tr>
   
@@ -12762,7 +12528,7 @@
     </tr>
   
     
-    <tr class="hit" data-hits="10">
+    <tr class="hit" data-hits="13">
       <td class="line_number">
         <pre>19</pre>
       </td>
@@ -12770,7 +12536,7 @@
         <pre>      item = @world.items.detect{|i| i.name == 'Broad sword'}</pre>
       </td>
       <td class="hits">
-        10
+        13
       </td>
     </tr>
   

@@ -4,7 +4,21 @@ class Ui
   def initialize(world)
     @world = world
   end
+#------Interface control  
+  def read_ch
+    require "Win32API"
+    Win32API.new("crtdll", "_getch", [], "L").Call
+  end
+
+  def clear_console
+    if(Config::CONFIG['host_os'] =~ /mswin|mingw/)
+      system('cls')
+    else
+      system('clear')
+    end
+  end
   
+#------Login menu
   def login
     @shop = @world.shop_inst
     clear_console
@@ -14,19 +28,6 @@ class Ui
     case read_ch-48
     when 1 then reg
     when 2 then logs
-    end
-  end
-  
-  def read_ch
-    require "Win32API"
-    Win32API.new("crtdll", "_getch", [], "L").Call
-  end
-
-  def clear_console
-    if(Config::CONFIG['host_os'] =~ /mswin|mingw/)
-      #system('cls')
-    else
-      system('clear')
     end
   end
   
@@ -67,7 +68,7 @@ class Ui
     end
     return avatar
   end
-  
+#------Stats
   def show_stats(avatar)
     clear_console
     puts "Name: #{avatar.name}"
@@ -83,24 +84,64 @@ class Ui
     else show_stats(avatar)
     end
   end
-  
+#------Inventory  
   def view_equipment(avatar)
     clear_console
+    weapon = false
+    armor = false
     if(avatar.eq_weapon != nil)
+      weapon = true
       puts "Weapon:"
       puts "Name: #{avatar.eq_weapon.name}"
       puts "Class: #{avatar.eq_weapon.item_class}"
       puts "Level requirement: #{avatar.eq_weapon.level}"
       puts "Damage #{avatar.eq_weapon.damage_min}/#{avatar.eq_weapon.damage_max}"
+    else
+      puts "You have no weapon equiped."
+    end
+    if(avatar.eq_armor != nil)
+      armor = true
+      puts ""
+      puts "---"
+      puts ""
+      puts "Armor:"
+      puts "Name: #{avatar.eq_armor.name}"
+      puts "Class: #{avatar.eq_armor.item_class}"
+      puts "Level requirement: #{avatar.eq_armor.level}"
+      puts "Armor: #{avatar.eq_armor.armor}"
+    else
+      puts "You have no armor equiped."
+    end
+    if(weapon && armor)
+      puts "1.Disequip weapon"
+      puts "2.Disequip armor"
+      puts "3.Leave"
+      case read_ch-48
+      when 1 then avatar.disequip(avatar.eq_weapon)
+      when 2 then avatar.disequip(avatar.eq_armor)
+      when 3 then show_stats(avatar)
+      else view_equipment(avatar)
+      end
+    elsif(weapon && !armor)
       puts "1.Disequip weapon"
       puts "2.Leave"
       case read_ch-48
       when 1 then avatar.disequip(avatar.eq_weapon)
-      when 2 then 
-      else show_status(avatar)
+      when 2 then show_stats(avatar)
+      else view_equipment(avatar)
+      end
+    elsif(!weapon && armor)
+      puts "1.Disequip armor"
+      puts "2.Leave"
+      case read_ch-48
+      when 1 then avatar.disequip(avatar.eq_armor)
+      when 2 then show_stats(avatar)
+      else view_equipment(avatar)
       end
     else
-      puts "You have no weapon equiped."
+      puts "Press any key to continue"
+      read_ch
+      show_stats(avatar) 
     end
   end
   
@@ -114,19 +155,23 @@ class Ui
           c = gets
           c = c.chomp.to_i
         end
-        item_view(avatar, avatar.backpack[c-1])
+        inventory_item_view(avatar, avatar.backpack[c-1])
       else
         puts "Your inventory is empty."
       end
     end
   end
   
-  def item_view(avatar, item)
+  def inventory_item_view(avatar, item)
     clear_console
     puts "Name: #{item.name}"
     puts "Class: #{item.item_class}"
     puts "Level requirement: #{item.level}"
-    puts "Damage #{item.damage_min}/#{item.damage_max}"
+    if(item.item_class == "weapon")
+      puts "Damage #{item.damage_min}/#{item.damage_max}"
+    elsif(item.item_class == "armor")
+      puts "Armor: #{item.armor}"
+    end
     puts "1.Equip"
     puts "2.Leave"
     case read_ch-48
@@ -135,7 +180,7 @@ class Ui
     else show_status(avatar)
     end
   end
-  
+#------Main menu  
   def go_to_world(avatar)
     puts "1. Go to arena."
     puts "2. Go to the wilds."
@@ -173,21 +218,69 @@ class Ui
     puts "1. Buy sword."
     puts "2. Buy bow."
     puts "3. Buy magic staff."
-    puts "4. Leave."
+    puts "4. Buy armor"
+    puts "5. Leave."
     case read_ch-48
     when 1 then @shop.item(avatar, "sword")
     when 2 then @shop.item(avatar, "bow")
     when 3 then @shop.item(avatar, "staff")
-    when 4 then go_to_world(avatar)
+    when 4 then @shop.item(avatar, "armor")
+    when 5 then go_to_world(avatar)
     else shop(avatar, name)
     end
   end
   
+  def wilds(avatar,city)
+    clear_console
+    if(avatar.hp>0)
+      if(city.fight_area_nr !=0)
+        puts "Go to:"
+        (1..city.fight_area_nr).collect{|x| puts x.to_s+". "+city.fight_area[x.to_s.to_sym][:name]}
+        c = read_ch-48
+        go_to_area(avatar,city.fight_area[c.to_s.to_sym])    
+      else
+        puts "There are no wild areas which you can visit now."
+      end
+    else
+      puts "You need to go to inn to rest."
+       puts "Press any key to continue."
+       read_ch
+    end
+    
+  end
+  
+  def arena(avatar)
+    clear_console
+    if(avatar.hp>0)
+      puts "Welcome to the arena."
+      puts "1.Fight random monster."
+      puts "2.Go back."
+      case read_ch-48
+      when 1 then @world.fight.fight(avatar, @world.find_arena_monster(@world.citys[avatar.current_city]))
+      when 2 then go_to_world(avatar)
+      else arena(avatar)
+      end
+    else
+      puts "You need to go to inn to rest."
+      puts "Press any key to continue."
+      read_ch
+    end
+  end
+  
+  def go_to_area(avatar,area)
+   
+  end
+  
+#------Shop menu  
   def item_view(avatar,item)
     clear_console
     puts item.name
     puts "Level requirement: #{item.level}"
-    puts "Damage #{item.damage_min}/#{item.damage_max}"
+    if(item.item_class == "weapon")
+      puts "Damage #{item.damage_min}/#{item.damage_max}"
+    elsif(item.item_class == "armor")
+      puts "Armor: #{item.armor}"
+    end
     puts "Price: #{item.price}"
     if(avatar.gold >= item.price)
       puts "1. Buy."
@@ -217,47 +310,7 @@ class Ui
     read_ch-48
   end
 
-  def wilds(avatar,city)
-    clear_console
-    if(avatar.hp>0)
-      if(city.fight_area_nr !=0)
-        puts "Go to:"
-        (1..city.fight_area_nr).collect{|x| puts x.to_s+". "+city.fight_area[x.to_s.to_sym][:name]}
-        c = read_ch-48
-        go_to_area(avatar,city.fight_area[c.to_s.to_sym])    
-      else
-        puts "There are no wild areas which you can visit now."
-      end
-    else
-      puts "You need to go to inn to rest."
-       puts "Press any key to continue."
-       read_ch
-    end
-    
-  end
-  
-  
-  def arena(avatar)
-    clear_console
-    if(avatar.hp>0)
-      puts "Welcome to the arena."
-      puts "1.Fight random monster."
-      puts "2.Go back."
-      case read_ch-48
-      when 1 then @world.fight.fight(avatar, @world.find_arena_monster(@world.citys[avatar.current_city]))
-      when 2 then go_to_world(avatar)
-      else arena(avatar)
-      end
-    else
-      puts "You need to go to inn to rest."
-      puts "Press any key to continue."
-      read_ch
-    end
-  end
-  
-  def go_to_area(avatar,area)
-   
-  end
+#------Fight menu  
   
   def winner_msg(avatar)
     puts "You have WON the battle!"
@@ -296,7 +349,7 @@ class Ui
     else fight_menu(avatar, enemy)
     end
   end
-  
+#------Class menu  
   def choose_class(avatar)
     clear_console
     puts 'Choose your avataracters class'

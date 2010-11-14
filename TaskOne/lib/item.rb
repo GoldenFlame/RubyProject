@@ -1,5 +1,5 @@
 class Item < Entity
-  attr_reader :file, :name, :item_class, :level, :damage_min, :damage_max, :price
+  attr_reader :file, :name, :item_class, :level, :damage_min, :damage_max, :armor, :price
 
   def self.find_file_name(item_name)
     item_return = nil

@@ -1,11 +1,11 @@
 --- 
 :name: nusa
 :password: nusa
-:avatar_class: 
+:avatar_class: 1
 :level: 2
 :exp: 70
 :current_city: 0
-:gold: 3818
+:gold: 3318
 :base_dmg_min: 20
 :base_dmg_max: 30
 :max_hp: 100
@@ -13,10 +13,10 @@
 :max_mana: 10
 :mana: 10
 :backpack: 
-- Broad sword
 - Practice bow
 - Hunter bow
 - Hunter bow
+- Plate armor
 :equiped: 
-  :weapon: 
+  :weapon: Broad sword
   :armor: 

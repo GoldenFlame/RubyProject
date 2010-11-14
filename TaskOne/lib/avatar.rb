@@ -42,7 +42,7 @@ class Avatar < Entity
       end
       @eq_weapon = item.clone
       @backpack.delete(item)
-    elsif(type == :armor)
+    elsif(type == "armor")
       if(@eq_armor != nil)
         @backpack.push(@eq_armor)
       end
@@ -58,7 +58,7 @@ class Avatar < Entity
     if(type == "sword" || type == "bow" || type == "staff")
       @eq_weapon = nil
       @backpack.push(item)
-    elsif(type == :armor)
+    elsif(type == "armor")
       @eq_armor = nil
       @backpack.push(item)
     end
