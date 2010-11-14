@@ -13,6 +13,22 @@ describe World do
     YamlManage.create_user("test","test")
     @avatar = Avatar.new("data/user/test.yml")
   end
+  
+  describe "Register" do
+    it "should register new avatar" do
+      YamlManage.should_receive(:create_user).and_return(true)
+      @world.reg("new","user")
+    end
+  end
+  
+  describe "Login" do
+    it "should load avatar test" do
+      load = @world.logs("test")
+      load.class.should == @avatar.class
+      load.name.should == @avatar.name
+      load.password.should == @avatar.password
+    end
+  end
 
   describe "Class selection" do
     it "should specify characters class as warrior and save data" do
@@ -52,8 +68,64 @@ describe World do
     end
   end
   
-  describe "menu" do
+  describe "level up" do
+    describe "experience for level" do
+      it "should return 50 for level 2" do
+        @world.experience_for_level(@avatar).should == 41
+      end
+        
+      it "should return 100 for level 3" do
+        @avatar.level = 2
+        @world.experience_for_level(@avatar).should == 100
+      end
+    end
     
+    describe "check level up" do
+      it "should set avatar`s level to 2" do
+        @avatar.exp = 100
+        @world.check_lvlup(@avatar)
+        @avatar.level.should == 2
+      end
+      
+      it "should set avatar`s level to 10" do
+        @avatar.level = 9
+        @avatar.exp = 5000
+        @world.check_lvlup(@avatar)
+        @avatar.level.should == 10
+      end
+    end
+  end
+  
+  describe "menu" do
+    describe "exit" do
+      it "should set program to exit" do
+        @world.exit
+        @world.exitcmd.should == true
+      end
+    end
+    
+    describe "main menu" do
+      it "should let choose avatar`s class" do
+        @interface.should_receive(:login).and_return(@avatar)
+        @interface.should_receive(:choose_class)
+        @world.exit
+        @world.main_menu
+      end
+      
+      it "should show main game menu" do
+        @avatar.avatar_class = 1
+        @interface.should_receive(:login).and_return(@avatar)
+        @interface.stub(:clear_console)
+        @world.should_receive(:check_lvlup)
+        @interface.should_receive(:go_to_world)
+        @avatar.should_receive(:save)
+        @world.exit
+        @world.main_menu
+      end
+      
+    end
+    
+      
     describe "find item" do
       it "should find item by given name and return its data" do
         item = Item.new("data/item/sword1.yml")
@@ -63,8 +135,7 @@ describe World do
         result.item_class.should == item.item_class
       end
     end
-   
-    end
+  end
   
   
   describe "rest" do

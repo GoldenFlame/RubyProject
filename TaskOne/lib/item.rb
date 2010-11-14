@@ -3,14 +3,8 @@ class Item < Entity
 
   def self.find_file_name(item_name)
     item_return = nil
-    items = Dir.glob("data/item/*").collect{|x| Item.new(x)}
-    items.each do |x|
-      if(x.name == item_name)
-        item_return = x
-        break
-      end
-    end
-    return item_return.file
+    item = Dir.glob("data/item/*").collect{|x| Item.new(x)}.detect{|i| i.name == item_name}
+    return item.file
   end
   
 end

@@ -183,7 +183,7 @@ class Ui
     end
   end
   
-  def inspect(avatar,item)
+  def item_view(avatar,item)
     clear_console
     puts item.name
     puts "Level requirement: #{item.level}"
@@ -195,12 +195,25 @@ class Ui
       puts "You do not have enough money."
     end
     puts "2. Go back."
-    @shop.inspect(avatar,item,read_ch-48)
+    c = read_ch-48
+    if(avatar.gold>=item.price)
+      case c
+      when 1 then @shop.buy_item(avatar,item)
+      when 2 then @shop.item(avatar, item.item_class)
+      else item_view(avatar, item, @interface.read_ch-48)
+      end
+    else
+      case c
+      when 2 then @shop.item(avatar,item.item_class)
+      else item_view(avatar, item, @interface.read_ch-48)
+      end
+    end
   end
   
   def item(item_list)
     clear_console
-    item_list.each_with_index{|x,y| puts "#{y+1}. Inspect #{x.name}"}
+    item_list.each_with_index{|x,y| puts "#{y+1}. #{x.name}"}
+    puts "#{item_list.size + 1}. Leave shop."
     read_ch-48
   end
 
