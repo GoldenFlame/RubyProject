@@ -15,8 +15,16 @@ describe "Yaml File system" do
   end
     
   describe "load any game file" do
-    it "should load any game file and return it" do
-      YamlManage.load_file("data/user/test.yml").should be_readable
+    it "should load user game file" do
+      YamlManage.load_file("data/user/test.yml").should be_readable  
+    end
+    
+    it "should load item file" do
+      YamlManage.load_file("data/item/sword1.yml").should be_readable
+    end
+    
+    it "should load monster file" do
+      YamlManage.load_file("data/monster/sin.yml").should be_readable
     end
   end
     

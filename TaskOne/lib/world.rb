@@ -29,7 +29,7 @@ class World
         @interface.choose_class(avatar)
       else 
         @interface.clear_console
-        check_lvlup(avatar) 
+        avatar.check_lvlup 
         @interface.go_to_world(avatar)
         avatar.save
       end
@@ -38,17 +38,7 @@ class World
   end
   
 
-  def experience_for_level(avatar)
-    next_level = avatar.level + 1
-    (next_level ** 3) + ((next_level + 1) ** 3) + (next_level * 3)
-  end
   
-  def check_lvlup(avatar)
-    if(experience_for_level(avatar)<=avatar.exp)
-      avatar.exp = 0
-      avatar.level += 1
-    end
-  end
 #---------  
   def class_warrior(avatar)
     avatar.avatar_class = 1

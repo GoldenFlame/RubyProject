@@ -41,10 +41,19 @@ class Fight
   end
   
   def attack(attacker, defender)
-    if(attacker.eq_weapon != nil)
-      dmg = Random.new.rand(attacker.base_dmg_min+attacker.eq_weapon.damage_min..attacker.base_dmg_max+attacker.eq_weapon.damage_max)
+    if(attacker.instance_of?(Avatar))
+      if(attacker.eq_weapon != nil)
+        dmg = Random.new.rand(attacker.base_dmg_min+attacker.eq_weapon.damage_min..attacker.base_dmg_max+attacker.eq_weapon.damage_max)
+      else
+        dmg = Random.new.rand(attacker.base_dmg_min..attacker.base_dmg_max)
+      end
     else
       dmg = Random.new.rand(attacker.base_dmg_min..attacker.base_dmg_max)
+    end
+    if(defender.instance_of?(Avatar))
+      if(defender.eq_armor != nil)
+        dmg = dmg - dmg * defender.eq_armor.armor / (100 + defender.eq_armor.armor)
+      end
     end
     defender.hp -= dmg
   end

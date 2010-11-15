@@ -7,11 +7,8 @@ class Shop
   end
   
   def item(avatar,item_class)
-    items = @items.clone.delete_if{|x| x.item_class != item_class}
+    items = @items.select{|x| x.item_class == item_class}
     c = @interface.item(items)
-    until (items.size+1>= c && c >= 0)
-      c = @interface.read_ch-48
-    end
     if(c != items.size+1)
       @interface.item_view(avatar, items[c-1])
     end
@@ -20,6 +17,12 @@ class Shop
   def buy_item(avatar, item)
     avatar.gold -= item.price
     avatar.backpack.push(item)
+    avatar.save
+  end
+  
+  def sell_item(avatar,item)
+    avatar.gold += item.price/2
+    avatar.backpack.delete(item)
     avatar.save
   end
 end

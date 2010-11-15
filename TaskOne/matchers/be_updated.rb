@@ -4,19 +4,17 @@ module Matchers
       @expected = expected
     end
     def matches?(actual)
-      if(@expected.eql?(actual))
-        false
-      else 
-        true
-      end
+      updated = false
+      actual.each{|k,v| if(@expected[k] != v) then updated = true end}
+      updated
     end
 
     def failure_message
-      "expected to be readable but is not.'"
+      "expected to be updated but is not.'"
     end
 
     def negative_failure_message
-      "expected not to be readable but did.'"
+      "expected not to be updated but is.'"
     end
   end
 

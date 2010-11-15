@@ -1,13 +1,7 @@
 module Matchers
   class BeReadable
     def matches?(actual)
-      if(actual[:name] != nil &&
-        actual[:password] != nil &&
-        actual[:avatar_class] != nil &&
-        actual[:level] != nil &&
-        actual[:exp] != nil &&
-        actual[:current_city] != nil &&
-        actual[:gold] != nil) then
+      if(actual[:name] != nil) then
           true
       else 
         false

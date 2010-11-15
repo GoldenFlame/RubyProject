@@ -62,8 +62,8 @@ class Ui
           puts 'You successfully logged in.'
         end
       else
-        puts 'avataracted does not exist or you entered incorrect password'
-        login
+        puts 'Avatar does not exist or you entered incorrect password'
+        avatar = nil
       end
     end
     return avatar
@@ -73,6 +73,8 @@ class Ui
     clear_console
     puts "Name: #{avatar.name}"
     puts "Class: #{avatar.avatar_class}"
+    puts "Level: #{avatar.level}"
+    puts "Experience: #{avatar.exp}/#{avatar.experience_for_level}"
     puts "HP: #{avatar.hp}/#{avatar.max_hp}"
     puts "Mana: #{avatar.mana}/#{avatar.max_mana}"
     puts "Base damage: #{avatar.base_dmg_min}/#{avatar.base_dmg_max}"
@@ -145,7 +147,7 @@ class Ui
     end
   end
   
-  def show_inventory(avatar)
+  def show_inventory(avatar,call)
     clear_console
     if(avatar.backpack.class == Array)
       if(avatar.backpack.size != 0)
@@ -155,14 +157,14 @@ class Ui
           c = gets
           c = c.chomp.to_i
         end
-        inventory_item_view(avatar, avatar.backpack[c-1])
+          inventory_item_view(avatar, avatar.backpack[c-1], call)
       else
         puts "Your inventory is empty."
       end
     end
   end
   
-  def inventory_item_view(avatar, item)
+  def inventory_item_view(avatar, item, call)
     clear_console
     puts "Name: #{item.name}"
     puts "Class: #{item.item_class}"
@@ -172,12 +174,22 @@ class Ui
     elsif(item.item_class == "armor")
       puts "Armor: #{item.armor}"
     end
-    puts "1.Equip"
-    puts "2.Leave"
-    case read_ch-48
-    when 1 then avatar.equip(item)
-    when 2 then 
-    else show_status(avatar)
+    if(call == 1)
+      puts "1.Equip"
+      puts "2.Leave"
+      case read_ch-48
+      when 1 then avatar.equip(item)
+      when 2 then 
+      else show_status(avatar)
+      end
+    elsif(call == 2)
+      puts "1.Sell for #{item.price/2}"
+      puts "2.Leave"
+      case read_ch-48
+      when 1 then @shop.sell_item(avatar,item)
+      when 2 then 
+      else show_status(avatar)
+      end
     end
   end
 #------Main menu  
@@ -195,7 +207,7 @@ class Ui
     when 3 then shop(avatar, @world.citys[avatar.current_city].shop)
     when 4 then inn(avatar, @world.citys[avatar.current_city].inn)
     when 5 then show_stats(avatar)
-    when 6 then show_inventory(avatar)
+    when 6 then show_inventory(avatar,1)
     when 7 then @world.exit
     end
   end
@@ -215,19 +227,39 @@ class Ui
   def shop(avatar,name)
     clear_console
     puts "Welcome to #{name}"
+    puts "1.Buy item"
+    puts "2.Sell item"
+    puts "3.Leave"
+    case read_ch-48
+    when 1 then buy_shop(avatar)
+    when 2 then sell_shop(avatar)
+    when 3 then go_to_world(avatar)
+    else shop(avatar,name)
+    end
+  end
+  
+  def buy_shop(avatar)
+    clear_console
     puts "1. Buy sword."
     puts "2. Buy bow."
     puts "3. Buy magic staff."
     puts "4. Buy armor"
-    puts "5. Leave."
+    puts "5. Go back."
     case read_ch-48
     when 1 then @shop.item(avatar, "sword")
     when 2 then @shop.item(avatar, "bow")
     when 3 then @shop.item(avatar, "staff")
     when 4 then @shop.item(avatar, "armor")
-    when 5 then go_to_world(avatar)
+    when 5 then shop(avatar)
     else shop(avatar, name)
     end
+  end
+  
+  def sell_shop(avatar)
+    clear_console
+    puts "Select item to sell:"
+    show_inventory(avatar,2)
+    
   end
   
   def wilds(avatar,city)
@@ -268,7 +300,10 @@ class Ui
   end
   
   def go_to_area(avatar,area)
-   
+    if(area[:monsters].size != 0)
+      monster = area[:monsters][Random.new.rand(0..area[:monsters].size-1)]
+      @world.fight.fight(avatar, monster)
+    end
   end
   
 #------Shop menu  
@@ -307,7 +342,11 @@ class Ui
     clear_console
     item_list.each_with_index{|x,y| puts "#{y+1}. #{x.name}"}
     puts "#{item_list.size + 1}. Leave shop."
-    read_ch-48
+    c = read_ch-48
+    until (item_list.size+1>= c && c >= 0)
+      c = read_ch-48
+    end
+    c
   end
 
 #------Fight menu  
@@ -315,13 +354,14 @@ class Ui
   def winner_msg(avatar)
     puts "You have WON the battle!"
     puts "Press any key to return to town."
+    puts "Don`t forget to visit inn to rest and heal your wounds."
     read_ch
   end
   
   def looser_msg(avatar)
     puts "You have LOST the battle."
     puts "Press any key to return to town."
-    puts "Don`t forget to visit inn to heal your wounds."
+    puts "Don`t forget to visit inn to rest and heal your wounds."
     read_ch
   end
   

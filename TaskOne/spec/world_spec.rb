@@ -68,34 +68,6 @@ describe World do
     end
   end
   
-  describe "level up" do
-    describe "experience for level" do
-      it "should return 50 for level 2" do
-        @world.experience_for_level(@avatar).should == 41
-      end
-        
-      it "should return 100 for level 3" do
-        @avatar.level = 2
-        @world.experience_for_level(@avatar).should == 100
-      end
-    end
-    
-    describe "check level up" do
-      it "should set avatar`s level to 2" do
-        @avatar.exp = 100
-        @world.check_lvlup(@avatar)
-        @avatar.level.should == 2
-      end
-      
-      it "should set avatar`s level to 10" do
-        @avatar.level = 9
-        @avatar.exp = 5000
-        @world.check_lvlup(@avatar)
-        @avatar.level.should == 10
-      end
-    end
-  end
-  
   describe "menu" do
     describe "exit" do
       it "should set program to exit" do
@@ -116,7 +88,7 @@ describe World do
         @avatar.avatar_class = 1
         @interface.should_receive(:login).and_return(@avatar)
         @interface.stub(:clear_console)
-        @world.should_receive(:check_lvlup)
+        @avatar.should_receive(:check_lvlup)
         @interface.should_receive(:go_to_world)
         @avatar.should_receive(:save)
         @world.exit

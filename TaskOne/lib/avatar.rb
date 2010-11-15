@@ -24,15 +24,25 @@ class Avatar < Entity
     
   
   def backpack_init(backpack)
-    if(backpack == nil)
-      backpack = []
-    end
-    backpack.collect!{|x| Item.new("data/item/#{Item.find_file_name(x)}.yml")} 
+    backpack.collect!{|x| Item.new("data/item/#{Item.find_file_name(x)}.yml")}
   end
   
   def save
     YamlManage.save_char(to_hash)
   end
+  
+  def experience_for_level
+    next_level = @level + 1
+    (next_level ** 3) + ((next_level + 1) ** 3) + (next_level * 3)
+  end
+  
+  def check_lvlup
+    if(experience_for_level<=exp)
+      @exp = 0
+      @level = @level + 1
+    end
+  end
+  
   
   def equip(item)
     type = item.item_class
@@ -40,15 +50,14 @@ class Avatar < Entity
       if(@eq_weapon != nil)
         @backpack.push(@eq_weapon)
       end
-      @eq_weapon = item.clone
+      @eq_weapon = item
       @backpack.delete(item)
     elsif(type == "armor")
       if(@eq_armor != nil)
         @backpack.push(@eq_armor)
       end
-      @eq_armor = item.clone
-      @backpack.delete(item)
       @eq_armor = item
+      @backpack.delete(item)
     end
     save
   end
