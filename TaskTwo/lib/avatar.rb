@@ -1,5 +1,6 @@
 class Avatar < ActiveRecord::Base
   has_many :avatar_items
+  belongs_to :city
   attr_accessor :backpack, :eq_weapon, :eq_armor
 
 
@@ -17,12 +18,8 @@ class Avatar < ActiveRecord::Base
   
   def backpack_init
     @backpack = []
-    info = Avatar_item.find_all_by_user(id)
-    if(info.class == Avatar_item)
-      info.amount.times{@backpack.push(Item.find_by_id(info.item))} 
-    elsif(info.class == Array)
-      info.each{|x| x.amount.times{@backpack.push(Item.find_by_id(x.item))}}
-    end
+    info = avatar_items
+    info.each{|x| x.amount.times{@backpack.push(Item.find_by_id(x.item_id))}}
   end
   
   def equipment_init
@@ -33,14 +30,14 @@ class Avatar < ActiveRecord::Base
       @eq_armor = Item.find_by_id(armor)
     end
   end
-  
+
   
   def equip(item)
     type = item.item_class
     if(type == "sword" || type == "bow" || type == "staff")
       if(weapon != nil)
         backpack.push(eq_weapon)
-        info = Avatar_item.find_or_create_by_item(weapon)
+        info = AvatarItem.find_or_create_by_item_id(weapon)
         if(info.amount == nil)
           info.amount = 0
         end
@@ -49,14 +46,14 @@ class Avatar < ActiveRecord::Base
       end
       @eq_weapon = item
       self.weapon = item.id
-      info = Avatar_item.find_by_item(item.id)
+      info = AvatarItem.find_by_item_id(item.id)
       info.amount -= 1
       info.save
       backpack.delete_at(backpack.index(item))
     elsif(type == "armor")
       if(armor != nil)
         backpack.push(eq_armor)
-        info = Avatar_item.find_or_create_by_item(armor)
+        info = AvatarItem.find_or_create_by_item_id(armor)
         if(info.amount == nil)
           info.amount = 0
         end
@@ -65,7 +62,7 @@ class Avatar < ActiveRecord::Base
       end
       @eq_armor = item
       self.armor = item.id
-      info = Avatar_item.find_by_item(item.id)
+      info = AvatarItem.find_by_item_id(item.id)
       info.amount -= 1
       info.save
       
@@ -83,7 +80,7 @@ class Avatar < ActiveRecord::Base
       @eq_armor = nil
       self.armor = nil
     end
-    info = Avatar_item.find_by_item(item.id)
+    info = AvatarItem.find_by_item_id(item.id)
     info.amount += 1
     info.save
     backpack.push(item)

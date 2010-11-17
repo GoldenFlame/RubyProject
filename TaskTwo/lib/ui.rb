@@ -202,33 +202,32 @@ class Ui
     puts "5. View your stats."
     puts "6. View your inventory."
     puts "7. Exit game"
-    c = City.find_by_id(avatar.current_city)
     case read_ch-48
     when 1 then arena(avatar)
     when 2 then wilds(avatar)
-    when 3 then shop(avatar, c.shop)
-    when 4 then inn(avatar, c.inn)
+    when 3 then shop(avatar)
+    when 4 then inn(avatar)
     when 5 then show_stats(avatar)
     when 6 then show_inventory(avatar,1)
     when 7 then @world.exit
     end
   end
   
-  def inn(avatar,name)
+  def inn(avatar)
     clear_console
-    puts "Welcome to #{name}"
+    puts "Welcome to #{avatar.city.inn}"
     puts "1.Rest and regain your strength."
     puts "2.Leave."
     case read_ch-48
     when 1 then @world.rest(avatar)
     when 2 then go_to_world(avatar)
-    else inn(avatar, name)
+    else inn(avatar)
     end
   end
   
-  def shop(avatar,name)
+  def shop(avatar)
     clear_console
-    puts "Welcome to #{name}"
+    puts "Welcome to #{avatar.city.shop}"
     puts "1.Buy item"
     puts "2.Sell item"
     puts "3.Leave"
@@ -236,7 +235,7 @@ class Ui
     when 1 then buy_shop(avatar)
     when 2 then sell_shop(avatar)
     when 3 then go_to_world(avatar)
-    else shop(avatar,name)
+    else shop(avatar)
     end
   end
   
@@ -253,7 +252,7 @@ class Ui
     when 3 then @shop.item(avatar, "staff")
     when 4 then @shop.item(avatar, "armor")
     when 5 then shop(avatar)
-    else shop(avatar, name)
+    else shop(avatar)
     end
   end
   
@@ -266,14 +265,14 @@ class Ui
   
   def wilds(avatar)
     clear_console
-    fa = FightArea.find_all_by_city(avatar.current_city)
+    areas = avatar.city.fight_areas
     if(avatar.hp>0)
-      if(fa != nil)
+      if(areas.size > 0)
         puts "Go to:"
-        fa.each_with_index{|x,y| puts "#{y+1}. #{x.name}"}
+        areas.each_with_index{|x,y| puts "#{y+1}. #{x.name}"}
         #fa.collect{|x| puts x.to_s+". "+city.fight_area[x.to_s.to_sym][:name]}
         c = read_ch-49
-        go_to_area(avatar,fa[c])    
+        go_to_area(avatar,areas[c])    
       else
         puts "There are no wild areas which you can visit now."
       end
@@ -292,7 +291,7 @@ class Ui
       puts "1.Fight random monster."
       puts "2.Go back."
       case read_ch-48
-      when 1 then @world.fight.fight(avatar, @world.find_arena_monster(@world.citys[avatar.current_city]))
+      when 1 then @world.fight.fight(avatar, @world.find_arena_monster(avatar.city))
       when 2 then go_to_world(avatar)
       else arena(avatar)
       end
@@ -304,9 +303,8 @@ class Ui
   end
   
   def go_to_area(avatar,area)
-    monsters = Monster.find_by_spawn_area(area.id)
-    if(monsters.size != 0)
-      monster = monsters[Random.new.rand(0..monsters.size-1)]
+    if(area.monsters.size != 0)
+      monster = area.monsters[Random.new.rand(0..area.monsters.size-1)]
       @world.fight.fight(avatar, monster)
     end
   end

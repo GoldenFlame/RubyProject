@@ -16,7 +16,7 @@ class Shop
   def buy_item(avatar, item)
     avatar.gold -= item.price
     avatar.backpack.push(item)
-    itemdb = Avatar_item.find_or_create_by_user_and_item(avatar.id, item.id)
+    itemdb = AvatarItem.find_or_create_by_avatar_id_and_item_id(avatar.id, item.id)
     if(itemdb.amount == nil)
       itemdb.amount = 0
     end
@@ -27,8 +27,8 @@ class Shop
   
   def sell_item(avatar,item)
     avatar.gold += item.price/2
-    avatar.backpack.delete(item)
-    itemdb = Avatar_item.find_by_user_and_item(avatar.id, item.id)
+    backpack.delete_at(backpack.index(item))
+    itemdb = Avatar_item.find_by_user_id_and_item_id(avatar.id, item.id)
     itemdb.amount -= 1
     itemdb.save
     avatar.save

@@ -1,7 +1,7 @@
 require 'yaml'
 require 'rubygems'  
 require 'active_record' 
-files = %w{entity city item monster avatar yaml_manage ui fight shop world avatar_item}
+files = %w{entity city item monster avatar yaml_manage ui fight shop world avatar_item fight_area}
 files.each{|x| require File.join(File.dirname(__FILE__), "lib/#{x}")}
 
 ActiveRecord::Base.establish_connection(  

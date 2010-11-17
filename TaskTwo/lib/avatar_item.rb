@@ -1,3 +1,2 @@
-class Avatar_item < ActiveRecord::Base  
-  belongs_to :avatar
+class AvatarItem < ActiveRecord::Base  
 end

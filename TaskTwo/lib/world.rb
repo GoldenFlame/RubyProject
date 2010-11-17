@@ -83,9 +83,9 @@ class World
 
 #---------
   def find_arena_monster(city)
-    if(city.fight_area_nr !=0)
-      area = Random.new.rand(1..city.fight_area_nr)
-      monsters = Monster.all
+    if(city.fight_areas.size !=0)
+      area = city.fight_areas[Random.new.rand(0..city.fight_areas.size-1)]
+      monsters = area.monsters
       if(monsters.size != 0)
         monsters[Random.new.rand(0..monsters.size-1)]
       end
