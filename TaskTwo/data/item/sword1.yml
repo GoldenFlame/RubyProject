@@ -1,0 +1,8 @@
+---
+:file: sword1
+:name: Wooden sword
+:item_class: sword
+:level: 1
+:damage_min: 10
+:damage_max: 20
+:price: 10

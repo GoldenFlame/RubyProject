@@ -1,0 +1,8 @@
+---
+:name: staff3
+:name: Warriors staff
+:item_class: staff
+:level: 10
+:damage_min: 60
+:damage_max: 120
+:price: 500

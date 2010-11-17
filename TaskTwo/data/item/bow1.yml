@@ -1,0 +1,8 @@
+---
+:file: bow1
+:name: Practice bow
+:item_class: bow
+:level: 1
+:damage_min: 10
+:damage_max: 50
+:price: 10

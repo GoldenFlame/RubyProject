@@ -1,0 +1,8 @@
+---
+:file: sword2
+:name: Simple sword
+:item_class: sword
+:level: 5
+:damage_min: 45
+:damage_max: 60
+:price: 100

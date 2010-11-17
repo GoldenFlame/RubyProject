@@ -1,0 +1,1 @@
+rspec spec\world_spec.rb spec\fight_spec.rb spec\shop_spec.rb spec\yaml_manage_spec.rb spec\avatar_spec.rb spec\city_spec.rb spec\entity_spec.rb spec\item_spec.rb spec\monster_spec.rb

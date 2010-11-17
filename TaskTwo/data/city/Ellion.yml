@@ -1,0 +1,11 @@
+--- 
+:name: Ellion
+:shop: Run Down Shop
+:inn: Wild Legs Inn
+:fight_area_nr: 1
+:fight_area:
+  :1:
+    :name: Contaminated forest
+    :monsters:
+      - Sin
+      - Blob

@@ -1,0 +1,22 @@
+--- 
+:name: nusa
+:password: nusa
+:avatar_class: 1
+:level: 3
+:exp: 80
+:current_city: 0
+:gold: 3084
+:base_dmg_min: 20
+:base_dmg_max: 30
+:max_hp: 100
+:hp: 87
+:max_mana: 10
+:mana: 10
+:backpack: 
+- Hunter bow
+- Hunter bow
+- Broad sword
+- Plate armor
+:equiped: 
+  :weapon: 
+  :armor: Plate armor
