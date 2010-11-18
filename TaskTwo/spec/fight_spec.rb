@@ -2,21 +2,26 @@ require File.dirname(__FILE__) + '/spec_helper.rb'
 SimpleCov.start
   describe "fight system" do
     before(:each) do
-      YamlManage.create_user("test","test")
-      @avatar = Avatar.new("data/user/test.yml")
-      @monster = Monster.new("data/monster/Sin.yml")
+      build :avatar
+      build :item_armor
+      build :item_weapon
+      build :item_armor2
+      build :item_weapon2
+      build :city
+      
+      @avatar.backpack_init
+      @monster = @city.fight_areas[0].monsters[0]
       @interface = Ui.new(nil)
       @fight = Fight.new(@interface)
     end
     describe "fight" do
       it "should initiate a fight with a monster sin" do
-        @avatar.stub!(:save).and_return == true
         @interface.stub!(:battle_info)
         @interface.stub!(:fight_menu)
         @interface.stub!(:clear_console)
         @fight.stub!(:attack).and_return(true)
         @fight.stub!(:check_fight_end).and_return(true)
-        @fight.fight(@avatar, 'sin').should == nil
+        @fight.fight(@avatar, @monster).should == nil
       end
     end
     
@@ -39,18 +44,18 @@ SimpleCov.start
     end
     
     describe "bonus" do
-      it "should give avatar a bonus of 30 exp points and 3 gold" do
+      it "should give avatar a bonus of 10 exp points and 3 gold" do
         a = mock("Random", {:rand => 3})
         Random.stub!(:new).and_return(a)
         @interface.stub(:winner_msg)
         @fight.player_prize( @avatar, @monster)
-        @avatar.exp.should == 30
+        @avatar.exp.should == 10
         @avatar.gold.should == 103
       end
     end
     
     describe "penalty" do
-      it "should decrease avatars exp by " do
+      it "should decrease avatars gold by 3 " do
         a = mock("Random", {:rand => 30})
         Random.stub!(:new).and_return(a)
         @interface.stub(:looser_msg)
@@ -67,7 +72,7 @@ SimpleCov.start
         a = mock("Random", {:rand => 1})
         Random.stub!(:new).and_return(a)
         @fight.attack(@avatar, @monster)
-        @monster.hp.should == 74
+        @monster.hp.should == 99
       end
       
       it "should decrease monsters health points by 2 when avatar has a weapon" do
@@ -75,9 +80,9 @@ SimpleCov.start
         #therefor mock object a returning value 1 instead of random
         a = mock("Random", {:rand => 2})
         Random.stub!(:new).and_return(a)
-        @avatar.eq_weapon = Item.new("data/item/sword1.yml")
+        @avatar.eq_weapon = @item_weapon
         @fight.attack(@avatar, @monster)
-        @monster.hp.should == 73
+        @monster.hp.should == 98
       end
       
       it "should decrease avatars health points by 10 when avatar has no armor" do
@@ -92,7 +97,8 @@ SimpleCov.start
         a = mock("Random", {:rand => 50})
         Random.stub!(:new).and_return(a)
         @avatar.hp = 100
-        @avatar.equip(Item.new("data/item/armor1.yml"))
+        
+        @avatar.eq_armor = @item_armor
         @fight.attack(@monster, @avatar)
         @avatar.hp.should == 52
       end
@@ -103,7 +109,7 @@ SimpleCov.start
         @avatar.base_dmg_max = 10
         @fight.skill(@avatar, @monster)
         
-        @monster.hp.should == 55
+        @monster.hp.should == 80
       end
     end
     
@@ -114,7 +120,4 @@ SimpleCov.start
         @avatar.hp.should be_equal(10)
       end
     end
-  after(:all) do
-    File.delete("data/user/test.yml") if File.exists?("data/user/test.yml")
-  end
   end

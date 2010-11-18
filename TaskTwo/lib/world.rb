@@ -11,10 +11,6 @@ class World
     @shop_inst = Shop.new(@interface, @items)
   end
   
-  def load_items
-    Dir.glob("data/item/*").collect{|x| Item.new(x)}
-  end
-  
   def exit
     @exitcmd = true
   end  
@@ -101,7 +97,7 @@ class World
       :avatar_class => 0,
       :level => 1,
       :exp => 0,
-      :current_city => 0,
+      :city_id => 0,
       :gold => 100,
       :base_dmg_min => 0,
       :base_dmg_max => 0,

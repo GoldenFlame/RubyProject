@@ -270,7 +270,6 @@ class Ui
       if(areas.size > 0)
         puts "Go to:"
         areas.each_with_index{|x,y| puts "#{y+1}. #{x.name}"}
-        #fa.collect{|x| puts x.to_s+". "+city.fight_area[x.to_s.to_sym][:name]}
         c = read_ch-49
         go_to_area(avatar,areas[c])    
       else

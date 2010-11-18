@@ -8,7 +8,7 @@ class Shop
   def item(avatar,item_class)
     items = @items.select{|x| x.item_class == item_class}
     c = @interface.item(items)
-    if(c != items.size+1)
+    if(c <= items.size+1)
       @interface.item_view(avatar, items[c-1])
     end
   end
@@ -27,8 +27,8 @@ class Shop
   
   def sell_item(avatar,item)
     avatar.gold += item.price/2
-    backpack.delete_at(backpack.index(item))
-    itemdb = Avatar_item.find_by_user_id_and_item_id(avatar.id, item.id)
+    avatar.backpack.delete_at(avatar.backpack.index(item))
+    itemdb = AvatarItem.find_by_avatar_id_and_item_id(avatar.id, item.id)
     itemdb.amount -= 1
     itemdb.save
     avatar.save

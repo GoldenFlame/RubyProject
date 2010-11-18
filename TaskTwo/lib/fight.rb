@@ -4,8 +4,7 @@ class Fight
   def initialize(interface)
     @interface = interface
   end
-  def fight(avatar, enemy)
-    monster = enemy
+  def fight(avatar, monster)
     defeat = false
     while(!defeat)
       @interface.clear_console

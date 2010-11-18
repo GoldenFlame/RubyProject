@@ -1,23 +1,31 @@
 require File.dirname(__FILE__) + '/spec_helper.rb'
 
 describe World do
-  before(:all) do 
+
+  
+  before(:each) do
+    
+    build :avatar
+    build :item_armor
+    build :item_weapon
+    build :item_armor2
+    build :item_weapon2
+    build :city
+    @avatar.avatar_items.create(:amount => 1, :item_id => @item_armor.id)
+    @avatar.avatar_items.create(:amount => 1, :item_id => @item_weapon.id)
+    @avatar.avatar_items.create(:amount => 1, :item_id => @item_armor2.id)
+    @avatar.avatar_items.create(:amount => 1, :item_id => @item_weapon2.id)
+    @avatar.backpack_init
+    
     @world = World.new
     @interface = @world.interface
     @shop = @world.shop_inst
   end
   
-  before(:each) do
-    @world = World.new
-    @interface = @world.interface
-    YamlManage.create_user("test","test")
-    @avatar = Avatar.new("data/user/test.yml")
-  end
-  
   describe "Register" do
     it "should register new avatar" do
-      YamlManage.should_receive(:create_user).and_return(true)
-      @world.reg("new","user")
+      @world.reg("test","user")
+      Avatar.find_by_name_and_password("test", "user").should_not == nil
     end
   end
   
@@ -99,12 +107,10 @@ describe World do
     
       
     describe "find item" do
-      it "should find item by given name and return its data" do
-        item = Item.new("data/item/sword1.yml")
-        result = @world.find_item('Wooden sword')
-        result.class.should == item.class
-        result.name.should == item.name
-        result.item_class.should == item.item_class
+      it "should find item by name test sword and return its data" do
+        result = @world.find_item('test sword')
+        result.name.should == @item_weapon.name
+        result.item_class.should == @item_weapon.item_class
       end
     end
   end
@@ -121,10 +127,10 @@ describe World do
   end
   
   describe "arena monster seach" do
-    it "should find monster from area 1 Blob in city Ellion" do
-      a = mock("Random", {:rand => 1})
+    it "should find monster blob" do
+      a = mock("Random", {:rand => 0})
         Random.stub!(:new).and_return(a)
-      @world.find_arena_monster(@world.citys[0]).should == "Blob"
+      @world.find_arena_monster(@city).name.should == "blob"
     end
   end
   
