@@ -5,7 +5,7 @@
 :level: 3
 :exp: 80
 :current_city: 0
-:gold: 3084
+:gold: 3074
 :base_dmg_min: 20
 :base_dmg_max: 30
 :max_hp: 100
@@ -17,6 +17,7 @@
 - Hunter bow
 - Broad sword
 - Plate armor
+- Wooden sword
 :equiped: 
   :weapon: 
   :armor: Plate armor
