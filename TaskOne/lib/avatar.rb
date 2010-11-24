@@ -8,6 +8,28 @@ class Avatar < Entity
     @eq_weapon, @eq_armor = equipment_init(data[:equiped][:weapon], data[:equiped][:armor])
   end
   
+  def attack(enemy)
+    if(eq_weapon != nil)
+      dmg = Random.new.rand(@base_dmg_min+@eq_weapon.damage_min..@base_dmg_max+@eq_weapon.damage_max)
+    else
+      dmg = Random.new.rand(@base_dmg_min..@base_dmg_max)
+    end
+    enemy.hp -= dmg
+  end
+  
+  def skill_attack(enemy)
+    if(eq_weapon != nil)
+      dmg = Random.new.rand(@base_dmg_min+@eq_weapon.damage_min..@base_dmg_max+@eq_weapon.damage_max)
+    else
+      dmg = Random.new.rand(@base_dmg_min..@base_dmg_max)
+    end
+    enemy.hp -= dmg*2
+  end
+  
+  def heal
+    @hp += 10
+  end
+  
   def equipment_init(weapon, armor)
     if(weapon != nil)
       eq_weapon = Item.new("data/item/#{Item.find_file_name(weapon)}.yml")

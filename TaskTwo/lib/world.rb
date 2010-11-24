@@ -2,14 +2,46 @@ class World
   attr_reader :fight, :interface, :shop_inst, :citys, :items, :exitcmd
   def initialize 
     @exitcmd = false
-    #world = YamlManage.load_file("data/world.yml")
-    #cities_number = world[:cities]
     @citys = City.all
     @interface = Ui.new(self)
-    @fight = Fight.new(@interface)
-    @items = Item.all
-    @shop_inst = Shop.new(@interface, @items)
+    
   end
+  
+  def start_fight(avatar,monster)
+    defeat = false
+    while(!defeat)
+      @interface.clear_console
+      @interface.battle_info(avatar, monster)
+      @interface.fight_menu(avatar, monster)
+      monster.attack(avatar)
+      defeat = check_fight_end(avatar,monster)
+      avatar.save
+    end
+  end
+  
+  def check_fight_end(avatar, monster)
+    defeat = false
+    if(monster.hp <= 0)
+      defeat = true
+      player_prize(avatar, monster)
+    elsif(avatar.hp <= 0)
+      defeat = true
+      player_penalty(avatar, monster)
+    end
+    return defeat
+  end
+  
+  def player_prize(avatar, enemy)
+    @interface.winner_msg(avatar)
+    avatar.exp += enemy.exp_bonus
+    avatar.gold += Random.new.rand(0..enemy.gold_max)
+  end
+  
+  def player_penalty(avatar,enemy)
+    @interface.looser_msg(avatar)
+    avatar.gold -= Random.new.rand(0..enemy.gold_max) / 10
+  end 
+  
   
   def exit
     @exitcmd = true
@@ -92,12 +124,13 @@ class World
   
   
   def reg(name,pass)
+    city = City.find_by_name("Ellion").id
     Avatar.create(:name => name.chomp,
       :password => pass.chomp, 
       :avatar_class => 0,
       :level => 1,
       :exp => 0,
-      :city_id => 0,
+      :city_id => city,
       :gold => 100,
       :base_dmg_min => 0,
       :base_dmg_max => 0,
@@ -112,18 +145,6 @@ class World
     Avatar.find_by_name(name.chomp)
   end
     
-#---------  
-  def find_item(item_name)
-    item_return = nil
-    @items.each do |x|
-      if(x.name == item_name)
-        item_return = x
-        break
-      end
-    end
-    return item_return
-  end
-  
-  
+#--------- 
  
 end

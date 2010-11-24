@@ -1,10 +1,4 @@
 require File.dirname(__FILE__) + '/spec_helper.rb'
-require File.dirname(__FILE__) + '/../matchers/be_readable.rb'
-require File.dirname(__FILE__) + '/../matchers/be_updated.rb'
-
-RSpec.configure do |config|  
-  config.include(Matchers)  
-end
 
 describe "Yaml File system" do
   describe "create char" do
@@ -16,15 +10,18 @@ describe "Yaml File system" do
     
   describe "load any game file" do
     it "should load user game file" do
-      YamlManage.load_file("data/user/test.yml").should be_readable  
+      expected = {:name => "test", :level => 1}
+      YamlManage.load_file("data/user/test.yml").should have_hash_values(expected)  
     end
     
     it "should load item file" do
-      YamlManage.load_file("data/item/sword1.yml").should be_readable
+      expected = {:name => 'Simple sword', :level => 5}
+      YamlManage.load_file("data/item/sword2.yml").should have_hash_values(expected)  
     end
     
     it "should load monster file" do
-      YamlManage.load_file("data/monster/sin.yml").should be_readable
+      expected = {:name => 'Sin', :level => 1}
+      YamlManage.load_file("data/monster/sin.yml").should have_hash_values(expected)  
     end
   end
     
@@ -39,7 +36,7 @@ describe "Yaml File system" do
         :current_city => 1,
         :gold => 13200};
       YamlManage.save_char(test2)
-      YamlManage.load_file("data/user/test.yml").should be_updated(before)
+      YamlManage.load_file("data/user/test.yml").should_not == before
     end
   end
   

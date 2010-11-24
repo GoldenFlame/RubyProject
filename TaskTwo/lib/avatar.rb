@@ -3,6 +3,32 @@ class Avatar < ActiveRecord::Base
   belongs_to :city
   attr_accessor :backpack, :eq_weapon, :eq_armor
 
+  def travel(citya)
+    self.city = citya
+    self.save
+  end
+
+  def attack(enemy)
+    if(eq_weapon != nil)
+      dmg = Random.new.rand(base_dmg_min+eq_weapon.damage_min..base_dmg_max+eq_weapon.damage_max)
+    else
+      dmg = Random.new.rand(base_dmg_min..base_dmg_max)
+    end
+    enemy.hp -= dmg
+  end
+  
+  def skill_attack(enemy)
+    if(eq_weapon != nil)
+      dmg = Random.new.rand(base_dmg_min+eq_weapon.damage_min..base_dmg_max+eq_weapon.damage_max)
+    else
+      dmg = Random.new.rand(base_dmg_min..base_dmg_max)
+    end
+    enemy.hp -= dmg*2
+  end
+  
+  def heal
+    self.hp += 10
+  end
 
   def experience_for_level
     next_level = level + 1
@@ -29,6 +55,27 @@ class Avatar < ActiveRecord::Base
     if(armor != nil)
       @eq_armor = Item.find_by_id(armor)
     end
+  end
+  
+  def buy_item(item)
+    self.gold -= item.price
+    @backpack.push(item)
+    itemdb = AvatarItem.find_or_create_by_avatar_id_and_item_id(self.id, item.id)
+    if(itemdb.amount == nil)
+      itemdb.amount = 0
+    end
+    itemdb.amount += 1
+    itemdb.save
+    self.save
+  end
+  
+  def sell_item(item)
+    self.gold += item.price/2
+    backpack.delete_at(backpack.index(item))
+    itemdb = AvatarItem.find_by_avatar_id_and_item_id(self.id, item.id)
+    itemdb.amount -= 1
+    itemdb.save
+    self.save
   end
 
   

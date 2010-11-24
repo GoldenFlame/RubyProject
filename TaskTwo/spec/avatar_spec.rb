@@ -8,6 +8,9 @@ describe "avatar" do
     build :item_weapon
     build :item_armor2
     build :item_weapon2
+    build :city
+
+    @monster = @city.fight_areas[0].monsters[0]
 
     
     @avatar.avatar_items.create(:amount => 1, :item_id => @item_armor.id)
@@ -16,6 +19,73 @@ describe "avatar" do
     @avatar.avatar_items.create(:amount => 1, :item_id => @item_weapon2.id)
     @avatar.backpack_init
   end
+  describe "buy item" do
+    it "should add two swords and armor to avatars backpack and decrease gold amount by 30" do
+      @avatar.gold = 1000
+      @avatar.buy_item(@item_weapon)
+      @avatar.buy_item(@item_weapon)
+      @avatar.buy_item(@item_armor)
+      @avatar.gold.should == 970
+      weapon = AvatarItem.find_by_avatar_id_and_item_id(@avatar.id, @item_weapon.id)
+      armor = AvatarItem.find_by_avatar_id_and_item_id(@avatar.id, @item_armor.id)
+      weapon.amount.should == 3
+      armor.amount.should == 2
+      @avatar.backpack.should have(8).items
+      @avatar.backpack.should include(@item_armor)
+    end      
+  end
+  
+  describe "sell item" do
+    it "should sell test sword and refund half the price" do      
+      @avatar.buy_item(@item_weapon)
+      before = AvatarItem.find_or_create_by_avatar_id_and_item_id(@avatar.id, @item_weapon.id)
+      @avatar.gold = 1000
+      @avatar.sell_item(@item_weapon)
+      @avatar.gold.should == 1005
+      after = AvatarItem.find_or_create_by_avatar_id_and_item_id(@avatar.id, @item_weapon.id)
+      after.amount.should == before.amount - 1
+    end
+  end
+  
+      describe "attack" do
+      
+      it "should decrease monsters health points by 1 when avatar has no weapon" do
+        #damage is calculated by taking random number in range of avataracters min damage and max damage
+        #therefor mock object a returning value 1 instead of random
+        a = mock("Random", {:rand => 1})
+        Random.stub!(:new).and_return(a)
+        @avatar.attack(@monster)
+        @monster.hp.should == 99
+      end
+      
+      it "should decrease monsters health points by 2 when avatar has a weapon" do
+        #damage is calculated by taking random number in range of avataracters min damage and max damage
+        #therefor mock object a returning value 1 instead of random
+        a = mock("Random", {:rand => 2})
+        Random.stub!(:new).and_return(a)
+        @avatar.eq_weapon = @item_weapon
+        @avatar.attack(@monster)
+        @monster.hp.should == 98
+      end
+    end
+    
+    describe "skill attack" do
+      it "should decrease defenders health points by 20" do
+        a = mock("Random", {:rand => 10})
+        Random.stub!(:new).and_return(a)
+        @avatar.base_dmg_max = 10
+        @avatar.skill_attack(@monster)
+        @monster.hp.should == 80
+      end
+    end
+    
+    describe "heal" do
+      it "should increase avatars health points by 10" do
+        @avatar.hp = 0
+        @avatar.heal
+        @avatar.hp.should be_equal(10)
+      end
+    end
   
   describe "backpack initialization" do
     it"should load five avatar items from database" do

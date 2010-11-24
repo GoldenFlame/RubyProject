@@ -4,7 +4,6 @@ describe World do
 
   
   before(:each) do
-    
     build :avatar
     build :item_armor
     build :item_weapon
@@ -16,14 +15,62 @@ describe World do
     @avatar.avatar_items.create(:amount => 1, :item_id => @item_armor2.id)
     @avatar.avatar_items.create(:amount => 1, :item_id => @item_weapon2.id)
     @avatar.backpack_init
+    @monster = @city.fight_areas[0].monsters[0]
     
     @world = World.new
     @interface = @world.interface
     @shop = @world.shop_inst
   end
   
+  describe "fight system" do
+    describe "check if someone was defeated and give bonus or penalty to player" do
+      it "should give player penalty" do
+        @avatar.hp = 0
+        @world.stub!(:player_penalty)
+        @world.check_fight_end(@avatar, @monster).should == true
+      end
+      
+      it "should give player a bonus" do
+        @monster.hp = 0
+        @world.stub!(:player_prize)
+        @world.check_fight_end(@avatar, @monster).should == true
+      end
+      
+      it "should do nothing" do
+        @world.check_fight_end(@avatar, @monster).should == false
+      end
+    end
+    
+    describe "bonus" do
+      it "should give avatar a bonus of 10 exp points and 3 gold" do
+        a = mock("Random", {:rand => 3})
+        Random.stub!(:new).and_return(a)
+        @interface.stub(:winner_msg)
+        @world.player_prize( @avatar, @monster)
+        @avatar.exp.should == 10
+        @avatar.gold.should == 103
+      end
+    end
+    
+    describe "penalty" do
+      it "should decrease avatars gold by 3 " do
+        a = mock("Random", {:rand => 30})
+        Random.stub!(:new).and_return(a)
+        @interface.stub(:looser_msg)
+        @world.player_penalty(@avatar, @monster)
+        @avatar.gold.should == 97
+      end
+    end
+    
+
+  end
+  
+  
+  
   describe "Register" do
     it "should register new avatar" do
+      a = mock("City", {:id => @city.id})
+      City.stub!(:find_by_name).and_return(a)
       @world.reg("test","user")
       Avatar.find_by_name_and_password("test", "user").should_not == nil
     end
@@ -106,13 +153,6 @@ describe World do
     end
     
       
-    describe "find item" do
-      it "should find item by name test sword and return its data" do
-        result = @world.find_item('test sword')
-        result.name.should == @item_weapon.name
-        result.item_class.should == @item_weapon.item_class
-      end
-    end
   end
   
   
@@ -128,6 +168,7 @@ describe World do
   
   describe "arena monster seach" do
     it "should find monster blob" do
+      
       a = mock("Random", {:rand => 0})
         Random.stub!(:new).and_return(a)
       @world.find_arena_monster(@city).name.should == "blob"

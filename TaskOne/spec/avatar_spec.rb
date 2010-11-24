@@ -7,25 +7,29 @@ describe "avatar" do
   
   before(:each) do
     @avatar = Avatar.new('data/user/test.yml')
+    @monster = Monster.new("data/monster/Sin.yml")
   end
   
   describe "Initialize" do
     it"should load file when object created" do
-      @avatar.name.should == 'test'
-      @avatar.password.should == 'test'
-      @avatar.avatar_class.should == 0
-      @avatar.level.should == 1
-      @avatar.exp.should == 0
-      @avatar.current_city.should == 0
-      @avatar.gold.should == 100
-      @avatar.base_dmg_min.should == 0
-      @avatar.base_dmg_max.should == 0
-      @avatar.max_hp.should == 10
-      @avatar.hp.should == 10
-      @avatar.max_mana.should == 10
-      @avatar.mana.should == 10
+      expected = {:name => 'test',
+        :password => 'test',
+        :avatar_class => 0,
+        :level => 1,
+        :exp => 0,
+        :current_city => 0,
+        :gold => 100,
+        :base_dmg_min => 0,
+        :base_dmg_max => 0,
+        :max_hp => 10,
+        :hp => 10,
+        :max_mana => 10,
+        :mana => 10}
+      @avatar.should be_loaded_with(expected)
     end
   end
+  
+  
   
   describe "backpack initialization" do
     it"should load avatars items" do
@@ -44,16 +48,64 @@ describe "avatar" do
   end
   
   describe "equipment initialization" do
-    it"should load item Wooden sword and no armor" do
+    it"should load item Wooden sword" do
       weapon, armor = @avatar.equipment_init('Wooden sword', nil)
       weapon.name.should == 'Wooden sword'
-      armor.should == nil
+    end
+    
+    it"should load item Leather armor" do
+      weapon, armor = @avatar.equipment_init(nil, "Leather armor")
+      armor.name.should == 'Leather armor'
     end
     
     it"should not load any items" do
       weapon, armor = @avatar.equipment_init(nil, nil)
       weapon.should == nil
       armor.should == nil
+    end
+  end
+  
+  
+  describe "attack" do
+    it "should decrease monsters health points by 1 when avatar has no weapon" do
+      #damage is calculated by taking random number in range of avataracters min damage and max damage
+      #therefor mock object a returning value 1 instead of random
+      a = mock("Random", {:rand => 1})
+      Random.stub!(:new).and_return(a)
+      @avatar.attack(@monster)
+      @monster.hp.should == 74
+    end
+      
+    it "should decrease monsters health points by 2 when avatar has a weapon" do
+      #damage is calculated by taking random number in range of avataracters min damage and max damage
+      #therefor mock object a returning value 1 instead of random
+      a = mock("Random", {:rand => 2})
+      Random.stub!(:new).and_return(a)
+      @avatar.eq_weapon = Item.new("data/item/sword1.yml")
+      @avatar.attack(@monster)
+      @monster.hp.should == 73
+    end
+      
+      
+  end
+    
+  describe "skill attack" do
+    it "should decrease defenders health points by 20" do
+      a = mock("Random", {:rand => 2})
+      Random.stub!(:new).and_return(a)  
+      @avatar.base_dmg_min = 10
+      @avatar.base_dmg_max = 10
+      @avatar.skill_attack(@monster)
+      
+      @monster.hp.should == 71
+    end
+  end
+    
+  describe "heal" do
+    it "should increase avatars health points by 10" do
+    @avatar.hp = 0
+    @avatar.heal
+    @avatar.hp.should be_equal(10)
     end
   end
   
@@ -104,12 +156,11 @@ describe "avatar" do
       @avatar.eq_armor.should == item
     end
     
-    it"should put equiped leather armor into backpack and equip Chainmail armor" do
+    it"should put equiped leather armor into backpack" do
       leather_armor = Item.new("data/item/armor1.yml")
       chainmail_armor = Item.new("data/item/armor2.yml")
       @avatar.eq_armor = leather_armor
       @avatar.equip(chainmail_armor)
-      @avatar.eq_armor.should == chainmail_armor
       @avatar.backpack.should include(leather_armor)
     end
     
@@ -118,7 +169,6 @@ describe "avatar" do
       bow = Item.new("data/item/bow1.yml")
       @avatar.eq_weapon = bow
       @avatar.equip(sword)
-      @avatar.eq_weapon.should == sword
       @avatar.backpack.should include(bow)
     end
   end
@@ -127,7 +177,6 @@ describe "avatar" do
     it"should disequip Leather armor" do
       item = Item.new("data/item/armor1.yml")
       @avatar.equip(item)
-      @avatar.eq_armor.should == item
       @avatar.disequip(item)
       @avatar.backpack.should include(item)
       @avatar.eq_armor.should == nil
@@ -136,31 +185,43 @@ describe "avatar" do
     it"should disequip Wooden sword" do
       item = Item.new("data/item/sword1.yml")
       @avatar.equip(item)
-      @avatar.eq_weapon.should == item
       @avatar.disequip(item)
-      @avatar.backpack.should include(item)
       @avatar.eq_weapon.should == nil
     end
+    
+    it"should include disequiped Leather armor in backpack" do
+      item = Item.new("data/item/armor1.yml")
+      @avatar.equip(item)
+      @avatar.disequip(item)
+      @avatar.backpack.should include(item)
+    end
+    
+    it"should include disequiped sword in backpack" do
+      item = Item.new("data/item/sword1.yml")
+      @avatar.equip(item)
+      @avatar.disequip(item)
+      @avatar.backpack.should include(item)
+    end
+    
   end
   
   describe "to hash" do
     it "should convert avatar object to hash" do
       @avatar.eq_weapon = Item.new("data/item/sword1.yml")
-      hash = @avatar.to_hash
-      hash[:name].should == 'test'
-      hash[:password].should == 'test'
-      hash[:avatar_class].should == 0
-      hash[:level].should == 1
-      hash[:exp].should == 0
-      hash[:current_city].should == 0
-      hash[:gold].should == 100
-      hash[:base_dmg_min].should == 0
-      hash[:base_dmg_max].should == 0
-      hash[:max_hp].should == 10
-      hash[:hp].should == 10
-      hash[:max_mana].should == 10
-      hash[:mana].should == 10
-      hash[:equiped][:weapon].should == 'Wooden sword'
+      expected = {:name => 'test',
+        :password => 'test',
+        :avatar_class => 0,
+        :level => 1,
+        :exp => 0,
+        :current_city => 0,
+        :gold => 100,
+        :base_dmg_min => 0,
+        :base_dmg_max => 0,
+        :max_hp => 10,
+        :hp => 10,
+        :max_mana => 10,
+        :mana => 10}
+      @avatar.to_hash.should have_hash_values(expected)
     end
   end
   after(:all) do

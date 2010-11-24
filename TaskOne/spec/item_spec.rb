@@ -3,13 +3,13 @@ SimpleCov.start
 describe "item" do
   describe "Initialize" do
     it"should load file when object created" do
-      test = Item.new('data/item/sword1.yml')
-      test.name.should == 'Wooden sword'
-      test.item_class.should == 'sword'
-      test.level.should == 1
-      test.damage_min.should == 10
-      test.damage_max.should == 20
-      test.price.should == 10
+      expected = {:name => 'Wooden sword',
+      :item_class => 'sword',
+      :level => 1,
+      :damage_min => 10,
+      :damage_max => 20,
+      :price => 10}
+      Item.new('data/item/sword1.yml').should be_loaded_with(expected)
     end
   end
   describe "item filename finder" do

@@ -1,15 +1,51 @@
 class World
-  attr_reader :fight, :interface, :shop_inst, :citys, :items, :exitcmd
+  attr_reader :interface, :shop_inst, :citys, :items, :exitcmd
   def initialize 
     @exitcmd = false
     world = YamlManage.load_file("data/world.yml")
     cities_number = world[:cities]
     @citys = (1..cities_number.to_i).collect{|x| City.new("data/city/#{world[x.to_s.to_sym]}.yml")}
     @interface = Ui.new(self)
-    @fight = Fight.new(@interface)
     @items = load_items
     @shop_inst = Shop.new(@interface, @items)
   end
+  
+  def start_fight(avatar,enemy)
+    monster = Monster.new("data/monster/#{enemy}.yml")
+    defeat = false
+    while(!defeat)
+      @interface.clear_console
+      @interface.battle_info(avatar, monster)
+      @interface.fight_menu(avatar, monster)
+      monster.attack(avatar)
+      defeat = check_fight_end(avatar,monster)
+      avatar.save
+    end
+  end
+  
+  def check_fight_end(avatar, monster)
+    defeat = false
+    if(monster.hp <= 0)
+      defeat = true
+      player_prize(avatar, monster)
+    elsif(avatar.hp <= 0)
+      defeat = true
+      player_penalty(avatar, monster)
+    end
+    return defeat
+  end
+  
+  def player_prize(avatar, enemy)
+    @interface.winner_msg(avatar)
+    avatar.exp += enemy.exp_bonus
+    avatar.gold += Random.new.rand(0..enemy.gold_max)
+  end
+  
+  def player_penalty(avatar,enemy)
+    @interface.looser_msg(avatar)
+    avatar.gold -= Random.new.rand(0..enemy.gold_max) / 10
+  end 
+  
   
   def load_items
     Dir.glob("data/item/*").collect{|x| Item.new(x)}

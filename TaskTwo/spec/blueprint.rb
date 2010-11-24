@@ -35,9 +35,27 @@ end
 blueprint :item_armor2 do
   @item_armor2 = Item.create(:name => "test metal armor", :item_class => "armor", :price => 30,:armor => 10)
 end
+blueprint :city2 do
+  item = Item.create(:name => "test bow")
+  shopas = Shop.create(:name => "tada")
+  shop_itemas = ShopItem.create(:shop => shopas, :item => item)
+  @city2 = City.create(:name => "Leav")
+  @city2.shop = shopas
+  @city2.fight_areas.create(:name => "forest")
+  @city2.fight_areas[0].monsters.create(:name => "sin", 
+  :hp => 100, 
+  :base_dmg_min => 5, 
+  :base_dmg_max => 10,
+  :exp_bonus => 10,
+  :gold_max => 100)
+end
 
 blueprint :city do
+  item = Item.create(:name => "test bow")
+  shopas = Shop.create(:name => "sdas")
+  shop_itemas = ShopItem.create(:shop => shopas, :item => item)
   @city = City.create(:name => "Testion")
+  @city.shop = shopas
   @city.fight_areas.create(:name => "swamp")
   @city.fight_areas[0].monsters.create(:name => "blob", 
   :hp => 100, 

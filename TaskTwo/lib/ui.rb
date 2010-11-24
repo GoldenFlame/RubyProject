@@ -1,6 +1,5 @@
 require 'rbconfig'
 class Ui
-  @shop
   def initialize(world)
     @world = world
   end
@@ -20,7 +19,7 @@ class Ui
   
 #------Login menu
   def login
-    @shop = @world.shop_inst
+    avatar = @world.shop_inst
     clear_console
     puts "Welcome"
     puts "1.Register"
@@ -187,7 +186,7 @@ class Ui
       puts "1.Sell for #{item.price/2}"
       puts "2.Leave"
       case read_ch-48
-      when 1 then @shop.sell_item(avatar,item)
+      when 1 then avatar.sell_item(item)
       when 2 then 
       else show_status(avatar)
       end
@@ -195,22 +194,34 @@ class Ui
   end
 #------Main menu  
   def go_to_world(avatar)
+    puts "Welcome to #{avatar.city.name}"
     puts "1. Go to arena."
     puts "2. Go to the wilds."
     puts "3. Go to the shop."
     puts "4. Go to the inn."
-    puts "5. View your stats."
-    puts "6. View your inventory."
-    puts "7. Exit game"
+    puts "5. Travel"
+    puts "6. View your stats."
+    puts "7. View your inventory."
+    puts "8. Exit game"
     case read_ch-48
     when 1 then arena(avatar)
     when 2 then wilds(avatar)
     when 3 then shop(avatar)
     when 4 then inn(avatar)
-    when 5 then show_stats(avatar)
-    when 6 then show_inventory(avatar,1)
-    when 7 then @world.exit
+    when 5 then city_list(avatar)
+    when 6 then show_stats(avatar)
+    when 7 then show_inventory(avatar,1)
+    when 8 then @world.exit
     end
+  end
+  
+  def city_list(avatar)
+    City.all.each_with_index{|x,y| puts "#{y+1}. #{x.name}"}
+    c = -1
+    until (City.all.size>= c && c >= 0)
+      c = read_ch-49
+    end
+    avatar.travel(City.all[c])
   end
   
   def inn(avatar)
@@ -227,7 +238,7 @@ class Ui
   
   def shop(avatar)
     clear_console
-    puts "Welcome to #{avatar.city.shop}"
+    puts "Welcome to #{avatar.city.shop.name}"
     puts "1.Buy item"
     puts "2.Sell item"
     puts "3.Leave"
@@ -241,18 +252,27 @@ class Ui
   
   def buy_shop(avatar)
     clear_console
+
     puts "1. Buy sword."
     puts "2. Buy bow."
     puts "3. Buy magic staff."
     puts "4. Buy armor"
     puts "5. Go back."
     case read_ch-48
-    when 1 then @shop.item(avatar, "sword")
-    when 2 then @shop.item(avatar, "bow")
-    when 3 then @shop.item(avatar, "staff")
-    when 4 then @shop.item(avatar, "armor")
+    when 1 then item(avatar, "sword")
+    when 2 then item(avatar, "bow")
+    when 3 then item(avatar, "staff")
+    when 4 then item(avatar, "armor")
     when 5 then shop(avatar)
     else shop(avatar)
+    end
+  end
+  
+  def item(avatar,item_class)
+    item_list = avatar.city.shop.items.by_type(item_class)
+    c = item_display(item_list)
+    if(c < item_list.size+1)
+      item_view(avatar, item_list[c-1])
     end
   end
   
@@ -290,7 +310,7 @@ class Ui
       puts "1.Fight random monster."
       puts "2.Go back."
       case read_ch-48
-      when 1 then @world.fight.fight(avatar, @world.find_arena_monster(avatar.city))
+      when 1 then @world.start_fight(avatar, @world.find_arena_monster(avatar.city))
       when 2 then go_to_world(avatar)
       else arena(avatar)
       end
@@ -304,7 +324,7 @@ class Ui
   def go_to_area(avatar,area)
     if(area.monsters.size != 0)
       monster = area.monsters[Random.new.rand(0..area.monsters.size-1)]
-      @world.fight.fight(avatar, monster)
+      @world.start_fight(avatar, monster)
     end
   end
   
@@ -328,20 +348,21 @@ class Ui
     c = read_ch-48
     if(avatar.gold>=item.price)
       case c
-      when 1 then @shop.buy_item(avatar,item)
-      when 2 then @shop.item(avatar, item.item_class)
-      else item_view(avatar, item, @interface.read_ch-48)
+      when 1 then avatar.buy_item(item)
+      when 2 then item(avatar, item.item_class)
+      else item_view(avatar, item)
       end
     else
       case c
-      when 2 then @shop.item(avatar,item.item_class)
-      else item_view(avatar, item, @interface.read_ch-48)
+      when 2 then item(avatar,item.item_class)
+      else item_view(avatar, item)
       end
     end
   end
   
-  def item(item_list)
+  def item_display(item_list)
     clear_console
+    
     item_list.each_with_index{|x,y| puts "#{y+1}. #{x.name}"}
     puts "#{item_list.size + 1}. Leave shop."
     c = read_ch-48
@@ -385,9 +406,9 @@ class Ui
     puts "3.Use item"
     puts "4.Run away"
     case read_ch-48
-    when 1 then @world.fight.attack(avatar, enemy)
-    when 2 then @world.fight.skill(avatar, enemy)
-    when 3 then @world.fight.use_item(avatar)
+    when 1 then avatar.attack(enemy)
+    when 2 then avatar.skill_attack(enemy)
+    when 3 then avatar.heal
     else fight_menu(avatar, enemy)
     end
   end

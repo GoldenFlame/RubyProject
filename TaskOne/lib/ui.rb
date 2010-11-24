@@ -288,7 +288,7 @@ class Ui
       puts "1.Fight random monster."
       puts "2.Go back."
       case read_ch-48
-      when 1 then @world.fight.fight(avatar, @world.find_arena_monster(@world.citys[avatar.current_city]))
+      when 1 then @world.start_fight(avatar, @world.find_arena_monster(@world.citys[avatar.current_city]))
       when 2 then go_to_world(avatar)
       else arena(avatar)
       end
@@ -383,9 +383,9 @@ class Ui
     puts "3.Use item"
     puts "4.Run away"
     case read_ch-48
-    when 1 then @world.fight.attack(avatar, enemy)
-    when 2 then @world.fight.skill(avatar, enemy)
-    when 3 then @world.fight.use_item(avatar)
+    when 1 then avatar.attack(enemy)
+    when 2 then avatar.skill_attack(enemy)
+    when 3 then avatar.heal
     else fight_menu(avatar, enemy)
     end
   end
