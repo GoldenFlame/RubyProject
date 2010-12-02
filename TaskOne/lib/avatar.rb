@@ -53,6 +53,18 @@ class Avatar < Entity
     YamlManage.save_char(to_hash)
   end
   
+  def buy_item(item)
+    @gold -= item.price
+    @backpack.push(item)
+    save
+  end
+  
+  def sell_item(item)
+    @gold += item.price/2
+    @backpack.delete(item)
+    save
+  end
+  
   def experience_for_level
     next_level = @level + 1
     (next_level ** 3) + ((next_level + 1) ** 3) + (next_level * 3)

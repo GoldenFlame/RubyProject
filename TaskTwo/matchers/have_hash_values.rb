@@ -5,7 +5,7 @@ module Matchers
     end
     def matches?(actual)
       status = true
-      @expected.each{|k,v| if(actual[k] != v) then status = false end}
+      @expected.each{|k,v| if(actual[k.to_s] != v) then puts "#{k}:#{actual[k.to_s]}/#{v}"; status = false end}
       status
     end
 

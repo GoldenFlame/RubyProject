@@ -1,4 +1,5 @@
-class World
+class World < ActiveRecord::Base
+  has_many :cities
   attr_reader :fight, :interface, :shop_inst, :citys, :items, :exitcmd
   def initialize 
     @exitcmd = false

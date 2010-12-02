@@ -1,6 +1,5 @@
 require 'rbconfig'
 class Ui
-  @shop
   def initialize(world)
     @world = world
   end
@@ -20,7 +19,6 @@ class Ui
   
 #------Login menu
   def login
-    @shop = @world.shop_inst
     clear_console
     puts "Welcome"
     puts "1.Register"
@@ -186,7 +184,7 @@ class Ui
       puts "1.Sell for #{item.price/2}"
       puts "2.Leave"
       case read_ch-48
-      when 1 then @shop.sell_item(avatar,item)
+      when 1 then avatar.sell_item(item)
       when 2 then 
       else show_status(avatar)
       end
@@ -246,12 +244,12 @@ class Ui
     puts "4. Buy armor"
     puts "5. Go back."
     case read_ch-48
-    when 1 then @shop.item(avatar, "sword")
-    when 2 then @shop.item(avatar, "bow")
-    when 3 then @shop.item(avatar, "staff")
-    when 4 then @shop.item(avatar, "armor")
-    when 5 then shop(avatar)
-    else shop(avatar, name)
+    when 1 then @world.item(avatar, "sword")
+    when 2 then @world.item(avatar, "bow")
+    when 3 then @world.item(avatar, "staff")
+    when 4 then @world.item(avatar, "armor")
+    when 5 then shop(avatar,name)
+    else buy_shop(avatar)
     end
   end
   
@@ -326,13 +324,13 @@ class Ui
     c = read_ch-48
     if(avatar.gold>=item.price)
       case c
-      when 1 then @shop.buy_item(avatar,item)
-      when 2 then @shop.item(avatar, item.item_class)
+      when 1 then avatar.buy_item(item)
+      when 2 then @world.item(avatar, item.item_class)
       else item_view(avatar, item, @interface.read_ch-48)
       end
     else
       case c
-      when 2 then @shop.item(avatar,item.item_class)
+      when 2 then @world.item(avatar,item.item_class)
       else item_view(avatar, item, @interface.read_ch-48)
       end
     end

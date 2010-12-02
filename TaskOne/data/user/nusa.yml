@@ -5,7 +5,7 @@
 :level: 3
 :exp: 100
 :current_city: 0
-:gold: 3174
+:gold: 3409
 :base_dmg_min: 20
 :base_dmg_max: 30
 :max_hp: 100
@@ -14,10 +14,9 @@
 :mana: 10
 :backpack: 
 - Hunter bow
-- Hunter bow
-- Broad sword
 - Plate armor
 - Wooden sword
+- Wooden sword
 :equiped: 
-  :weapon: 
+  :weapon: Hunter bow
   :armor: Plate armor

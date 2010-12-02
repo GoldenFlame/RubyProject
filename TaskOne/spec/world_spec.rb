@@ -134,63 +134,77 @@ describe World do
       @avatar = Avatar.new("data/user/test.yml")
       @monster = Monster.new("data/monster/Sin.yml")
     end
-    describe "fight" do
-      it "should initiate a fight with a monster sin" do
-        @avatar.stub!(:save)
-        @interface.stub!(:battle_info)
-        @interface.stub!(:fight_menu)
-        @interface.stub!(:clear_console)
-        @monster.stub!(:attack)
-        @world.should_receive(:check_fight_end).and_return(true)
-        @world.start_fight(@avatar, 'sin').should == nil
-      end
+  describe "fight" do
+    it "should initiate a fight with a monster sin" do
+      @avatar.stub!(:save)
+      @interface.stub!(:battle_info)
+      @interface.stub!(:fight_menu)
+      @interface.stub!(:clear_console)
+      @monster.stub!(:attack)
+      @world.should_receive(:check_fight_end).and_return(true)
+      @world.start_fight(@avatar, 'sin').should == nil
+    end
+  end
+    
+  describe "check if someone was defeated and give bonus or penalty to player" do
+    it "should give player penalty" do
+      @avatar.hp = 0
+      @world.stub!(:player_penalty)
+      @world.check_fight_end(@avatar, @monster).should == true
+    end
+      
+    it "should give player a bonus" do
+      @monster.hp = 0
+      @world.stub!(:player_prize)
+      @world.check_fight_end(@avatar, @monster).should == true
+    end
+      
+    it "should do nothing" do
+      @world.check_fight_end(@avatar, @monster).should == false
+    end
+  end
+    
+  describe "bonus" do
+    it "should give avatar a bonus 3 gold" do
+      a = mock("Random", {:rand => 3})
+      Random.stub!(:new).and_return(a)
+      @interface.stub!(:winner_msg)
+      @world.player_prize( @avatar, @monster)
+      @avatar.gold.should == 103
+    end
+      
+    it "should give avatar a bonus 30 exp" do
+      a = mock("Random", {:rand => 3})
+      Random.stub!(:new).and_return(a)
+      @interface.stub!(:winner_msg)
+      @world.player_prize( @avatar, @monster)
+      @avatar.exp.should == 30
+    end
+  end
+    
+  describe "penalty" do
+    it "should decrease avatars exp by " do
+      a = mock("Random", {:rand => 30})
+      Random.stub!(:new).and_return(a)
+      @interface.stub!(:looser_msg)
+      @world.player_penalty(@avatar, @monster)
+      @avatar.gold.should == 97
+    end
+  end
+    
+  describe "item selection" do
+    it "should find Wooden sword in item list" do
+      @interface.should_receive(:item).and_return(1)
+      @interface.should_receive(:item_view).with(@avatar, instance_of(Item)).and_return{|a,b| b.name}
+      @world.item(@avatar, "sword").should == "Wooden sword"
     end
     
-    describe "check if someone was defeated and give bonus or penalty to player" do
-      it "should give player penalty" do
-        @avatar.hp = 0
-        @world.stub!(:player_penalty)
-        @world.check_fight_end(@avatar, @monster).should == true
-      end
-      
-      it "should give player a bonus" do
-        @monster.hp = 0
-        @world.stub!(:player_prize)
-        @world.check_fight_end(@avatar, @monster).should == true
-      end
-      
-      it "should do nothing" do
-        @world.check_fight_end(@avatar, @monster).should == false
-      end
+    it "should return nothing" do
+      @interface.should_receive(:item).and_return(4)
+      @world.item(@avatar, "sword").should == nil
     end
     
-    describe "bonus" do
-      it "should give avatar a bonus 3 gold" do
-        a = mock("Random", {:rand => 3})
-        Random.stub!(:new).and_return(a)
-        @interface.stub!(:winner_msg)
-        @world.player_prize( @avatar, @monster)
-        @avatar.gold.should == 103
-      end
-      
-      it "should give avatar a bonus 30 exp" do
-        a = mock("Random", {:rand => 3})
-        Random.stub!(:new).and_return(a)
-        @interface.stub!(:winner_msg)
-        @world.player_prize( @avatar, @monster)
-        @avatar.exp.should == 30
-      end
-    end
-    
-    describe "penalty" do
-      it "should decrease avatars exp by " do
-        a = mock("Random", {:rand => 30})
-        Random.stub!(:new).and_return(a)
-        @interface.stub!(:looser_msg)
-        @world.player_penalty(@avatar, @monster)
-        @avatar.gold.should == 97
-      end
-    end
+  end
     
     
   end

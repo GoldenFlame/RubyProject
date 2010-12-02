@@ -2,7 +2,6 @@ require File.dirname(__FILE__) + '/spec_helper.rb'
 
 describe World do
 
-  
   before(:each) do
     build :avatar
     build :item_armor
@@ -23,6 +22,18 @@ describe World do
   end
   
   describe "fight system" do
+    describe "start a fight" do
+      it "should start a fight" do
+        @avatar.stub!(:save)
+        @interface.stub!(:battle_info)
+        @interface.stub!(:fight_menu)
+        @interface.stub!(:clear_console)
+        @monster.stub!(:attack)
+        @world.should_receive(:check_fight_end).and_return(true)
+        @world.start_fight(@avatar, @monster).should == nil
+      end
+    end
+    
     describe "check if someone was defeated and give bonus or penalty to player" do
       it "should give player penalty" do
         @avatar.hp = 0
@@ -79,47 +90,46 @@ describe World do
   describe "Login" do
     it "should load avatar test" do
       load = @world.logs("test")
-      load.class.should == @avatar.class
-      load.name.should == @avatar.name
-      load.password.should == @avatar.password
+      load.password.should == "test"
     end
   end
 
   describe "Class selection" do
     it "should specify characters class as warrior and save data" do
-      @avatar.stub!(:save).and_return(true)
-      @world.class_warrior(@avatar).should == true
-      @avatar.avatar_class.should == 1
-      @avatar.base_dmg_min.should == 20
-      @avatar.base_dmg_max.should == 30
-      @avatar.max_hp.should == 100
-      @avatar.hp.should == 100
-      @avatar.max_mana.should == 10
-      @avatar.mana.should == 10
+      @world.class_warrior(@avatar)
+      expected = {:avatar_class => 1, 
+        :base_dmg_min => 20, 
+        :base_dmg_max => 30, 
+        :max_hp => 100, 
+        :hp => 100, 
+        :max_mana => 10, 
+        :mana => 10}
+     
+      @avatar.attributes.should have_hash_values(expected)
     end
     
     it "should specify characters class as archer and save data" do
-      @avatar.stub!(:save).and_return(true)
-      @world.class_archer(@avatar).should == true
-      @avatar.avatar_class.should == 2
-      @avatar.base_dmg_min.should == 10
-      @avatar.base_dmg_max.should == 50
-      @avatar.max_hp.should == 75
-      @avatar.hp.should == 75
-      @avatar.max_mana.should == 30
-      @avatar.mana.should == 30
+      @world.class_archer(@avatar)
+      expected = {:avatar_class => 2, 
+        :base_dmg_min => 10, 
+        :base_dmg_max => 50, 
+        :max_hp => 75, 
+        :hp => 75, 
+        :max_mana => 30, 
+        :mana => 30}
+      @avatar.attributes.should have_hash_values(expected)
     end
     
     it "should specify characters class as mage and save data" do
-      @avatar.stub!(:save).and_return(true)
-      @world.class_mage(@avatar).should == true
-      @avatar.avatar_class.should == 3
-      @avatar.base_dmg_min.should == 10
-      @avatar.base_dmg_max.should == 20
-      @avatar.max_hp.should == 50
-      @avatar.hp.should == 50
-      @avatar.max_mana.should == 100
-      @avatar.mana.should == 100
+      @world.class_mage(@avatar)
+      expected = {:avatar_class => 3, 
+        :base_dmg_min => 10, 
+        :base_dmg_max => 20, 
+        :max_hp => 50, 
+        :hp => 50, 
+        :max_mana => 100, 
+        :mana => 100}
+      @avatar.attributes.should have_hash_values(expected)
     end
   end
   
@@ -149,22 +159,24 @@ describe World do
         @world.exit
         @world.main_menu
       end
-      
     end
-    
-      
   end
   
   
   describe "rest" do
     it "should restore characters hp and mana to max" do
       @avatar.hp = 0
-      @avatar.mana = 0
       @world.rest(@avatar)
       @avatar.hp.should == @avatar.max_hp
+    end
+    
+    it "should restore characters hp and mana to max" do
+      @avatar.mana = 0
+      @world.rest(@avatar)
       @avatar.mana.should == @avatar.max_mana
     end
   end
+    
   
   describe "arena monster seach" do
     it "should find monster blob" do

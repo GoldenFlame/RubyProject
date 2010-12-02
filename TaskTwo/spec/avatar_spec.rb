@@ -9,6 +9,7 @@ describe "avatar" do
     build :item_armor2
     build :item_weapon2
     build :city
+    build :city2
 
     @monster = @city.fight_areas[0].monsters[0]
 
@@ -19,19 +20,22 @@ describe "avatar" do
     @avatar.avatar_items.create(:amount => 1, :item_id => @item_weapon2.id)
     @avatar.backpack_init
   end
+  
+  describe "travel" do
+    it"should travel to city 2" do
+      @avatar.city = @city
+      @avatar.travel(@city2)
+      @avatar.city.name.should == @city2.name
+    end
+  end
+  
   describe "buy item" do
     it "should add two swords and armor to avatars backpack and decrease gold amount by 30" do
       @avatar.gold = 1000
       @avatar.buy_item(@item_weapon)
       @avatar.buy_item(@item_weapon)
       @avatar.buy_item(@item_armor)
-      @avatar.gold.should == 970
-      weapon = AvatarItem.find_by_avatar_id_and_item_id(@avatar.id, @item_weapon.id)
-      armor = AvatarItem.find_by_avatar_id_and_item_id(@avatar.id, @item_armor.id)
-      weapon.amount.should == 3
-      armor.amount.should == 2
       @avatar.backpack.should have(8).items
-      @avatar.backpack.should include(@item_armor)
     end      
   end
   
@@ -52,7 +56,7 @@ describe "avatar" do
       it "should decrease monsters health points by 1 when avatar has no weapon" do
         #damage is calculated by taking random number in range of avataracters min damage and max damage
         #therefor mock object a returning value 1 instead of random
-        a = mock("Random", {:rand => 1})
+        a = stub("Random", {:rand => 1})
         Random.stub!(:new).and_return(a)
         @avatar.attack(@monster)
         @monster.hp.should == 99
@@ -61,7 +65,7 @@ describe "avatar" do
       it "should decrease monsters health points by 2 when avatar has a weapon" do
         #damage is calculated by taking random number in range of avataracters min damage and max damage
         #therefor mock object a returning value 1 instead of random
-        a = mock("Random", {:rand => 2})
+        a = stub("Random", {:rand => 2})
         Random.stub!(:new).and_return(a)
         @avatar.eq_weapon = @item_weapon
         @avatar.attack(@monster)
@@ -71,12 +75,22 @@ describe "avatar" do
     
     describe "skill attack" do
       it "should decrease defenders health points by 20" do
-        a = mock("Random", {:rand => 10})
+        a = stub("Random", {:rand => 10})
         Random.stub!(:new).and_return(a)
         @avatar.base_dmg_max = 10
         @avatar.skill_attack(@monster)
         @monster.hp.should == 80
       end
+      
+      it "should decrease defenders health points by 20" do
+        a = stub("Random", {:rand => 10})
+        Random.stub!(:new).and_return(a)
+        @avatar.eq_weapon = @item_weapon
+        @avatar.base_dmg_max = 10
+        @avatar.skill_attack(@monster)
+        @monster.hp.should == 80
+      end
+      
     end
     
     describe "heal" do
@@ -99,17 +113,19 @@ describe "avatar" do
   describe "equipment initialization" do
     it"should load item test sword and test armor" do
       @avatar.weapon = @item_weapon.id
-      @avatar.armor = @item_armor.id
       @avatar.equipment_init
       @avatar.eq_weapon.name.should == 'test sword'
+    end
+    
+    it"should load item test sword and test armor" do
+      @avatar.armor = @item_armor.id
+      @avatar.equipment_init
       @avatar.eq_armor.name.should == 'test armor'
     end
     
     it"should not load any items" do
-      @avatar.weapon = nil
       @avatar.armor = nil
       @avatar.equipment_init
-      @avatar.eq_weapon.should == nil
       @avatar.eq_armor.should == nil
     end
   end
@@ -150,14 +166,12 @@ describe "avatar" do
     it"should equip sword" do
       @avatar.eq_weapon = nil
       @avatar.equip(@item_weapon)
-      @avatar.eq_weapon.should == @item_weapon
       @avatar.weapon.should == @item_weapon.id
     end
     
     it"should equip armor" do
       @avatar.eq_armor = nil
       @avatar.equip(@item_armor)
-      @avatar.eq_armor.should == @item_armor
       @avatar.armor.should == @item_armor.id
     end
     
@@ -166,7 +180,6 @@ describe "avatar" do
       @avatar.eq_armor = @item_armor
       @avatar.equip(@item_armor2)
       @avatar.eq_armor.should == @item_armor2
-      @avatar.backpack.should include(@item_armor)
     end
     
     it"should put equiped item test bow into backpack and equip test sword" do
@@ -174,25 +187,20 @@ describe "avatar" do
       @avatar.eq_weapon = @item_weapon
       @avatar.equip(@item_weapon2)
       @avatar.eq_weapon.should == @item_weapon2
-      @avatar.backpack.should include(@item_weapon)
     end
   end
   
   describe "disequip" do
     it"should disequip test armor" do
       @avatar.equip(@item_armor)
-      @avatar.eq_armor.should == @item_armor
       @avatar.disequip(@item_armor)
       @avatar.backpack.should include(@item_armor)
-      @avatar.eq_armor.should == nil
     end
     
     it"should disequip test sword" do
       @avatar.equip(@item_weapon)
-      @avatar.eq_weapon.should == @item_weapon
       @avatar.disequip(@item_weapon)
       @avatar.backpack.should include(@item_weapon)
-      @avatar.eq_weapon.should == nil
     end
   end
 end

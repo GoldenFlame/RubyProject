@@ -8,6 +8,7 @@ describe "avatar" do
   before(:each) do
     @avatar = Avatar.new('data/user/test.yml')
     @monster = Monster.new("data/monster/Sin.yml")
+    @avatar.gold = 100
   end
   
   describe "Initialize" do
@@ -29,7 +30,39 @@ describe "avatar" do
     end
   end
   
+  describe "buy item" do
+    
+    it "should add three items to avatars backpack" do
+      @avatar.stub!(:save)
+      @avatar.gold = 1000
+      item = Item.new("data/item/sword1.yml")
+      item2 = Item.new("data/item/sword2.yml")
+      @avatar.buy_item(item)
+      @avatar.buy_item(item)
+      @avatar.buy_item(item2)
+      @avatar.backpack.should have(3).items
+    end      
+    
+    it "should decrease gold amount by 100" do
+      @avatar.stub!(:save)
+      @avatar.gold = 1000
+      item = Item.new("data/item/sword1.yml")
+      item2 = Item.new("data/item/sword2.yml")
+      @avatar.buy_item(item2)
+      @avatar.gold.should == 900
+    end   
+  end
   
+  describe "sell item" do
+    it "should sell Wooden sword and refund half the price" do
+      item = Item.new("data/item/sword1.yml")
+      @avatar.backpack.push(item)
+      @avatar.gold = 100
+      @avatar.sell_item(item)
+      @avatar.gold.should == 105
+      @avatar.backpack.should_not include(item)
+    end
+  end
   
   describe "backpack initialization" do
     it"should load avatars items" do
@@ -61,7 +94,6 @@ describe "avatar" do
     it"should not load any items" do
       weapon, armor = @avatar.equipment_init(nil, nil)
       weapon.should == nil
-      armor.should == nil
     end
   end
   
@@ -99,6 +131,18 @@ describe "avatar" do
       
       @monster.hp.should == 71
     end
+    
+    it "should decrease defenders health points by 20" do
+      a = mock("Random", {:rand => 2})
+      Random.stub!(:new).and_return(a)  
+      @avatar.eq_weapon = Item.new("data/item/sword1.yml")
+      @avatar.base_dmg_min = 10
+      @avatar.base_dmg_max = 10
+      @avatar.skill_attack(@monster)
+      
+      @monster.hp.should == 71
+    end
+    
   end
     
   describe "heal" do

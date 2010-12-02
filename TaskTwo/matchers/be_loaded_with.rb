@@ -5,7 +5,7 @@ module Matchers
     end
     def matches?(actual)
       updated = true
-      @expected.each{|k,v| if(actual.instance_variable_get(:"@#{k}") != v) then updated = false; puts "#{k}:#{v}" end}
+      @expected.each{|k,v| if(actual.instance_variable_get(:"@#{k}") != v) then updated = false end}
       updated
     end
 

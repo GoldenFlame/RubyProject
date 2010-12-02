@@ -21,21 +21,21 @@
       <img src="./assets/0.3.8/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2010-11-24T00:15:06+02:00">2010-11-24T00:15:06+02:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2010-11-25T17:32:38+02:00">2010-11-25T17:32:38+02:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
         <div class="file_list_container" id="AllFiles">
   <h2>
     All Files
-    (<span class="red">65.4%</span>)
+    (<span class="red">63.88%</span>)
   </h2>
   <a name="AllFiles"></a>
   <div>
     <b>18</b> files in total.
-    <b>789</b> relevant lines. 
-    <span class="green"><b>516</b> lines covered</span> and
-    <span class="red"><b>273</b> lines missed </span>
+    <b>753</b> relevant lines. 
+    <span class="green"><b>481</b> lines covered</span> and
+    <span class="red"><b>272</b> lines missed </span>
   </div>
   <table class="file_list">
     <thead>
@@ -52,11 +52,11 @@
       
       <tr>
         <td><a href="#f48228bc31b554c7950b3f6f1ee6454a7b92c809" class="src_link" title="./lib/avatar.rb">./lib/avatar.rb</a></td>
-        <td class="green">98.53 %</td>
-        <td>127</td>
-        <td>68</td>
-        <td>67</td>
-        <td>1</td>
+        <td class="green">100.0 %</td>
+        <td>139</td>
+        <td>76</td>
+        <td>76</td>
+        <td>0</td>
       </tr>
       
       <tr>
@@ -98,9 +98,9 @@
       <tr>
         <td><a href="#1fde1ccf7792910093653477b8a16891e27d1784" class="src_link" title="./lib/shop.rb">./lib/shop.rb</a></td>
         <td class="green">100.0 %</td>
-        <td>28</td>
-        <td>18</td>
-        <td>18</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
         <td>0</td>
       </tr>
       
@@ -116,9 +116,9 @@
       <tr>
         <td><a href="#832129549b0647524fd7acd6d1b180205d6f9060" class="src_link" title="./lib/world.rb">./lib/world.rb</a></td>
         <td class="green">100.0 %</td>
-        <td>153</td>
-        <td>98</td>
-        <td>98</td>
+        <td>161</td>
+        <td>102</td>
+        <td>102</td>
         <td>0</td>
       </tr>
       
@@ -188,18 +188,18 @@
       <tr>
         <td><a href="#e568e4ab759d260924361070b48d1608db667447" class="src_link" title="./spec/shop_spec.rb">./spec/shop_spec.rb</a></td>
         <td class="green">100.0 %</td>
-        <td>55</td>
-        <td>38</td>
-        <td>38</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
         <td>0</td>
       </tr>
       
       <tr>
         <td><a href="#630315059ee47dd3a60f0177b71141278f26a6ed" class="src_link" title="./spec/world_spec.rb">./spec/world_spec.rb</a></td>
         <td class="green">100.0 %</td>
-        <td>204</td>
-        <td>131</td>
-        <td>131</td>
+        <td>218</td>
+        <td>139</td>
+        <td>139</td>
         <td>0</td>
       </tr>
       
@@ -233,7 +233,7 @@
     <tr>
       <td colspan="3">
         <h3>./lib/avatar.rb</h3>
-        <h4><span class="green">98.53 %</span> covered</h4>
+        <h4><span class="green">100.0 %</span> covered</h4>
       </td>
     </tr>
     <tr>
@@ -310,7 +310,7 @@
     </tr>
   
     
-    <tr class="hit" data-hits="57">
+    <tr class="hit" data-hits="61">
       <td class="line_number">
         <pre>6</pre>
       </td>
@@ -318,12 +318,12 @@
         <pre>    super</pre>
       </td>
       <td class="hits">
-        57
+        61
       </td>
     </tr>
   
     
-    <tr class="hit" data-hits="57">
+    <tr class="hit" data-hits="61">
       <td class="line_number">
         <pre>7</pre>
       </td>
@@ -331,12 +331,12 @@
         <pre>    @backpack = backpack_init(data[:backpack])</pre>
       </td>
       <td class="hits">
-        57
+        61
       </td>
     </tr>
   
     
-    <tr class="hit" data-hits="57">
+    <tr class="hit" data-hits="61">
       <td class="line_number">
         <pre>8</pre>
       </td>
@@ -344,7 +344,7 @@
         <pre>    @eq_weapon, @eq_armor = equipment_init(data[:equiped][:weapon], data[:equiped][:armor])</pre>
       </td>
       <td class="hits">
-        57
+        61
       </td>
     </tr>
   
@@ -505,7 +505,7 @@
     </tr>
   
     
-    <tr class="hit" data-hits="1">
+    <tr class="hit" data-hits="2">
       <td class="line_number">
         <pre>21</pre>
       </td>
@@ -513,12 +513,12 @@
         <pre>    if(eq_weapon != nil)</pre>
       </td>
       <td class="hits">
-        1
+        2
       </td>
     </tr>
   
     
-    <tr class="miss" data-hits="0">
+    <tr class="hit" data-hits="1">
       <td class="line_number">
         <pre>22</pre>
       </td>
@@ -526,7 +526,7 @@
         <pre>      dmg = Random.new.rand(@base_dmg_min+@eq_weapon.damage_min..@base_dmg_max+@eq_weapon.damage_max)</pre>
       </td>
       <td class="hits">
-        0
+        1
       </td>
     </tr>
   
@@ -570,7 +570,7 @@
     </tr>
   
     
-    <tr class="hit" data-hits="1">
+    <tr class="hit" data-hits="2">
       <td class="line_number">
         <pre>26</pre>
       </td>
@@ -578,7 +578,7 @@
         <pre>    enemy.hp -= dmg*2</pre>
       </td>
       <td class="hits">
-        1
+        2
       </td>
     </tr>
   
@@ -674,7 +674,7 @@
     </tr>
   
     
-    <tr class="hit" data-hits="60">
+    <tr class="hit" data-hits="64">
       <td class="line_number">
         <pre>34</pre>
       </td>
@@ -682,7 +682,7 @@
         <pre>    if(weapon != nil)</pre>
       </td>
       <td class="hits">
-        60
+        64
       </td>
     </tr>
   
@@ -713,7 +713,7 @@
     </tr>
   
     
-    <tr class="hit" data-hits="54">
+    <tr class="hit" data-hits="58">
       <td class="line_number">
         <pre>37</pre>
       </td>
@@ -721,7 +721,7 @@
         <pre>      eq_weapon = nil</pre>
       </td>
       <td class="hits">
-        54
+        58
       </td>
     </tr>
   
@@ -739,7 +739,7 @@
     </tr>
   
     
-    <tr class="hit" data-hits="60">
+    <tr class="hit" data-hits="64">
       <td class="line_number">
         <pre>39</pre>
       </td>
@@ -747,7 +747,7 @@
         <pre>    if(armor != nil)</pre>
       </td>
       <td class="hits">
-        60
+        64
       </td>
     </tr>
   
@@ -778,7 +778,7 @@
     </tr>
   
     
-    <tr class="hit" data-hits="56">
+    <tr class="hit" data-hits="60">
       <td class="line_number">
         <pre>42</pre>
       </td>
@@ -786,7 +786,7 @@
         <pre>      eq_armor = nil</pre>
       </td>
       <td class="hits">
-        56
+        60
       </td>
     </tr>
   
@@ -804,7 +804,7 @@
     </tr>
   
     
-    <tr class="hit" data-hits="60">
+    <tr class="hit" data-hits="64">
       <td class="line_number">
         <pre>44</pre>
       </td>
@@ -812,7 +812,7 @@
         <pre>    return eq_weapon, eq_armor</pre>
       </td>
       <td class="hits">
-        60
+        64
       </td>
     </tr>
   
@@ -869,7 +869,7 @@
     </tr>
   
     
-    <tr class="hit" data-hits="88">
+    <tr class="hit" data-hits="92">
       <td class="line_number">
         <pre>49</pre>
       </td>
@@ -877,7 +877,7 @@
         <pre>    backpack.collect!{|x| Item.new(&quot;data/item/#{Item.find_file_name(x)}.yml&quot;)}</pre>
       </td>
       <td class="hits">
-        88
+        92
       </td>
     </tr>
   
@@ -965,7 +965,7 @@
         <pre>56</pre>
       </td>
       <td>
-        <pre>  def experience_for_level</pre>
+        <pre>  def buy_item(item)</pre>
       </td>
       <td class="hits">
         1
@@ -978,7 +978,7 @@
         <pre>57</pre>
       </td>
       <td>
-        <pre>    next_level = @level + 1</pre>
+        <pre>    @gold -= item.price</pre>
       </td>
       <td class="hits">
         4
@@ -991,7 +991,20 @@
         <pre>58</pre>
       </td>
       <td>
-        <pre>    (next_level ** 3) + ((next_level + 1) ** 3) + (next_level * 3)</pre>
+        <pre>    @backpack.push(item)</pre>
+      </td>
+      <td class="hits">
+        4
+      </td>
+    </tr>
+  
+    
+    <tr class="hit" data-hits="4">
+      <td class="line_number">
+        <pre>59</pre>
+      </td>
+      <td>
+        <pre>    save</pre>
       </td>
       <td class="hits">
         4
@@ -1001,7 +1014,7 @@
     
     <tr class="never" >
       <td class="line_number">
-        <pre>59</pre>
+        <pre>60</pre>
       </td>
       <td>
         <pre>  end</pre>
@@ -1014,7 +1027,7 @@
     
     <tr class="never" >
       <td class="line_number">
-        <pre>60</pre>
+        <pre>61</pre>
       </td>
       <td>
         <pre>  </pre>
@@ -1027,10 +1040,10 @@
     
     <tr class="hit" data-hits="1">
       <td class="line_number">
-        <pre>61</pre>
+        <pre>62</pre>
       </td>
       <td>
-        <pre>  def check_lvlup</pre>
+        <pre>  def sell_item(item)</pre>
       </td>
       <td class="hits">
         1
@@ -1038,54 +1051,41 @@
     </tr>
   
     
-    <tr class="hit" data-hits="2">
-      <td class="line_number">
-        <pre>62</pre>
-      </td>
-      <td>
-        <pre>    if(experience_for_level&lt;=exp)</pre>
-      </td>
-      <td class="hits">
-        2
-      </td>
-    </tr>
-  
-    
-    <tr class="hit" data-hits="2">
+    <tr class="hit" data-hits="1">
       <td class="line_number">
         <pre>63</pre>
       </td>
       <td>
-        <pre>      @exp = 0</pre>
+        <pre>    @gold += item.price/2</pre>
       </td>
       <td class="hits">
-        2
+        1
       </td>
     </tr>
   
     
-    <tr class="hit" data-hits="2">
+    <tr class="hit" data-hits="1">
       <td class="line_number">
         <pre>64</pre>
       </td>
       <td>
-        <pre>      @level = @level + 1</pre>
+        <pre>    @backpack.delete(item)</pre>
       </td>
       <td class="hits">
-        2
+        1
       </td>
     </tr>
   
     
-    <tr class="never" >
+    <tr class="hit" data-hits="1">
       <td class="line_number">
         <pre>65</pre>
       </td>
       <td>
-        <pre>    end</pre>
+        <pre>    save</pre>
       </td>
       <td class="hits">
-        
+        1
       </td>
     </tr>
   
@@ -1116,25 +1116,12 @@
     </tr>
   
     
-    <tr class="never" >
+    <tr class="hit" data-hits="1">
       <td class="line_number">
         <pre>68</pre>
       </td>
       <td>
-        <pre>  </pre>
-      </td>
-      <td class="hits">
-        
-      </td>
-    </tr>
-  
-    
-    <tr class="hit" data-hits="1">
-      <td class="line_number">
-        <pre>69</pre>
-      </td>
-      <td>
-        <pre>  def equip(item)</pre>
+        <pre>  def experience_for_level</pre>
       </td>
       <td class="hits">
         1
@@ -1142,204 +1129,35 @@
     </tr>
   
     
-    <tr class="hit" data-hits="9">
+    <tr class="hit" data-hits="4">
+      <td class="line_number">
+        <pre>69</pre>
+      </td>
+      <td>
+        <pre>    next_level = @level + 1</pre>
+      </td>
+      <td class="hits">
+        4
+      </td>
+    </tr>
+  
+    
+    <tr class="hit" data-hits="4">
       <td class="line_number">
         <pre>70</pre>
       </td>
       <td>
-        <pre>    type = item.item_class</pre>
+        <pre>    (next_level ** 3) + ((next_level + 1) ** 3) + (next_level * 3)</pre>
       </td>
       <td class="hits">
-        9
+        4
       </td>
     </tr>
   
     
-    <tr class="hit" data-hits="9">
+    <tr class="never" >
       <td class="line_number">
         <pre>71</pre>
-      </td>
-      <td>
-        <pre>    if(type == &quot;sword&quot; || type == &quot;bow&quot; || type == &quot;staff&quot;)</pre>
-      </td>
-      <td class="hits">
-        9
-      </td>
-    </tr>
-  
-    
-    <tr class="hit" data-hits="4">
-      <td class="line_number">
-        <pre>72</pre>
-      </td>
-      <td>
-        <pre>      if(@eq_weapon != nil)</pre>
-      </td>
-      <td class="hits">
-        4
-      </td>
-    </tr>
-  
-    
-    <tr class="hit" data-hits="2">
-      <td class="line_number">
-        <pre>73</pre>
-      </td>
-      <td>
-        <pre>        @backpack.push(@eq_weapon)</pre>
-      </td>
-      <td class="hits">
-        2
-      </td>
-    </tr>
-  
-    
-    <tr class="never" >
-      <td class="line_number">
-        <pre>74</pre>
-      </td>
-      <td>
-        <pre>      end</pre>
-      </td>
-      <td class="hits">
-        
-      </td>
-    </tr>
-  
-    
-    <tr class="hit" data-hits="4">
-      <td class="line_number">
-        <pre>75</pre>
-      </td>
-      <td>
-        <pre>      @eq_weapon = item</pre>
-      </td>
-      <td class="hits">
-        4
-      </td>
-    </tr>
-  
-    
-    <tr class="hit" data-hits="4">
-      <td class="line_number">
-        <pre>76</pre>
-      </td>
-      <td>
-        <pre>      @backpack.delete(item)</pre>
-      </td>
-      <td class="hits">
-        4
-      </td>
-    </tr>
-  
-    
-    <tr class="hit" data-hits="5">
-      <td class="line_number">
-        <pre>77</pre>
-      </td>
-      <td>
-        <pre>    elsif(type == &quot;armor&quot;)</pre>
-      </td>
-      <td class="hits">
-        5
-      </td>
-    </tr>
-  
-    
-    <tr class="hit" data-hits="5">
-      <td class="line_number">
-        <pre>78</pre>
-      </td>
-      <td>
-        <pre>      if(@eq_armor != nil)</pre>
-      </td>
-      <td class="hits">
-        5
-      </td>
-    </tr>
-  
-    
-    <tr class="hit" data-hits="2">
-      <td class="line_number">
-        <pre>79</pre>
-      </td>
-      <td>
-        <pre>        @backpack.push(@eq_armor)</pre>
-      </td>
-      <td class="hits">
-        2
-      </td>
-    </tr>
-  
-    
-    <tr class="never" >
-      <td class="line_number">
-        <pre>80</pre>
-      </td>
-      <td>
-        <pre>      end</pre>
-      </td>
-      <td class="hits">
-        
-      </td>
-    </tr>
-  
-    
-    <tr class="hit" data-hits="5">
-      <td class="line_number">
-        <pre>81</pre>
-      </td>
-      <td>
-        <pre>      @eq_armor = item</pre>
-      </td>
-      <td class="hits">
-        5
-      </td>
-    </tr>
-  
-    
-    <tr class="hit" data-hits="5">
-      <td class="line_number">
-        <pre>82</pre>
-      </td>
-      <td>
-        <pre>      @backpack.delete(item)</pre>
-      </td>
-      <td class="hits">
-        5
-      </td>
-    </tr>
-  
-    
-    <tr class="never" >
-      <td class="line_number">
-        <pre>83</pre>
-      </td>
-      <td>
-        <pre>    end</pre>
-      </td>
-      <td class="hits">
-        
-      </td>
-    </tr>
-  
-    
-    <tr class="hit" data-hits="9">
-      <td class="line_number">
-        <pre>84</pre>
-      </td>
-      <td>
-        <pre>    save</pre>
-      </td>
-      <td class="hits">
-        9
-      </td>
-    </tr>
-  
-    
-    <tr class="never" >
-      <td class="line_number">
-        <pre>85</pre>
       </td>
       <td>
         <pre>  end</pre>
@@ -1352,7 +1170,7 @@
     
     <tr class="never" >
       <td class="line_number">
-        <pre>86</pre>
+        <pre>72</pre>
       </td>
       <td>
         <pre>  </pre>
@@ -1365,13 +1183,195 @@
     
     <tr class="hit" data-hits="1">
       <td class="line_number">
-        <pre>87</pre>
+        <pre>73</pre>
       </td>
       <td>
-        <pre>  def disequip(item)</pre>
+        <pre>  def check_lvlup</pre>
       </td>
       <td class="hits">
         1
+      </td>
+    </tr>
+  
+    
+    <tr class="hit" data-hits="2">
+      <td class="line_number">
+        <pre>74</pre>
+      </td>
+      <td>
+        <pre>    if(experience_for_level&lt;=exp)</pre>
+      </td>
+      <td class="hits">
+        2
+      </td>
+    </tr>
+  
+    
+    <tr class="hit" data-hits="2">
+      <td class="line_number">
+        <pre>75</pre>
+      </td>
+      <td>
+        <pre>      @exp = 0</pre>
+      </td>
+      <td class="hits">
+        2
+      </td>
+    </tr>
+  
+    
+    <tr class="hit" data-hits="2">
+      <td class="line_number">
+        <pre>76</pre>
+      </td>
+      <td>
+        <pre>      @level = @level + 1</pre>
+      </td>
+      <td class="hits">
+        2
+      </td>
+    </tr>
+  
+    
+    <tr class="never" >
+      <td class="line_number">
+        <pre>77</pre>
+      </td>
+      <td>
+        <pre>    end</pre>
+      </td>
+      <td class="hits">
+        
+      </td>
+    </tr>
+  
+    
+    <tr class="never" >
+      <td class="line_number">
+        <pre>78</pre>
+      </td>
+      <td>
+        <pre>  end</pre>
+      </td>
+      <td class="hits">
+        
+      </td>
+    </tr>
+  
+    
+    <tr class="never" >
+      <td class="line_number">
+        <pre>79</pre>
+      </td>
+      <td>
+        <pre>  </pre>
+      </td>
+      <td class="hits">
+        
+      </td>
+    </tr>
+  
+    
+    <tr class="never" >
+      <td class="line_number">
+        <pre>80</pre>
+      </td>
+      <td>
+        <pre>  </pre>
+      </td>
+      <td class="hits">
+        
+      </td>
+    </tr>
+  
+    
+    <tr class="hit" data-hits="1">
+      <td class="line_number">
+        <pre>81</pre>
+      </td>
+      <td>
+        <pre>  def equip(item)</pre>
+      </td>
+      <td class="hits">
+        1
+      </td>
+    </tr>
+  
+    
+    <tr class="hit" data-hits="9">
+      <td class="line_number">
+        <pre>82</pre>
+      </td>
+      <td>
+        <pre>    type = item.item_class</pre>
+      </td>
+      <td class="hits">
+        9
+      </td>
+    </tr>
+  
+    
+    <tr class="hit" data-hits="9">
+      <td class="line_number">
+        <pre>83</pre>
+      </td>
+      <td>
+        <pre>    if(type == &quot;sword&quot; || type == &quot;bow&quot; || type == &quot;staff&quot;)</pre>
+      </td>
+      <td class="hits">
+        9
+      </td>
+    </tr>
+  
+    
+    <tr class="hit" data-hits="4">
+      <td class="line_number">
+        <pre>84</pre>
+      </td>
+      <td>
+        <pre>      if(@eq_weapon != nil)</pre>
+      </td>
+      <td class="hits">
+        4
+      </td>
+    </tr>
+  
+    
+    <tr class="hit" data-hits="2">
+      <td class="line_number">
+        <pre>85</pre>
+      </td>
+      <td>
+        <pre>        @backpack.push(@eq_weapon)</pre>
+      </td>
+      <td class="hits">
+        2
+      </td>
+    </tr>
+  
+    
+    <tr class="never" >
+      <td class="line_number">
+        <pre>86</pre>
+      </td>
+      <td>
+        <pre>      end</pre>
+      </td>
+      <td class="hits">
+        
+      </td>
+    </tr>
+  
+    
+    <tr class="hit" data-hits="4">
+      <td class="line_number">
+        <pre>87</pre>
+      </td>
+      <td>
+        <pre>      @eq_weapon = item</pre>
+      </td>
+      <td class="hits">
+        4
       </td>
     </tr>
   
@@ -1381,7 +1381,7 @@
         <pre>88</pre>
       </td>
       <td>
-        <pre>    type = item.item_class</pre>
+        <pre>      @backpack.delete(item)</pre>
       </td>
       <td class="hits">
         4
@@ -1389,28 +1389,28 @@
     </tr>
   
     
-    <tr class="hit" data-hits="4">
+    <tr class="hit" data-hits="5">
       <td class="line_number">
         <pre>89</pre>
       </td>
       <td>
-        <pre>    if(type == &quot;sword&quot; || type == &quot;bow&quot; || type == &quot;staff&quot;)</pre>
+        <pre>    elsif(type == &quot;armor&quot;)</pre>
       </td>
       <td class="hits">
-        4
+        5
       </td>
     </tr>
   
     
-    <tr class="hit" data-hits="2">
+    <tr class="hit" data-hits="5">
       <td class="line_number">
         <pre>90</pre>
       </td>
       <td>
-        <pre>      @eq_weapon = nil</pre>
+        <pre>      if(@eq_armor != nil)</pre>
       </td>
       <td class="hits">
-        2
+        5
       </td>
     </tr>
   
@@ -1420,7 +1420,7 @@
         <pre>91</pre>
       </td>
       <td>
-        <pre>      @backpack.push(item)</pre>
+        <pre>        @backpack.push(@eq_armor)</pre>
       </td>
       <td class="hits">
         2
@@ -1428,41 +1428,41 @@
     </tr>
   
     
-    <tr class="hit" data-hits="2">
+    <tr class="never" >
       <td class="line_number">
         <pre>92</pre>
       </td>
       <td>
-        <pre>    elsif(type == &quot;armor&quot;)</pre>
+        <pre>      end</pre>
       </td>
       <td class="hits">
-        2
+        
       </td>
     </tr>
   
     
-    <tr class="hit" data-hits="2">
+    <tr class="hit" data-hits="5">
       <td class="line_number">
         <pre>93</pre>
       </td>
       <td>
-        <pre>      @eq_armor = nil</pre>
+        <pre>      @eq_armor = item</pre>
       </td>
       <td class="hits">
-        2
+        5
       </td>
     </tr>
   
     
-    <tr class="hit" data-hits="2">
+    <tr class="hit" data-hits="5">
       <td class="line_number">
         <pre>94</pre>
       </td>
       <td>
-        <pre>      @backpack.push(item)</pre>
+        <pre>      @backpack.delete(item)</pre>
       </td>
       <td class="hits">
-        2
+        5
       </td>
     </tr>
   
@@ -1480,7 +1480,7 @@
     </tr>
   
     
-    <tr class="hit" data-hits="4">
+    <tr class="hit" data-hits="9">
       <td class="line_number">
         <pre>96</pre>
       </td>
@@ -1488,7 +1488,7 @@
         <pre>    save</pre>
       </td>
       <td class="hits">
-        4
+        9
       </td>
     </tr>
   
@@ -1524,7 +1524,7 @@
         <pre>99</pre>
       </td>
       <td>
-        <pre>  def to_hash</pre>
+        <pre>  def disequip(item)</pre>
       </td>
       <td class="hits">
         1
@@ -1532,119 +1532,119 @@
     </tr>
   
     
-    <tr class="hit" data-hits="15">
+    <tr class="hit" data-hits="4">
       <td class="line_number">
         <pre>100</pre>
       </td>
       <td>
-        <pre>    hash_weapon = nil</pre>
+        <pre>    type = item.item_class</pre>
       </td>
       <td class="hits">
-        15
+        4
       </td>
     </tr>
   
     
-    <tr class="hit" data-hits="15">
+    <tr class="hit" data-hits="4">
       <td class="line_number">
         <pre>101</pre>
       </td>
       <td>
-        <pre>    hash_armor = nil</pre>
+        <pre>    if(type == &quot;sword&quot; || type == &quot;bow&quot; || type == &quot;staff&quot;)</pre>
       </td>
       <td class="hits">
-        15
+        4
       </td>
     </tr>
   
     
-    <tr class="never" >
+    <tr class="hit" data-hits="2">
       <td class="line_number">
         <pre>102</pre>
       </td>
       <td>
-        <pre>    </pre>
+        <pre>      @eq_weapon = nil</pre>
       </td>
       <td class="hits">
-        
+        2
       </td>
     </tr>
   
     
-    <tr class="hit" data-hits="15">
+    <tr class="hit" data-hits="2">
       <td class="line_number">
         <pre>103</pre>
       </td>
       <td>
-        <pre>    if(@eq_weapon != nil)</pre>
+        <pre>      @backpack.push(item)</pre>
       </td>
       <td class="hits">
-        15
+        2
       </td>
     </tr>
   
     
-    <tr class="hit" data-hits="9">
+    <tr class="hit" data-hits="2">
       <td class="line_number">
         <pre>104</pre>
       </td>
       <td>
-        <pre>      hash_weapon = @eq_weapon.name</pre>
+        <pre>    elsif(type == &quot;armor&quot;)</pre>
       </td>
       <td class="hits">
-        9
+        2
       </td>
     </tr>
   
     
-    <tr class="never" >
+    <tr class="hit" data-hits="2">
       <td class="line_number">
         <pre>105</pre>
       </td>
       <td>
-        <pre>    end</pre>
+        <pre>      @eq_armor = nil</pre>
       </td>
       <td class="hits">
-        
+        2
       </td>
     </tr>
   
     
-    <tr class="hit" data-hits="15">
+    <tr class="hit" data-hits="2">
       <td class="line_number">
         <pre>106</pre>
       </td>
       <td>
-        <pre>    if(@eq_armor != nil)</pre>
+        <pre>      @backpack.push(item)</pre>
       </td>
       <td class="hits">
-        15
-      </td>
-    </tr>
-  
-    
-    <tr class="hit" data-hits="6">
-      <td class="line_number">
-        <pre>107</pre>
-      </td>
-      <td>
-        <pre>      hash_armor = @eq_armor.name</pre>
-      </td>
-      <td class="hits">
-        6
+        2
       </td>
     </tr>
   
     
     <tr class="never" >
       <td class="line_number">
-        <pre>108</pre>
+        <pre>107</pre>
       </td>
       <td>
         <pre>    end</pre>
       </td>
       <td class="hits">
         
+      </td>
+    </tr>
+  
+    
+    <tr class="hit" data-hits="4">
+      <td class="line_number">
+        <pre>108</pre>
+      </td>
+      <td>
+        <pre>    save</pre>
+      </td>
+      <td class="hits">
+        4
       </td>
     </tr>
   
@@ -1652,227 +1652,6 @@
     <tr class="never" >
       <td class="line_number">
         <pre>109</pre>
-      </td>
-      <td>
-        <pre>      </pre>
-      </td>
-      <td class="hits">
-        
-      </td>
-    </tr>
-  
-    
-    <tr class="hit" data-hits="15">
-      <td class="line_number">
-        <pre>110</pre>
-      </td>
-      <td>
-        <pre>    hash = {:name =&gt; @name,</pre>
-      </td>
-      <td class="hits">
-        15
-      </td>
-    </tr>
-  
-    
-    <tr class="never" >
-      <td class="line_number">
-        <pre>111</pre>
-      </td>
-      <td>
-        <pre>      :password =&gt; @password,</pre>
-      </td>
-      <td class="hits">
-        
-      </td>
-    </tr>
-  
-    
-    <tr class="never" >
-      <td class="line_number">
-        <pre>112</pre>
-      </td>
-      <td>
-        <pre>      :avatar_class =&gt; @avatar_class,</pre>
-      </td>
-      <td class="hits">
-        
-      </td>
-    </tr>
-  
-    
-    <tr class="never" >
-      <td class="line_number">
-        <pre>113</pre>
-      </td>
-      <td>
-        <pre>      :level =&gt; @level,</pre>
-      </td>
-      <td class="hits">
-        
-      </td>
-    </tr>
-  
-    
-    <tr class="never" >
-      <td class="line_number">
-        <pre>114</pre>
-      </td>
-      <td>
-        <pre>      :exp =&gt; @exp,</pre>
-      </td>
-      <td class="hits">
-        
-      </td>
-    </tr>
-  
-    
-    <tr class="never" >
-      <td class="line_number">
-        <pre>115</pre>
-      </td>
-      <td>
-        <pre>      :current_city =&gt; @current_city,</pre>
-      </td>
-      <td class="hits">
-        
-      </td>
-    </tr>
-  
-    
-    <tr class="never" >
-      <td class="line_number">
-        <pre>116</pre>
-      </td>
-      <td>
-        <pre>      :gold =&gt; @gold,</pre>
-      </td>
-      <td class="hits">
-        
-      </td>
-    </tr>
-  
-    
-    <tr class="never" >
-      <td class="line_number">
-        <pre>117</pre>
-      </td>
-      <td>
-        <pre>      :base_dmg_min =&gt; @base_dmg_min,</pre>
-      </td>
-      <td class="hits">
-        
-      </td>
-    </tr>
-  
-    
-    <tr class="never" >
-      <td class="line_number">
-        <pre>118</pre>
-      </td>
-      <td>
-        <pre>      :base_dmg_max =&gt; @base_dmg_max,</pre>
-      </td>
-      <td class="hits">
-        
-      </td>
-    </tr>
-  
-    
-    <tr class="never" >
-      <td class="line_number">
-        <pre>119</pre>
-      </td>
-      <td>
-        <pre>      :max_hp =&gt; @max_hp,</pre>
-      </td>
-      <td class="hits">
-        
-      </td>
-    </tr>
-  
-    
-    <tr class="never" >
-      <td class="line_number">
-        <pre>120</pre>
-      </td>
-      <td>
-        <pre>      :hp =&gt; @hp,</pre>
-      </td>
-      <td class="hits">
-        
-      </td>
-    </tr>
-  
-    
-    <tr class="never" >
-      <td class="line_number">
-        <pre>121</pre>
-      </td>
-      <td>
-        <pre>      :max_mana =&gt; @max_mana,</pre>
-      </td>
-      <td class="hits">
-        
-      </td>
-    </tr>
-  
-    
-    <tr class="never" >
-      <td class="line_number">
-        <pre>122</pre>
-      </td>
-      <td>
-        <pre>      :mana =&gt; @mana,</pre>
-      </td>
-      <td class="hits">
-        
-      </td>
-    </tr>
-  
-    
-    <tr class="hit" data-hits="57">
-      <td class="line_number">
-        <pre>123</pre>
-      </td>
-      <td>
-        <pre>      :backpack =&gt; @backpack.collect{|x| x.name},</pre>
-      </td>
-      <td class="hits">
-        57
-      </td>
-    </tr>
-  
-    
-    <tr class="never" >
-      <td class="line_number">
-        <pre>124</pre>
-      </td>
-      <td>
-        <pre>      :equiped =&gt; {:weapon =&gt; hash_weapon, :armor =&gt; hash_armor}</pre>
-      </td>
-      <td class="hits">
-        
-      </td>
-    </tr>
-  
-    
-    <tr class="never" >
-      <td class="line_number">
-        <pre>125</pre>
-      </td>
-      <td>
-        <pre>      };</pre>
-      </td>
-      <td class="hits">
-        
-      </td>
-    </tr>
-  
-    
-    <tr class="never" >
-      <td class="line_number">
-        <pre>126</pre>
       </td>
       <td>
         <pre>  end</pre>
@@ -1885,7 +1664,384 @@
     
     <tr class="never" >
       <td class="line_number">
+        <pre>110</pre>
+      </td>
+      <td>
+        <pre>  </pre>
+      </td>
+      <td class="hits">
+        
+      </td>
+    </tr>
+  
+    
+    <tr class="hit" data-hits="1">
+      <td class="line_number">
+        <pre>111</pre>
+      </td>
+      <td>
+        <pre>  def to_hash</pre>
+      </td>
+      <td class="hits">
+        1
+      </td>
+    </tr>
+  
+    
+    <tr class="hit" data-hits="15">
+      <td class="line_number">
+        <pre>112</pre>
+      </td>
+      <td>
+        <pre>    hash_weapon = nil</pre>
+      </td>
+      <td class="hits">
+        15
+      </td>
+    </tr>
+  
+    
+    <tr class="hit" data-hits="15">
+      <td class="line_number">
+        <pre>113</pre>
+      </td>
+      <td>
+        <pre>    hash_armor = nil</pre>
+      </td>
+      <td class="hits">
+        15
+      </td>
+    </tr>
+  
+    
+    <tr class="never" >
+      <td class="line_number">
+        <pre>114</pre>
+      </td>
+      <td>
+        <pre>    </pre>
+      </td>
+      <td class="hits">
+        
+      </td>
+    </tr>
+  
+    
+    <tr class="hit" data-hits="15">
+      <td class="line_number">
+        <pre>115</pre>
+      </td>
+      <td>
+        <pre>    if(@eq_weapon != nil)</pre>
+      </td>
+      <td class="hits">
+        15
+      </td>
+    </tr>
+  
+    
+    <tr class="hit" data-hits="9">
+      <td class="line_number">
+        <pre>116</pre>
+      </td>
+      <td>
+        <pre>      hash_weapon = @eq_weapon.name</pre>
+      </td>
+      <td class="hits">
+        9
+      </td>
+    </tr>
+  
+    
+    <tr class="never" >
+      <td class="line_number">
+        <pre>117</pre>
+      </td>
+      <td>
+        <pre>    end</pre>
+      </td>
+      <td class="hits">
+        
+      </td>
+    </tr>
+  
+    
+    <tr class="hit" data-hits="15">
+      <td class="line_number">
+        <pre>118</pre>
+      </td>
+      <td>
+        <pre>    if(@eq_armor != nil)</pre>
+      </td>
+      <td class="hits">
+        15
+      </td>
+    </tr>
+  
+    
+    <tr class="hit" data-hits="6">
+      <td class="line_number">
+        <pre>119</pre>
+      </td>
+      <td>
+        <pre>      hash_armor = @eq_armor.name</pre>
+      </td>
+      <td class="hits">
+        6
+      </td>
+    </tr>
+  
+    
+    <tr class="never" >
+      <td class="line_number">
+        <pre>120</pre>
+      </td>
+      <td>
+        <pre>    end</pre>
+      </td>
+      <td class="hits">
+        
+      </td>
+    </tr>
+  
+    
+    <tr class="never" >
+      <td class="line_number">
+        <pre>121</pre>
+      </td>
+      <td>
+        <pre>      </pre>
+      </td>
+      <td class="hits">
+        
+      </td>
+    </tr>
+  
+    
+    <tr class="hit" data-hits="15">
+      <td class="line_number">
+        <pre>122</pre>
+      </td>
+      <td>
+        <pre>    hash = {:name =&gt; @name,</pre>
+      </td>
+      <td class="hits">
+        15
+      </td>
+    </tr>
+  
+    
+    <tr class="never" >
+      <td class="line_number">
+        <pre>123</pre>
+      </td>
+      <td>
+        <pre>      :password =&gt; @password,</pre>
+      </td>
+      <td class="hits">
+        
+      </td>
+    </tr>
+  
+    
+    <tr class="never" >
+      <td class="line_number">
+        <pre>124</pre>
+      </td>
+      <td>
+        <pre>      :avatar_class =&gt; @avatar_class,</pre>
+      </td>
+      <td class="hits">
+        
+      </td>
+    </tr>
+  
+    
+    <tr class="never" >
+      <td class="line_number">
+        <pre>125</pre>
+      </td>
+      <td>
+        <pre>      :level =&gt; @level,</pre>
+      </td>
+      <td class="hits">
+        
+      </td>
+    </tr>
+  
+    
+    <tr class="never" >
+      <td class="line_number">
+        <pre>126</pre>
+      </td>
+      <td>
+        <pre>      :exp =&gt; @exp,</pre>
+      </td>
+      <td class="hits">
+        
+      </td>
+    </tr>
+  
+    
+    <tr class="never" >
+      <td class="line_number">
         <pre>127</pre>
+      </td>
+      <td>
+        <pre>      :current_city =&gt; @current_city,</pre>
+      </td>
+      <td class="hits">
+        
+      </td>
+    </tr>
+  
+    
+    <tr class="never" >
+      <td class="line_number">
+        <pre>128</pre>
+      </td>
+      <td>
+        <pre>      :gold =&gt; @gold,</pre>
+      </td>
+      <td class="hits">
+        
+      </td>
+    </tr>
+  
+    
+    <tr class="never" >
+      <td class="line_number">
+        <pre>129</pre>
+      </td>
+      <td>
+        <pre>      :base_dmg_min =&gt; @base_dmg_min,</pre>
+      </td>
+      <td class="hits">
+        
+      </td>
+    </tr>
+  
+    
+    <tr class="never" >
+      <td class="line_number">
+        <pre>130</pre>
+      </td>
+      <td>
+        <pre>      :base_dmg_max =&gt; @base_dmg_max,</pre>
+      </td>
+      <td class="hits">
+        
+      </td>
+    </tr>
+  
+    
+    <tr class="never" >
+      <td class="line_number">
+        <pre>131</pre>
+      </td>
+      <td>
+        <pre>      :max_hp =&gt; @max_hp,</pre>
+      </td>
+      <td class="hits">
+        
+      </td>
+    </tr>
+  
+    
+    <tr class="never" >
+      <td class="line_number">
+        <pre>132</pre>
+      </td>
+      <td>
+        <pre>      :hp =&gt; @hp,</pre>
+      </td>
+      <td class="hits">
+        
+      </td>
+    </tr>
+  
+    
+    <tr class="never" >
+      <td class="line_number">
+        <pre>133</pre>
+      </td>
+      <td>
+        <pre>      :max_mana =&gt; @max_mana,</pre>
+      </td>
+      <td class="hits">
+        
+      </td>
+    </tr>
+  
+    
+    <tr class="never" >
+      <td class="line_number">
+        <pre>134</pre>
+      </td>
+      <td>
+        <pre>      :mana =&gt; @mana,</pre>
+      </td>
+      <td class="hits">
+        
+      </td>
+    </tr>
+  
+    
+    <tr class="hit" data-hits="57">
+      <td class="line_number">
+        <pre>135</pre>
+      </td>
+      <td>
+        <pre>      :backpack =&gt; @backpack.collect{|x| x.name},</pre>
+      </td>
+      <td class="hits">
+        57
+      </td>
+    </tr>
+  
+    
+    <tr class="never" >
+      <td class="line_number">
+        <pre>136</pre>
+      </td>
+      <td>
+        <pre>      :equiped =&gt; {:weapon =&gt; hash_weapon, :armor =&gt; hash_armor}</pre>
+      </td>
+      <td class="hits">
+        
+      </td>
+    </tr>
+  
+    
+    <tr class="never" >
+      <td class="line_number">
+        <pre>137</pre>
+      </td>
+      <td>
+        <pre>      };</pre>
+      </td>
+      <td class="hits">
+        
+      </td>
+    </tr>
+  
+    
+    <tr class="never" >
+      <td class="line_number">
+        <pre>138</pre>
+      </td>
+      <td>
+        <pre>  end</pre>
+      </td>
+      <td class="hits">
+        
+      </td>
+    </tr>
+  
+    
+    <tr class="never" >
+      <td class="line_number">
+        <pre>139</pre>
       </td>
       <td>
         <pre>end</pre>
@@ -2029,7 +2185,7 @@
     </tr>
   
     
-    <tr class="hit" data-hits="961">
+    <tr class="hit" data-hits="951">
       <td class="line_number">
         <pre>4</pre>
       </td>
@@ -2037,12 +2193,12 @@
         <pre>    data = YamlManage.load_file(path)</pre>
       </td>
       <td class="hits">
-        961
+        951
       </td>
     </tr>
   
     
-    <tr class="hit" data-hits="961">
+    <tr class="hit" data-hits="951">
       <td class="line_number">
         <pre>5</pre>
       </td>
@@ -2050,7 +2206,7 @@
         <pre>    parse(data)</pre>
       </td>
       <td class="hits">
-        961
+        951
       </td>
     </tr>
   
@@ -2094,7 +2250,7 @@
     </tr>
   
     
-    <tr class="hit" data-hits="7867">
+    <tr class="hit" data-hits="7839">
       <td class="line_number">
         <pre>9</pre>
       </td>
@@ -2102,7 +2258,7 @@
         <pre>    data.each{|k,v| instance_variable_set(:&quot;@#{k}&quot;, v)}</pre>
       </td>
       <td class="hits">
-        7867
+        7839
       </td>
     </tr>
   
@@ -2481,370 +2637,6 @@
     </thead>
     <tbody>
   
-    
-    <tr class="never" >
-      <td class="line_number">
-        <pre>1</pre>
-      </td>
-      <td>
-        <pre></pre>
-      </td>
-      <td class="hits">
-        
-      </td>
-    </tr>
-  
-    
-    <tr class="hit" data-hits="1">
-      <td class="line_number">
-        <pre>2</pre>
-      </td>
-      <td>
-        <pre>class Shop</pre>
-      </td>
-      <td class="hits">
-        1
-      </td>
-    </tr>
-  
-    
-    <tr class="hit" data-hits="1">
-      <td class="line_number">
-        <pre>3</pre>
-      </td>
-      <td>
-        <pre>  @interface</pre>
-      </td>
-      <td class="hits">
-        1
-      </td>
-    </tr>
-  
-    
-    <tr class="hit" data-hits="1">
-      <td class="line_number">
-        <pre>4</pre>
-      </td>
-      <td>
-        <pre>  def initialize(interface, items)</pre>
-      </td>
-      <td class="hits">
-        1
-      </td>
-    </tr>
-  
-    
-    <tr class="hit" data-hits="23">
-      <td class="line_number">
-        <pre>5</pre>
-      </td>
-      <td>
-        <pre>    @interface = interface</pre>
-      </td>
-      <td class="hits">
-        23
-      </td>
-    </tr>
-  
-    
-    <tr class="hit" data-hits="23">
-      <td class="line_number">
-        <pre>6</pre>
-      </td>
-      <td>
-        <pre>    @items = items</pre>
-      </td>
-      <td class="hits">
-        23
-      </td>
-    </tr>
-  
-    
-    <tr class="never" >
-      <td class="line_number">
-        <pre>7</pre>
-      </td>
-      <td>
-        <pre>  end</pre>
-      </td>
-      <td class="hits">
-        
-      </td>
-    </tr>
-  
-    
-    <tr class="never" >
-      <td class="line_number">
-        <pre>8</pre>
-      </td>
-      <td>
-        <pre>  </pre>
-      </td>
-      <td class="hits">
-        
-      </td>
-    </tr>
-  
-    
-    <tr class="hit" data-hits="1">
-      <td class="line_number">
-        <pre>9</pre>
-      </td>
-      <td>
-        <pre>  def item(avatar,item_class)</pre>
-      </td>
-      <td class="hits">
-        1
-      </td>
-    </tr>
-  
-    
-    <tr class="hit" data-hits="26">
-      <td class="line_number">
-        <pre>10</pre>
-      </td>
-      <td>
-        <pre>    items = @items.select{|x| x.item_class == item_class}</pre>
-      </td>
-      <td class="hits">
-        26
-      </td>
-    </tr>
-  
-    
-    <tr class="hit" data-hits="2">
-      <td class="line_number">
-        <pre>11</pre>
-      </td>
-      <td>
-        <pre>    c = @interface.item(items)</pre>
-      </td>
-      <td class="hits">
-        2
-      </td>
-    </tr>
-  
-    
-    <tr class="hit" data-hits="2">
-      <td class="line_number">
-        <pre>12</pre>
-      </td>
-      <td>
-        <pre>    if(c != items.size+1)</pre>
-      </td>
-      <td class="hits">
-        2
-      </td>
-    </tr>
-  
-    
-    <tr class="hit" data-hits="1">
-      <td class="line_number">
-        <pre>13</pre>
-      </td>
-      <td>
-        <pre>      @interface.item_view(avatar, items[c-1])</pre>
-      </td>
-      <td class="hits">
-        1
-      </td>
-    </tr>
-  
-    
-    <tr class="never" >
-      <td class="line_number">
-        <pre>14</pre>
-      </td>
-      <td>
-        <pre>    end</pre>
-      </td>
-      <td class="hits">
-        
-      </td>
-    </tr>
-  
-    
-    <tr class="never" >
-      <td class="line_number">
-        <pre>15</pre>
-      </td>
-      <td>
-        <pre>  end</pre>
-      </td>
-      <td class="hits">
-        
-      </td>
-    </tr>
-  
-    
-    <tr class="never" >
-      <td class="line_number">
-        <pre>16</pre>
-      </td>
-      <td>
-        <pre>  </pre>
-      </td>
-      <td class="hits">
-        
-      </td>
-    </tr>
-  
-    
-    <tr class="hit" data-hits="1">
-      <td class="line_number">
-        <pre>17</pre>
-      </td>
-      <td>
-        <pre>  def buy_item(avatar, item)</pre>
-      </td>
-      <td class="hits">
-        1
-      </td>
-    </tr>
-  
-    
-    <tr class="hit" data-hits="3">
-      <td class="line_number">
-        <pre>18</pre>
-      </td>
-      <td>
-        <pre>    avatar.gold -= item.price</pre>
-      </td>
-      <td class="hits">
-        3
-      </td>
-    </tr>
-  
-    
-    <tr class="hit" data-hits="3">
-      <td class="line_number">
-        <pre>19</pre>
-      </td>
-      <td>
-        <pre>    avatar.backpack.push(item)</pre>
-      </td>
-      <td class="hits">
-        3
-      </td>
-    </tr>
-  
-    
-    <tr class="hit" data-hits="3">
-      <td class="line_number">
-        <pre>20</pre>
-      </td>
-      <td>
-        <pre>    avatar.save</pre>
-      </td>
-      <td class="hits">
-        3
-      </td>
-    </tr>
-  
-    
-    <tr class="never" >
-      <td class="line_number">
-        <pre>21</pre>
-      </td>
-      <td>
-        <pre>  end</pre>
-      </td>
-      <td class="hits">
-        
-      </td>
-    </tr>
-  
-    
-    <tr class="never" >
-      <td class="line_number">
-        <pre>22</pre>
-      </td>
-      <td>
-        <pre>  </pre>
-      </td>
-      <td class="hits">
-        
-      </td>
-    </tr>
-  
-    
-    <tr class="hit" data-hits="1">
-      <td class="line_number">
-        <pre>23</pre>
-      </td>
-      <td>
-        <pre>  def sell_item(avatar,item)</pre>
-      </td>
-      <td class="hits">
-        1
-      </td>
-    </tr>
-  
-    
-    <tr class="hit" data-hits="1">
-      <td class="line_number">
-        <pre>24</pre>
-      </td>
-      <td>
-        <pre>    avatar.gold += item.price/2</pre>
-      </td>
-      <td class="hits">
-        1
-      </td>
-    </tr>
-  
-    
-    <tr class="hit" data-hits="1">
-      <td class="line_number">
-        <pre>25</pre>
-      </td>
-      <td>
-        <pre>    avatar.backpack.delete(item)</pre>
-      </td>
-      <td class="hits">
-        1
-      </td>
-    </tr>
-  
-    
-    <tr class="hit" data-hits="1">
-      <td class="line_number">
-        <pre>26</pre>
-      </td>
-      <td>
-        <pre>    avatar.save</pre>
-      </td>
-      <td class="hits">
-        1
-      </td>
-    </tr>
-  
-    
-    <tr class="never" >
-      <td class="line_number">
-        <pre>27</pre>
-      </td>
-      <td>
-        <pre>  end</pre>
-      </td>
-      <td class="hits">
-        
-      </td>
-    </tr>
-  
-    
-    <tr class="never" >
-      <td class="line_number">
-        <pre>28</pre>
-      </td>
-      <td>
-        <pre>end</pre>
-      </td>
-      <td class="hits">
-        
-      </td>
-    </tr>
-  
     </tbody>
   </table>
 </div>
@@ -2919,7 +2711,7 @@
     </tr>
   
     
-    <tr class="hit" data-hits="23">
+    <tr class="hit" data-hits="21">
       <td class="line_number">
         <pre>5</pre>
       </td>
@@ -2927,7 +2719,7 @@
         <pre>    @world = world</pre>
       </td>
       <td class="hits">
-        23
+        21
       </td>
     </tr>
   
@@ -5316,7 +5108,7 @@
         <pre>189</pre>
       </td>
       <td>
-        <pre>      when 1 then @shop.sell_item(avatar,item)</pre>
+        <pre>      when 1 then avatar.sell_item(item)</pre>
       </td>
       <td class="hits">
         0
@@ -6096,7 +5888,7 @@
         <pre>249</pre>
       </td>
       <td>
-        <pre>    when 1 then @shop.item(avatar, &quot;sword&quot;)</pre>
+        <pre>    when 1 then @world.item(avatar, &quot;sword&quot;)</pre>
       </td>
       <td class="hits">
         0
@@ -6109,7 +5901,7 @@
         <pre>250</pre>
       </td>
       <td>
-        <pre>    when 2 then @shop.item(avatar, &quot;bow&quot;)</pre>
+        <pre>    when 2 then @world.item(avatar, &quot;bow&quot;)</pre>
       </td>
       <td class="hits">
         0
@@ -6122,7 +5914,7 @@
         <pre>251</pre>
       </td>
       <td>
-        <pre>    when 3 then @shop.item(avatar, &quot;staff&quot;)</pre>
+        <pre>    when 3 then @world.item(avatar, &quot;staff&quot;)</pre>
       </td>
       <td class="hits">
         0
@@ -6135,7 +5927,7 @@
         <pre>252</pre>
       </td>
       <td>
-        <pre>    when 4 then @shop.item(avatar, &quot;armor&quot;)</pre>
+        <pre>    when 4 then @world.item(avatar, &quot;armor&quot;)</pre>
       </td>
       <td class="hits">
         0
@@ -7136,7 +6928,7 @@
         <pre>329</pre>
       </td>
       <td>
-        <pre>      when 1 then @shop.buy_item(avatar,item)</pre>
+        <pre>      when 1 then avatar.buy_item(avatar,item)</pre>
       </td>
       <td class="hits">
         0
@@ -7149,7 +6941,7 @@
         <pre>330</pre>
       </td>
       <td>
-        <pre>      when 2 then @shop.item(avatar, item.item_class)</pre>
+        <pre>      when 2 then @world.item(avatar, item.item_class)</pre>
       </td>
       <td class="hits">
         0
@@ -7214,7 +7006,7 @@
         <pre>335</pre>
       </td>
       <td>
-        <pre>      when 2 then @shop.item(avatar,item.item_class)</pre>
+        <pre>      when 2 then @world.item(avatar,item.item_class)</pre>
       </td>
       <td class="hits">
         0
@@ -8184,7 +7976,7 @@
         <pre>2</pre>
       </td>
       <td>
-        <pre>  attr_reader :interface, :shop_inst, :citys, :items, :exitcmd</pre>
+        <pre>  attr_reader :interface, :citys, :items, :exitcmd</pre>
       </td>
       <td class="hits">
         1
@@ -8205,7 +7997,7 @@
     </tr>
   
     
-    <tr class="hit" data-hits="23">
+    <tr class="hit" data-hits="21">
       <td class="line_number">
         <pre>4</pre>
       </td>
@@ -8213,12 +8005,12 @@
         <pre>    @exitcmd = false</pre>
       </td>
       <td class="hits">
-        23
+        21
       </td>
     </tr>
   
     
-    <tr class="hit" data-hits="23">
+    <tr class="hit" data-hits="21">
       <td class="line_number">
         <pre>5</pre>
       </td>
@@ -8226,12 +8018,12 @@
         <pre>    world = YamlManage.load_file(&quot;data/world.yml&quot;)</pre>
       </td>
       <td class="hits">
-        23
+        21
       </td>
     </tr>
   
     
-    <tr class="hit" data-hits="23">
+    <tr class="hit" data-hits="21">
       <td class="line_number">
         <pre>6</pre>
       </td>
@@ -8239,12 +8031,12 @@
         <pre>    cities_number = world[:cities]</pre>
       </td>
       <td class="hits">
-        23
+        21
       </td>
     </tr>
   
     
-    <tr class="hit" data-hits="46">
+    <tr class="hit" data-hits="42">
       <td class="line_number">
         <pre>7</pre>
       </td>
@@ -8252,12 +8044,12 @@
         <pre>    @citys = (1..cities_number.to_i).collect{|x| City.new(&quot;data/city/#{world[x.to_s.to_sym]}.yml&quot;)}</pre>
       </td>
       <td class="hits">
-        46
+        42
       </td>
     </tr>
   
     
-    <tr class="hit" data-hits="23">
+    <tr class="hit" data-hits="21">
       <td class="line_number">
         <pre>8</pre>
       </td>
@@ -8265,12 +8057,12 @@
         <pre>    @interface = Ui.new(self)</pre>
       </td>
       <td class="hits">
-        23
+        21
       </td>
     </tr>
   
     
-    <tr class="hit" data-hits="23">
+    <tr class="hit" data-hits="21">
       <td class="line_number">
         <pre>9</pre>
       </td>
@@ -8278,20 +8070,20 @@
         <pre>    @items = load_items</pre>
       </td>
       <td class="hits">
-        23
+        21
       </td>
     </tr>
   
     
-    <tr class="hit" data-hits="23">
+    <tr class="never" >
       <td class="line_number">
         <pre>10</pre>
       </td>
       <td>
-        <pre>    @shop_inst = Shop.new(@interface, @items)</pre>
+        <pre>  end</pre>
       </td>
       <td class="hits">
-        23
+        
       </td>
     </tr>
   
@@ -8301,7 +8093,7 @@
         <pre>11</pre>
       </td>
       <td>
-        <pre>  end</pre>
+        <pre>  </pre>
       </td>
       <td class="hits">
         
@@ -8314,7 +8106,7 @@
         <pre>12</pre>
       </td>
       <td>
-        <pre>  </pre>
+        <pre></pre>
       </td>
       <td class="hits">
         
@@ -8327,7 +8119,7 @@
         <pre>13</pre>
       </td>
       <td>
-        <pre>  def start_fight(avatar,enemy)</pre>
+        <pre>  def item(avatar,item_class)</pre>
       </td>
       <td class="hits">
         1
@@ -8335,41 +8127,41 @@
     </tr>
   
     
-    <tr class="hit" data-hits="1">
+    <tr class="hit" data-hits="26">
       <td class="line_number">
         <pre>14</pre>
       </td>
       <td>
-        <pre>    monster = Monster.new(&quot;data/monster/#{enemy}.yml&quot;)</pre>
+        <pre>    items = @items.select{|x| x.item_class == item_class}</pre>
       </td>
       <td class="hits">
-        1
+        26
       </td>
     </tr>
   
     
-    <tr class="hit" data-hits="1">
+    <tr class="hit" data-hits="2">
       <td class="line_number">
         <pre>15</pre>
       </td>
       <td>
-        <pre>    defeat = false</pre>
+        <pre>    c = @interface.item(items)</pre>
       </td>
       <td class="hits">
-        1
+        2
       </td>
     </tr>
   
     
-    <tr class="hit" data-hits="3">
+    <tr class="hit" data-hits="2">
       <td class="line_number">
         <pre>16</pre>
       </td>
       <td>
-        <pre>    while(!defeat)</pre>
+        <pre>    if(c != items.size+1)</pre>
       </td>
       <td class="hits">
-        3
+        2
       </td>
     </tr>
   
@@ -8379,7 +8171,7 @@
         <pre>17</pre>
       </td>
       <td>
-        <pre>      @interface.clear_console</pre>
+        <pre>      @interface.item_view(avatar, items[c-1])</pre>
       </td>
       <td class="hits">
         1
@@ -8387,41 +8179,41 @@
     </tr>
   
     
-    <tr class="hit" data-hits="1">
+    <tr class="never" >
       <td class="line_number">
         <pre>18</pre>
       </td>
       <td>
-        <pre>      @interface.battle_info(avatar, monster)</pre>
+        <pre>    end</pre>
       </td>
       <td class="hits">
-        1
+        
       </td>
     </tr>
   
     
-    <tr class="hit" data-hits="1">
+    <tr class="never" >
       <td class="line_number">
         <pre>19</pre>
       </td>
       <td>
-        <pre>      @interface.fight_menu(avatar, monster)</pre>
+        <pre>  end</pre>
       </td>
       <td class="hits">
-        1
+        
       </td>
     </tr>
   
     
-    <tr class="hit" data-hits="1">
+    <tr class="never" >
       <td class="line_number">
         <pre>20</pre>
       </td>
       <td>
-        <pre>      monster.attack(avatar)</pre>
+        <pre>  </pre>
       </td>
       <td class="hits">
-        1
+        
       </td>
     </tr>
   
@@ -8431,7 +8223,7 @@
         <pre>21</pre>
       </td>
       <td>
-        <pre>      defeat = check_fight_end(avatar,monster)</pre>
+        <pre>  def start_fight(avatar,enemy)</pre>
       </td>
       <td class="hits">
         1
@@ -8444,7 +8236,7 @@
         <pre>22</pre>
       </td>
       <td>
-        <pre>      avatar.save</pre>
+        <pre>    monster = Monster.new(&quot;data/monster/#{enemy}.yml&quot;)</pre>
       </td>
       <td class="hits">
         1
@@ -8452,41 +8244,41 @@
     </tr>
   
     
-    <tr class="never" >
+    <tr class="hit" data-hits="1">
       <td class="line_number">
         <pre>23</pre>
       </td>
       <td>
-        <pre>    end</pre>
+        <pre>    defeat = false</pre>
       </td>
       <td class="hits">
-        
+        1
       </td>
     </tr>
   
     
-    <tr class="never" >
+    <tr class="hit" data-hits="3">
       <td class="line_number">
         <pre>24</pre>
       </td>
       <td>
-        <pre>  end</pre>
+        <pre>    while(!defeat)</pre>
       </td>
       <td class="hits">
-        
+        3
       </td>
     </tr>
   
     
-    <tr class="never" >
+    <tr class="hit" data-hits="1">
       <td class="line_number">
         <pre>25</pre>
       </td>
       <td>
-        <pre>  </pre>
+        <pre>      @interface.clear_console</pre>
       </td>
       <td class="hits">
-        
+        1
       </td>
     </tr>
   
@@ -8496,7 +8288,7 @@
         <pre>26</pre>
       </td>
       <td>
-        <pre>  def check_fight_end(avatar, monster)</pre>
+        <pre>      @interface.battle_info(avatar, monster)</pre>
       </td>
       <td class="hits">
         1
@@ -8504,28 +8296,28 @@
     </tr>
   
     
-    <tr class="hit" data-hits="3">
+    <tr class="hit" data-hits="1">
       <td class="line_number">
         <pre>27</pre>
       </td>
       <td>
-        <pre>    defeat = false</pre>
+        <pre>      @interface.fight_menu(avatar, monster)</pre>
       </td>
       <td class="hits">
-        3
+        1
       </td>
     </tr>
   
     
-    <tr class="hit" data-hits="3">
+    <tr class="hit" data-hits="1">
       <td class="line_number">
         <pre>28</pre>
       </td>
       <td>
-        <pre>    if(monster.hp &lt;= 0)</pre>
+        <pre>      monster.attack(avatar)</pre>
       </td>
       <td class="hits">
-        3
+        1
       </td>
     </tr>
   
@@ -8535,7 +8327,7 @@
         <pre>29</pre>
       </td>
       <td>
-        <pre>      defeat = true</pre>
+        <pre>      defeat = check_fight_end(avatar,monster)</pre>
       </td>
       <td class="hits">
         1
@@ -8548,7 +8340,7 @@
         <pre>30</pre>
       </td>
       <td>
-        <pre>      player_prize(avatar, monster)</pre>
+        <pre>      avatar.save</pre>
       </td>
       <td class="hits">
         1
@@ -8556,22 +8348,87 @@
     </tr>
   
     
-    <tr class="hit" data-hits="2">
+    <tr class="never" >
       <td class="line_number">
         <pre>31</pre>
       </td>
       <td>
-        <pre>    elsif(avatar.hp &lt;= 0)</pre>
+        <pre>    end</pre>
       </td>
       <td class="hits">
-        2
+        
+      </td>
+    </tr>
+  
+    
+    <tr class="never" >
+      <td class="line_number">
+        <pre>32</pre>
+      </td>
+      <td>
+        <pre>  end</pre>
+      </td>
+      <td class="hits">
+        
+      </td>
+    </tr>
+  
+    
+    <tr class="never" >
+      <td class="line_number">
+        <pre>33</pre>
+      </td>
+      <td>
+        <pre>  </pre>
+      </td>
+      <td class="hits">
+        
       </td>
     </tr>
   
     
     <tr class="hit" data-hits="1">
       <td class="line_number">
-        <pre>32</pre>
+        <pre>34</pre>
+      </td>
+      <td>
+        <pre>  def check_fight_end(avatar, monster)</pre>
+      </td>
+      <td class="hits">
+        1
+      </td>
+    </tr>
+  
+    
+    <tr class="hit" data-hits="3">
+      <td class="line_number">
+        <pre>35</pre>
+      </td>
+      <td>
+        <pre>    defeat = false</pre>
+      </td>
+      <td class="hits">
+        3
+      </td>
+    </tr>
+  
+    
+    <tr class="hit" data-hits="3">
+      <td class="line_number">
+        <pre>36</pre>
+      </td>
+      <td>
+        <pre>    if(monster.hp &lt;= 0)</pre>
+      </td>
+      <td class="hits">
+        3
+      </td>
+    </tr>
+  
+    
+    <tr class="hit" data-hits="1">
+      <td class="line_number">
+        <pre>37</pre>
       </td>
       <td>
         <pre>      defeat = true</pre>
@@ -8584,75 +8441,10 @@
     
     <tr class="hit" data-hits="1">
       <td class="line_number">
-        <pre>33</pre>
-      </td>
-      <td>
-        <pre>      player_penalty(avatar, monster)</pre>
-      </td>
-      <td class="hits">
-        1
-      </td>
-    </tr>
-  
-    
-    <tr class="never" >
-      <td class="line_number">
-        <pre>34</pre>
-      </td>
-      <td>
-        <pre>    end</pre>
-      </td>
-      <td class="hits">
-        
-      </td>
-    </tr>
-  
-    
-    <tr class="hit" data-hits="3">
-      <td class="line_number">
-        <pre>35</pre>
-      </td>
-      <td>
-        <pre>    return defeat</pre>
-      </td>
-      <td class="hits">
-        3
-      </td>
-    </tr>
-  
-    
-    <tr class="never" >
-      <td class="line_number">
-        <pre>36</pre>
-      </td>
-      <td>
-        <pre>  end</pre>
-      </td>
-      <td class="hits">
-        
-      </td>
-    </tr>
-  
-    
-    <tr class="never" >
-      <td class="line_number">
-        <pre>37</pre>
-      </td>
-      <td>
-        <pre>  </pre>
-      </td>
-      <td class="hits">
-        
-      </td>
-    </tr>
-  
-    
-    <tr class="hit" data-hits="1">
-      <td class="line_number">
         <pre>38</pre>
       </td>
       <td>
-        <pre>  def player_prize(avatar, enemy)</pre>
+        <pre>      player_prize(avatar, monster)</pre>
       </td>
       <td class="hits">
         1
@@ -8665,6 +8457,110 @@
         <pre>39</pre>
       </td>
       <td>
+        <pre>    elsif(avatar.hp &lt;= 0)</pre>
+      </td>
+      <td class="hits">
+        2
+      </td>
+    </tr>
+  
+    
+    <tr class="hit" data-hits="1">
+      <td class="line_number">
+        <pre>40</pre>
+      </td>
+      <td>
+        <pre>      defeat = true</pre>
+      </td>
+      <td class="hits">
+        1
+      </td>
+    </tr>
+  
+    
+    <tr class="hit" data-hits="1">
+      <td class="line_number">
+        <pre>41</pre>
+      </td>
+      <td>
+        <pre>      player_penalty(avatar, monster)</pre>
+      </td>
+      <td class="hits">
+        1
+      </td>
+    </tr>
+  
+    
+    <tr class="never" >
+      <td class="line_number">
+        <pre>42</pre>
+      </td>
+      <td>
+        <pre>    end</pre>
+      </td>
+      <td class="hits">
+        
+      </td>
+    </tr>
+  
+    
+    <tr class="hit" data-hits="3">
+      <td class="line_number">
+        <pre>43</pre>
+      </td>
+      <td>
+        <pre>    return defeat</pre>
+      </td>
+      <td class="hits">
+        3
+      </td>
+    </tr>
+  
+    
+    <tr class="never" >
+      <td class="line_number">
+        <pre>44</pre>
+      </td>
+      <td>
+        <pre>  end</pre>
+      </td>
+      <td class="hits">
+        
+      </td>
+    </tr>
+  
+    
+    <tr class="never" >
+      <td class="line_number">
+        <pre>45</pre>
+      </td>
+      <td>
+        <pre>  </pre>
+      </td>
+      <td class="hits">
+        
+      </td>
+    </tr>
+  
+    
+    <tr class="hit" data-hits="1">
+      <td class="line_number">
+        <pre>46</pre>
+      </td>
+      <td>
+        <pre>  def player_prize(avatar, enemy)</pre>
+      </td>
+      <td class="hits">
+        1
+      </td>
+    </tr>
+  
+    
+    <tr class="hit" data-hits="2">
+      <td class="line_number">
+        <pre>47</pre>
+      </td>
+      <td>
         <pre>    @interface.winner_msg(avatar)</pre>
       </td>
       <td class="hits">
@@ -8675,7 +8571,7 @@
     
     <tr class="hit" data-hits="2">
       <td class="line_number">
-        <pre>40</pre>
+        <pre>48</pre>
       </td>
       <td>
         <pre>    avatar.exp += enemy.exp_bonus</pre>
@@ -8688,7 +8584,7 @@
     
     <tr class="hit" data-hits="2">
       <td class="line_number">
-        <pre>41</pre>
+        <pre>49</pre>
       </td>
       <td>
         <pre>    avatar.gold += Random.new.rand(0..enemy.gold_max)</pre>
@@ -8701,7 +8597,7 @@
     
     <tr class="never" >
       <td class="line_number">
-        <pre>42</pre>
+        <pre>50</pre>
       </td>
       <td>
         <pre>  end</pre>
@@ -8714,7 +8610,7 @@
     
     <tr class="never" >
       <td class="line_number">
-        <pre>43</pre>
+        <pre>51</pre>
       </td>
       <td>
         <pre>  </pre>
@@ -8727,7 +8623,7 @@
     
     <tr class="hit" data-hits="1">
       <td class="line_number">
-        <pre>44</pre>
+        <pre>52</pre>
       </td>
       <td>
         <pre>  def player_penalty(avatar,enemy)</pre>
@@ -8740,7 +8636,7 @@
     
     <tr class="hit" data-hits="1">
       <td class="line_number">
-        <pre>45</pre>
+        <pre>53</pre>
       </td>
       <td>
         <pre>    @interface.looser_msg(avatar)</pre>
@@ -8753,7 +8649,7 @@
     
     <tr class="hit" data-hits="1">
       <td class="line_number">
-        <pre>46</pre>
+        <pre>54</pre>
       </td>
       <td>
         <pre>    avatar.gold -= Random.new.rand(0..enemy.gold_max) / 10</pre>
@@ -8766,7 +8662,7 @@
     
     <tr class="never" >
       <td class="line_number">
-        <pre>47</pre>
+        <pre>55</pre>
       </td>
       <td>
         <pre>  end </pre>
@@ -8779,114 +8675,10 @@
     
     <tr class="never" >
       <td class="line_number">
-        <pre>48</pre>
-      </td>
-      <td>
-        <pre>  </pre>
-      </td>
-      <td class="hits">
-        
-      </td>
-    </tr>
-  
-    
-    <tr class="never" >
-      <td class="line_number">
-        <pre>49</pre>
-      </td>
-      <td>
-        <pre>  </pre>
-      </td>
-      <td class="hits">
-        
-      </td>
-    </tr>
-  
-    
-    <tr class="hit" data-hits="1">
-      <td class="line_number">
-        <pre>50</pre>
-      </td>
-      <td>
-        <pre>  def load_items</pre>
-      </td>
-      <td class="hits">
-        1
-      </td>
-    </tr>
-  
-    
-    <tr class="hit" data-hits="299">
-      <td class="line_number">
-        <pre>51</pre>
-      </td>
-      <td>
-        <pre>    Dir.glob(&quot;data/item/*&quot;).collect{|x| Item.new(x)}</pre>
-      </td>
-      <td class="hits">
-        299
-      </td>
-    </tr>
-  
-    
-    <tr class="never" >
-      <td class="line_number">
-        <pre>52</pre>
-      </td>
-      <td>
-        <pre>  end</pre>
-      </td>
-      <td class="hits">
-        
-      </td>
-    </tr>
-  
-    
-    <tr class="never" >
-      <td class="line_number">
-        <pre>53</pre>
-      </td>
-      <td>
-        <pre>  </pre>
-      </td>
-      <td class="hits">
-        
-      </td>
-    </tr>
-  
-    
-    <tr class="hit" data-hits="1">
-      <td class="line_number">
-        <pre>54</pre>
-      </td>
-      <td>
-        <pre>  def exit</pre>
-      </td>
-      <td class="hits">
-        1
-      </td>
-    </tr>
-  
-    
-    <tr class="hit" data-hits="3">
-      <td class="line_number">
-        <pre>55</pre>
-      </td>
-      <td>
-        <pre>    @exitcmd = true</pre>
-      </td>
-      <td class="hits">
-        3
-      </td>
-    </tr>
-  
-    
-    <tr class="never" >
-      <td class="line_number">
         <pre>56</pre>
       </td>
       <td>
-        <pre>  end  </pre>
+        <pre>  </pre>
       </td>
       <td class="hits">
         
@@ -8912,6 +8704,110 @@
         <pre>58</pre>
       </td>
       <td>
+        <pre>  def load_items</pre>
+      </td>
+      <td class="hits">
+        1
+      </td>
+    </tr>
+  
+    
+    <tr class="hit" data-hits="273">
+      <td class="line_number">
+        <pre>59</pre>
+      </td>
+      <td>
+        <pre>    Dir.glob(&quot;data/item/*&quot;).collect{|x| Item.new(x)}</pre>
+      </td>
+      <td class="hits">
+        273
+      </td>
+    </tr>
+  
+    
+    <tr class="never" >
+      <td class="line_number">
+        <pre>60</pre>
+      </td>
+      <td>
+        <pre>  end</pre>
+      </td>
+      <td class="hits">
+        
+      </td>
+    </tr>
+  
+    
+    <tr class="never" >
+      <td class="line_number">
+        <pre>61</pre>
+      </td>
+      <td>
+        <pre>  </pre>
+      </td>
+      <td class="hits">
+        
+      </td>
+    </tr>
+  
+    
+    <tr class="hit" data-hits="1">
+      <td class="line_number">
+        <pre>62</pre>
+      </td>
+      <td>
+        <pre>  def exit</pre>
+      </td>
+      <td class="hits">
+        1
+      </td>
+    </tr>
+  
+    
+    <tr class="hit" data-hits="3">
+      <td class="line_number">
+        <pre>63</pre>
+      </td>
+      <td>
+        <pre>    @exitcmd = true</pre>
+      </td>
+      <td class="hits">
+        3
+      </td>
+    </tr>
+  
+    
+    <tr class="never" >
+      <td class="line_number">
+        <pre>64</pre>
+      </td>
+      <td>
+        <pre>  end  </pre>
+      </td>
+      <td class="hits">
+        
+      </td>
+    </tr>
+  
+    
+    <tr class="never" >
+      <td class="line_number">
+        <pre>65</pre>
+      </td>
+      <td>
+        <pre>  </pre>
+      </td>
+      <td class="hits">
+        
+      </td>
+    </tr>
+  
+    
+    <tr class="hit" data-hits="1">
+      <td class="line_number">
+        <pre>66</pre>
+      </td>
+      <td>
         <pre>  def main_menu</pre>
       </td>
       <td class="hits">
@@ -8922,7 +8818,7 @@
     
     <tr class="hit" data-hits="2">
       <td class="line_number">
-        <pre>59</pre>
+        <pre>67</pre>
       </td>
       <td>
         <pre>    avatar = nil</pre>
@@ -8935,7 +8831,7 @@
     
     <tr class="hit" data-hits="6">
       <td class="line_number">
-        <pre>60</pre>
+        <pre>68</pre>
       </td>
       <td>
         <pre>    while(avatar == nil) do</pre>
@@ -8948,7 +8844,7 @@
     
     <tr class="hit" data-hits="2">
       <td class="line_number">
-        <pre>61</pre>
+        <pre>69</pre>
       </td>
       <td>
         <pre>      avatar = @interface.login()</pre>
@@ -8961,7 +8857,7 @@
     
     <tr class="never" >
       <td class="line_number">
-        <pre>62</pre>
+        <pre>70</pre>
       </td>
       <td>
         <pre>    end</pre>
@@ -8974,7 +8870,7 @@
     
     <tr class="hit" data-hits="2">
       <td class="line_number">
-        <pre>63</pre>
+        <pre>71</pre>
       </td>
       <td>
         <pre>    while(true)</pre>
@@ -8987,7 +8883,7 @@
     
     <tr class="hit" data-hits="2">
       <td class="line_number">
-        <pre>64</pre>
+        <pre>72</pre>
       </td>
       <td>
         <pre>      if(avatar.avatar_class == 0)</pre>
@@ -9000,7 +8896,7 @@
     
     <tr class="hit" data-hits="1">
       <td class="line_number">
-        <pre>65</pre>
+        <pre>73</pre>
       </td>
       <td>
         <pre>        @interface.choose_class(avatar)</pre>
@@ -9013,7 +8909,7 @@
     
     <tr class="never" >
       <td class="line_number">
-        <pre>66</pre>
+        <pre>74</pre>
       </td>
       <td>
         <pre>      else </pre>
@@ -9026,7 +8922,7 @@
     
     <tr class="hit" data-hits="1">
       <td class="line_number">
-        <pre>67</pre>
+        <pre>75</pre>
       </td>
       <td>
         <pre>        @interface.clear_console</pre>
@@ -9039,7 +8935,7 @@
     
     <tr class="hit" data-hits="1">
       <td class="line_number">
-        <pre>68</pre>
+        <pre>76</pre>
       </td>
       <td>
         <pre>        avatar.check_lvlup </pre>
@@ -9052,7 +8948,7 @@
     
     <tr class="hit" data-hits="1">
       <td class="line_number">
-        <pre>69</pre>
+        <pre>77</pre>
       </td>
       <td>
         <pre>        @interface.go_to_world(avatar)</pre>
@@ -9065,7 +8961,7 @@
     
     <tr class="hit" data-hits="1">
       <td class="line_number">
-        <pre>70</pre>
+        <pre>78</pre>
       </td>
       <td>
         <pre>        avatar.save</pre>
@@ -9078,7 +8974,7 @@
     
     <tr class="never" >
       <td class="line_number">
-        <pre>71</pre>
+        <pre>79</pre>
       </td>
       <td>
         <pre>      end</pre>
@@ -9091,7 +8987,7 @@
     
     <tr class="hit" data-hits="2">
       <td class="line_number">
-        <pre>72</pre>
+        <pre>80</pre>
       </td>
       <td>
         <pre>      break if(@exitcmd) </pre>
@@ -9104,7 +9000,7 @@
     
     <tr class="never" >
       <td class="line_number">
-        <pre>73</pre>
+        <pre>81</pre>
       </td>
       <td>
         <pre>    end</pre>
@@ -9117,7 +9013,7 @@
     
     <tr class="never" >
       <td class="line_number">
-        <pre>74</pre>
+        <pre>82</pre>
       </td>
       <td>
         <pre>  end</pre>
@@ -9130,7 +9026,7 @@
     
     <tr class="never" >
       <td class="line_number">
-        <pre>75</pre>
+        <pre>83</pre>
       </td>
       <td>
         <pre>  </pre>
@@ -9143,7 +9039,7 @@
     
     <tr class="never" >
       <td class="line_number">
-        <pre>76</pre>
+        <pre>84</pre>
       </td>
       <td>
         <pre></pre>
@@ -9156,7 +9052,7 @@
     
     <tr class="never" >
       <td class="line_number">
-        <pre>77</pre>
+        <pre>85</pre>
       </td>
       <td>
         <pre>  </pre>
@@ -9169,7 +9065,7 @@
     
     <tr class="never" >
       <td class="line_number">
-        <pre>78</pre>
+        <pre>86</pre>
       </td>
       <td>
         <pre>#---------  </pre>
@@ -9182,7 +9078,7 @@
     
     <tr class="hit" data-hits="1">
       <td class="line_number">
-        <pre>79</pre>
+        <pre>87</pre>
       </td>
       <td>
         <pre>  def class_warrior(avatar)</pre>
@@ -9195,7 +9091,7 @@
     
     <tr class="hit" data-hits="1">
       <td class="line_number">
-        <pre>80</pre>
+        <pre>88</pre>
       </td>
       <td>
         <pre>    avatar.avatar_class = 1</pre>
@@ -9208,7 +9104,7 @@
     
     <tr class="hit" data-hits="1">
       <td class="line_number">
-        <pre>81</pre>
+        <pre>89</pre>
       </td>
       <td>
         <pre>    avatar.base_dmg_min = 20</pre>
@@ -9221,7 +9117,7 @@
     
     <tr class="hit" data-hits="1">
       <td class="line_number">
-        <pre>82</pre>
+        <pre>90</pre>
       </td>
       <td>
         <pre>    avatar.base_dmg_max = 30</pre>
@@ -9234,7 +9130,7 @@
     
     <tr class="hit" data-hits="1">
       <td class="line_number">
-        <pre>83</pre>
+        <pre>91</pre>
       </td>
       <td>
         <pre>    avatar.max_hp = 100</pre>
@@ -9247,7 +9143,7 @@
     
     <tr class="hit" data-hits="1">
       <td class="line_number">
-        <pre>84</pre>
+        <pre>92</pre>
       </td>
       <td>
         <pre>    avatar.hp = 100</pre>
@@ -9260,7 +9156,7 @@
     
     <tr class="hit" data-hits="1">
       <td class="line_number">
-        <pre>85</pre>
+        <pre>93</pre>
       </td>
       <td>
         <pre>    avatar.max_mana = 10</pre>
@@ -9273,7 +9169,7 @@
     
     <tr class="hit" data-hits="1">
       <td class="line_number">
-        <pre>86</pre>
+        <pre>94</pre>
       </td>
       <td>
         <pre>    avatar.mana = 10</pre>
@@ -9286,7 +9182,7 @@
     
     <tr class="hit" data-hits="1">
       <td class="line_number">
-        <pre>87</pre>
+        <pre>95</pre>
       </td>
       <td>
         <pre>    avatar.save</pre>
@@ -9299,7 +9195,7 @@
     
     <tr class="never" >
       <td class="line_number">
-        <pre>88</pre>
+        <pre>96</pre>
       </td>
       <td>
         <pre>  end</pre>
@@ -9312,7 +9208,7 @@
     
     <tr class="never" >
       <td class="line_number">
-        <pre>89</pre>
+        <pre>97</pre>
       </td>
       <td>
         <pre></pre>
@@ -9325,7 +9221,7 @@
     
     <tr class="hit" data-hits="1">
       <td class="line_number">
-        <pre>90</pre>
+        <pre>98</pre>
       </td>
       <td>
         <pre>  def class_archer(avatar)</pre>
@@ -9338,7 +9234,7 @@
     
     <tr class="hit" data-hits="1">
       <td class="line_number">
-        <pre>91</pre>
+        <pre>99</pre>
       </td>
       <td>
         <pre>    avatar.avatar_class = 2</pre>
@@ -9351,7 +9247,7 @@
     
     <tr class="hit" data-hits="1">
       <td class="line_number">
-        <pre>92</pre>
+        <pre>100</pre>
       </td>
       <td>
         <pre>    avatar.base_dmg_min = 10</pre>
@@ -9364,7 +9260,7 @@
     
     <tr class="hit" data-hits="1">
       <td class="line_number">
-        <pre>93</pre>
+        <pre>101</pre>
       </td>
       <td>
         <pre>    avatar.base_dmg_max = 50</pre>
@@ -9377,7 +9273,7 @@
     
     <tr class="hit" data-hits="1">
       <td class="line_number">
-        <pre>94</pre>
+        <pre>102</pre>
       </td>
       <td>
         <pre>    avatar.max_hp = 75</pre>
@@ -9390,7 +9286,7 @@
     
     <tr class="hit" data-hits="1">
       <td class="line_number">
-        <pre>95</pre>
+        <pre>103</pre>
       </td>
       <td>
         <pre>    avatar.hp = 75</pre>
@@ -9403,7 +9299,7 @@
     
     <tr class="hit" data-hits="1">
       <td class="line_number">
-        <pre>96</pre>
+        <pre>104</pre>
       </td>
       <td>
         <pre>    avatar.max_mana = 30</pre>
@@ -9416,7 +9312,7 @@
     
     <tr class="hit" data-hits="1">
       <td class="line_number">
-        <pre>97</pre>
+        <pre>105</pre>
       </td>
       <td>
         <pre>    avatar.mana = 30</pre>
@@ -9429,7 +9325,7 @@
     
     <tr class="hit" data-hits="1">
       <td class="line_number">
-        <pre>98</pre>
+        <pre>106</pre>
       </td>
       <td>
         <pre>    avatar.save</pre>
@@ -9442,7 +9338,7 @@
     
     <tr class="never" >
       <td class="line_number">
-        <pre>99</pre>
+        <pre>107</pre>
       </td>
       <td>
         <pre>  end</pre>
@@ -9455,7 +9351,7 @@
     
     <tr class="never" >
       <td class="line_number">
-        <pre>100</pre>
+        <pre>108</pre>
       </td>
       <td>
         <pre>  </pre>
@@ -9468,7 +9364,7 @@
     
     <tr class="hit" data-hits="1">
       <td class="line_number">
-        <pre>101</pre>
+        <pre>109</pre>
       </td>
       <td>
         <pre>  def class_mage(avatar)</pre>
@@ -9481,7 +9377,7 @@
     
     <tr class="hit" data-hits="1">
       <td class="line_number">
-        <pre>102</pre>
+        <pre>110</pre>
       </td>
       <td>
         <pre>    avatar.avatar_class = 3</pre>
@@ -9494,7 +9390,7 @@
     
     <tr class="hit" data-hits="1">
       <td class="line_number">
-        <pre>103</pre>
+        <pre>111</pre>
       </td>
       <td>
         <pre>    avatar.base_dmg_min = 10</pre>
@@ -9507,7 +9403,7 @@
     
     <tr class="hit" data-hits="1">
       <td class="line_number">
-        <pre>104</pre>
+        <pre>112</pre>
       </td>
       <td>
         <pre>    avatar.base_dmg_max = 20</pre>
@@ -9520,7 +9416,7 @@
     
     <tr class="hit" data-hits="1">
       <td class="line_number">
-        <pre>105</pre>
+        <pre>113</pre>
       </td>
       <td>
         <pre>    avatar.max_hp = 50</pre>
@@ -9533,7 +9429,7 @@
     
     <tr class="hit" data-hits="1">
       <td class="line_number">
-        <pre>106</pre>
+        <pre>114</pre>
       </td>
       <td>
         <pre>    avatar.hp = 50</pre>
@@ -9546,7 +9442,7 @@
     
     <tr class="hit" data-hits="1">
       <td class="line_number">
-        <pre>107</pre>
+        <pre>115</pre>
       </td>
       <td>
         <pre>    avatar.max_mana = 100</pre>
@@ -9559,7 +9455,7 @@
     
     <tr class="hit" data-hits="1">
       <td class="line_number">
-        <pre>108</pre>
+        <pre>116</pre>
       </td>
       <td>
         <pre>    avatar.mana = 100</pre>
@@ -9572,7 +9468,7 @@
     
     <tr class="hit" data-hits="1">
       <td class="line_number">
-        <pre>109</pre>
+        <pre>117</pre>
       </td>
       <td>
         <pre>    avatar.save</pre>
@@ -9585,7 +9481,7 @@
     
     <tr class="never" >
       <td class="line_number">
-        <pre>110</pre>
+        <pre>118</pre>
       </td>
       <td>
         <pre>  end</pre>
@@ -9598,7 +9494,7 @@
     
     <tr class="never" >
       <td class="line_number">
-        <pre>111</pre>
+        <pre>119</pre>
       </td>
       <td>
         <pre>#---------    </pre>
@@ -9611,7 +9507,7 @@
     
     <tr class="never" >
       <td class="line_number">
-        <pre>112</pre>
+        <pre>120</pre>
       </td>
       <td>
         <pre></pre>
@@ -9624,7 +9520,7 @@
     
     <tr class="hit" data-hits="1">
       <td class="line_number">
-        <pre>113</pre>
+        <pre>121</pre>
       </td>
       <td>
         <pre>  def rest(avatar)</pre>
@@ -9637,7 +9533,7 @@
     
     <tr class="hit" data-hits="2">
       <td class="line_number">
-        <pre>114</pre>
+        <pre>122</pre>
       </td>
       <td>
         <pre>    avatar.hp = avatar.max_hp</pre>
@@ -9650,7 +9546,7 @@
     
     <tr class="hit" data-hits="2">
       <td class="line_number">
-        <pre>115</pre>
+        <pre>123</pre>
       </td>
       <td>
         <pre>    avatar.mana = avatar.max_mana</pre>
@@ -9663,114 +9559,10 @@
     
     <tr class="never" >
       <td class="line_number">
-        <pre>116</pre>
-      </td>
-      <td>
-        <pre>  end</pre>
-      </td>
-      <td class="hits">
-        
-      </td>
-    </tr>
-  
-    
-    <tr class="never" >
-      <td class="line_number">
-        <pre>117</pre>
-      </td>
-      <td>
-        <pre></pre>
-      </td>
-      <td class="hits">
-        
-      </td>
-    </tr>
-  
-    
-    <tr class="never" >
-      <td class="line_number">
-        <pre>118</pre>
-      </td>
-      <td>
-        <pre>#---------</pre>
-      </td>
-      <td class="hits">
-        
-      </td>
-    </tr>
-  
-    
-    <tr class="hit" data-hits="1">
-      <td class="line_number">
-        <pre>119</pre>
-      </td>
-      <td>
-        <pre>  def find_arena_monster(city)</pre>
-      </td>
-      <td class="hits">
-        1
-      </td>
-    </tr>
-  
-    
-    <tr class="hit" data-hits="1">
-      <td class="line_number">
-        <pre>120</pre>
-      </td>
-      <td>
-        <pre>    if(city.fight_area_nr !=0)</pre>
-      </td>
-      <td class="hits">
-        1
-      </td>
-    </tr>
-  
-    
-    <tr class="hit" data-hits="1">
-      <td class="line_number">
-        <pre>121</pre>
-      </td>
-      <td>
-        <pre>      area = Random.new.rand(1..city.fight_area_nr)</pre>
-      </td>
-      <td class="hits">
-        1
-      </td>
-    </tr>
-  
-    
-    <tr class="hit" data-hits="1">
-      <td class="line_number">
-        <pre>122</pre>
-      </td>
-      <td>
-        <pre>      if(city.fight_area[area.to_s.to_sym][:monsters].size != 0)</pre>
-      </td>
-      <td class="hits">
-        1
-      </td>
-    </tr>
-  
-    
-    <tr class="hit" data-hits="1">
-      <td class="line_number">
-        <pre>123</pre>
-      </td>
-      <td>
-        <pre>        city.fight_area[area.to_s.to_sym][:monsters][Random.new.rand(0..city.fight_area[area.to_s.to_sym][:monsters].size-1)]</pre>
-      </td>
-      <td class="hits">
-        1
-      </td>
-    </tr>
-  
-    
-    <tr class="never" >
-      <td class="line_number">
         <pre>124</pre>
       </td>
       <td>
-        <pre>      end</pre>
+        <pre>  end</pre>
       </td>
       <td class="hits">
         
@@ -9783,7 +9575,7 @@
         <pre>125</pre>
       </td>
       <td>
-        <pre>    end</pre>
+        <pre></pre>
       </td>
       <td class="hits">
         
@@ -9796,7 +9588,7 @@
         <pre>126</pre>
       </td>
       <td>
-        <pre>  end   </pre>
+        <pre>#---------</pre>
       </td>
       <td class="hits">
         
@@ -9804,54 +9596,54 @@
     </tr>
   
     
-    <tr class="never" >
+    <tr class="hit" data-hits="1">
       <td class="line_number">
         <pre>127</pre>
       </td>
       <td>
-        <pre>  </pre>
+        <pre>  def find_arena_monster(city)</pre>
       </td>
       <td class="hits">
-        
+        1
       </td>
     </tr>
   
     
-    <tr class="never" >
+    <tr class="hit" data-hits="1">
       <td class="line_number">
         <pre>128</pre>
       </td>
       <td>
-        <pre>#---------   </pre>
+        <pre>    if(city.fight_area_nr !=0)</pre>
       </td>
       <td class="hits">
-        
+        1
       </td>
     </tr>
   
     
-    <tr class="never" >
+    <tr class="hit" data-hits="1">
       <td class="line_number">
         <pre>129</pre>
       </td>
       <td>
-        <pre>  </pre>
+        <pre>      area = Random.new.rand(1..city.fight_area_nr)</pre>
       </td>
       <td class="hits">
-        
+        1
       </td>
     </tr>
   
     
-    <tr class="never" >
+    <tr class="hit" data-hits="1">
       <td class="line_number">
         <pre>130</pre>
       </td>
       <td>
-        <pre>  </pre>
+        <pre>      if(city.fight_area[area.to_s.to_sym][:monsters].size != 0)</pre>
       </td>
       <td class="hits">
-        
+        1
       </td>
     </tr>
   
@@ -9861,7 +9653,7 @@
         <pre>131</pre>
       </td>
       <td>
-        <pre>  def reg(name,pass)</pre>
+        <pre>        city.fight_area[area.to_s.to_sym][:monsters][Random.new.rand(0..city.fight_area[area.to_s.to_sym][:monsters].size-1)]</pre>
       </td>
       <td class="hits">
         1
@@ -9869,191 +9661,9 @@
     </tr>
   
     
-    <tr class="hit" data-hits="1">
+    <tr class="never" >
       <td class="line_number">
         <pre>132</pre>
-      </td>
-      <td>
-        <pre>    YamlManage.create_user(name,pass)</pre>
-      </td>
-      <td class="hits">
-        1
-      </td>
-    </tr>
-  
-    
-    <tr class="never" >
-      <td class="line_number">
-        <pre>133</pre>
-      </td>
-      <td>
-        <pre>  end</pre>
-      </td>
-      <td class="hits">
-        
-      </td>
-    </tr>
-  
-    
-    <tr class="never" >
-      <td class="line_number">
-        <pre>134</pre>
-      </td>
-      <td>
-        <pre>  </pre>
-      </td>
-      <td class="hits">
-        
-      </td>
-    </tr>
-  
-    
-    <tr class="hit" data-hits="1">
-      <td class="line_number">
-        <pre>135</pre>
-      </td>
-      <td>
-        <pre>  def logs(name)</pre>
-      </td>
-      <td class="hits">
-        1
-      </td>
-    </tr>
-  
-    
-    <tr class="hit" data-hits="1">
-      <td class="line_number">
-        <pre>136</pre>
-      </td>
-      <td>
-        <pre>    Avatar.new(&quot;data/user/#{name.chomp}.yml&quot;) if(File.exist? &quot;data/user/#{name.chomp}.yml&quot;)</pre>
-      </td>
-      <td class="hits">
-        1
-      </td>
-    </tr>
-  
-    
-    <tr class="never" >
-      <td class="line_number">
-        <pre>137</pre>
-      </td>
-      <td>
-        <pre>  end</pre>
-      </td>
-      <td class="hits">
-        
-      </td>
-    </tr>
-  
-    
-    <tr class="never" >
-      <td class="line_number">
-        <pre>138</pre>
-      </td>
-      <td>
-        <pre>    </pre>
-      </td>
-      <td class="hits">
-        
-      </td>
-    </tr>
-  
-    
-    <tr class="never" >
-      <td class="line_number">
-        <pre>139</pre>
-      </td>
-      <td>
-        <pre>#---------  </pre>
-      </td>
-      <td class="hits">
-        
-      </td>
-    </tr>
-  
-    
-    <tr class="hit" data-hits="1">
-      <td class="line_number">
-        <pre>140</pre>
-      </td>
-      <td>
-        <pre>  def find_item(item_name)</pre>
-      </td>
-      <td class="hits">
-        1
-      </td>
-    </tr>
-  
-    
-    <tr class="hit" data-hits="1">
-      <td class="line_number">
-        <pre>141</pre>
-      </td>
-      <td>
-        <pre>    item_return = nil</pre>
-      </td>
-      <td class="hits">
-        1
-      </td>
-    </tr>
-  
-    
-    <tr class="hit" data-hits="1">
-      <td class="line_number">
-        <pre>142</pre>
-      </td>
-      <td>
-        <pre>    @items.each do |x|</pre>
-      </td>
-      <td class="hits">
-        1
-      </td>
-    </tr>
-  
-    
-    <tr class="hit" data-hits="10">
-      <td class="line_number">
-        <pre>143</pre>
-      </td>
-      <td>
-        <pre>      if(x.name == item_name)</pre>
-      </td>
-      <td class="hits">
-        10
-      </td>
-    </tr>
-  
-    
-    <tr class="hit" data-hits="1">
-      <td class="line_number">
-        <pre>144</pre>
-      </td>
-      <td>
-        <pre>        item_return = x</pre>
-      </td>
-      <td class="hits">
-        1
-      </td>
-    </tr>
-  
-    
-    <tr class="hit" data-hits="1">
-      <td class="line_number">
-        <pre>145</pre>
-      </td>
-      <td>
-        <pre>        break</pre>
-      </td>
-      <td class="hits">
-        1
-      </td>
-    </tr>
-  
-    
-    <tr class="never" >
-      <td class="line_number">
-        <pre>146</pre>
       </td>
       <td>
         <pre>      end</pre>
@@ -10066,7 +9676,7 @@
     
     <tr class="never" >
       <td class="line_number">
-        <pre>147</pre>
+        <pre>133</pre>
       </td>
       <td>
         <pre>    end</pre>
@@ -10077,12 +9687,90 @@
     </tr>
   
     
-    <tr class="hit" data-hits="1">
+    <tr class="never" >
       <td class="line_number">
-        <pre>148</pre>
+        <pre>134</pre>
       </td>
       <td>
-        <pre>    return item_return</pre>
+        <pre>  end   </pre>
+      </td>
+      <td class="hits">
+        
+      </td>
+    </tr>
+  
+    
+    <tr class="never" >
+      <td class="line_number">
+        <pre>135</pre>
+      </td>
+      <td>
+        <pre>  </pre>
+      </td>
+      <td class="hits">
+        
+      </td>
+    </tr>
+  
+    
+    <tr class="never" >
+      <td class="line_number">
+        <pre>136</pre>
+      </td>
+      <td>
+        <pre>#---------   </pre>
+      </td>
+      <td class="hits">
+        
+      </td>
+    </tr>
+  
+    
+    <tr class="never" >
+      <td class="line_number">
+        <pre>137</pre>
+      </td>
+      <td>
+        <pre>  </pre>
+      </td>
+      <td class="hits">
+        
+      </td>
+    </tr>
+  
+    
+    <tr class="never" >
+      <td class="line_number">
+        <pre>138</pre>
+      </td>
+      <td>
+        <pre>  </pre>
+      </td>
+      <td class="hits">
+        
+      </td>
+    </tr>
+  
+    
+    <tr class="hit" data-hits="1">
+      <td class="line_number">
+        <pre>139</pre>
+      </td>
+      <td>
+        <pre>  def reg(name,pass)</pre>
+      </td>
+      <td class="hits">
+        1
+      </td>
+    </tr>
+  
+    
+    <tr class="hit" data-hits="1">
+      <td class="line_number">
+        <pre>140</pre>
+      </td>
+      <td>
+        <pre>    YamlManage.create_user(name,pass)</pre>
       </td>
       <td class="hits">
         1
@@ -10092,7 +9780,7 @@
     
     <tr class="never" >
       <td class="line_number">
-        <pre>149</pre>
+        <pre>141</pre>
       </td>
       <td>
         <pre>  end</pre>
@@ -10105,7 +9793,7 @@
     
     <tr class="never" >
       <td class="line_number">
-        <pre>150</pre>
+        <pre>142</pre>
       </td>
       <td>
         <pre>  </pre>
@@ -10116,11 +9804,206 @@
     </tr>
   
     
+    <tr class="hit" data-hits="1">
+      <td class="line_number">
+        <pre>143</pre>
+      </td>
+      <td>
+        <pre>  def logs(name)</pre>
+      </td>
+      <td class="hits">
+        1
+      </td>
+    </tr>
+  
+    
+    <tr class="hit" data-hits="1">
+      <td class="line_number">
+        <pre>144</pre>
+      </td>
+      <td>
+        <pre>    Avatar.new(&quot;data/user/#{name.chomp}.yml&quot;) if(File.exist? &quot;data/user/#{name.chomp}.yml&quot;)</pre>
+      </td>
+      <td class="hits">
+        1
+      </td>
+    </tr>
+  
+    
     <tr class="never" >
+      <td class="line_number">
+        <pre>145</pre>
+      </td>
+      <td>
+        <pre>  end</pre>
+      </td>
+      <td class="hits">
+        
+      </td>
+    </tr>
+  
+    
+    <tr class="never" >
+      <td class="line_number">
+        <pre>146</pre>
+      </td>
+      <td>
+        <pre>    </pre>
+      </td>
+      <td class="hits">
+        
+      </td>
+    </tr>
+  
+    
+    <tr class="never" >
+      <td class="line_number">
+        <pre>147</pre>
+      </td>
+      <td>
+        <pre>#---------  </pre>
+      </td>
+      <td class="hits">
+        
+      </td>
+    </tr>
+  
+    
+    <tr class="hit" data-hits="1">
+      <td class="line_number">
+        <pre>148</pre>
+      </td>
+      <td>
+        <pre>  def find_item(item_name)</pre>
+      </td>
+      <td class="hits">
+        1
+      </td>
+    </tr>
+  
+    
+    <tr class="hit" data-hits="1">
+      <td class="line_number">
+        <pre>149</pre>
+      </td>
+      <td>
+        <pre>    item_return = nil</pre>
+      </td>
+      <td class="hits">
+        1
+      </td>
+    </tr>
+  
+    
+    <tr class="hit" data-hits="1">
+      <td class="line_number">
+        <pre>150</pre>
+      </td>
+      <td>
+        <pre>    @items.each do |x|</pre>
+      </td>
+      <td class="hits">
+        1
+      </td>
+    </tr>
+  
+    
+    <tr class="hit" data-hits="10">
       <td class="line_number">
         <pre>151</pre>
       </td>
       <td>
+        <pre>      if(x.name == item_name)</pre>
+      </td>
+      <td class="hits">
+        10
+      </td>
+    </tr>
+  
+    
+    <tr class="hit" data-hits="1">
+      <td class="line_number">
+        <pre>152</pre>
+      </td>
+      <td>
+        <pre>        item_return = x</pre>
+      </td>
+      <td class="hits">
+        1
+      </td>
+    </tr>
+  
+    
+    <tr class="hit" data-hits="1">
+      <td class="line_number">
+        <pre>153</pre>
+      </td>
+      <td>
+        <pre>        break</pre>
+      </td>
+      <td class="hits">
+        1
+      </td>
+    </tr>
+  
+    
+    <tr class="never" >
+      <td class="line_number">
+        <pre>154</pre>
+      </td>
+      <td>
+        <pre>      end</pre>
+      </td>
+      <td class="hits">
+        
+      </td>
+    </tr>
+  
+    
+    <tr class="never" >
+      <td class="line_number">
+        <pre>155</pre>
+      </td>
+      <td>
+        <pre>    end</pre>
+      </td>
+      <td class="hits">
+        
+      </td>
+    </tr>
+  
+    
+    <tr class="hit" data-hits="1">
+      <td class="line_number">
+        <pre>156</pre>
+      </td>
+      <td>
+        <pre>    return item_return</pre>
+      </td>
+      <td class="hits">
+        1
+      </td>
+    </tr>
+  
+    
+    <tr class="never" >
+      <td class="line_number">
+        <pre>157</pre>
+      </td>
+      <td>
+        <pre>  end</pre>
+      </td>
+      <td class="hits">
+        
+      </td>
+    </tr>
+  
+    
+    <tr class="never" >
+      <td class="line_number">
+        <pre>158</pre>
+      </td>
+      <td>
         <pre>  </pre>
       </td>
       <td class="hits">
@@ -10131,7 +10014,20 @@
     
     <tr class="never" >
       <td class="line_number">
-        <pre>152</pre>
+        <pre>159</pre>
+      </td>
+      <td>
+        <pre>  </pre>
+      </td>
+      <td class="hits">
+        
+      </td>
+    </tr>
+  
+    
+    <tr class="never" >
+      <td class="line_number">
+        <pre>160</pre>
       </td>
       <td>
         <pre> </pre>
@@ -10144,7 +10040,7 @@
     
     <tr class="never" >
       <td class="line_number">
-        <pre>153</pre>
+        <pre>161</pre>
       </td>
       <td>
         <pre>end</pre>
@@ -10579,7 +10475,7 @@
     </tr>
   
     
-    <tr class="hit" data-hits="989">
+    <tr class="hit" data-hits="977">
       <td class="line_number">
         <pre>32</pre>
       </td>
@@ -10587,12 +10483,12 @@
         <pre>    output = File.new(path.chomp, 'r')</pre>
       </td>
       <td class="hits">
-        989
+        977
       </td>
     </tr>
   
     
-    <tr class="hit" data-hits="989">
+    <tr class="hit" data-hits="977">
       <td class="line_number">
         <pre>33</pre>
       </td>
@@ -10600,12 +10496,12 @@
         <pre>    @preferences = YAML.load(output.read)</pre>
       </td>
       <td class="hits">
-        989
+        977
       </td>
     </tr>
   
     
-    <tr class="hit" data-hits="989">
+    <tr class="hit" data-hits="977">
       <td class="line_number">
         <pre>34</pre>
       </td>
@@ -10613,12 +10509,12 @@
         <pre>    output.close</pre>
       </td>
       <td class="hits">
-        989
+        977
       </td>
     </tr>
   
     
-    <tr class="hit" data-hits="989">
+    <tr class="hit" data-hits="977">
       <td class="line_number">
         <pre>35</pre>
       </td>
@@ -10626,7 +10522,7 @@
         <pre>    return @preferences</pre>
       </td>
       <td class="hits">
-        989
+        977
       </td>
     </tr>
   
@@ -11107,7 +11003,7 @@
         <pre>8</pre>
       </td>
       <td>
-        <pre>      @expected.each{|k,v| if(actual[k] != v) then status = false end}</pre>
+        <pre>      @expected.each{|k,v| if(actual[k] != v) then status = false; puts &quot;#{k}:#{v}&quot; end}</pre>
       </td>
       <td class="hits">
         23
@@ -12532,721 +12428,6 @@
     </thead>
     <tbody>
   
-    
-    <tr class="hit" data-hits="1">
-      <td class="line_number">
-        <pre>1</pre>
-      </td>
-      <td>
-        <pre>require File.dirname(__FILE__) + '/spec_helper.rb'</pre>
-      </td>
-      <td class="hits">
-        1
-      </td>
-    </tr>
-  
-    
-    <tr class="never" >
-      <td class="line_number">
-        <pre>2</pre>
-      </td>
-      <td>
-        <pre></pre>
-      </td>
-      <td class="hits">
-        
-      </td>
-    </tr>
-  
-    
-    <tr class="hit" data-hits="1">
-      <td class="line_number">
-        <pre>3</pre>
-      </td>
-      <td>
-        <pre>describe &quot;shop&quot; do</pre>
-      </td>
-      <td class="hits">
-        1
-      </td>
-    </tr>
-  
-    
-    <tr class="hit" data-hits="1">
-      <td class="line_number">
-        <pre>4</pre>
-      </td>
-      <td>
-        <pre>  before(:each) do</pre>
-      </td>
-      <td class="hits">
-        1
-      </td>
-    </tr>
-  
-    
-    <tr class="hit" data-hits="4">
-      <td class="line_number">
-        <pre>5</pre>
-      </td>
-      <td>
-        <pre>    @world = World.new</pre>
-      </td>
-      <td class="hits">
-        4
-      </td>
-    </tr>
-  
-    
-    <tr class="hit" data-hits="4">
-      <td class="line_number">
-        <pre>6</pre>
-      </td>
-      <td>
-        <pre>    @shop = @world.shop_inst</pre>
-      </td>
-      <td class="hits">
-        4
-      </td>
-    </tr>
-  
-    
-    <tr class="hit" data-hits="4">
-      <td class="line_number">
-        <pre>7</pre>
-      </td>
-      <td>
-        <pre>    @interface =@world.interface</pre>
-      </td>
-      <td class="hits">
-        4
-      </td>
-    </tr>
-  
-    
-    <tr class="hit" data-hits="4">
-      <td class="line_number">
-        <pre>8</pre>
-      </td>
-      <td>
-        <pre>    YamlManage.create_user(&quot;test&quot;,&quot;test&quot;)</pre>
-      </td>
-      <td class="hits">
-        4
-      </td>
-    </tr>
-  
-    
-    <tr class="hit" data-hits="4">
-      <td class="line_number">
-        <pre>9</pre>
-      </td>
-      <td>
-        <pre>    @avatar = Avatar.new(&quot;data/user/test.yml&quot;)</pre>
-      </td>
-      <td class="hits">
-        4
-      </td>
-    </tr>
-  
-    
-    <tr class="never" >
-      <td class="line_number">
-        <pre>10</pre>
-      </td>
-      <td>
-        <pre>  end</pre>
-      </td>
-      <td class="hits">
-        
-      </td>
-    </tr>
-  
-    
-    <tr class="never" >
-      <td class="line_number">
-        <pre>11</pre>
-      </td>
-      <td>
-        <pre>    </pre>
-      </td>
-      <td class="hits">
-        
-      </td>
-    </tr>
-  
-    
-    <tr class="hit" data-hits="1">
-      <td class="line_number">
-        <pre>12</pre>
-      </td>
-      <td>
-        <pre>  describe &quot;buy item&quot; do</pre>
-      </td>
-      <td class="hits">
-        1
-      </td>
-    </tr>
-  
-    
-    <tr class="hit" data-hits="1">
-      <td class="line_number">
-        <pre>13</pre>
-      </td>
-      <td>
-        <pre>    it &quot;should add three items to avatars backpack and decrease gold amount by items price&quot; do</pre>
-      </td>
-      <td class="hits">
-        1
-      </td>
-    </tr>
-  
-    
-    <tr class="hit" data-hits="1">
-      <td class="line_number">
-        <pre>14</pre>
-      </td>
-      <td>
-        <pre>      @avatar.stub!(:save).and_return(true)</pre>
-      </td>
-      <td class="hits">
-        1
-      </td>
-    </tr>
-  
-    
-    <tr class="hit" data-hits="1">
-      <td class="line_number">
-        <pre>15</pre>
-      </td>
-      <td>
-        <pre>      @avatar.gold = 1000</pre>
-      </td>
-      <td class="hits">
-        1
-      </td>
-    </tr>
-  
-    
-    <tr class="hit" data-hits="1">
-      <td class="line_number">
-        <pre>16</pre>
-      </td>
-      <td>
-        <pre>      item = Item.new(&quot;data/item/sword1.yml&quot;)</pre>
-      </td>
-      <td class="hits">
-        1
-      </td>
-    </tr>
-  
-    
-    <tr class="hit" data-hits="1">
-      <td class="line_number">
-        <pre>17</pre>
-      </td>
-      <td>
-        <pre>      @shop.buy_item(@avatar, item).should == true</pre>
-      </td>
-      <td class="hits">
-        1
-      </td>
-    </tr>
-  
-    
-    <tr class="hit" data-hits="1">
-      <td class="line_number">
-        <pre>18</pre>
-      </td>
-      <td>
-        <pre>      @shop.buy_item(@avatar, item).should == true</pre>
-      </td>
-      <td class="hits">
-        1
-      </td>
-    </tr>
-  
-    
-    <tr class="hit" data-hits="13">
-      <td class="line_number">
-        <pre>19</pre>
-      </td>
-      <td>
-        <pre>      item2 = @world.items.detect{|i| i.name == 'Broad sword'}</pre>
-      </td>
-      <td class="hits">
-        13
-      </td>
-    </tr>
-  
-    
-    <tr class="hit" data-hits="1">
-      <td class="line_number">
-        <pre>20</pre>
-      </td>
-      <td>
-        <pre>      @shop.buy_item(@avatar, item2).should == true</pre>
-      </td>
-      <td class="hits">
-        1
-      </td>
-    </tr>
-  
-    
-    <tr class="hit" data-hits="1">
-      <td class="line_number">
-        <pre>21</pre>
-      </td>
-      <td>
-        <pre>      @avatar.gold.should == 480</pre>
-      </td>
-      <td class="hits">
-        1
-      </td>
-    </tr>
-  
-    
-    <tr class="hit" data-hits="1">
-      <td class="line_number">
-        <pre>22</pre>
-      </td>
-      <td>
-        <pre>      @avatar.backpack.should have(3).items</pre>
-      </td>
-      <td class="hits">
-        1
-      </td>
-    </tr>
-  
-    
-    <tr class="hit" data-hits="1">
-      <td class="line_number">
-        <pre>23</pre>
-      </td>
-      <td>
-        <pre>      @avatar.backpack.should include(item)</pre>
-      </td>
-      <td class="hits">
-        1
-      </td>
-    </tr>
-  
-    
-    <tr class="never" >
-      <td class="line_number">
-        <pre>24</pre>
-      </td>
-      <td>
-        <pre>    end      </pre>
-      </td>
-      <td class="hits">
-        
-      </td>
-    </tr>
-  
-    
-    <tr class="never" >
-      <td class="line_number">
-        <pre>25</pre>
-      </td>
-      <td>
-        <pre>  end</pre>
-      </td>
-      <td class="hits">
-        
-      </td>
-    </tr>
-  
-    
-    <tr class="never" >
-      <td class="line_number">
-        <pre>26</pre>
-      </td>
-      <td>
-        <pre>  </pre>
-      </td>
-      <td class="hits">
-        
-      </td>
-    </tr>
-  
-    
-    <tr class="hit" data-hits="1">
-      <td class="line_number">
-        <pre>27</pre>
-      </td>
-      <td>
-        <pre>  describe &quot;sell item&quot; do</pre>
-      </td>
-      <td class="hits">
-        1
-      </td>
-    </tr>
-  
-    
-    <tr class="hit" data-hits="1">
-      <td class="line_number">
-        <pre>28</pre>
-      </td>
-      <td>
-        <pre>    it &quot;should sell Wooden sword and refund half the price&quot; do</pre>
-      </td>
-      <td class="hits">
-        1
-      </td>
-    </tr>
-  
-    
-    <tr class="hit" data-hits="1">
-      <td class="line_number">
-        <pre>29</pre>
-      </td>
-      <td>
-        <pre>      item = Item.new(&quot;data/item/sword1.yml&quot;)</pre>
-      </td>
-      <td class="hits">
-        1
-      </td>
-    </tr>
-  
-    
-    <tr class="hit" data-hits="1">
-      <td class="line_number">
-        <pre>30</pre>
-      </td>
-      <td>
-        <pre>      @avatar.backpack.push(item)</pre>
-      </td>
-      <td class="hits">
-        1
-      </td>
-    </tr>
-  
-    
-    <tr class="hit" data-hits="1">
-      <td class="line_number">
-        <pre>31</pre>
-      </td>
-      <td>
-        <pre>      @avatar.gold = 100</pre>
-      </td>
-      <td class="hits">
-        1
-      </td>
-    </tr>
-  
-    
-    <tr class="hit" data-hits="1">
-      <td class="line_number">
-        <pre>32</pre>
-      </td>
-      <td>
-        <pre>      @shop.sell_item(@avatar,item)</pre>
-      </td>
-      <td class="hits">
-        1
-      </td>
-    </tr>
-  
-    
-    <tr class="hit" data-hits="1">
-      <td class="line_number">
-        <pre>33</pre>
-      </td>
-      <td>
-        <pre>      @avatar.gold.should == 105</pre>
-      </td>
-      <td class="hits">
-        1
-      </td>
-    </tr>
-  
-    
-    <tr class="hit" data-hits="1">
-      <td class="line_number">
-        <pre>34</pre>
-      </td>
-      <td>
-        <pre>      @avatar.backpack.should_not include(item)</pre>
-      </td>
-      <td class="hits">
-        1
-      </td>
-    </tr>
-  
-    
-    <tr class="never" >
-      <td class="line_number">
-        <pre>35</pre>
-      </td>
-      <td>
-        <pre>    end</pre>
-      </td>
-      <td class="hits">
-        
-      </td>
-    </tr>
-  
-    
-    <tr class="never" >
-      <td class="line_number">
-        <pre>36</pre>
-      </td>
-      <td>
-        <pre>  end</pre>
-      </td>
-      <td class="hits">
-        
-      </td>
-    </tr>
-  
-    
-    <tr class="never" >
-      <td class="line_number">
-        <pre>37</pre>
-      </td>
-      <td>
-        <pre>    </pre>
-      </td>
-      <td class="hits">
-        
-      </td>
-    </tr>
-  
-    
-    <tr class="hit" data-hits="1">
-      <td class="line_number">
-        <pre>38</pre>
-      </td>
-      <td>
-        <pre>  describe &quot;item selection&quot; do</pre>
-      </td>
-      <td class="hits">
-        1
-      </td>
-    </tr>
-  
-    
-    <tr class="hit" data-hits="1">
-      <td class="line_number">
-        <pre>39</pre>
-      </td>
-      <td>
-        <pre>    it &quot;should find Wooden sword in item list&quot; do</pre>
-      </td>
-      <td class="hits">
-        1
-      </td>
-    </tr>
-  
-    
-    <tr class="hit" data-hits="1">
-      <td class="line_number">
-        <pre>40</pre>
-      </td>
-      <td>
-        <pre>      @interface.should_receive(:item).and_return(1)</pre>
-      </td>
-      <td class="hits">
-        1
-      </td>
-    </tr>
-  
-    
-    <tr class="hit" data-hits="2">
-      <td class="line_number">
-        <pre>41</pre>
-      </td>
-      <td>
-        <pre>      @interface.should_receive(:item_view).with(@avatar, instance_of(Item)).and_return{|a,b| b.name}</pre>
-      </td>
-      <td class="hits">
-        2
-      </td>
-    </tr>
-  
-    
-    <tr class="hit" data-hits="1">
-      <td class="line_number">
-        <pre>42</pre>
-      </td>
-      <td>
-        <pre>      @shop.item(@avatar, &quot;sword&quot;).should == &quot;Wooden sword&quot;</pre>
-      </td>
-      <td class="hits">
-        1
-      </td>
-    </tr>
-  
-    
-    <tr class="never" >
-      <td class="line_number">
-        <pre>43</pre>
-      </td>
-      <td>
-        <pre>    end</pre>
-      </td>
-      <td class="hits">
-        
-      </td>
-    </tr>
-  
-    
-    <tr class="never" >
-      <td class="line_number">
-        <pre>44</pre>
-      </td>
-      <td>
-        <pre>    </pre>
-      </td>
-      <td class="hits">
-        
-      </td>
-    </tr>
-  
-    
-    <tr class="hit" data-hits="1">
-      <td class="line_number">
-        <pre>45</pre>
-      </td>
-      <td>
-        <pre>    it &quot;should return nothing&quot; do</pre>
-      </td>
-      <td class="hits">
-        1
-      </td>
-    </tr>
-  
-    
-    <tr class="hit" data-hits="1">
-      <td class="line_number">
-        <pre>46</pre>
-      </td>
-      <td>
-        <pre>      @interface.should_receive(:item).and_return(4)</pre>
-      </td>
-      <td class="hits">
-        1
-      </td>
-    </tr>
-  
-    
-    <tr class="hit" data-hits="1">
-      <td class="line_number">
-        <pre>47</pre>
-      </td>
-      <td>
-        <pre>      @shop.item(@avatar, &quot;sword&quot;).should == nil</pre>
-      </td>
-      <td class="hits">
-        1
-      </td>
-    </tr>
-  
-    
-    <tr class="never" >
-      <td class="line_number">
-        <pre>48</pre>
-      </td>
-      <td>
-        <pre>    end</pre>
-      </td>
-      <td class="hits">
-        
-      </td>
-    </tr>
-  
-    
-    <tr class="never" >
-      <td class="line_number">
-        <pre>49</pre>
-      </td>
-      <td>
-        <pre>    </pre>
-      </td>
-      <td class="hits">
-        
-      </td>
-    </tr>
-  
-    
-    <tr class="never" >
-      <td class="line_number">
-        <pre>50</pre>
-      </td>
-      <td>
-        <pre>  end</pre>
-      </td>
-      <td class="hits">
-        
-      </td>
-    </tr>
-  
-    
-    <tr class="never" >
-      <td class="line_number">
-        <pre>51</pre>
-      </td>
-      <td>
-        <pre>  </pre>
-      </td>
-      <td class="hits">
-        
-      </td>
-    </tr>
-  
-    
-    <tr class="hit" data-hits="1">
-      <td class="line_number">
-        <pre>52</pre>
-      </td>
-      <td>
-        <pre>  after(:each) do</pre>
-      </td>
-      <td class="hits">
-        1
-      </td>
-    </tr>
-  
-    
-    <tr class="hit" data-hits="4">
-      <td class="line_number">
-        <pre>53</pre>
-      </td>
-      <td>
-        <pre>    File.delete(&quot;data/user/test.yml&quot;) if File.exists?(&quot;data/user/test.yml&quot;)</pre>
-      </td>
-      <td class="hits">
-        4
-      </td>
-    </tr>
-  
-    
-    <tr class="never" >
-      <td class="line_number">
-        <pre>54</pre>
-      </td>
-      <td>
-        <pre>  end</pre>
-      </td>
-      <td class="hits">
-        
-      </td>
-    </tr>
-  
-    
-    <tr class="never" >
-      <td class="line_number">
-        <pre>55</pre>
-      </td>
-      <td>
-        <pre>end</pre>
-      </td>
-      <td class="hits">
-        
-      </td>
-    </tr>
-  
     </tbody>
   </table>
 </div>
@@ -13334,7 +12515,7 @@
     </tr>
   
     
-    <tr class="hit" data-hits="19">
+    <tr class="hit" data-hits="21">
       <td class="line_number">
         <pre>6</pre>
       </td>
@@ -13342,12 +12523,12 @@
         <pre>    @world = World.new</pre>
       </td>
       <td class="hits">
-        19
+        21
       </td>
     </tr>
   
     
-    <tr class="hit" data-hits="19">
+    <tr class="hit" data-hits="21">
       <td class="line_number">
         <pre>7</pre>
       </td>
@@ -13355,12 +12536,12 @@
         <pre>    @interface = @world.interface</pre>
       </td>
       <td class="hits">
-        19
+        21
       </td>
     </tr>
   
     
-    <tr class="hit" data-hits="19">
+    <tr class="hit" data-hits="21">
       <td class="line_number">
         <pre>8</pre>
       </td>
@@ -13368,12 +12549,12 @@
         <pre>    YamlManage.create_user(&quot;test&quot;,&quot;test&quot;)</pre>
       </td>
       <td class="hits">
-        19
+        21
       </td>
     </tr>
   
     
-    <tr class="hit" data-hits="19">
+    <tr class="hit" data-hits="21">
       <td class="line_number">
         <pre>9</pre>
       </td>
@@ -13381,12 +12562,12 @@
         <pre>    @avatar = Avatar.new(&quot;data/user/test.yml&quot;)</pre>
       </td>
       <td class="hits">
-        19
+        21
       </td>
     </tr>
   
     
-    <tr class="hit" data-hits="19">
+    <tr class="hit" data-hits="21">
       <td class="line_number">
         <pre>10</pre>
       </td>
@@ -13394,7 +12575,7 @@
         <pre>    @monster = Monster.new(&quot;data/monster/Sin.yml&quot;)</pre>
       </td>
       <td class="hits">
-        19
+        21
       </td>
     </tr>
   
@@ -14985,7 +14166,7 @@
     </tr>
   
     
-    <tr class="hit" data-hits="7">
+    <tr class="hit" data-hits="9">
       <td class="line_number">
         <pre>133</pre>
       </td>
@@ -14993,12 +14174,12 @@
         <pre>      YamlManage.create_user(&quot;test&quot;,&quot;test&quot;)</pre>
       </td>
       <td class="hits">
-        7
+        9
       </td>
     </tr>
   
     
-    <tr class="hit" data-hits="7">
+    <tr class="hit" data-hits="9">
       <td class="line_number">
         <pre>134</pre>
       </td>
@@ -15006,12 +14187,12 @@
         <pre>      @avatar = Avatar.new(&quot;data/user/test.yml&quot;)</pre>
       </td>
       <td class="hits">
-        7
+        9
       </td>
     </tr>
   
     
-    <tr class="hit" data-hits="7">
+    <tr class="hit" data-hits="9">
       <td class="line_number">
         <pre>135</pre>
       </td>
@@ -15019,7 +14200,7 @@
         <pre>      @monster = Monster.new(&quot;data/monster/Sin.yml&quot;)</pre>
       </td>
       <td class="hits">
-        7
+        9
       </td>
     </tr>
   
@@ -15791,28 +14972,28 @@
     </tr>
   
     
-    <tr class="never" >
+    <tr class="hit" data-hits="1">
       <td class="line_number">
         <pre>195</pre>
       </td>
       <td>
-        <pre>    </pre>
+        <pre>    describe &quot;item selection&quot; do</pre>
       </td>
       <td class="hits">
-        
+        1
       </td>
     </tr>
   
     
-    <tr class="never" >
+    <tr class="hit" data-hits="1">
       <td class="line_number">
         <pre>196</pre>
       </td>
       <td>
-        <pre>  end</pre>
+        <pre>    it &quot;should find Wooden sword in item list&quot; do</pre>
       </td>
       <td class="hits">
-        
+        1
       </td>
     </tr>
   
@@ -15822,36 +15003,36 @@
         <pre>197</pre>
       </td>
       <td>
-        <pre>  after(:all) do</pre>
+        <pre>      @interface.should_receive(:item).and_return(1)</pre>
       </td>
       <td class="hits">
         1
+      </td>
+    </tr>
+  
+    
+    <tr class="hit" data-hits="2">
+      <td class="line_number">
+        <pre>198</pre>
+      </td>
+      <td>
+        <pre>      @interface.should_receive(:item_view).with(@avatar, instance_of(Item)).and_return{|a,b| b.name}</pre>
+      </td>
+      <td class="hits">
+        2
       </td>
     </tr>
   
     
     <tr class="hit" data-hits="1">
       <td class="line_number">
-        <pre>198</pre>
-      </td>
-      <td>
-        <pre>    File.delete(&quot;data/user/test.yml&quot;) if File.exists?(&quot;data/user/test.yml&quot;)</pre>
-      </td>
-      <td class="hits">
-        1
-      </td>
-    </tr>
-  
-    
-    <tr class="never" >
-      <td class="line_number">
         <pre>199</pre>
       </td>
       <td>
-        <pre>  end</pre>
+        <pre>      @world.item(@avatar, &quot;sword&quot;).should == &quot;Wooden sword&quot;</pre>
       </td>
       <td class="hits">
-        
+        1
       </td>
     </tr>
   
@@ -15861,7 +15042,7 @@
         <pre>200</pre>
       </td>
       <td>
-        <pre>  </pre>
+        <pre>    end</pre>
       </td>
       <td class="hits">
         
@@ -15874,7 +15055,7 @@
         <pre>201</pre>
       </td>
       <td>
-        <pre>  </pre>
+        <pre>    </pre>
       </td>
       <td class="hits">
         
@@ -15882,12 +15063,51 @@
     </tr>
   
     
-    <tr class="never" >
+    <tr class="hit" data-hits="1">
       <td class="line_number">
         <pre>202</pre>
       </td>
       <td>
-        <pre>  </pre>
+        <pre>    it &quot;should return nothing&quot; do</pre>
+      </td>
+      <td class="hits">
+        1
+      </td>
+    </tr>
+  
+    
+    <tr class="hit" data-hits="1">
+      <td class="line_number">
+        <pre>203</pre>
+      </td>
+      <td>
+        <pre>      @interface.should_receive(:item).and_return(4)</pre>
+      </td>
+      <td class="hits">
+        1
+      </td>
+    </tr>
+  
+    
+    <tr class="hit" data-hits="1">
+      <td class="line_number">
+        <pre>204</pre>
+      </td>
+      <td>
+        <pre>      @world.item(@avatar, &quot;sword&quot;).should == nil</pre>
+      </td>
+      <td class="hits">
+        1
+      </td>
+    </tr>
+  
+    
+    <tr class="never" >
+      <td class="line_number">
+        <pre>205</pre>
+      </td>
+      <td>
+        <pre>    end</pre>
       </td>
       <td class="hits">
         
@@ -15897,7 +15117,7 @@
     
     <tr class="never" >
       <td class="line_number">
-        <pre>203</pre>
+        <pre>206</pre>
       </td>
       <td>
         <pre>    </pre>
@@ -15910,7 +15130,150 @@
     
     <tr class="never" >
       <td class="line_number">
-        <pre>204</pre>
+        <pre>207</pre>
+      </td>
+      <td>
+        <pre>  end</pre>
+      </td>
+      <td class="hits">
+        
+      </td>
+    </tr>
+  
+    
+    <tr class="never" >
+      <td class="line_number">
+        <pre>208</pre>
+      </td>
+      <td>
+        <pre>    </pre>
+      </td>
+      <td class="hits">
+        
+      </td>
+    </tr>
+  
+    
+    <tr class="never" >
+      <td class="line_number">
+        <pre>209</pre>
+      </td>
+      <td>
+        <pre>    </pre>
+      </td>
+      <td class="hits">
+        
+      </td>
+    </tr>
+  
+    
+    <tr class="never" >
+      <td class="line_number">
+        <pre>210</pre>
+      </td>
+      <td>
+        <pre>  end</pre>
+      </td>
+      <td class="hits">
+        
+      </td>
+    </tr>
+  
+    
+    <tr class="hit" data-hits="1">
+      <td class="line_number">
+        <pre>211</pre>
+      </td>
+      <td>
+        <pre>  after(:all) do</pre>
+      </td>
+      <td class="hits">
+        1
+      </td>
+    </tr>
+  
+    
+    <tr class="hit" data-hits="1">
+      <td class="line_number">
+        <pre>212</pre>
+      </td>
+      <td>
+        <pre>    File.delete(&quot;data/user/test.yml&quot;) if File.exists?(&quot;data/user/test.yml&quot;)</pre>
+      </td>
+      <td class="hits">
+        1
+      </td>
+    </tr>
+  
+    
+    <tr class="never" >
+      <td class="line_number">
+        <pre>213</pre>
+      </td>
+      <td>
+        <pre>  end</pre>
+      </td>
+      <td class="hits">
+        
+      </td>
+    </tr>
+  
+    
+    <tr class="never" >
+      <td class="line_number">
+        <pre>214</pre>
+      </td>
+      <td>
+        <pre>  </pre>
+      </td>
+      <td class="hits">
+        
+      </td>
+    </tr>
+  
+    
+    <tr class="never" >
+      <td class="line_number">
+        <pre>215</pre>
+      </td>
+      <td>
+        <pre>  </pre>
+      </td>
+      <td class="hits">
+        
+      </td>
+    </tr>
+  
+    
+    <tr class="never" >
+      <td class="line_number">
+        <pre>216</pre>
+      </td>
+      <td>
+        <pre>  </pre>
+      </td>
+      <td class="hits">
+        
+      </td>
+    </tr>
+  
+    
+    <tr class="never" >
+      <td class="line_number">
+        <pre>217</pre>
+      </td>
+      <td>
+        <pre>    </pre>
+      </td>
+      <td class="hits">
+        
+      </td>
+    </tr>
+  
+    
+    <tr class="never" >
+      <td class="line_number">
+        <pre>218</pre>
       </td>
       <td>
         <pre>end</pre>

@@ -1,5 +1,5 @@
 class World
-  attr_reader :interface, :shop_inst, :citys, :items, :exitcmd
+  attr_reader :interface, :citys, :items, :exitcmd
   def initialize 
     @exitcmd = false
     world = YamlManage.load_file("data/world.yml")
@@ -7,7 +7,15 @@ class World
     @citys = (1..cities_number.to_i).collect{|x| City.new("data/city/#{world[x.to_s.to_sym]}.yml")}
     @interface = Ui.new(self)
     @items = load_items
-    @shop_inst = Shop.new(@interface, @items)
+  end
+  
+
+  def item(avatar,item_class)
+    items = @items.select{|x| x.item_class == item_class}
+    c = @interface.item(items)
+    if(c != items.size+1)
+      @interface.item_view(avatar, items[c-1])
+    end
   end
   
   def start_fight(avatar,enemy)
