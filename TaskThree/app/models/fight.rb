@@ -24,14 +24,6 @@ class Fight < ActiveRecord::Base
     avatar.gold -= Random.new.rand(0..enemy.gold_max) / 10
   end 
   
-    def find_arena_monster(city)
-    if(city.fight_areas.size !=0)
-      area = city.fight_areas[Random.new.rand(0..city.fight_areas.size-1)]
-      monsters = area.monsters
-      if(monsters.size != 0)
-        monsters[Random.new.rand(0..monsters.size-1)]
-      end
-    end
-  end   
+     
   
 end

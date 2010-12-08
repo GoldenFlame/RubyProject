@@ -6,5 +6,6 @@ class Monster < ActiveRecord::Base
         dmg = dmg - dmg * enemy.eq_armor.armor / (100 + enemy.eq_armor.armor)
       end
       enemy.hp -= dmg
+      enemy.save
     end
 end

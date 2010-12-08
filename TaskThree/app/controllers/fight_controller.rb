@@ -15,12 +15,13 @@ class FightController < ApplicationController
   end
   
   def area
-    if(params[:arena])
-      
-    end
     if(@user.fight == nil)
-      area = FightArea.find(params[:area])
-      monster = area.monsters[Random.new.rand(0..area.monsters.size-1)]
+      if(params[:area])
+        area = FightArea.find(params[:area])
+        monster = area.monsters[Random.new.rand(0..area.monsters.size-1)]
+      else
+        monster = @user.city.find_arena_monster
+      end
       @user.create_fight(:monster_id => monster.id, 
       :monster_hp => monster.max_hp,
       :ended => false,
@@ -36,22 +37,27 @@ class FightController < ApplicationController
     end
   end
   
-  def attack
-    dmg = @user.attack(@user.fight.monster)
-    @monster = @user.fight.monster_hp
-    @user.fight.monster_hp -= dmg
-    @user.fight.save
-    redirect_to :action => 'check_fight_end'
+  def user_action
+    if params[:attack]
+      dmg = @user.attack(@user.fight.monster)
+      @user.fight.monster_hp -= dmg
+      @user.fight.save
+      redirect_to :action => 'check_fight_end'
+    elsif params[:skill_attack]
+      dmg = @user.skill_attack(@user.fight.monster)
+      @user.fight.monster_hp -= dmg
+      @user.fight.save
+      redirect_to :action => 'check_fight_end'
+    elsif params[:heal]
+      @user.heal
+      redirect_to :action => 'check_fight_end'    
+    elsif params[:back]
+      if(@user.fight != nil)
+        @user.fight.destroy  
+      end
+      redirect_to :controller => 'user', :action => 'private'
+    end
+    @user.fight.monster.attack(@user)
   end
-  
-  def skill
-    dmg = @user.skill_attack(@user.fight.monster)
-    @user.fight.monster_hp -= dmg
-    redirect_to :action => 'check_fight_end'
-  end
-  
-  def heal
-    @user.heal
-    redirect_to :action => "area/#{params[:area]}"
-  end
+
 end

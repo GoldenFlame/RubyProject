@@ -1,3 +1,6 @@
+<%=@action%>
+
+
 <%="You are finghting #{@user.fight.monster.name}"%> <br>
 <%= "Your stats:"%> <br>
 <%= "HP: #{@user.hp}/#{@user.max_hp}"%> <br>
@@ -12,15 +15,11 @@
 <%=flash[:notice]%>
 <%end%><br/>
 
-
+<%= form_tag({:action => 'user_action'}, {:method => 'get'}) %>
 <% if(@user.fight.ended == false)%>
-<%= form_tag({:action => 'attack'}, {:method => 'get'}) %>
-<input type="submit" value="Attack" />
-<%= form_tag({:action => 'skill'}, {:method => 'get'}) %>
-<input type="submit" value="Skill Attack" />
-<%= form_tag({:action => 'heal'}, {:method => 'get'}) %>
-<input type="submit" value="Heal" />
+<%= submit_tag 'Attack', :name => 'attack'%><br/>
+<%= submit_tag 'Skill Attack', :name => 'skill_attack'%><br/>
+<%= submit_tag 'Heal', :name => 'heal'%><br/>
 <% else%>
-<%= form_tag({:controller => 'user',:action => 'private'}, {:method => 'get'}) %>
-<input type="submit" value="To town"/>
+<%= submit_tag 'Back to town', :name => 'back'%><br/>
 <%end%>
