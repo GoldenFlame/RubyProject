@@ -1,0 +1,47 @@
+
+<p>Stats</p><br/>
+
+<%="Name: #{@user.name}"%><br/>
+<%="Class: #{@user.avatar_class}"%><br/>
+<%="Level: #{@user.level}"%><br/>
+<%="Experience: #{@user.exp}/#{@user.experience_for_level}"%><br/>
+<%="HP: #{@user.hp}/#{@user.max_hp}"%><br/>
+<%="Mana: #{@user.mana}/#{@user.max_mana}"%><br/>
+    <%="Base damage: #{@user.base_dmg_min}/#{@user.base_dmg_max}"%><br/><br/>
+    
+    <%weapon = false%>
+    <%armor = false%>
+    <%if(@user.weapon != nil)%>
+      <%weapon = true%>
+      <%="Weapon:"%><br/>
+      <%="Name: #{@weapon.name}"%><br/>
+      <%="Class: #{@weapon.item_class}"%><br/>
+      <%="Level requirement: #{@weapon.level}"%><br/>
+      <%="Damage #{@weapon.damage_min}/#{@weapon.damage_max}"%><br/>
+    <%else%>
+      <%="You have no weapon equiped."%>  <br/>
+    <%end%>
+    <%if(@user.armor != nil)%>
+      <%armor = true%>
+      <%=""%><br/>
+      <%="---"%><br/>
+      <%=""%><br/>
+      <%="Armor:"%><br/>
+      <%="Name: #{@armor.name}"%><br/>
+      <%="Class: #{@armor.item_class}"%><br/>
+      <%="Level requirement: #{@armor.level}"%><br/>
+      <%="Armor: #{@armor.armor}"%><br/>
+    <%else%>
+      <%="You have no armor equiped."%><br/>
+    <%end%>
+    <%if(weapon && armor)%>
+      <%= form_tag({:controller => 'avatar',:action => 'disequip'}, {:method => 'get'}) %>
+<%= submit_tag 'Disequip weapon',:name => 'weapon'%>
+<%= submit_tag 'Disequip armor',:name => 'armor'%>
+    <%elsif(weapon && !armor)%>
+    <%= form_tag({:controller => 'avatar',:action => 'disequip'}, {:method => 'get'}) %>
+<%= submit_tag 'Disequip weapon',:name => 'weapon'%>
+    <%elsif(!weapon && armor)%>
+    <%= form_tag({:controller => 'avatar',:action => 'disequip'}, {:method => 'get'}) %>
+<%= submit_tag 'Disequip armor',:name => 'armor'%>
+    <%end%>

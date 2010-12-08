@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>TaskThree</title>
+</head>
+<body>
+
+<%="Name: #{@item.name}"%><br/>
+<%="Class: #{@item.item_class}"%><br/>
+<%="Level requirement: #{@item.level}"%><br/>
+<%if(@item.damage_min != nil)%>
+<%="Damage #{@item.damage_min}/#{@item.damage_max}"%><br/>
+<%elsif(@item.armor != nil)%><br/>
+<%="Armor: #{@item.armor}"%>
+<%end%>
+<br/><br/>
+<%= form_tag({:controller => 'avatar',:action => 'equip', :item => @item.id}, {:method => 'get'}) %>
+<input type="submit" value="Equip"/><br/>
+
+<%= form_tag({:controller => 'avatar',:action => 'inventory'}, {:method => 'get'}) %>
+<input type="submit" value="Back"/>
+
+
+
+</body>
+</html>

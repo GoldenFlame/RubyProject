@@ -1,0 +1,7 @@
+<%@items.each do |x|%>
+<%x.amount.times do%>
+<%=link_to "#{x.item.name}", item_path(x.item.id)%><br>
+<%end%>
+<%end%><br/>
+<%= form_tag({:controller => 'user',:action => 'private'}, {:method => 'get'}) %>
+<input type="submit" value="Back"/>

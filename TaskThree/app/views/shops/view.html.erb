@@ -1,0 +1,22 @@
+
+<%=@item.name%><br/>
+<%="Level requirement: #{@item.level}"%><br/>
+
+<%if(@item.damage_min != nil)%>
+<%="Damage #{@item.damage_min}/#{@item.damage_max}"%><br/>
+<%elsif(@item.armor != nil)%>
+<%="Armor: #{@item.armor}"%><br/>
+<%end%>
+<%if(params[:for] == 'sell')%>
+<%= form_tag({:controller => 'shops',:action => 'sell_item'}, {:method => 'get'}) %>
+<%= submit_tag 'Sell', :name => 'sell_item'%><br/>
+
+<%else%>
+<%="Price: #{@item.price}"%><br/>
+<%if(@user.gold>=@item.price)%>
+<%= form_tag({:controller => 'shops',:action => 'buy_item', :item => @item.id}, {:method => 'get'}) %>
+<input type="submit" value=<%= "Buy for @item.price%"%>/>
+<%end%><br/>
+<%end%>
+<%= form_tag({:controller => 'shops',:action => 'buy'}, {:method => 'get'}) %>
+<input type="submit" value="Back"/>

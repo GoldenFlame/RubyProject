@@ -37,13 +37,25 @@ describe World do
     describe "check if someone was defeated and give bonus or penalty to player" do
       it "should give player penalty" do
         @avatar.hp = 0
-        @world.stub!(:player_penalty)
-        @world.check_fight_end(@avatar, @monster).should == true
+        @world.should_receive(:player_penalty)
+        @world.check_fight_end(@avatar, @monster)
       end
       
       it "should give player a bonus" do
         @monster.hp = 0
-        @world.stub!(:player_prize)
+        @world.should_receive(:player_prize)
+        @world.check_fight_end(@avatar, @monster)
+      end
+      
+      it "should return fight ended" do
+        @avatar.hp = 0
+        @world.stub(:player_penalty)
+        @world.check_fight_end(@avatar, @monster).should == true
+      end
+      
+      it "should return fight ended" do
+        @monster.hp = 0
+        @world.stub(:player_prize)
         @world.check_fight_end(@avatar, @monster).should == true
       end
       
@@ -53,19 +65,26 @@ describe World do
     end
     
     describe "bonus" do
-      it "should give avatar a bonus of 10 exp points and 3 gold" do
-        a = mock("Random", {:rand => 3})
+      it "should give avatar a bonus of 10 exp points" do
+        a = stub("Random", {:rand => 3})
         Random.stub!(:new).and_return(a)
         @interface.stub(:winner_msg)
         @world.player_prize( @avatar, @monster)
         @avatar.exp.should == 10
+      end
+      
+       it "should give avatar a bonus of  3 gold" do
+        a = mock("Random", {:rand => 3})
+        Random.stub!(:new).and_return(a)
+        @interface.stub(:winner_msg)
+        @world.player_prize( @avatar, @monster)
         @avatar.gold.should == 103
       end
     end
     
     describe "penalty" do
       it "should decrease avatars gold by 3 " do
-        a = mock("Random", {:rand => 30})
+        a = stub("Random", {:rand => 30})
         Random.stub!(:new).and_return(a)
         @interface.stub(:looser_msg)
         @world.player_penalty(@avatar, @monster)
@@ -143,22 +162,35 @@ describe World do
     
     describe "main menu" do
       it "should let choose avatar`s class" do
-        @interface.should_receive(:login).and_return(@avatar)
-        @interface.should_receive(:choose_class)
+        @avatar.avatar_class = 0
+        @interface.stub(:login).and_return(@avatar)
+        @interface.should_receive(:choose_class).and_return(nil)
         @world.exit
         @world.main_menu
       end
       
       it "should show main game menu" do
         @avatar.avatar_class = 1
-        @interface.should_receive(:login).and_return(@avatar)
+        @interface.stub(:login).and_return(@avatar)
         @interface.stub(:clear_console)
-        @avatar.should_receive(:check_lvlup)
+        @avatar.stub(:check_lvlup)
         @interface.should_receive(:go_to_world)
+        @avatar.stub(:save)
+        @world.exit
+        @world.main_menu
+      end
+      
+      it "should show main game menu" do
+        @avatar.avatar_class = 1
+        @interface.stub(:login).and_return(@avatar)
+        @interface.stub(:clear_console)
+        @avatar.stub(:check_lvlup)
+        @interface.stub(:go_to_world)
         @avatar.should_receive(:save)
         @world.exit
         @world.main_menu
       end
+      
     end
   end
   
@@ -181,7 +213,7 @@ describe World do
   describe "arena monster seach" do
     it "should find monster blob" do
       
-      a = mock("Random", {:rand => 0})
+      a = stub("Random", {:rand => 0})
         Random.stub!(:new).and_return(a)
       @world.find_arena_monster(@city).name.should == "blob"
     end

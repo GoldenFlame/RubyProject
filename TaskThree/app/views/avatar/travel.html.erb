@@ -1,0 +1,5 @@
+<p>Travel to:</p>
+<%=@params%>
+<%@cities.each do |x|%>
+<%=link_to "#{x.name}", travel_path(:dest => x.id)%><br>
+<%end%><br/>

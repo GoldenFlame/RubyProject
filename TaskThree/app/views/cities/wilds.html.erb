@@ -1,0 +1,5 @@
+
+<p>Wilds</p>
+<%@wilds.each do |x|%>
+<%=link_to "#{x.name}", fight_wilds_path(x.id)%><br>
+<%end%>

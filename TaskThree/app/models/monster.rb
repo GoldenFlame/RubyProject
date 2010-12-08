@@ -1,5 +1,5 @@
 class Monster < ActiveRecord::Base  
-  belongs_to :fight_area
+  has_many :fights
   def attack(enemy)
       dmg = Random.new.rand(base_dmg_min..base_dmg_max)
       if(enemy.eq_armor != nil)

@@ -1,0 +1,7 @@
+
+<%@item_list.each do |x|%>
+<%=link_to "#{x.name}", view_item_path(x.id, "buy")%><br>
+<%end%><br/>
+
+<%= form_tag({:controller => 'user',:action => 'private'}, {:method => 'get'}) %>
+<input type="submit" value="Back"/>

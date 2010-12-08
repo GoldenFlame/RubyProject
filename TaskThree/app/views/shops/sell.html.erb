@@ -1,0 +1,8 @@
+<%@item_list.each do |x|%>
+<%x.amount.times do%>
+<%=link_to "#{x.item.name}", view_item_path(x.item.id, 'sell')%><br>
+<%end%>
+<%end%><br/>
+
+<%= form_tag({:controller => 'shops',:action => 'index'}, {:method => 'get'}) %>
+<input type="submit" value="Back"/>

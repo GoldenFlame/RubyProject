@@ -1,0 +1,26 @@
+<%="You are finghting #{@user.fight.monster.name}"%> <br>
+<%= "Your stats:"%> <br>
+<%= "HP: #{@user.hp}/#{@user.max_hp}"%> <br>
+<%= "Mana: #{@user.mana}/#{@user.max_mana}"%> <br>
+<%= "Base damage: #{@user.base_dmg_min}/#{@user.base_dmg_max}"%> <br>
+<%= "----"%> <br>
+<%= "#{@user.fight.monster.name} stats:"%> <br>
+<%= "HP: #{@user.fight.monster_hp}/#{@user.fight.monster.max_hp}"%> <br>
+<%= "Base damage: #{@user.fight.monster.base_dmg_min}/#{@user.fight.monster.base_dmg_max}"%> <br>
+<br/>
+<% if flash[:notice]%>
+<%=flash[:notice]%>
+<%end%><br/>
+
+
+<% if(@user.fight.ended == false)%>
+<%= form_tag({:action => 'attack'}, {:method => 'get'}) %>
+<input type="submit" value="Attack" />
+<%= form_tag({:action => 'skill'}, {:method => 'get'}) %>
+<input type="submit" value="Skill Attack" />
+<%= form_tag({:action => 'heal'}, {:method => 'get'}) %>
+<input type="submit" value="Heal" />
+<% else%>
+<%= form_tag({:controller => 'user',:action => 'private'}, {:method => 'get'}) %>
+<input type="submit" value="To town"/>
+<%end%>
