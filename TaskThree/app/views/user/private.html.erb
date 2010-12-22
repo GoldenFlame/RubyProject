@@ -1,15 +1,30 @@
 <!--#displays hello (username)-->
-hello <strong><%=session[:user_id]%></strong>.
+hello <strong><%=@user.name%></strong>.
 
+
+<%=@as%>
 <!--#creates logout link, when the link is clicked, the controller is User and the method executed will be logout.-->
 <%= link_to "logout",:controller => "user", :action => "logout" %>
 <br>
 <br>
+<%if @user.avatar_class == 0%><br/>
+<%= form_tag({:action => 'assign_class'}) %><br/>
+<br/>
+<br/>
+<br/>
+<%radio_button("post", "category", "rails")%>
+<%radio_button("post", "category", "java")%>
 
-<%= link_to "Go to arena",:controller => "fight", :action => "area"%>
-<%= link_to "Go to wilds",:controller => "cities", :action => "wilds" %>
-<%= link_to "Go to shop",:controller => "shops", :action => "index" %>
-<%= link_to "Go to inn",:controller => "cities", :action => "inn" %>
-<%= link_to "Travel",:controller => "avatar", :action => "travel" %>
-<%= link_to "View stats",:controller => "avatar", :action => "stats" %>
-<%= link_to "View inventory",:controller => "avatar", :action => "inventory" %>
+
+<br/>
+<br/>
+<br/>
+
+<%= radio_button_tag(:c_class, "warrior", :value =>"warrior") %>
+<%= label_tag(:class_warrior, "Warrior") %><br/>
+<%= radio_button_tag(:c_class, "archer") %>
+<%= label_tag(:class_archer, "Archer") %><br/>
+<%= radio_button_tag(:c_class, "mage") %>
+<%= label_tag(:class_mage, "Mage") %><br/>
+<%= submit_tag 'Submit'%><br/>
+<%end%>

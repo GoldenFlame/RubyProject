@@ -1,10 +1,4 @@
 class FightController < ApplicationController
-  protect_from_forgery
-  before_filter :user
-  
-  def user
-    @user = Avatar.find(session[:user_id])
-  end
   
   def check_fight_end
     if(@user.fight.check_fight_end(@user, @user.fight.monster))
@@ -17,8 +11,7 @@ class FightController < ApplicationController
   def area
     if(@user.fight == nil)
       if(params[:area])
-        area = FightArea.find(params[:area])
-        monster = area.monsters[Random.new.rand(0..area.monsters.size-1)]
+        monster = @user.go_to_area(FightArea.find(params[:area]))
       else
         monster = @user.city.find_arena_monster
       end
@@ -39,14 +32,10 @@ class FightController < ApplicationController
   
   def user_action
     if params[:attack]
-      dmg = @user.attack(@user.fight.monster)
-      @user.fight.monster_hp -= dmg
-      @user.fight.save
+      @user.attack(@user.fight)
       redirect_to :action => 'check_fight_end'
     elsif params[:skill_attack]
-      dmg = @user.skill_attack(@user.fight.monster)
-      @user.fight.monster_hp -= dmg
-      @user.fight.save
+      @user.skill_attack(@user.fight)
       redirect_to :action => 'check_fight_end'
     elsif params[:heal]
       @user.heal
@@ -57,7 +46,9 @@ class FightController < ApplicationController
       end
       redirect_to :controller => 'user', :action => 'private'
     end
-    @user.fight.monster.attack(@user)
+    if(@user.fight != nil)
+      @user.fight.monster.attack(@user)
+    end
   end
 
 end

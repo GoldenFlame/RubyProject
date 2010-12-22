@@ -1,0 +1,1095 @@
+--- 
+RSpec: 
+  :original_result: 
+    D:/RubyProject/TaskThree/app/helpers/application_helper.rb: 
+    - 1
+    - 
+    D:/RubyProject/TaskThree/app/helpers/user_helper.rb: 
+    - 1
+    - 
+    D:/RubyProject/TaskThree/matchers/have_hash_values.rb: 
+    - 1
+    - 1
+    - 1
+    - 3
+    - 
+    - 1
+    - 3
+    - 24
+    - 3
+    - 
+    - 
+    - 1
+    - 0
+    - 
+    - 
+    - 1
+    - 0
+    - 
+    - 
+    - 
+    - 1
+    - 3
+    - 
+    - 
+    D:/RubyProject/TaskThree/matchers/be_loaded_with.rb: 
+    - 1
+    - 1
+    - 1
+    - 0
+    - 
+    - 1
+    - 0
+    - 0
+    - 0
+    - 
+    - 
+    - 1
+    - 0
+    - 
+    - 
+    - 1
+    - 0
+    - 
+    - 
+    - 
+    - 1
+    - 0
+    - 
+    - 
+    D:/RubyProject/TaskThree/spec/city_spec.rb: 
+    - 1
+    - 1
+    - 1
+    - 
+    - 1
+    - 3
+    - 3
+    - 3
+    - 3
+    - 3
+    - 3
+    - 3
+    - 
+    - 3
+    - 
+    - 3
+    - 3
+    - 3
+    - 3
+    - 3
+    - 
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 
+    - 
+    - 1
+    - 1
+    - 1
+    - 1
+    - 
+    - 
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 
+    - 
+    - 
+    - 
+    D:/RubyProject/TaskThree/spec/controllers/avatar_controller_spec.rb: 
+    - 1
+    - 
+    - 1
+    - 1
+    - 1
+    - 10
+    - 10
+    - 10
+    - 10
+    - 10
+    - 10
+    - 10
+    - 
+    - 10
+    - 10
+    - 10
+    - 10
+    - 10
+    - 10
+    - 10
+    - 
+    - 1
+    - 
+    - 1
+    - 1
+    - 1
+    - 
+    - 
+    - 1
+    - 1
+    - 1
+    - 
+    - 
+    - 1
+    - 
+    - 1
+    - 1
+    - 
+    - 
+    - 1
+    - 1
+    - 1
+    - 1
+    - 
+    - 
+    - 
+    - 1
+    - 1
+    - 1
+    - 1
+    - 
+    - 
+    - 
+    - 1
+    - 1
+    - 1
+    - 1
+    - 
+    - 
+    - 
+    - 1
+    - 1
+    - 1
+    - 1
+    - 
+    - 
+    - 
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 
+    - 1
+    - 1
+    - 1
+    - 1
+    - 
+    - 1
+    - 1
+    - 1
+    - 
+    - 
+    - 
+    D:/RubyProject/TaskThree/app/controllers/avatar_controller.rb: 
+    - 1
+    - 
+    - 1
+    - 1
+    - 
+    - 
+    - 1
+    - 4
+    - 2
+    - 2
+    - 2
+    - 
+    - 4
+    - 
+    - 
+    - 1
+    - 1
+    - 
+    - 
+    - 1
+    - 1
+    - 1
+    - 
+    - 
+    - 1
+    - 3
+    - 1
+    - 2
+    - 1
+    - 
+    - 3
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    D:/RubyProject/TaskThree/app/controllers/application_controller.rb: 
+    - 1
+    - 1
+    - 1
+    - 
+    - 1
+    - 36
+    - 34
+    - 34
+    - 1
+    - 
+    - 34
+    - 1
+    - 
+    - 
+    - 
+    - 
+    D:/RubyProject/TaskThree/spec/controllers/cities_controller_spec.rb: 
+    - 1
+    - 
+    - 1
+    - 1
+    - 1
+    - 2
+    - 2
+    - 2
+    - 2
+    - 2
+    - 2
+    - 2
+    - 
+    - 2
+    - 2
+    - 
+    - 
+    - 2
+    - 2
+    - 2
+    - 2
+    - 2
+    - 2
+    - 
+    - 1
+    - 1
+    - 
+    - 1
+    - 
+    - 1
+    - 
+    - 
+    - 
+    - 
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    D:/RubyProject/TaskThree/app/controllers/cities_controller.rb: 
+    - 1
+    - 
+    - 1
+    - 1
+    - 
+    - 
+    - 
+    - 1
+    - 1
+    - 
+    - 
+    - 
+    D:/RubyProject/TaskThree/spec/controllers/fight_controller_spec.rb: 
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 9
+    - 9
+    - 9
+    - 9
+    - 9
+    - 9
+    - 9
+    - 
+    - 9
+    - 9
+    - 
+    - 
+    - 9
+    - 9
+    - 9
+    - 9
+    - 9
+    - 9
+    - 9
+    - 
+    - 
+    - 
+    - 9
+    - 9
+    - 
+    - 1
+    - 1
+    - 1
+    - 1
+    - 
+    - 
+    - 
+    - 1
+    - 1
+    - 1
+    - 1
+    - 
+    - 
+    - 
+    - 1
+    - 1
+    - 1
+    - 1
+    - 
+    - 
+    - 
+    - 1
+    - 1
+    - 1
+    - 
+    - 
+    - 1
+    - 1
+    - 1
+    - 
+    - 
+    - 1
+    - 1
+    - 1
+    - 
+    - 
+    - 1
+    - 1
+    - 1
+    - 1
+    - 
+    - 
+    - 1
+    - 1
+    - 1
+    - 1
+    - 
+    - 
+    - 1
+    - 1
+    - 1
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    D:/RubyProject/TaskThree/app/controllers/fight_controller.rb: 
+    - 1
+    - 
+    - 1
+    - 1
+    - 0
+    - 0
+    - 
+    - 1
+    - 
+    - 
+    - 1
+    - 1
+    - 0
+    - 0
+    - 
+    - 0
+    - 
+    - 0
+    - 
+    - 
+    - 
+    - 
+    - 1
+    - 0
+    - 0
+    - 
+    - 0
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 1
+    - 7
+    - 2
+    - 2
+    - 
+    - 2
+    - 2
+    - 
+    - 2
+    - 2
+    - 
+    - 1
+    - 1
+    - 
+    - 1
+    - 
+    - 7
+    - 7
+    - 
+    - 
+    - 
+    - 
+    D:/RubyProject/TaskThree/spec/controllers/shops_cotroller_spec.rb: 
+    - 1
+    - 
+    - 1
+    - 1
+    - 1
+    - 10
+    - 10
+    - 10
+    - 10
+    - 10
+    - 10
+    - 10
+    - 
+    - 10
+    - 10
+    - 
+    - 
+    - 10
+    - 10
+    - 10
+    - 10
+    - 10
+    - 10
+    - 
+    - 1
+    - 1
+    - 1
+    - 1
+    - 
+    - 1
+    - 1
+    - 1
+    - 
+    - 1
+    - 1
+    - 1
+    - 
+    - 
+    - 
+    - 1
+    - 1
+    - 1
+    - 1
+    - 
+    - 
+    - 
+    - 1
+    - 1
+    - 1
+    - 1
+    - 
+    - 
+    - 
+    - 1
+    - 1
+    - 1
+    - 1
+    - 
+    - 
+    - 1
+    - 1
+    - 1
+    - 
+    - 
+    - 
+    - 1
+    - 1
+    - 1
+    - 1
+    - 
+    - 
+    - 
+    - 1
+    - 1
+    - 1
+    - 1
+    - 
+    - 
+    - 1
+    - 1
+    - 1
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    D:/RubyProject/TaskThree/app/controllers/shops_controller.rb: 
+    - 1
+    - 
+    - 1
+    - 3
+    - 1
+    - 2
+    - 1
+    - 1
+    - 1
+    - 
+    - 
+    - 
+    - 1
+    - 1
+    - 
+    - 
+    - 1
+    - 1
+    - 
+    - 
+    - 1
+    - 2
+    - 2
+    - 
+    - 
+    - 1
+    - 1
+    - 
+    - 
+    - 1
+    - 2
+    - 2
+    - 
+    - 
+    - 
+    - 
+    D:/RubyProject/TaskThree/spec/controllers/user_controller_spec.rb: 
+    - 1
+    - 
+    - 1
+    - 1
+    - 1
+    - 5
+    - 5
+    - 5
+    - 5
+    - 5
+    - 5
+    - 5
+    - 
+    - 5
+    - 5
+    - 
+    - 
+    - 5
+    - 5
+    - 5
+    - 5
+    - 5
+    - 5
+    - 
+    - 
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 
+    - 
+    - 
+    - 1
+    - 1
+    - 1
+    - 1
+    - 
+    - 1
+    - 1
+    - 1
+    - 
+    - 
+    - 
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 
+    - 
+    - 
+    - 1
+    - 1
+    - 1
+    - 1
+    - 
+    - 
+    - 
+    - 
+    D:/RubyProject/TaskThree/app/controllers/user_controller.rb: 
+    - 1
+    - 
+    - 1
+    - 2
+    - 2
+    - 2
+    - 1
+    - 1
+    - 
+    - 1
+    - 1
+    - 
+    - 
+    - 
+    - 1
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 
+    - 0
+    - 
+    - 
+    - 1
+    - 
+    - 
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 1
+    - 
+    - 
+    - 
+    - 
+    - 1
+    - 1
+    - 1
+    - 
+    - 
+    - 
+    - 1
+    - 1
+    - 1
+    - 1
+    - 
+    - 
+    - 
+    - 
+    D:/RubyProject/TaskThree/spec/item_spec.rb: 
+    - 1
+    - 1
+    D:/RubyProject/TaskThree/spec/monster_spec.rb: 
+    - 1
+    - 1
+    - 
+    - 
+    - 1
+    - 1
+    - 2
+    - 2
+    - 2
+    - 2
+    - 2
+    - 2
+    - 
+    - 
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 
+    - 
+    - 1
+    - 1
+    - 1
+    - 1
+    - 
+    - 1
+    - 1
+    - 1
+    - 
+    - 
+    - 
+    D:/RubyProject/TaskThree/spec/views/avatar/inventory.html_spec.rb: 
+    - 1
+    - 
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 
+    - 1
+    - 1
+    - 1
+    - 1
+    - 
+    - 
+    - 
+    D:/RubyProject/TaskThree/spec/views/avatar/item.html_spec.rb: 
+    - 1
+    - 
+    - 1
+    - 1
+    - 2
+    - 2
+    - 2
+    - 2
+    - 2
+    - 2
+    - 2
+    - 
+    - 2
+    - 2
+    - 2
+    - 2
+    - 2
+    - 2
+    - 2
+    - 
+    - 1
+    - 1
+    - 
+    - 1
+    - 1
+    - 
+    - 
+    - 
+    - 1
+    - 1
+    - 1
+    - 1
+    - 
+    - 
+    - 
+    D:/RubyProject/TaskThree/spec/views/cities/wilds.html_spec.rb: 
+    - 1
+    - 
+    - 1
+    - 1
+    - 2
+    - 2
+    - 2
+    - 2
+    - 2
+    - 2
+    - 2
+    - 
+    - 2
+    - 2
+    - 2
+    - 2
+    - 2
+    - 2
+    - 2
+    - 
+    - 1
+    - 1
+    - 1
+    - 1
+    - 
+    - 
+    - 
+    - 1
+    - 1
+    - 1
+    - 1
+    - 
+    - 
+    D:/RubyProject/TaskThree/app/models/avatar.rb: 
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 
+    - 1
+    - 3
+    - 3
+    - 
+    - 
+    - 1
+    - 1
+    - 1
+    - 
+    - 
+    - 
+    - 1
+    - 
+    - 
+    - 
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 
+    - 
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 
+    - 
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 
+    - 
+    - 1
+    - 2
+    - 1
+    - 
+    - 1
+    - 
+    - 2
+    - 2
+    - 
+    - 
+    - 1
+    - 2
+    - 1
+    - 
+    - 1
+    - 
+    - 2
+    - 2
+    - 
+    - 
+    - 1
+    - 1
+    - 
+    - 
+    - 1
+    - 14
+    - 14
+    - 
+    - 
+    - 1
+    - 2
+    - 2
+    - 2
+    - 
+    - 
+    - 
+    - 1
+    - 6
+    - 6
+    - 6
+    - 0
+    - 
+    - 6
+    - 6
+    - 6
+    - 
+    - 
+    - 1
+    - 3
+    - 3
+    - 3
+    - 3
+    - 3
+    - 
+    - 
+    - 
+    - 1
+    - 9
+    - 9
+    - 5
+    - 1
+    - 1
+    - 0
+    - 
+    - 1
+    - 1
+    - 
+    - 5
+    - 5
+    - 5
+    - 5
+    - 5
+    - 4
+    - 4
+    - 1
+    - 1
+    - 0
+    - 
+    - 1
+    - 1
+    - 
+    - 4
+    - 4
+    - 4
+    - 4
+    - 4
+    - 
+    - 9
+    - 
+    - 
+    - 1
+    - 4
+    - 4
+    - 2
+    - 2
+    - 2
+    - 2
+    - 2
+    - 
+    - 4
+    - 4
+    - 4
+    - 4
+    - 
+    - 
+    - 
+    D:/RubyProject/TaskThree/app/models/item.rb: 
+    - 1
+    - 1
+    - 1
+    - 1
+    - 
+    D:/RubyProject/TaskThree/app/models/avatar_item.rb: 
+    - 1
+    - 1
+    - 1
+    - 
+    D:/RubyProject/TaskThree/app/models/shop.rb: 
+    - 1
+    - 1
+    - 1
+    - 
+    - 
+    - 
+    - 
+    D:/RubyProject/TaskThree/app/models/shop_item.rb: 
+    - 1
+    - 1
+    - 1
+    - 
+    D:/RubyProject/TaskThree/app/models/city.rb: 
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 
+    - 1
+    - 3
+    - 3
+    - 3
+    - 
+    - 
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    D:/RubyProject/TaskThree/app/models/fight_area.rb: 
+    - 1
+    - 1
+    - 1
+    - 
+    D:/RubyProject/TaskThree/app/models/monster.rb: 
+    - 1
+    - 1
+    - 1
+    - 9
+    - 9
+    - 1
+    - 
+    - 9
+    - 9
+    - 
+    - 
+    D:/RubyProject/TaskThree/app/models/fight.rb: 
+    - 1
+    - 1
+    - 1
+    - 1
+    - 
+    - 1
+    - 1
+    - 1
+    - 0
+    - 0
+    - 1
+    - 0
+    - 0
+    - 
+    - 1
+    - 
+    - 
+    - 1
+    - 0
+    - 0
+    - 
+    - 
+    - 1
+    - 0
+    - 
+    - 
+    - 
+    - 
+    - 
+  :created_at: 2010-12-16 19:19:06.573170 +02:00

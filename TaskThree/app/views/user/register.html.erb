@@ -1,0 +1,14 @@
+<% if flash[:notice] %>
+<div style="font-family:'Trebuchet MS'; color:#FF0000; font-size:14px;">
+<%= flash[:notice] %>
+</div>
+<% end %>
+<!--creates form, exectues the authenticate method when the submit button is clicked-->
+<center>
+<%= form_tag({:action => 'register'}) %>
+User name: 
+<%= text_field("regform", "regname",:size=>"20" ) %><BR>
+Password:
+<%= password_field("regform", "regpassword",:size=>"20" )%><br>
+<input type="submit" value="Register" />
+</center>

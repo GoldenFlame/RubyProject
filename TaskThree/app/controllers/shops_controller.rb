@@ -1,13 +1,6 @@
 class ShopsController < ApplicationController
-  protect_from_forgery
-    before_filter :user
-  
-  def user
-    @user = Avatar.find(session[:user_id])
-  end
   
   def index
-    @params = "no"
     if params[:buy]
       redirect_to :action => 'buy'
     elsif params[:sell]

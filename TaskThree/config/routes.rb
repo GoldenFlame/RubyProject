@@ -6,6 +6,8 @@ TaskThree::Application.routes.draw do
   get "user/logout"
   get "avatar/inventory"
   get "avatar/item"
+  match "user/assign_class" => "user#assign_class"
+  match "user/register" => "user#register", :as => "register"
   match "avatar/item/:avatar_item" => "avatar#item", :as => "item"
   match "fights/area" => "fight#area", :as => "fight_wilds"
   match "avatar/equip/:item" => "avatar#equip"

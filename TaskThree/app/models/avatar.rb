@@ -10,24 +10,67 @@ class Avatar < ActiveRecord::Base
     self.save
   end
   
-  
-
-  def attack(enemy)
-    if(eq_weapon != nil)
-      dmg = Random.new.rand(base_dmg_min+eq_weapon.damage_min..base_dmg_max+eq_weapon.damage_max)
-    else
-      dmg = Random.new.rand(base_dmg_min..base_dmg_max)
+  def go_to_area(area)
+    if(area.monsters.size != 0)
+      return monster = area.monsters[Random.new.rand(0..area.monsters.size-1)]
     end
-    return dmg
+  end
+
+  def backpack_init
+    
   end
   
-  def skill_attack(enemy)
+  def class_warrior
+    self.avatar_class = 1
+    self.base_dmg_min = 20
+    self.base_dmg_max = 30
+    self.max_hp = 100
+    self.hp = 100
+    self.max_mana = 10
+    self.mana = 10
+    self.save
+  end
+
+  def class_archer
+    self.avatar_class = 2
+    self.base_dmg_min = 10
+    self.base_dmg_max = 50
+    self.max_hp = 75
+    self.hp = 75
+    self.max_mana = 30
+    self.mana = 30
+    self.save
+  end
+  
+  def class_mage
+    self.avatar_class = 3
+    self.base_dmg_min = 10
+    self.base_dmg_max = 20
+    self.max_hp = 50
+    self.hp = 50
+    self.max_mana = 100
+    self.mana = 100
+    self.save
+  end
+
+  def attack(fight)
     if(eq_weapon != nil)
       dmg = Random.new.rand(base_dmg_min+eq_weapon.damage_min..base_dmg_max+eq_weapon.damage_max)
     else
       dmg = Random.new.rand(base_dmg_min..base_dmg_max)
     end
-    return dmg*2
+    fight.monster_hp -= dmg
+    fight.save
+  end
+  
+  def skill_attack(fight)
+    if(eq_weapon != nil)
+      dmg = Random.new.rand(base_dmg_min+eq_weapon.damage_min..base_dmg_max+eq_weapon.damage_max)
+    else
+      dmg = Random.new.rand(base_dmg_min..base_dmg_max)
+    end
+    fight.monster_hp -= dmg*2
+    fight.save
   end
   
   def heal
@@ -43,21 +86,6 @@ class Avatar < ActiveRecord::Base
     if(experience_for_level<=exp)
       self.exp = 0
       self.level = level + 1
-    end
-  end
-  
-  def backpack_init
-    @backpack = []
-    info = avatar_items
-    info.each{|x| x.amount.times{@backpack.push(Item.find_by_id(x.item_id))}}
-  end
-  
-  def equipment_init
-    if(weapon != nil)
-      @eq_weapon = Item.find_by_id(weapon)
-    end
-    if(armor != nil)
-      @eq_armor = Item.find_by_id(armor)
     end
   end
   
