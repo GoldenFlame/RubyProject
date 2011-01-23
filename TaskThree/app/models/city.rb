@@ -1,5 +1,4 @@
 class City < ActiveRecord::Base
-  belongs_to :world
   has_many :fight_areas
   has_one :shop
   has_many :avatars

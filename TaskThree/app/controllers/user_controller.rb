@@ -43,7 +43,7 @@ class UserController < ApplicationController
           :max_hp => 10,
           :hp => 10,
           :max_mana => 10,
-          :mana => 10,
+          :mana => 10
           )
           redirect_to :action => 'login'
       end      

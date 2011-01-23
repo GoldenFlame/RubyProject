@@ -9,8 +9,8 @@ ActiveRecord::Base.establish_connection(
 :host => "localhost",  
 :database => "rpg_test",
 :username => "postgres",
-:password => "master"  
-)  
+:password => "golden"  
+)
 Blueprints.enable
 require 'rspec/rails'
 
