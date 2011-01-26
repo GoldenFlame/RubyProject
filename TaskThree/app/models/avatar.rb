@@ -12,7 +12,7 @@ class Avatar < ActiveRecord::Base
   
   def go_to_area(area)
     if(area.monsters.size != 0)
-      return monster = area.monsters[Random.new.rand(0..area.monsters.size-1)]
+     area.monsters[Random.new.rand(0..area.monsters.size-1)]
     end
   end
 

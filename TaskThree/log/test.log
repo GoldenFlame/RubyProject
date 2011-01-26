@@ -1,0 +1,694 @@
+  [1m[36mSQL (0.4ms)[0m  [1mSHOW client_min_messages[0m
+  [1m[35mSQL (0.2ms)[0m  SET client_min_messages TO 'panic'
+  [1m[36mSQL (0.2ms)[0m  [1mSET standard_conforming_strings = on[0m
+  [1m[35mSQL (0.2ms)[0m  SET client_min_messages TO 'notice'
+  [1m[36mSQL (0.4ms)[0m  [1mSET time zone 'UTC'[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW TIME ZONE
+  [1m[36mSQL (0.2ms)[0m  [1mSHOW server_version[0m
+  [1m[35mSQL (3.9ms)[0m   SELECT tablename
+ FROM pg_tables
+ WHERE schemaname = ANY (current_schemas(false))
+  [1m[36mSQL (1.0ms)[0m  [1mALTER TABLE "avatar_items" DISABLE TRIGGER ALL;ALTER TABLE "monsters" DISABLE TRIGGER ALL;ALTER TABLE "cities" DISABLE TRIGGER ALL;ALTER TABLE "fights" DISABLE TRIGGER ALL;ALTER TABLE "fight_areas" DISABLE TRIGGER ALL;ALTER TABLE "items" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "avatars" DISABLE TRIGGER ALL;ALTER TABLE "shops" DISABLE TRIGGER ALL;ALTER TABLE "shop_items" DISABLE TRIGGER ALL[0m
+  [1m[35mSQL (0.9ms)[0m   SELECT tablename
+ FROM pg_tables
+ WHERE schemaname = ANY (current_schemas(false))
+  [1m[36mSQL (1.2ms)[0m  [1mSELECT CHARACTER_VALUE 
+ FROM INFORMATION_SCHEMA.SQL_IMPLEMENTATION_INFO 
+ WHERE IMPLEMENTATION_INFO_NAME = 'DBMS VERSION' [0m
+  [1m[35mSQL (59.6ms)[0m  TRUNCATE TABLE "avatar_items" CASCADE;
+  [1m[36mSQL (49.1ms)[0m  [1mTRUNCATE TABLE "monsters" CASCADE;[0m
+  [1m[35mSQL (48.6ms)[0m  TRUNCATE TABLE "cities" CASCADE;
+  [1m[36mSQL (49.9ms)[0m  [1mTRUNCATE TABLE "fights" CASCADE;[0m
+  [1m[35mSQL (49.8ms)[0m  TRUNCATE TABLE "fight_areas" CASCADE;
+  [1m[36mSQL (83.1ms)[0m  [1mTRUNCATE TABLE "items" CASCADE;[0m
+  [1m[35mSQL (101.6ms)[0m  TRUNCATE TABLE "avatars" CASCADE;
+  [1m[36mSQL (56.7ms)[0m  [1mTRUNCATE TABLE "shops" CASCADE;[0m
+  [1m[35mSQL (58.0ms)[0m  TRUNCATE TABLE "shop_items" CASCADE;
+  [1m[36mSQL (0.9ms)[0m  [1mSHOW server_version[0m
+  [1m[35mSQL (5.7ms)[0m   SELECT tablename
+ FROM pg_tables
+ WHERE schemaname = ANY (current_schemas(false))
+  [1m[36mSQL (2.2ms)[0m  [1mALTER TABLE "monsters" ENABLE TRIGGER ALL;ALTER TABLE "cities" ENABLE TRIGGER ALL;ALTER TABLE "fights" ENABLE TRIGGER ALL;ALTER TABLE "fight_areas" ENABLE TRIGGER ALL;ALTER TABLE "items" ENABLE TRIGGER ALL;ALTER TABLE "avatar_items" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "avatars" ENABLE TRIGGER ALL;ALTER TABLE "shops" ENABLE TRIGGER ALL;ALTER TABLE "shop_items" ENABLE TRIGGER ALL[0m
+  [1m[35mSQL (0.3ms)[0m  BEGIN
+  [1m[36mSQL (2.3ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"avatars"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mSQL (0.3ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (1.0ms)[0m  [1m SELECT tablename
+ FROM pg_tables
+ WHERE schemaname = ANY (current_schemas(false))
+[0m
+  [1m[35mSQL (0.8ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"avatars"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mPK and serial sequence (3.9ms)[0m  [1m SELECT attr.attname, seq.relname
+ FROM pg_class seq,
+ pg_attribute attr,
+ pg_depend dep,
+ pg_namespace name,
+ pg_constraint cons
+ WHERE seq.oid = dep.objid
+ AND seq.relkind = 'S'
+ AND attr.attrelid = dep.refobjid
+ AND attr.attnum = dep.refobjsubid
+ AND attr.attrelid = cons.conrelid
+ AND attr.attnum = cons.conkey[1]
+ AND cons.contype = 'p'
+ AND dep.refobjid = '"avatars"'::regclass
+[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "avatars" ("gold", "avatar_class", "base_dmg_min", "weapon", "exp", "max_mana", "mana", "password", "hp", "max_hp", "city_id", "level", "base_dmg_max", "armor", "name") VALUES (100, 0, 0, NULL, 0, 10, 10, 'test', 10, 10, 0, 1, 0, NULL, 'test') RETURNING "id"
+  [1m[36mSQL (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (6.8ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"items"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mSQL (0.3ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.9ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"items"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mPK and serial sequence (3.1ms)[0m  [1m SELECT attr.attname, seq.relname
+ FROM pg_class seq,
+ pg_attribute attr,
+ pg_depend dep,
+ pg_namespace name,
+ pg_constraint cons
+ WHERE seq.oid = dep.objid
+ AND seq.relkind = 'S'
+ AND attr.attrelid = dep.refobjid
+ AND attr.attnum = dep.refobjsubid
+ AND attr.attrelid = cons.conrelid
+ AND attr.attnum = cons.conkey[1]
+ AND cons.contype = 'p'
+ AND dep.refobjid = '"items"'::regclass
+[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "items" ("damage_min", "armor", "damage_max", "item_class", "level", "name", "price") VALUES (NULL, NULL, NULL, NULL, NULL, 'test bow', NULL) RETURNING "id"
+  [1m[36mSQL (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.9ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"avatar_items"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mSQL (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.7ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"avatar_items"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mPK and serial sequence (2.6ms)[0m  [1m SELECT attr.attname, seq.relname
+ FROM pg_class seq,
+ pg_attribute attr,
+ pg_depend dep,
+ pg_namespace name,
+ pg_constraint cons
+ WHERE seq.oid = dep.objid
+ AND seq.relkind = 'S'
+ AND attr.attrelid = dep.refobjid
+ AND attr.attnum = dep.refobjsubid
+ AND attr.attrelid = cons.conrelid
+ AND attr.attnum = cons.conkey[1]
+ AND cons.contype = 'p'
+ AND dep.refobjid = '"avatar_items"'::regclass
+[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "avatar_items" ("item_id", "amount", "avatar_id") VALUES (401, 1, 69) RETURNING "id"
+  [1m[36mSQL (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "items" ("damage_min", "armor", "damage_max", "item_class", "level", "name", "price") VALUES (NULL, 5, NULL, 'armor', NULL, 'test armor', 10) RETURNING "id"[0m
+  [1m[35mSQL (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "items" ("damage_min", "armor", "damage_max", "item_class", "level", "name", "price") VALUES (10, NULL, 20, 'sword', NULL, 'test sword', 10) RETURNING "id"
+  [1m[36mSQL (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "items" ("damage_min", "armor", "damage_max", "item_class", "level", "name", "price") VALUES (NULL, 10, NULL, 'armor', NULL, 'test metal armor', 30) RETURNING "id"[0m
+  [1m[35mSQL (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "items" ("damage_min", "armor", "damage_max", "item_class", "level", "name", "price") VALUES (10, NULL, 20, 'bow', NULL, 'test bow', 60) RETURNING "id"
+  [1m[36mSQL (0.3ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "items" ("damage_min", "armor", "damage_max", "item_class", "level", "name", "price") VALUES (NULL, NULL, NULL, NULL, NULL, 'test bow', NULL) RETURNING "id"[0m
+  [1m[35mSQL (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.7ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"cities"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mSQL (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.7ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"cities"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mPK and serial sequence (2.6ms)[0m   SELECT attr.attname, seq.relname
+ FROM pg_class seq,
+ pg_attribute attr,
+ pg_depend dep,
+ pg_namespace name,
+ pg_constraint cons
+ WHERE seq.oid = dep.objid
+ AND seq.relkind = 'S'
+ AND attr.attrelid = dep.refobjid
+ AND attr.attnum = dep.refobjsubid
+ AND attr.attrelid = cons.conrelid
+ AND attr.attnum = cons.conkey[1]
+ AND cons.contype = 'p'
+ AND dep.refobjid = '"cities"'::regclass
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "cities" ("name") VALUES ('Testion') RETURNING "id"[0m
+  [1m[35mSQL (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mShop Load (0.7ms)[0m  [1mSELECT "shops".* FROM "shops" WHERE ("shops".city_id = 67) LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  ROLLBACK
+  [1m[36mSQL (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "avatars" ("gold", "avatar_class", "base_dmg_min", "weapon", "exp", "max_mana", "mana", "password", "hp", "max_hp", "city_id", "level", "base_dmg_max", "armor", "name") VALUES (100, 0, 0, NULL, 0, 10, 10, 'test', 10, 10, 0, 1, 0, NULL, 'test') RETURNING "id"[0m
+  [1m[35mSQL (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (2.7ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "items" ("damage_min", "armor", "damage_max", "item_class", "level", "name", "price") VALUES (NULL, NULL, NULL, NULL, NULL, 'test bow', NULL) RETURNING "id"
+  [1m[36mSQL (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "avatar_items" ("item_id", "amount", "avatar_id") VALUES (407, 1, 70) RETURNING "id"[0m
+  [1m[35mSQL (7.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "items" ("damage_min", "armor", "damage_max", "item_class", "level", "name", "price") VALUES (NULL, 5, NULL, 'armor', NULL, 'test armor', 10) RETURNING "id"
+  [1m[36mSQL (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "items" ("damage_min", "armor", "damage_max", "item_class", "level", "name", "price") VALUES (10, NULL, 20, 'sword', NULL, 'test sword', 10) RETURNING "id"[0m
+  [1m[35mSQL (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "items" ("damage_min", "armor", "damage_max", "item_class", "level", "name", "price") VALUES (NULL, 10, NULL, 'armor', NULL, 'test metal armor', 30) RETURNING "id"
+  [1m[36mSQL (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "items" ("damage_min", "armor", "damage_max", "item_class", "level", "name", "price") VALUES (10, NULL, 20, 'bow', NULL, 'test bow', 60) RETURNING "id"[0m
+  [1m[35mSQL (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "items" ("damage_min", "armor", "damage_max", "item_class", "level", "name", "price") VALUES (NULL, NULL, NULL, NULL, NULL, 'test bow', NULL) RETURNING "id"
+  [1m[36mSQL (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "cities" ("name") VALUES ('Leav') RETURNING "id"[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (5.2ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"fight_areas"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mSQL (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.8ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"fight_areas"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mPK and serial sequence (8.3ms)[0m   SELECT attr.attname, seq.relname
+ FROM pg_class seq,
+ pg_attribute attr,
+ pg_depend dep,
+ pg_namespace name,
+ pg_constraint cons
+ WHERE seq.oid = dep.objid
+ AND seq.relkind = 'S'
+ AND attr.attrelid = dep.refobjid
+ AND attr.attnum = dep.refobjsubid
+ AND attr.attrelid = cons.conrelid
+ AND attr.attnum = cons.conkey[1]
+ AND cons.contype = 'p'
+ AND dep.refobjid = '"fight_areas"'::regclass
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "fight_areas" ("name", "city_id") VALUES ('forest', 68) RETURNING "id"[0m
+  [1m[35mSQL (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mFightArea Load (0.5ms)[0m  [1mSELECT "fight_areas".* FROM "fight_areas" WHERE ("fight_areas".city_id = 68)[0m
+  [1m[35mSQL (1.0ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"monsters"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mSQL (9.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.0ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"monsters"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mPK and serial sequence (2.9ms)[0m  [1m SELECT attr.attname, seq.relname
+ FROM pg_class seq,
+ pg_attribute attr,
+ pg_depend dep,
+ pg_namespace name,
+ pg_constraint cons
+ WHERE seq.oid = dep.objid
+ AND seq.relkind = 'S'
+ AND attr.attrelid = dep.refobjid
+ AND attr.attnum = dep.refobjsubid
+ AND attr.attrelid = cons.conrelid
+ AND attr.attnum = cons.conkey[1]
+ AND cons.contype = 'p'
+ AND dep.refobjid = '"monsters"'::regclass
+[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "monsters" ("gold_max", "base_dmg_max", "fight_area_id", "exp_bonus", "max_hp", "name", "base_dmg_min") VALUES (100, 10, 66, 10, NULL, 'sin', 5) RETURNING "id"
+  [1m[36mSQL (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  ROLLBACK
+  [1m[36mSQL (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "avatars" ("gold", "avatar_class", "base_dmg_min", "weapon", "exp", "max_mana", "mana", "password", "hp", "max_hp", "city_id", "level", "base_dmg_max", "armor", "name") VALUES (100, 0, 0, NULL, 0, 10, 10, 'test', 10, 10, 0, 1, 0, NULL, 'test') RETURNING "id"[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "items" ("damage_min", "armor", "damage_max", "item_class", "level", "name", "price") VALUES (NULL, NULL, NULL, NULL, NULL, 'test bow', NULL) RETURNING "id"
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "avatar_items" ("item_id", "amount", "avatar_id") VALUES (413, 1, 71) RETURNING "id"[0m
+  [1m[35mSQL (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "items" ("damage_min", "armor", "damage_max", "item_class", "level", "name", "price") VALUES (NULL, 5, NULL, 'armor', NULL, 'test armor', 10) RETURNING "id"
+  [1m[36mSQL (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "items" ("damage_min", "armor", "damage_max", "item_class", "level", "name", "price") VALUES (10, NULL, 20, 'sword', NULL, 'test sword', 10) RETURNING "id"[0m
+  [1m[35mSQL (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "items" ("damage_min", "armor", "damage_max", "item_class", "level", "name", "price") VALUES (NULL, 10, NULL, 'armor', NULL, 'test metal armor', 30) RETURNING "id"
+  [1m[36mSQL (4.4ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "items" ("damage_min", "armor", "damage_max", "item_class", "level", "name", "price") VALUES (10, NULL, 20, 'bow', NULL, 'test bow', 60) RETURNING "id"[0m
+  [1m[35mSQL (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "items" ("damage_min", "armor", "damage_max", "item_class", "level", "name", "price") VALUES (NULL, NULL, NULL, NULL, NULL, 'test bow', NULL) RETURNING "id"
+  [1m[36mSQL (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (5.8ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "cities" ("name") VALUES ('Leav') RETURNING "id"[0m
+  [1m[35mSQL (1.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "fight_areas" ("name", "city_id") VALUES ('forest', 69) RETURNING "id"
+  [1m[36mSQL (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mFightArea Load (0.4ms)[0m  SELECT "fight_areas".* FROM "fight_areas" WHERE ("fight_areas".city_id = 69)
+  [1m[36mSQL (0.3ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "monsters" ("gold_max", "base_dmg_max", "fight_area_id", "exp_bonus", "max_hp", "name", "base_dmg_min") VALUES (100, 10, 67, 10, NULL, 'sin', 5) RETURNING "id"
+  [1m[36mSQL (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  ROLLBACK
+  [1m[36mSQL (0.4ms)[0m  [1mSHOW client_min_messages[0m
+  [1m[35mSQL (0.2ms)[0m  SET client_min_messages TO 'panic'
+  [1m[36mSQL (0.2ms)[0m  [1mSET standard_conforming_strings = on[0m
+  [1m[35mSQL (0.2ms)[0m  SET client_min_messages TO 'notice'
+  [1m[36mSQL (0.4ms)[0m  [1mSET time zone 'UTC'[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW TIME ZONE
+  [1m[36mSQL (0.2ms)[0m  [1mSHOW server_version[0m
+  [1m[35mSQL (3.0ms)[0m   SELECT tablename
+ FROM pg_tables
+ WHERE schemaname = ANY (current_schemas(false))
+  [1m[36mSQL (1.1ms)[0m  [1mALTER TABLE "monsters" DISABLE TRIGGER ALL;ALTER TABLE "cities" DISABLE TRIGGER ALL;ALTER TABLE "fights" DISABLE TRIGGER ALL;ALTER TABLE "fight_areas" DISABLE TRIGGER ALL;ALTER TABLE "items" DISABLE TRIGGER ALL;ALTER TABLE "avatar_items" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "avatars" DISABLE TRIGGER ALL;ALTER TABLE "shops" DISABLE TRIGGER ALL;ALTER TABLE "shop_items" DISABLE TRIGGER ALL[0m
+  [1m[35mSQL (0.9ms)[0m   SELECT tablename
+ FROM pg_tables
+ WHERE schemaname = ANY (current_schemas(false))
+  [1m[36mSQL (1.2ms)[0m  [1mSELECT CHARACTER_VALUE 
+ FROM INFORMATION_SCHEMA.SQL_IMPLEMENTATION_INFO 
+ WHERE IMPLEMENTATION_INFO_NAME = 'DBMS VERSION' [0m
+  [1m[35mSQL (139.4ms)[0m  TRUNCATE TABLE "monsters" CASCADE;
+  [1m[36mSQL (67.1ms)[0m  [1mTRUNCATE TABLE "cities" CASCADE;[0m
+  [1m[35mSQL (57.4ms)[0m  TRUNCATE TABLE "fights" CASCADE;
+  [1m[36mSQL (58.7ms)[0m  [1mTRUNCATE TABLE "fight_areas" CASCADE;[0m
+  [1m[35mSQL (82.4ms)[0m  TRUNCATE TABLE "items" CASCADE;
+  [1m[36mSQL (49.8ms)[0m  [1mTRUNCATE TABLE "avatar_items" CASCADE;[0m
+  [1m[35mSQL (92.2ms)[0m  TRUNCATE TABLE "avatars" CASCADE;
+  [1m[36mSQL (39.7ms)[0m  [1mTRUNCATE TABLE "shops" CASCADE;[0m
+  [1m[35mSQL (49.3ms)[0m  TRUNCATE TABLE "shop_items" CASCADE;
+  [1m[36mSQL (0.3ms)[0m  [1mSHOW server_version[0m
+  [1m[35mSQL (7.5ms)[0m   SELECT tablename
+ FROM pg_tables
+ WHERE schemaname = ANY (current_schemas(false))
+  [1m[36mSQL (0.8ms)[0m  [1mALTER TABLE "cities" ENABLE TRIGGER ALL;ALTER TABLE "fights" ENABLE TRIGGER ALL;ALTER TABLE "fight_areas" ENABLE TRIGGER ALL;ALTER TABLE "items" ENABLE TRIGGER ALL;ALTER TABLE "avatar_items" ENABLE TRIGGER ALL;ALTER TABLE "monsters" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "avatars" ENABLE TRIGGER ALL;ALTER TABLE "shops" ENABLE TRIGGER ALL;ALTER TABLE "shop_items" ENABLE TRIGGER ALL[0m
+  [1m[35mSQL (0.3ms)[0m  BEGIN
+  [1m[36mSQL (2.2ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"avatars"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mSQL (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (1.7ms)[0m  [1m SELECT tablename
+ FROM pg_tables
+ WHERE schemaname = ANY (current_schemas(false))
+[0m
+  [1m[35mSQL (0.8ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"avatars"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mPK and serial sequence (3.7ms)[0m  [1m SELECT attr.attname, seq.relname
+ FROM pg_class seq,
+ pg_attribute attr,
+ pg_depend dep,
+ pg_namespace name,
+ pg_constraint cons
+ WHERE seq.oid = dep.objid
+ AND seq.relkind = 'S'
+ AND attr.attrelid = dep.refobjid
+ AND attr.attnum = dep.refobjsubid
+ AND attr.attrelid = cons.conrelid
+ AND attr.attnum = cons.conkey[1]
+ AND cons.contype = 'p'
+ AND dep.refobjid = '"avatars"'::regclass
+[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "avatars" ("city_id", "base_dmg_min", "level", "avatar_class", "max_mana", "armor", "password", "gold", "weapon", "hp", "max_hp", "name", "exp", "base_dmg_max", "mana") VALUES (0, 0, 1, 0, 10, NULL, 'test', 100, NULL, 10, 10, 'test', 0, 0, 10) RETURNING "id"
+  [1m[36mSQL (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.8ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"items"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mSQL (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.8ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"items"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mPK and serial sequence (4.4ms)[0m  [1m SELECT attr.attname, seq.relname
+ FROM pg_class seq,
+ pg_attribute attr,
+ pg_depend dep,
+ pg_namespace name,
+ pg_constraint cons
+ WHERE seq.oid = dep.objid
+ AND seq.relkind = 'S'
+ AND attr.attrelid = dep.refobjid
+ AND attr.attnum = dep.refobjsubid
+ AND attr.attrelid = cons.conrelid
+ AND attr.attnum = cons.conkey[1]
+ AND cons.contype = 'p'
+ AND dep.refobjid = '"items"'::regclass
+[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "items" ("price", "armor", "damage_min", "damage_max", "level", "name", "item_class") VALUES (NULL, NULL, NULL, NULL, NULL, 'test bow', NULL) RETURNING "id"
+  [1m[36mSQL (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.9ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"avatar_items"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mSQL (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.7ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"avatar_items"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mPK and serial sequence (2.6ms)[0m  [1m SELECT attr.attname, seq.relname
+ FROM pg_class seq,
+ pg_attribute attr,
+ pg_depend dep,
+ pg_namespace name,
+ pg_constraint cons
+ WHERE seq.oid = dep.objid
+ AND seq.relkind = 'S'
+ AND attr.attrelid = dep.refobjid
+ AND attr.attnum = dep.refobjsubid
+ AND attr.attrelid = cons.conrelid
+ AND attr.attnum = cons.conkey[1]
+ AND cons.contype = 'p'
+ AND dep.refobjid = '"avatar_items"'::regclass
+[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "avatar_items" ("avatar_id", "amount", "item_id") VALUES (72, 1, 419) RETURNING "id"
+  [1m[36mSQL (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "items" ("price", "armor", "damage_min", "damage_max", "level", "name", "item_class") VALUES (10, 5, NULL, NULL, NULL, 'test armor', 'armor') RETURNING "id"[0m
+  [1m[35mSQL (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "items" ("price", "armor", "damage_min", "damage_max", "level", "name", "item_class") VALUES (10, NULL, 10, 20, NULL, 'test sword', 'sword') RETURNING "id"
+  [1m[36mSQL (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "items" ("price", "armor", "damage_min", "damage_max", "level", "name", "item_class") VALUES (30, 10, NULL, NULL, NULL, 'test metal armor', 'armor') RETURNING "id"[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "items" ("price", "armor", "damage_min", "damage_max", "level", "name", "item_class") VALUES (60, NULL, 10, 20, NULL, 'test bow', 'bow') RETURNING "id"
+  [1m[36mSQL (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "items" ("price", "armor", "damage_min", "damage_max", "level", "name", "item_class") VALUES (NULL, NULL, NULL, NULL, NULL, 'test bow', NULL) RETURNING "id"[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.7ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"cities"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mSQL (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.7ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"cities"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mPK and serial sequence (3.9ms)[0m   SELECT attr.attname, seq.relname
+ FROM pg_class seq,
+ pg_attribute attr,
+ pg_depend dep,
+ pg_namespace name,
+ pg_constraint cons
+ WHERE seq.oid = dep.objid
+ AND seq.relkind = 'S'
+ AND attr.attrelid = dep.refobjid
+ AND attr.attnum = dep.refobjsubid
+ AND attr.attrelid = cons.conrelid
+ AND attr.attnum = cons.conkey[1]
+ AND cons.contype = 'p'
+ AND dep.refobjid = '"cities"'::regclass
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "cities" ("name") VALUES ('Testion') RETURNING "id"[0m
+  [1m[35mSQL (0.3ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (1.2ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"fight_areas"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mSQL (0.4ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (1.6ms)[0m  [1m SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"fight_areas"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [1m[35mPK and serial sequence (6.8ms)[0m   SELECT attr.attname, seq.relname
+ FROM pg_class seq,
+ pg_attribute attr,
+ pg_depend dep,
+ pg_namespace name,
+ pg_constraint cons
+ WHERE seq.oid = dep.objid
+ AND seq.relkind = 'S'
+ AND attr.attrelid = dep.refobjid
+ AND attr.attnum = dep.refobjsubid
+ AND attr.attrelid = cons.conrelid
+ AND attr.attnum = cons.conkey[1]
+ AND cons.contype = 'p'
+ AND dep.refobjid = '"fight_areas"'::regclass
+  [1m[36mSQL (1.6ms)[0m  [1mINSERT INTO "fight_areas" ("name", "city_id") VALUES ('swamp', 70) RETURNING "id"[0m
+  [1m[35mSQL (0.5ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mFightArea Load (1.5ms)[0m  [1mSELECT "fight_areas".* FROM "fight_areas" WHERE ("fight_areas".city_id = 70)[0m
+  [1m[35mSQL (2.2ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"monsters"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mSQL (0.3ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.8ms)[0m   SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"monsters"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+  [1m[36mPK and serial sequence (2.8ms)[0m  [1m SELECT attr.attname, seq.relname
+ FROM pg_class seq,
+ pg_attribute attr,
+ pg_depend dep,
+ pg_namespace name,
+ pg_constraint cons
+ WHERE seq.oid = dep.objid
+ AND seq.relkind = 'S'
+ AND attr.attrelid = dep.refobjid
+ AND attr.attnum = dep.refobjsubid
+ AND attr.attrelid = cons.conrelid
+ AND attr.attnum = cons.conkey[1]
+ AND cons.contype = 'p'
+ AND dep.refobjid = '"monsters"'::regclass
+[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "monsters" ("exp_bonus", "fight_area_id", "base_dmg_min", "base_dmg_max", "max_hp", "gold_max", "name") VALUES (10, 68, 5, 10, 100, 100, 'blob') RETURNING "id"
+  [1m[36mSQL (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "items" ("price", "armor", "damage_min", "damage_max", "level", "name", "item_class") VALUES (NULL, NULL, NULL, NULL, NULL, 'test bow', NULL) RETURNING "id"[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "cities" ("name") VALUES ('Leav') RETURNING "id"
+  [1m[36mSQL (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "fight_areas" ("name", "city_id") VALUES ('forest', 71) RETURNING "id"[0m
+  [1m[35mSQL (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mFightArea Load (0.4ms)[0m  [1mSELECT "fight_areas".* FROM "fight_areas" WHERE ("fight_areas".city_id = 71)[0m
+  [1m[35mSQL (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "monsters" ("exp_bonus", "fight_area_id", "base_dmg_min", "base_dmg_max", "max_hp", "gold_max", "name") VALUES (10, 69, 5, 10, NULL, 100, 'sin') RETURNING "id"[0m
+  [1m[35mSQL (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mMonster Load (0.5ms)[0m  [1mSELECT "monsters".* FROM "monsters" WHERE ("monsters".fight_area_id = 68)[0m
+  [1m[35mSQL (0.3ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "avatar_items" ("avatar_id", "amount", "item_id") VALUES (72, 1, 420) RETURNING "id"[0m
+  [1m[35mSQL (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "avatar_items" ("avatar_id", "amount", "item_id") VALUES (72, 1, 421) RETURNING "id"
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "avatar_items" ("avatar_id", "amount", "item_id") VALUES (72, 1, 422) RETURNING "id"[0m
+  [1m[35mSQL (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "avatar_items" ("avatar_id", "amount", "item_id") VALUES (72, 1, 423) RETURNING "id"
+  [1m[36mSQL (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mAREL (0.8ms)[0m  [1mUPDATE "avatars" SET "city_id" = 70 WHERE ("avatars"."id" = 72)[0m
+  [1m[35mSQL (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.5ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "avatars" ("city_id", "base_dmg_min", "level", "avatar_class", "max_mana", "armor", "password", "gold", "weapon", "hp", "max_hp", "name", "exp", "base_dmg_max", "mana") VALUES (0, 0, 1, 0, 10, NULL, 'test', 100, NULL, 10, 10, 'test', 0, 0, 10) RETURNING "id"
+  [1m[36mSQL (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "items" ("price", "armor", "damage_min", "damage_max", "level", "name", "item_class") VALUES (NULL, NULL, NULL, NULL, NULL, 'test bow', NULL) RETURNING "id"[0m
+  [1m[35mSQL (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "avatar_items" ("avatar_id", "amount", "item_id") VALUES (73, 1, 426) RETURNING "id"
+  [1m[36mSQL (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "items" ("price", "armor", "damage_min", "damage_max", "level", "name", "item_class") VALUES (10, 5, NULL, NULL, NULL, 'test armor', 'armor') RETURNING "id"[0m
+  [1m[35mSQL (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "items" ("price", "armor", "damage_min", "damage_max", "level", "name", "item_class") VALUES (10, NULL, 10, 20, NULL, 'test sword', 'sword') RETURNING "id"
+  [1m[36mSQL (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "items" ("price", "armor", "damage_min", "damage_max", "level", "name", "item_class") VALUES (30, 10, NULL, NULL, NULL, 'test metal armor', 'armor') RETURNING "id"[0m
+  [1m[35mSQL (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "items" ("price", "armor", "damage_min", "damage_max", "level", "name", "item_class") VALUES (60, NULL, 10, 20, NULL, 'test bow', 'bow') RETURNING "id"
+  [1m[36mSQL (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "items" ("price", "armor", "damage_min", "damage_max", "level", "name", "item_class") VALUES (NULL, NULL, NULL, NULL, NULL, 'test bow', NULL) RETURNING "id"[0m
+  [1m[35mSQL (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "cities" ("name") VALUES ('Testion') RETURNING "id"
+  [1m[36mSQL (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "fight_areas" ("name", "city_id") VALUES ('swamp', 72) RETURNING "id"[0m
+  [1m[35mSQL (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mFightArea Load (0.3ms)[0m  [1mSELECT "fight_areas".* FROM "fight_areas" WHERE ("fight_areas".city_id = 72)[0m
+  [1m[35mSQL (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "monsters" ("exp_bonus", "fight_area_id", "base_dmg_min", "base_dmg_max", "max_hp", "gold_max", "name") VALUES (10, 70, 5, 10, 100, 100, 'blob') RETURNING "id"[0m
+  [1m[35mSQL (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "items" ("price", "armor", "damage_min", "damage_max", "level", "name", "item_class") VALUES (NULL, NULL, NULL, NULL, NULL, 'test bow', NULL) RETURNING "id"
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "cities" ("name") VALUES ('Leav') RETURNING "id"[0m
+  [1m[35mSQL (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "fight_areas" ("name", "city_id") VALUES ('forest', 73) RETURNING "id"
+  [1m[36mSQL (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mFightArea Load (0.3ms)[0m  SELECT "fight_areas".* FROM "fight_areas" WHERE ("fight_areas".city_id = 73)
+  [1m[36mSQL (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "monsters" ("exp_bonus", "fight_area_id", "base_dmg_min", "base_dmg_max", "max_hp", "gold_max", "name") VALUES (10, 71, 5, 10, NULL, 100, 'sin') RETURNING "id"
+  [1m[36mSQL (1.5ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mMonster Load (0.4ms)[0m  SELECT "monsters".* FROM "monsters" WHERE ("monsters".fight_area_id = 70)
+  [1m[36mSQL (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "avatar_items" ("avatar_id", "amount", "item_id") VALUES (73, 1, 427) RETURNING "id"
+  [1m[36mSQL (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "avatar_items" ("avatar_id", "amount", "item_id") VALUES (73, 1, 428) RETURNING "id"[0m
+  [1m[35mSQL (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "avatar_items" ("avatar_id", "amount", "item_id") VALUES (73, 1, 429) RETURNING "id"
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "avatar_items" ("avatar_id", "amount", "item_id") VALUES (73, 1, 430) RETURNING "id"[0m
+  [1m[35mSQL (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mAREL (0.5ms)[0m  UPDATE "avatars" SET "city_id" = 72 WHERE ("avatars"."id" = 73)
+  [1m[36mSQL (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  ROLLBACK
+  [1m[36mSQL (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "avatars" ("city_id", "base_dmg_min", "level", "avatar_class", "max_mana", "armor", "password", "gold", "weapon", "hp", "max_hp", "name", "exp", "base_dmg_max", "mana") VALUES (0, 0, 1, 0, 10, NULL, 'test', 100, NULL, 10, 10, 'test', 0, 0, 10) RETURNING "id"[0m
+  [1m[35mSQL (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "items" ("price", "armor", "damage_min", "damage_max", "level", "name", "item_class") VALUES (NULL, NULL, NULL, NULL, NULL, 'test bow', NULL) RETURNING "id"
+  [1m[36mSQL (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "avatar_items" ("avatar_id", "amount", "item_id") VALUES (74, 1, 433) RETURNING "id"[0m
+  [1m[35mSQL (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "items" ("price", "armor", "damage_min", "damage_max", "level", "name", "item_class") VALUES (10, 5, NULL, NULL, NULL, 'test armor', 'armor') RETURNING "id"
+  [1m[36mSQL (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "items" ("price", "armor", "damage_min", "damage_max", "level", "name", "item_class") VALUES (10, NULL, 10, 20, NULL, 'test sword', 'sword') RETURNING "id"[0m
+  [1m[35mSQL (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "items" ("price", "armor", "damage_min", "damage_max", "level", "name", "item_class") VALUES (30, 10, NULL, NULL, NULL, 'test metal armor', 'armor') RETURNING "id"
+  [1m[36mSQL (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "items" ("price", "armor", "damage_min", "damage_max", "level", "name", "item_class") VALUES (60, NULL, 10, 20, NULL, 'test bow', 'bow') RETURNING "id"[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "items" ("price", "armor", "damage_min", "damage_max", "level", "name", "item_class") VALUES (NULL, NULL, NULL, NULL, NULL, 'test bow', NULL) RETURNING "id"
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "cities" ("name") VALUES ('Testion') RETURNING "id"[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "fight_areas" ("name", "city_id") VALUES ('swamp', 74) RETURNING "id"
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mFightArea Load (0.3ms)[0m  SELECT "fight_areas".* FROM "fight_areas" WHERE ("fight_areas".city_id = 74)
+  [1m[36mSQL (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "monsters" ("exp_bonus", "fight_area_id", "base_dmg_min", "base_dmg_max", "max_hp", "gold_max", "name") VALUES (10, 72, 5, 10, 100, 100, 'blob') RETURNING "id"
+  [1m[36mSQL (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "items" ("price", "armor", "damage_min", "damage_max", "level", "name", "item_class") VALUES (NULL, NULL, NULL, NULL, NULL, 'test bow', NULL) RETURNING "id"[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "cities" ("name") VALUES ('Leav') RETURNING "id"
+  [1m[36mSQL (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "fight_areas" ("name", "city_id") VALUES ('forest', 75) RETURNING "id"[0m
+  [1m[35mSQL (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mFightArea Load (0.3ms)[0m  [1mSELECT "fight_areas".* FROM "fight_areas" WHERE ("fight_areas".city_id = 75)[0m
+  [1m[35mSQL (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "monsters" ("exp_bonus", "fight_area_id", "base_dmg_min", "base_dmg_max", "max_hp", "gold_max", "name") VALUES (10, 73, 5, 10, NULL, 100, 'sin') RETURNING "id"[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mMonster Load (0.4ms)[0m  [1mSELECT "monsters".* FROM "monsters" WHERE ("monsters".fight_area_id = 72)[0m
+  [1m[35mSQL (0.6ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "avatar_items" ("avatar_id", "amount", "item_id") VALUES (74, 1, 434) RETURNING "id"[0m
+  [1m[35mSQL (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "avatar_items" ("avatar_id", "amount", "item_id") VALUES (74, 1, 435) RETURNING "id"
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "avatar_items" ("avatar_id", "amount", "item_id") VALUES (74, 1, 436) RETURNING "id"[0m
+  [1m[35mSQL (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "avatar_items" ("avatar_id", "amount", "item_id") VALUES (74, 1, 437) RETURNING "id"
+  [1m[36mSQL (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  ROLLBACK

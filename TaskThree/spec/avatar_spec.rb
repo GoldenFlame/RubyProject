@@ -19,7 +19,7 @@ describe "avatar" do
     @avatar.avatar_items.create(:amount => 1, :item_id => @item_armor2.id)
     @avatar.avatar_items.create(:amount => 1, :item_id => @item_weapon2.id)
     @avatar.create_fight(:monster_id => @monster.id, 
-      :monster_hp => @monster.hp,
+      :monster_hp => @monster.max_hp,
       :ended => false,
       :fight_area_id => @avatar.city.fight_areas[0].id)
       @avatar.save
@@ -44,7 +44,6 @@ describe "avatar" do
         :hp => 100, 
         :max_mana => 10, 
         :mana => 10}
-     
       @avatar.attributes.should have_hash_values(expected)
     end
     

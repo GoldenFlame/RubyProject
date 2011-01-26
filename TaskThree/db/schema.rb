@@ -36,7 +36,6 @@ ActiveRecord::Schema.define(:version => 0) do
   end
 
   create_table :cities do |t|
-    t.integer :shop_id
     t.string :name
   end
 
@@ -66,7 +65,6 @@ ActiveRecord::Schema.define(:version => 0) do
   create_table :monsters do |t|
     t.string :name
     t.integer :fight_area_id
-    t.integer :hp
     t.integer :max_hp
     t.integer :base_dmg_min
     t.integer :base_dmg_max
@@ -76,7 +74,7 @@ ActiveRecord::Schema.define(:version => 0) do
 
   create_table :shops do |t|
     t.string :name
-    t.integer :city_id    
+    t.integer :city_id
   end
 
   create_table :shop_items do |t|

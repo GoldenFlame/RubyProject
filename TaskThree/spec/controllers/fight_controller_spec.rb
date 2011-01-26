@@ -23,7 +23,7 @@ describe FightController do
     @avatar.save
     session[:user_id] = @avatar.id
     @avatar.create_fight(:monster_id => @monster.id, 
-      :monster_hp => @monster.hp,
+      :monster_hp => @monster.max_hp,
       :ended => false,
       :fight_area_id => @avatar.city.fight_areas[0].id)
       @avatar.save

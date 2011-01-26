@@ -1,4 +1,5 @@
-class Monster < ActiveRecord::Base  
+
+class Monster < ActiveRecord::Base
   has_many :fights
   def attack(enemy)
       dmg = Random.new.rand(base_dmg_min..base_dmg_max)
